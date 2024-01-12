@@ -12,13 +12,12 @@ file_five = 'UTF-8_Futech2024-03-01-04_Safarishaal.pdf'
 
 
 class TextExtractor:
-    def __init__(self, input_pdf_path):
+    def __init__(self):
         self.text = ''
-        self.input_pdf_path = input_pdf_path
         self.file_name = os.path.basename(self.input_pdf_path)
 
-    def extract_text_from_pdf(self):
-        doc = fitz.open(self.input_pdf_path)
+    def extract_text_from_pdf(self, input_pdf_path):
+        doc = fitz.open(input_pdf_path)
         for page in doc:
             self.text += page.get_text().encode("utf8").decode("utf8")
 
@@ -27,4 +26,3 @@ class TextExtractor:
 # text_extractor = TextExtractor(input_file)
 # text_extractor.extract_text_from_pdf()
 # print(text_extractor.text)
-

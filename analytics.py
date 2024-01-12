@@ -32,16 +32,22 @@ def download(pdf_url, download_directory, alexid):
         print("error downloading "+pdf_url)
     
 
-def analyze_with_mixtral(download_directory): 
+# limit the characters so that mixtral doesn't summarize references or authors
+CHAR_LIM = 1800 
 
+def analyze_with_mixtral(postprocess_dir,alexid,summary_dir): 
     # URL from the curl command
     url = 'http://23.118.220.180:11434/api/generate'
-    convertedfilename = os.path.join(download_directory,"pdf_to_text.txt")
-    pdfsummary = os.path.join(download_directory,"pdf_summary.txt")
+    convertedfilename = os.path.join(postprocess_dir,f"{alexid}.txt")
+    pdfsummary = os.path.join(summary_dir,f"{alexid}.txt")
     promptcommand = "Can you summarize this paper in one paragraph? Only reply with the summary no other text"
-    # Read the contents of the file 'test.txt'
-    with open(convertedfilename, 'r') as file:
-        file_contents = file.read()
+    # Read the contents of the file input
+    if os.path.isfile(convertedfilename):  # May not have properly downloaded
+        with open(convertedfilename, 'r') as file:
+            file_contents = file.read(CHAR_LIM)
+    else:
+        logging.debug(f"Missing file {convertedfilename}")
+        return # fail while moving on
 
     # Prepare the JSON data payload
     data = {

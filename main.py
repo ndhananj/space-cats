@@ -9,6 +9,7 @@ import polars as pl
 logginglevel= "DEBUG"
 downloadfolder = r"downloads"
 postprocessing = r"postprocessing"
+summary_dir    = r"summaries"
 
 current_date = datetime.now()
 formatted_date = current_date.strftime("%Y-%m-%d")
@@ -20,6 +21,8 @@ if not os.path.exists(downloadfolder):
     os.mkdir(downloadfolder)
 if not os.path.exists(postprocessing):
     os.mkdir(postprocessing)
+if not os.path.exists(summary_dir):
+    os.mkdir(summary_dir)
 
 #List to store urls for PDFs
 
@@ -41,16 +44,22 @@ for row in has_pdf.iter_rows(named=True):
 
 # convert pdfs to text
 PDF_LEN = 4
+count = 0
 for filename in os.listdir(downloadfolder):
     if filename.endswith(".pdf"):
         text_extractor = TextExtractor()
         input_path = os.path.join('downloads', filename)
         text_extractor.extract_text_from_pdf(input_path)
         text_extractor.save_txt(filename[:-PDF_LEN])
+        count +=1
 
-print("converted " + str(num_pdfs) + " pdfs to txt")
+# count may not match number of pdfs because they may fail to be downloaded
+print("converted " + str(count) + " pdfs to txt")
 logging.debug('Completed AnalyticsDownloadAndConvert')
 
+# only do 5 because of time contraints and mixtral's speed
+to_sum = has_pdf.select(pl.head("id", 5)) 
 # Send to Mixtral for summarization
-analytics.analyze_with_mixtral(postprocessing)
+for row in to_sum.iter_rows(named=True):
+    analytics.analyze_with_mixtral(postprocessing,row['id'][ID_START:], summary_dir)
 logging.debug('Completed analyze_with_mixtral')

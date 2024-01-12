@@ -3,6 +3,7 @@ import analytics
 from datetime import datetime
 from text_extractor import *
 from analytics import *
+import polars as pl
 
 # Set logging level to INFO, ERROR, DEBUG
 logginglevel= "DEBUG"
@@ -25,13 +26,17 @@ if not os.path.exists(postprocessing):
 # Scrape from OpenAlex up to 25 papers
 ScrapedList = analytics.scrape_from_alex("25", formatted_date)
 logging.debug('Completed AnalyticsScrapeFromAlex')
-print("returned " + str(len(ScrapedList)) + " from scrape")
-
+print("returned " + str(ScrapedList.with_row_count()) + " from scrape")
+has_pdf = ScrapedList.filter(
+   ~pl.all_horizontal(pl.col('pdf_url').is_null())
+)
+print("returned " + str(has_pdf.with_row_count()) + " with pdf")
 
 # Download from OpenAlex
-for url in ScrapedList:
-    print(url)
-    analytics.download(url, downloadfolder)
+for row in has_pdf.iter_rows(named=True):
+    print(row['pdf_url'])
+    analytics.download(row['pdf_url'], downloadfolder)
+
 
 # convert pdfs to text
 counter = 0

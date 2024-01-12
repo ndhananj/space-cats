@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>Table Data</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>PDF URL</th>
+            <th>Landing Page</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td><a href="{{ url_for('get_summary', pdf_url=item.pdf_url) }}">{{ item.pdf_url }}</a></td>
+            <td><a href="{{ item.landing_page }}">{{ item.landing_page }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

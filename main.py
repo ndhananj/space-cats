@@ -34,14 +34,18 @@ for url in ScrapedList:
     analytics.download(url, downloadfolder)
 
 # convert pdfs to text
+counter = 0
 for filename in os.listdir(downloadfolder):
     if filename.endswith(".pdf"):
         if filename.startswith("complete-"):
             continue
 
-        counter = counter + 1
+        counter += 1
+        text_extractor = TextExtractor()
+        input_path = os.path.join('downloads', filename)
+        text_extractor.extract_text_from_pdf(input_path)
+        text_extractor.save_txt(counter)
 
-        text_extractor.extract_text_from_pdf(downloadfolder, filename)
 print("converted " + str(counter) + " pdfs to txt")
 logging.debug('Completed AnalyticsDownloadAndConvert')
 

@@ -14,13 +14,22 @@ file_five = 'UTF-8_Futech2024-03-01-04_Safarishaal.pdf'
 class TextExtractor:
     def __init__(self):
         self.text = ''
-        self.file_name = os.path.basename(self.input_pdf_path)
+        self.file_name = ''
 
     def extract_text_from_pdf(self, input_pdf_path):
+        self.file_name = os.path.basename(input_pdf_path)
         doc = fitz.open(input_pdf_path)
         for page in doc:
-            self.text += page.get_text().encode("utf8").decode("utf8")
+            self.text += page.get_text(sort=True).encode("utf8").decode("utf8")
 
+    def save_txt(self, name):
+        file_name = f'{name}.txt'
+        save_location = os.path.join('postprocessing', file_name)
+        try:
+            with open(save_location, 'w+', encoding='utf-8') as file:
+                file.write(self.text)
+        except UnicodeDecodeError as e:
+            print(e)
 
 # input_file = os.path.join(INPUT_DIRECTORY, file_one)
 # text_extractor = TextExtractor(input_file)

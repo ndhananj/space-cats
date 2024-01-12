@@ -33,6 +33,8 @@ print("returned: \n" + str(ScrapedList.with_row_count()) + "\nfrom scrape")
 has_pdf = ScrapedList.filter(
    ~pl.all_horizontal(pl.col('pdf_url').is_null())
 )
+# Saving this table because it could be useful for front-end UI
+ScrapedList.write_csv(f"{formatted_date}_oa_ai_works.csv")
 num_pdfs=has_pdf.select(pl.count())[0,0]
 print(str(num_pdfs) + " have pdfs")
 

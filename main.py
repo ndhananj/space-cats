@@ -34,9 +34,14 @@ for url in ScrapedList:
     analytics.download(url, downloadfolder)
 
 # convert pdfs to text
-# analytics.download_and_convert(downloadfolder, "https://api.openalex.org/works")
-# logging.debug('Completed AnalyticsDownloadAndConvert')
+for filename in os.listdir(downloadfolder):
+    if filename.endswith(".pdf"):
+        if filename.startswith("complete-"):
+            continue
+        analytics.convert(downloadfolder, filename)
+print("converted " + str(len(os.listdir(downloadfolder))) + " pdfs to txt")
+logging.debug('Completed AnalyticsDownloadAndConvert')
 
 # Send to Mixtral for summarization
-analytics.analyze_with_mixtral(downloadfolder)
+analytics.analyze_with_mixtral(postprocessing)
 logging.debug('Completed analyze_with_mixtral')

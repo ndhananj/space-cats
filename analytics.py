@@ -34,12 +34,7 @@ def download(pdf_url, download_directory):
     else:
         print("error downloading "+pdf_url)
     
-    # result = subprocess.run(['ebook-convert', downloadfilename, convertedfilename], capture_output=True, text=True)
-    # print(result.stdout)
-    
-    return downloadfilename, convertedfilename 
 
-    
 def analyze_with_mixtral(download_directory): 
 
     # URL from the curl command
@@ -96,8 +91,8 @@ def scrape_from_alex(per_page:str, date_string:str):
         results = replyjson['results']
         with open('latest_oa_ai_works.txt', 'w') as file:
             for result in results:
-                print(result)
-                ExportList.append(result.get("pdf_url"))
+                if (result['primary_location']['pdf_url']):
+                    ExportList.append(result['primary_location']['pdf_url'])
 
             return ExportList
                     

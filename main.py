@@ -40,6 +40,7 @@ for filename in os.listdir(downloadfolder):
             continue
 
         counter = counter + 1
+
         text_extractor.extract_text_from_pdf(downloadfolder, filename)
 print("converted " + str(counter) + " pdfs to txt")
 logging.debug('Completed AnalyticsDownloadAndConvert')

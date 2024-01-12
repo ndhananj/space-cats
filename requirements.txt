@@ -5,3 +5,4 @@ PyMuPDF==1.23.9
 PyMuPDFb==1.23.9
 requests==2.31.0
 urllib3==2.1.0
+polars==0.20.3

@@ -2,6 +2,8 @@ import os
 import re
 import requests
 import subprocess
+import pprint
+
 
 def split_contentdisposition(astring):
     # return the stuff after = sign
@@ -44,7 +46,7 @@ def analyze_with_mixtral(download_directory):
     url = 'http://23.118.220.180:11434/api/generate'
     convertedfilename = os.path.join(download_directory,"pdf_to_text.txt")
     pdfsummary = os.path.join(download_directory,"pdf_summary.txt")
-    promptcommand = "Can you summarize this paper in one bullet point?"
+    promptcommand = "Can you summarize this paper in one paragraph?"
     # Read the contents of the file 'test.txt'
     with open(convertedfilename, 'r') as file:
         file_contents = file.read()
@@ -77,9 +79,13 @@ def scrape_from_alex(download_directory:str, results_per_page:str):
     import requests
     from datetime import datetime
     import json
-    
+
+    #make download directory if missing
+    if not os.path.exists(download_directory):
+        os.mkdir(download_directory)
+
     date_string = '2024-01-10'
-    per_page = 100
+    per_page = results_per_page
     # Make the GET request
     response = requests.get(f"https://api.openalex.org/works?sort=cited_by_count:desc\&filter=fulltext.search:artificial%20intelligence,primary_location.is_oa:True,from_publication_date:{date_string}&per-page={per_page}")
     print(response.url)
@@ -94,7 +100,7 @@ def scrape_from_alex(download_directory:str, results_per_page:str):
             for result in results: 
                 pdf_url = result['best_oa_location']['pdf_url']
                 landing_url = result["primary_location"]["landing_page_url"]
-                id      = result['id']
+                id = result['id']
                 print(id,pdf_url, landing_url)
                 print(id,pdf_url, landing_url, file=file)
                 if pdf_url:

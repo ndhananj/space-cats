@@ -35,4 +35,4 @@ else:
 
 df = pl.DataFrame(data)
 
-df.write_csv('latest_oa_ai_works.csv')
+df.write_csv(f"{date_string}_oa_ai_works.csv")

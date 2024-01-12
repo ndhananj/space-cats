@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 from typing import List
 import json
@@ -26,12 +26,15 @@ async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "items": data})
 
 
-# Define a /summary endpoint
-@app.get("/get_summary/{pdf_url}", response_class=HTMLResponse)
+@app.get("/get_summary/{pdf_url}", response_class=FileResponse)
 async def get_summary(request: Request, pdf_url: str):
-    return templates.TemplateResponse(
-        "summary.html", {"request": request, "pdf_url": pdf_url}
-    )
+    file_path = f"summaries/{pdf_url}.txt"
+
+    # Set the filename that will be displayed when downloaded
+    filename = "downloaded_file.txt"
+
+    # Return the file as a plain text response
+    return FileResponse(file_path, filename=filename, media_type="text/plain")
 
 
 if __name__ == "__main__":

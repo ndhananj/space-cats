@@ -33,10 +33,10 @@ has_pdf = ScrapedList.filter(
 print("returned " + str(has_pdf.with_row_count()) + " with pdf")
 
 # Download from OpenAlex
+ID_START = 21 # https://openalex.org/ is 21 chareacters long
 for row in has_pdf.iter_rows(named=True):
     print(row['pdf_url'])
-    analytics.download(row['pdf_url'], downloadfolder)
-
+    analytics.download(row['pdf_url'], downloadfolder,row['id'][ID_START:])
 
 # convert pdfs to text
 counter = 0

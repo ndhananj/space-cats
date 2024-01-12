@@ -11,7 +11,7 @@ def split_contentdisposition(astring):
     value = astring.split("=")[-1]
     return re.sub(r'[^A-Za-z0-9-_\.]', '', value)
 
-def download(pdf_url, download_directory):
+def download(pdf_url, download_directory, alexid):
 
     downloadfilename = os.path.join(download_directory,"downloaded_file.pdf")
     convertedfilename = os.path.join(download_directory,"pdf_to_text.txt")
@@ -24,11 +24,7 @@ def download(pdf_url, download_directory):
     
     # Check if the request was successful
     if response.status_code in [200] :
-        if 'Content-Disposition' in response.headers:
-            header = response.headers['Content-Disposition']
-            print("content-disposition is "+header)
-            content_disposition = split_contentdisposition(header)
-            downloadfilename = os.path.join(download_directory,content_disposition)
+        downloadfilename = os.path.join(download_directory,f"{alexid}.pdf")
         with open(downloadfilename, 'wb') as file:
             file.write(response.content)
         print(f"successfully downloaded {pdf_url} to {downloadfilename}")

@@ -16,7 +16,7 @@
         <tr>
             <td>{{ item.id }}</td>
             <td>{{ item.title }}</td>
-            <td><a href="{{ url_for('get_summary', pdf_url=item.pdf_url) }}">{{ item.pdf_url }}</a></td>
+            <td><a href="/get_summary/{{item.id}}">{{ item.pdf_url }}</a></td>
             <td><a href="{{ item.landing_page }}">{{ item.landing_page }}</a></td>
         </tr>
         {% endfor %}

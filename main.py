@@ -38,8 +38,10 @@ for filename in os.listdir(downloadfolder):
     if filename.endswith(".pdf"):
         if filename.startswith("complete-"):
             continue
-        analytics.convert(downloadfolder, filename)
-print("converted " + str(len(os.listdir(downloadfolder))) + " pdfs to txt")
+
+        counter = counter + 1
+        text_extractor.extract_text_from_pdf(downloadfolder, filename)
+print("converted " + str(counter) + " pdfs to txt")
 logging.debug('Completed AnalyticsDownloadAndConvert')
 
 # Send to Mixtral for summarization

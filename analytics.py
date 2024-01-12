@@ -4,6 +4,7 @@ import requests
 import subprocess
 import pprint
 import logging
+import polars as pl
 
 def split_contentdisposition(astring):
     # return the stuff after = sign
@@ -75,29 +76,28 @@ def scrape_from_alex(per_page:str, date_string:str):
     import json
     logging.debug('Starting scrape_from_alex')
 
-
-    # Create list to return
-    ExportList = []
-
     # Make the GET request
     response = requests.get(f"https://api.openalex.org/works?sort=cited_by_count:desc\&filter=fulltext.search:artificial%20intelligence,primary_location.is_oa:True,from_publication_date:{date_string}&per-page={per_page}")
     print(response.url)
     
+    top_keys = ['id', 'title']
+    best_loc_keys = ['pdf_url','landing_page_url']
+    data = {k: [] for k in top_keys+best_loc_keys}
+
     # Check if the request was successful
     if response.status_code == 200:
         replyjson = response.json()
         meta = replyjson['meta']
         # pprint.pprint(meta)
         results = replyjson['results']
-        with open('latest_oa_ai_works.txt', 'w') as file:
-            for result in results:
-                if (result['primary_location']['pdf_url']):
-                    ExportList.append(result['primary_location']['pdf_url'])
-
-            return ExportList
-                    
+        for result in results: 
+            for k in top_keys:
+                data[k].append(result[k])
+            for k in best_loc_keys:
+                data[k].append(result['best_oa_location'][k])
     else:
         print(f"Failed to fetch data: HTTP {response.status_code}")
-
         logging.debug('Completed scrape_from_alex')
+    
+    return pl.DataFrame(data)
 

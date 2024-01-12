@@ -26,11 +26,12 @@ if not os.path.exists(postprocessing):
 # Scrape from OpenAlex up to 25 papers
 ScrapedList = analytics.scrape_from_alex("25", formatted_date)
 logging.debug('Completed AnalyticsScrapeFromAlex')
-print("returned " + str(ScrapedList.with_row_count()) + " from scrape")
+print("returned: \n" + str(ScrapedList.with_row_count()) + "\nfrom scrape")
 has_pdf = ScrapedList.filter(
    ~pl.all_horizontal(pl.col('pdf_url').is_null())
 )
-print("returned " + str(has_pdf.with_row_count()) + " with pdf")
+num_pdfs=has_pdf.select(pl.count())[0,0]
+print(str(num_pdfs) + " have pdfs")
 
 # Download from OpenAlex
 ID_START = 21 # https://openalex.org/ is 21 chareacters long
@@ -39,19 +40,15 @@ for row in has_pdf.iter_rows(named=True):
     analytics.download(row['pdf_url'], downloadfolder,row['id'][ID_START:])
 
 # convert pdfs to text
-counter = 0
+PDF_LEN = 4
 for filename in os.listdir(downloadfolder):
     if filename.endswith(".pdf"):
-        if filename.startswith("complete-"):
-            continue
-
-        counter += 1
         text_extractor = TextExtractor()
         input_path = os.path.join('downloads', filename)
         text_extractor.extract_text_from_pdf(input_path)
-        text_extractor.save_txt(counter)
+        text_extractor.save_txt(filename[:-PDF_LEN])
 
-print("converted " + str(counter) + " pdfs to txt")
+print("converted " + str(num_pdfs) + " pdfs to txt")
 logging.debug('Completed AnalyticsDownloadAndConvert')
 
 # Send to Mixtral for summarization

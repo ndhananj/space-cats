@@ -1,0 +1,813 @@
+Arab Journal of Administration, Vol. 44, No. 3, September 2024
+Augmented Reality (AR) Generated Value-in-Use Experiences:  
+Literature Review and Analysis
+Riham Adel, PhD
+Associate Professor   
+College of Management & Technology  
+Arab Academy for Science,  
+Technology and Maritime Transport, Egypt  
+E-mail : rehamadel@aast.edu
+Abstract
+Augmented Reality (AR) research has sparked both academia and practice interest. However, despite the 
+increasing interest to study this emergent topic, till now the growing body of knowledge is mainly from engi-
+neering and computer science disciplines. The aim of this study is to conduct a systematic literature review to 
+identify, evaluate and synthesize (AR) emergent themes from business management publications in the last 
+years. Hence, contribute to the literature with evidence-based results about the existing research progress, 
+and classify into clusters with multidimensional interrelationships to help researchers build up on these find-
+ings and expand (AR) research from business standpoint. The study is exploratory and qualitative in nature; 
+a structured hybrid- narrative review method is used to extract unstructured data within articles. Thus, dis-
+cover relevant patterns, uncover hidden thematic clusters, relationships, and identify multidimensionality of 
+dominant concepts from the existing (AR) business literature. It was evident from the stream of research, that 
+most of researchers’ have a clear interest in exploring the interactive nature of Augmented Reality (AR) as new 
+digital technology and defining its experiential characteristics with a hierarchical set of dimensions that will 
+affect customers’ perceptions of service operations. Hence, in line with these findings, and grounded on the 
+service literature body of knowledge, Augmented Reality can be defined as: “smart service based technology 
+that generate value-in-use experiences”.
+Keywords: Augmented Reality (AR); Smart Service; Value-in-use; Experience. 
+Introduction
+Disruptive technologies evolving in recent years have showed instant implications in service industries. 
+Yet in the newly digitalised era, service innovations are advancing towards smartness, whereas interactions are 
+more intelligent, thus improving the potentials of value co-creation which is considered the central tenet of 
+service-dominant (S-D) logic. 
+S-D logic initially focuses on the active role of customers’ engagement in co-creation throughout integrat-
+ing their personal resources (i.e. operant resources) with those of the firm (i.e. operand resources) to generate 
+value-in-use, which is consequently determined by the customer’s evaluation of experience during consump-
+tion. Furthermore, it is discussed that S-D logic can be complemented with virtual-based logic that is enabled 
+by new technologies to create value from simple information sharing to big data analytics, thus support service 
+network actors in recognising value (Lindhult et al., 2018; Bani-Hani et al., 2018; Buhalis et al., 2019).
+* This article was submitted in November 2021, and accepted for publishing in December 2021. 
+© Arab Administrative Development Organization- League of Arab States, 2024, pp 227-241،         DOI: 10.21608/aja.2021.108470.1182
+227
+Augmented Reality (AR) Generated Value-in-Use Experiences ...
+Obviously the rapid technological progressions have given organisations numerous opportunities to re-
+think new alternatives for interacting and engaging with customers. Shankar et al. (2021) refer to technolo-
+gies (i.e. internet of things; artificial intelligence; virtual and augmented reality; smart mirrors; face recognition; 
+chatbots…etc.) by “Customer-Facing Technologies”. 
+Such technologies enhance the value creation and radically transform consumers’ experience throughout 
+facilitating engagement during customers’ decision making journey. It is acknowledged that these technolog-
+ical transformations have an impact in almost all industries, shifting organisations’ attention towards smart 
+operations that are characterised by real-time, instant interactive connectivity with value-chain actors. Con-
+sequently, enhance information communication flow, digitalised solutions, and personalization of offerings 
+to create an experiential value consisting of cognitive, emotional, and social dimensions (Hoyer et al., 2020).
+Augmented Reality (AR) is viewed as one of the cutting-edge technological innovations, representing 
+Mixed Reality (MR) that can be categorised into two types marker-based and marker less. AR is a blend be-
+tween virtual and real environments, combining elements from both settings that interact simultaneously in re-
+al-time. AR technologies can be utilised through devices such as laptops, smartphones, head-mounted display, 
+and smart glasses to display layered information (i.e. rich media content that is communicated assimilating 
+real-time telepresence) resulting from users’ interaction with their current surroundings, thus immerse them 
+into virtual and pleasurable experiences (Roxo and Brito, 2018; Yussof et al., 2019). 
+AR popularity grew due to its ability to virtually visualize objects/contexts throughout augmentation, 
+thus expand the possibilities offered to industries by combining the physical and virtual worlds effectively, 
+whereas traditional and digital environments co-exist to enable virtual real-time information display, products’ 
+demonstrations, pre-purchase assessments to facilitate customers’ decision making and give them feelings of 
+entertainment (Rese, Baier, Geyer-schulz, et al., 2017). 
+The more users’ expectations and interactions in AR environment are congruent, the higher users are 
+immersed in AR experiences. Therefore, chances are high that AR experience is perceived realistic when users 
+have higher perceptions and feelings of physical presence inside the AR environment. It is argued that the three 
+main features respectively (1) feelings of presence; (2) realism level; and (3) reality degree can be considered 
+the main indicators of AR quality experiences (Cipresso et al., 2018). 
+AR technologies have been applied widely in many fields including industrial, medical, tourism, retail, ed-
+ucation, media and entertainment (Watson et al., 2020). The pervasive use of such revolutionary technologies 
+pave the way for companies to shift from traditional services into smart ones. Leading companies are increas-
+ingly embracing the use of AR technologies that offer a dynamic way to interact with consumers. Services are 
+co-created with customers to provide them with interactive and novel experience simulation beyond physical 
+environment (Caboni and Hagberg, 2019). Hence, it is expected an increase of $85 billion in AR market size by 
+2025 (Kowalczuk et al., 2021). 
+Despite the fact that AR offers customers with more informative and enjoyable consumption experiences 
+throughout setting a frontline interface that displays virtual content which is customised based on each user’s 
+personal information. Yet, it is argued that augmentation quality is indispensable to the establishment of posi-
+tive users’ experience which is measured by the perceived value gained from using AR. On the other hand, sev-
+eral researchers have stressed the importance of users’ privacy control. They assert that the extent of informa-
+tion users is willing to share is dependent on the value they expect to achieve. Accordingly, it is claimed that AR 
+technologies enabling users to have control over the access to their personal information will generate more 
+engaging experiences, lower their levels of anxiety and perceived risks which enhance the customers’ quality 
+of experience at time of the purchase. Consequently, it is determined that positive AR experiences will lead to 
+customers’ satisfaction and willingness to purchase (Hilken et al., 2017; Poushneh and Vasquez-parraga, 2017; 
+Watson et al., 2018; Poushneh, 2018; Perannagari and Chakrabarti, 2019). 
+228
+Arab Journal of Administration, Vol. 44, No. 3, September 2024
+Therefore, AR should be observed from a quality-experience driven lens, rather than technology-driven 
+one. AR quality of experience is influenced by virtual content that is perceived by the users who directly experi-
+ence augmentation within a particular setting or application (Scholz and Smith, 2016). Thus, AR creates digital 
+affordance that drives consumers’ experiences, and maximizes consumers’ engagement by involving them into 
+quality interactive media experiences. These experiences of situated cognition can be classified into: (1) em-
+bedded which is defined in terms of information integration within personal context in real-time to evaluate 
+products/services; (2) embodied which refers to simulated physical interactions with products/services which 
+improve customers’ ability to evaluate an offering; (3) distributive which is an extended experience where cus-
+tomers share their experiences with peers to support them in products/service evaluation. It is noted that AR 
+supplements reality with an enhanced view of physical environment by providing customers with embedded, 
+embodied, and extended consumption experiences that are adaptive with their needs and tastes. Accordingly, 
+it can be concluded that AR value propositions consist of digital content vividness, interaction, personalisation 
+and connectivity (Hilken et al., 2018; Chylinski et al., 2020).
+Although AR is the latest emergent technology mostly investigated in academia in the last few years, but it 
+is still considered in its nascent stages. Most of the existing AR publications are dominated by computer science 
+research studying technological and engineering aspects disregarding business perspective and service opera-
+tions aspects. Furthermore, it was noted that the current AR body of knowledge lacks integration between differ-
+ent disciplines which can help in developing more generalised models and measurement scales. Whilist, several 
+studies are available to explain AR technologies’ acceptance and behaviors adoption models, but still there is an 
+absence of academic research on how AR technology can transform service operations. Therefore, further re-
+view is required to get a better understanding of AR value-in-use related aspects and new experiences resulting 
+from using AR technologies (Rese et al., 2017; Scholz and Du, 2018; Roxo and Brito, 2018; Caboni and Hagberg, 
+2019; Perannagari and Chakrabarti, 2019; Park and Stangl, 2020; Wedel et al., 2020; Hoyer et al., 2020). 
+Accordingly, the purpose of this paper is to review the progress of business literature in Augmented Re-
+ality (AR) to examine the main research streams discussed to date. Furthermore, discuss its effect on service 
+operations’ transformation. The remainder of the paper is structured as follows: the next sections are present-
+ing, First the systematic literature review methods. Second, elaborating findings with respect to three main 
+characteristics that distinguish Augmented Reality (AR) including: smart service technology, value-in-use, and 
+generated experiences. Third, examining how Augmented Reality (AR) is transforming of service operations. 
+The final section discusses the theoretical and practical implications of the study, with recommendations for 
+future research to be conducted.
+Systematic Literature Review 
+The aim of this section is to pinpoint the research progress related to the emergent topic Augmented 
+Reality (AR) within business research area. A structured hybrid-narrative review is used to give an in-depth 
+insight on existing body of knowledge. Therefore, it is essential to search and select the relevant studies for 
+a comprehensive synthesis of literature (Cavalinhos et al., 2021). 
+This study was conducted in May 2021 using Scopus and Web of Science Core Collection databases. 
+Scopus and WoS are acknowledged to be principal academic search systems that provide access to multiple 
+databases simultaneously. Both databases meet systematic review quality requirements such as broad scope, 
+multidisciplinary coverage, available record types and effective query-based search that promote support for 
+Boolean searching with different options for filtering content (Gusenbauer and Haddaway, 2020). 
+Searching and Screening Procedure 
+An initial search to scope peer-reviewed articles from high-impact journals with title and topics using the 
+Boolean operators (AND); (OR) to identify articles addressing the concept of augmented reality experience 
+229
+Augmented Reality (AR) Generated Value-in-Use Experiences ...
+Table 1  Search Results Inclusion Criteria
+Databases
+Web of Science (WoS) Core Collection; Scopus
+Topic
+Augmented Reality
+quality. The papers were searched using the following title “Augmented Reality Quality” (OR) “Augmented Re-
+ality Experience” (OR) “Augmented Reality Value-
+in-Use”. Then linking with the search strings key-
+words for topics including “virtual quality” (AND) 
+“service quality” (AND) “virtual experience” (AND) 
+“experience quality” (OR) “quality of experience” 
+(AND) “service dominant logic” (OR) “co-creation”. 
+The preliminary search results from WoS 
+Search Strings 
+(title, keywords)
+“Augmented Reality Quality”; “Augmented 
+Reality Experience”; “Augmented Reality Val-
+ue-in-Use”; “virtual quality” (AND) “service 
+quality”; “virtual experience”; “experience 
+quality”; “quality of experience”; “service 
+dominant logic”; “co-creation”.
+Indexes
+SCI-EXPANDED, SSCI, A&HCI, CPCI-S, CP-
+CI-SSH, BKCI-S, BKCI-SSH, ESCI.
+Timespan
+All years
+Language
+English
+Document Type Peer-Reviewed, Full Text Articles
+Research Area Business, Management, Economics
+Source 
+Academic Journals 
+returned 8,686 titles and 466 titles from Scopus. 
+Yet, the results were refined to include only En-
+glish, peer-reviewed full-text articles published in 
+academic journals in business and management 
+research area across all years (See Table 1). Guid-
+ed by the inclusion criteria, the final search results 
+displayed 27 titles from WoS and 23 titles from 
+Scopus published from 2012 to 2021.
+First, the 50 articles retrieved from Scopus and WoS were scanned for duplicated titles using Mendeley 
+which resulted in retaining 45 after removing 5 similar articles from both databases. Second, to ensure the 
+quality of the articles included in the study, only articles from journals listed in the academic journal guide 
+for Chartered Association of Business Schools (ABS) are included in the study (Paul & Benito, 2018). Sub-
+sequently, 34 titles were identified eligible papers to be included in the systematic literature review. Finally, 
+cross-referencing was used to identify additional papers relevant to the study, 9 new papers are identified 
+and added after checking the scope of the topic, the inclusion and quality criteria. As a result, the refined 
+final list consists of only 42 articles as illustrated below in Table 2.
+Table 2 Distribution of Papers Selected from ABS Journals, Authors and Date of Publication
+Journal Title
+Articles
+Authors, Year
+Journal of Retailing and Consumer Services
+7
+(Hollebeek et al., 2020; Huang, 2021; Javornik, 2016; Li 
+and Fang, 2020; Poncin and Ben Mimoun, 2014; Poush-
+neh, 2018b; Poushneh and Vasquez-Parraga, 2017)
+Journal of Business Research
+5
+(Brannon Barhorst et al., 2021a; Flavián et al., 2019a; Hudson et 
+al., 2019; Matarazzo et al., 2021; Sung, 2021)
+Tourism Management
+2
+(He et al., 2018; Park and Stangl, 2020b)
+Tourism Management Perspectives
+2
+(Cranmer et al., 2020; Hsu, 2018)
+Business Horizons
+2
+(de Regt et al., 2020a; Scholz and Smith, 2016)
+Journal of Interactive Marketing
+2
+(Kim and Forsythe, 2008; Yim et al., 2017)
+Internet Research
+2
+(Huang and Liao, 2017; Huang and Liu, 2014)
+Personal and Ubiquitous Computing
+2
+(Litvak and Kuflik, 2020; Olsson et al., 2013)
+Journal of Travel Research
+2
+(Chung et al., 2018; Tussyadiah et al., 2018)
+International Journal of Retail Distribution Management
+2
+(Pantano et al., 2018; Perannagari and Chakrabarti, 2019)
+International Journal of Contemporary Hospitality Management
+1
+(Milman et al., 2020)
+International Journal of Engineering Business Management
+1
+(Kounavis et al., 2012)
+Journal of Business Economics and Management
+1
+(Davidavičienė et al., 2021)
+Journal of Business & Industrial Marketing
+1
+(Nussipova et al., 2019)
+Journal of Destination Marketing Management
+1
+(Marasco et al., 2018)
+Journal of Service Management
+1
+(Buhalis et al., 2019)
+Journal of Services Marketing
+1
+(Huang et al., 2019)
+Journal of Place Management and Development
+1
+(Jung and tom Dieck, 2017)
+Journal of the Academy of Marketing Science
+1
+(Hilken et al., 2017)
+Futures
+1
+(Kymäläinen, 2013)
+Qualitative Market Research 
+1
+(Cuomo et al., 2020)
+Psychology and Marketing
+1
+(Rauschnabel, 2018)
+230
+Arab Journal of Administration, Vol. 44, No. 3, September 2024
+Journal Title
+Articles
+Authors, Year
+Technological Forecasting & Social Change
+1
+(Rese, Baier, Geyer-Schulz, et al., 2017)
+ACM Transactions on Internet Technology
+1
+(Pascoal et al., 2020)
+42
+It was depicted that few papers in the management & business research area were published before 
+2017, an increase in the publications from 2017 to 2021 was noted. Yet, it can be concluded that the amount 
+of research from business discipline is not comparable to the research published from both engineering 
+and computer science disciplines. However, as it can be seen in Table 2, both the journal of retailing and 
+consumer services, and the journal of business research contribute with the highest number of published 
+papers (n = 12) addressing Augmented Reality issue to date.
+Data Extraction and Content Analysis
+Document analysis is qualitative and analytical procedure that focuses on synthesizing data contained 
+in research articles to extract rich information, discover relevant patterns and relationships from the existing 
+body of knowledge. Further, set direction for additional research questions and new conditions to be ob-
+served and investigated (Bowen, 2009).  As result, this approach is useful in studies designed to explore and 
+explain a concepts throughout recognizing emerging words, patterns and themes within the data that are se-
+lected and organized into codes and categories used for content analysis (Fereday and Muir-Cochrane, 2006). 
+The textual information in the articles screened and selected for the study purpose was examined using 
+“WordStat 8”, a content analysis software that includes numerous text mining and graphical tools that help 
+exploring and extracting the content of articles. Accordingly, discover relationships between keywords, iden-
+tification of the most recurring phrases, and clustering similar segments across articles. The process of content 
+analysis involves conceptual analysis to quantify the frequency of concepts occurrence within sample cases 
+analysed (i.e. peer-reviewed articles). Consequently, coding into a set of categories to examine and evaluate 
+the relationships between concepts identified in the text to draw meaningful results and interpretations. 
+The visual word cloud (See Figure 1) gives a quick graphical representation of words frequencies 
+depicted within the documents analysed, 
+whereas the size of each word indicate the 
+occurrence level in the text. Thus, providing 
+a good starting point to highlight the con-
+cepts that appear frequently in the unstruc-
+tured data. 
+Consequently, start analysing the data 
+ 
+ 
+ 
+Figure 1 Visual Representation of Words Frequencies Using 
+in order to extract meaningful information 
+that uncover the hidden thematic structure 
+of the text. Then, creating a categorization 
+dictionary to group words or phrases, and 
+exclude low frequency items prior to using 
+topic modelling procedure (See Table 3). To 
+differentiate documents and extract more 
+precise results about the various topics they 
+contain, an analysis at the documents level 
+is conducted to segment the dominant issues 
+contained across the 42 cases. The emergent 
+themes were categorized into 6 broad topics 
+as illustrated in Table 3.
+Cloud Graph
+231
+Augmented Reality (AR) Generated Value-in-Use Experiences ...
+Table 3 Topics Extracted from the Document Analysis
+Topics
+Keywords
+Coherence Frequency No. Cases %Cases
+0.471
+1681
+42
+100.00%
+Immersive 
+Experience
+mental imagery; virtual presence;  visual cues; verbal cues; dy-
+namic cues; imagery process; design elements; information 
+type; aesthetic appreciation; imagery vividness; information 
+processing; augmenting immersive scenes; immersive experi-
+ence; visitors willingness to pay.
+0.449
+1275
+42
+100.00%
+Interactive 
+Technology 
+augmented reality (AR); virtual reality; smart glasses; robotic 
+functions; robotic qualities; technology-human interactions; 
+safety; service experience; playfulness feelings; positive influ-
+ence; customer responses.
+0.436
+1227
+41
+97.67%
+Customer 
+Experience
+customer experience; online shopping; digital technologies; so-
+cial media; shared social experience; brand experience; shopping 
+experience; social interaction; customer satisfaction; positive ef-
+fect; service quality; purchase intentions; customer behaviour.
+0.418
+1050
+40
+95.35%
+Ownership 
+Control & 
+Surveillance
+physiological state; sense of ownership control; body surveil-
+lance; consciousness; haptic imagery; explorative engagement; 
+flow experience; rapport experience; online service experience; 
+decision making; utilitarian and hedonic value perceptions.
+Virtual Real 
+0.372
+1064
+41
+97.67%
+Environ-
+ment 
+virtual world; virtual objects; physical world; mixed reality; real 
+world; real time; augmented reality (AR) technology; smart 
+glasses; smart retailing; smartphones; mobile AR applications.
+User Accep-
+0.364
+933
+40
+95.35%
+tance
+technology acceptance; perceived usefulness; perceived ease of 
+use; perceived enjoyment; user acceptance of information tech-
+nology;  technology anxiety; attitude towards augmented reality.
+To further explore the connections between concepts, an average-linkage hierarchical cluster analysis 
+and multidimensional scaling mapping methods are used to create clusters from a similarity matrix. Key-
+words that tend to appear together are combined into categories, the results are visually presented in the 
+form tree diagram called Dendrogram (See Figure 2) and multidimensional concept map (See Figure 3) to 
+depict a group of interrelated co-occurring concepts representing the overall meaning of the explicit con-
+cepts extracted from the unstructured data and its relationships.
+Findings and Discussion 
+The digitalization wave has given birth to “Smart Technologies” and draws attention towards explor-
+ing related issues to this concept rather than merely focusing on the technical aspects of these technologies. 
+Smart technologies enabled intelligent use of data to deliver pro-active, personalised, adaptable services 
+whereas customers are always the co-creators of value. 
+It is recognised that AR is a smart technology that creates value for customers (Dacko, 2017). In conc-
+trast to other smart technologies (i.e. RFID; self-services; mobile wallets;) that help customers to save time 
+and effort during task performance, AR is an interactive offline-online technology that empowers customers 
+to actively co-create their individualised smart service experience. The customer interacts with smart tech-
+nology and participates in service co-creation which is a typical example of smart service encounter (Huang, 
+2018). 
+It was evident from the stream of research, that most of researchers’ have a clear interest in explor-
+ing the interactive nature of Augmented Reality (AR) as new digital technology and defining its experien-
+tial characteristics that will affect customers’ perceptions of service operations. Hence, in line with these 
+findings, and grounded on the service literature body of knowledge, Augmented Reality can be defined as: 
+“smart service based technology that generate value-in-use experiences”. 
+232
+ 
+Arab Journal of Administration, Vol. 44, No. 3, September 2024
+ 
+Figure 2 Cluster Analysis - Dendrogram
+ 
+Figure 3 Multidimensional Concept Map
+233
+Augmented Reality (AR) Generated Value-in-Use Experiences ...
+Augmented Reality (AR): Smart Service Based Technology
+AR is a human-computer interaction technology that combines reality with virtual reality by applying 
+computer-generated virtual information into physical world. AR is an intelligent display technology using 
+either video-through or see-through devices, with accurate tracking 3D registration and variety of intelli-
+gent interactions in real-time between users and virtual objects within real contexts (Brannon Barhorst et 
+al., 2021b).
+AR-based technologies consist of two categories with recognition features that enable the reproduc-
+tion of augmented information without restrictions of place and time. The first, image-based which is a 
+marker-based AR that recognizes artificial labels and visual tags. The second, location-based which is mark-
+er-less AR that uses position data through GPS or wireless network as recognition method (Tsai, 2013).
+AR uses digital devices to overlay virtual elements on the real world which stimulates users’ multi-sen-
+sory involvement, permits three-dimensional and social interactions experience, as well as enabling users 
+to have dynamic adjustments while viewing, trying and using objects. (Wedel et al., 2020). Accordingly, 
+these AR features can allow customers to get access to real-time and adaptable virtual information that is 
+integrated into their actual surroundings to create a complete sense of real presence experience (Park and 
+Stangl, 2020a). 
+It is denoted that AR main characteristics are categorised into: (1) degree of interaction with virtual 
+and physical contexts, thus stimulates multisensory effects, called “immersion” which creates highly vivid 
+experience that affect the degree of realism perceived within AR environment; (2) processing quality re-
+fers to the reliability, promptness, responsiveness of requested services that allow users to edit and modify 
+transmitted digital content within AR context quickly, efficiently and effectively; (3) visualisation quality 
+is concerned with the quality of media content combined with the quality of digital devices presenting 
+content; (4) information quality relates to the amount of information provided and information quality, 
+in terms of its accuracy, completeness, availability, retrievablity, accessibility and relevance to the context 
+in which it is intended to be used in; (5) personal information handling that derives users’ concerns about 
+security assurance, privacy protection and control (Kowalczuk et al., 2021).
+It is confirmed that customers will cognitively, affectively and behaviourally respond to AR service 
+encounters that have key features aligned with AR characteristics and that gratify value-in-use experiences. 
+Therefore, it can be concluded that AR is considered a smart service based technology characterized by 
+offering customers with real vivid stimulation experiences that allow them to control and modify sensory 
+stimulations (Huang, 2018). 
+Augmented Reality (AR) Technology Value-in-Use
+Drawing on S-D logic approach, organisations recognize that value is created in use and specific to 
+a context, thus varies for each customer. The key characteristics of value-in-use consist of the customers’ 
+active role in value creation, aligned with their context-specific goals’ achievement. This means that value 
+can only be determined by the customers. Therefore, it is suggested that value-in-use can be understood 
+by the perceived consequences arising from AR usage process. Accordingly, it is noted that value-in-use is 
+defined by customers’ evaluation of AR consumption experiences that evolve over time and can be positive 
+or negative. (Schwipper et al., 2020; Font et al., 2021). 
+Holbrook (2006), states that value resides only in experience, which implies that AR value-in-use has 
+experience-based characteristics that can be refined based on value typologies (Gallarza et al., 2017). Expee-
+riential value can be viewed with respect to Holbrook’s typology of consumer’s value encompassing three 
+continuous dimensions (1) intrinsic and extrinsic benefits; (2) reactive and active activities; (3) self and oth-
+234
+Arab Journal of Administration, Vol. 44, No. 3, September 2024
+ers orientation, that were used to categorise value into four main groups including: economic, hedonic, 
+social and altruistic. Yet, Holbrook value typology is not exhaustive, instead it can be used as guidance to 
+explore new additional value types (Stewart Loane et al., 2015). The experiential values are gratifications 
+resulting from sensory attributes of the overall perceived experience either through direct or indirect inter-
+actions with products/services (Tandon et al., 2014). Therefore, seamless sequence of cognitive, affective 
+and physical responses resulting from human-technology interactions facilitated by AR technologies are 
+key components for value-in-use experiences that can occur through direct or indirect participation of users 
+in activities within AR context (Brannon Barhorst et al., 2021b).
+Augmented Reality (AR) Technology Generated Experiences
+Nowadays, reality-virtual technologies have redefined customer experience, taking into considera-
+tion that different technologies can directly or indirectly support “core experiences” by adding value to the 
+customer journey stages, thus creating integral technology-enhanced experiences. On the other hand, “em-
+powered experiences” resulting from the vital role technology plays will also generate new experiences 
+either related or unrelated to customers’ core experiences (Flavián et al., 2019b). 
+Yet to date, it was determined the scarcity of attempts to identify users’ experiences with AR. Two main 
+research streams related to users’ expectations from AR were acknowledged. The first category was mainly 
+concerned with studying AR experiences characteristics including utility, pragmatic, hedonic and emotional 
+aspects. The second category focused on discussing the design requirements that facilitate the delivery of 
+interactive experiences (Park and Stangl, 2020a). 
+It was mentioned that AR active experience is created and influenced by several factors including: vir-
+tual AR content; users’ participation; and targets in the physical world (i.e. objects, ambient conditions) that 
+are augmented. While AR passive experience encompasses non-participative users who just observe other 
+users actions or view generated augmented content, and non-augmented targets (Scholz and Smith, 2016). 
+Thus, AR provides a combined view of digital and physical world by embedding realistic digital con-
+tent into users’ perceptions. Yet, it is argued that AR is not merely a technology, rather it is self-service quality 
+enabler that achieves customizable value outcomes for customers through interactive, immersive, real-time 
+and multi-sensory experiences induced by virtual media content (Heller et al., 2021; de Regt et al., 2020b) 
+As a result, conventional services’ operations are transformed into smart ones, creating an entirely different 
+customer experience concept that can be labelled with “Smart Experience” (Kabadayi et al., 2019). 
+Future Research Directions
+This study responds to calls for research about Augmented Reality (AR) to better understand how it 
+can effectively transform service operations. The study synthesizes existing literature and summarizes the 
+most valuable findings of the discussed topic. This review extracted and analysed the most important AR 
+emerging themes in research to date. Yet, there is still a need for further academic research to investigate 
+these trends, in order to provide academia and practitioners with the information necessary to enhance 
+their service operations. It is evident that Augmented Reality (AR) technologies give users instant access to 
+real-time information compiled with audio-visual media content through numerous sources, thus provide 
+personalised experience and enhance the quality of service operations.
+Given the interdisciplinary nature of service operations research, the identified key themes can be 
+discussed from different disciplines (i.e. marketing, human resources, information systems, technology & 
+innovation, psychology, sociology, engineering…etc.) to instil new insights into future business and man-
+agement research. Acknowledging the fact that AR is an interactive technology, human-technology interac-
+235
+Augmented Reality (AR) Generated Value-in-Use Experiences ...
+tions increased and replaced human interactions within a service encounter as well as workplace. Involving 
+people in the production and delivery of services is a distinguishing feature of Augmented Reality (AR), 
+Thus, it is crucial to further study the role of customers and employees in co-production and co-creation 
+of operations and its effect on service performance. Moreover, to date, most of the research is focusing 
+on technology acceptance theories that study people behaviours and attitudes, no clear framework or ap-
+proach has been yet developed to study how technology-based interactive service operations are designed, 
+managed and controlled to measure service operations performance.
+It is clear that technology advances have driven the creation of service ecosystems where, customers 
+are key actors in value co-creation throughout integrating required resources. Thus, it is essential to further 
+investigate the uncertainty and variability emerging the actors’ roles in new service ecosystems. Thus, re-
+quires studies about appropriate network structures and configuration to create value from information ex-
+changed in real time to deliver customisable service operations and create new experiences. Consequently, 
+rethinking the quality characteristics of interactive service operations and experiences generated has be-
+come a fertile research area, whereas a review and update of the existing service quality body of knowledge 
+is necessary to accommodate the developments of new technology-based operations. 
+236
+Arab Journal of Administration, Vol. 44, No. 3, September 2024
+References
+- 
+Bani-Hani, I.; Pareigis, J.; Tona, O. and Carlsson, S. (2018). “A Holistic View of Value Generation Pro-
+cess In A SSBI Environment: A Service Dominant Logic Perspective”, Journal of Decision Systems, 
+Taylor & Francis, Vol. 27, No. sup1, pp. 46–55.
+- 
+Bowen, G. A. (2009). “Document Analysis as a Qualitative Research Method”, Qualitative 
+Research Journal, Vol. 9, No. 2, pp. 27–40.
+- 
+Brannon Barhorst, J.; McLean, G.; Shah, E. and Mack, R. (2021a). “Blending The Real World And The 
+Virtual World: Exploring the Role of Flow In Augmented Reality Experiences”, Journal of Business 
+Research, Elsevier, Vol. 122, No. January, pp. 423–436.
+- 
+Brannon Barhorst, J.; McLean, G.; Shah, E. and Mack, R. (2021b). “BlendingtThe Real World and the 
+Virtual World: Exploring the Role of Flow in Augmented Reality Experiences”, Journal of Business 
+Research, Elsevier, Vol. 122, No. August 2020, pp. 423–436.
+- 
+Buhalis, D.; Harwood, T.; Bogicevic, V.; Viglia, G.; Beldona, S. and Hofacker, C. (2019). “Tech-
+nological Disruptions In Services: Lessons From Tourism and Hospitality”, Journal of Service 
+Management, Vol. 30, No. 4, pp. 484–506.
+- 
+Caboni, F. and Hagberg, J. (2019). “Augmented Reality in Retailing: A Review of Features, 
+Applications and Value”, International Journal of Retail and Distribution Management, 
+Vol. 47, No. 11, pp. 1125–1140.
+- 
+Cavalinhos, S.; Marques, S. H. and Fátima Salgueiro, M. (2021). “The Use of Mobile Devices 
+in-Store and the Effect on Shopping Experience: A Systematic Literature Review and Research 
+Agenda”, International Journal of Consumer Studies, No. March, p. ijcs.12690.
+- 
+Chung, N.; Lee, H.; Kim, J. Y. and Koo, C. (2018). “The Role of Augmented Reality For Experi-
+ence-influenced Environments: The Case of Cultural Heritage Tourism in Korea”, Journal of 
+Travel Research, Vol. 57, No. 5, pp. 627–643.
+- 
+Chylinski, M.; Heller, J.; Hilken, T.; Keeling, D. I.; Mahr, D. and de Ruyter, K. (2020). “Augmented Re-
+ality Marketing: A Technology-enabled Approach to Situated Customer Experience”, Australasian 
+Marketing Journal, Elsevier Ltd, Vol. 28, No. 4, pp. 374–384.
+- 
+Cipresso, P.; Giglioli, I. A. C.; Raya, M. A. and Riva, G. (2018). “The Past, Present and Future of Virtual 
+and Augmented Reality Research: A Network and Cluster Analysis of the Literature”, Frontiers in 
+Psychology, Vol. 9, pp. 1-20.
+- 
+Cranmer, E. E.; Tom Dieck, M. C. and Fountoulaki, P. (2020). “Exploring the Value of Augmented 
+Reality For Tourism”, Tourism Management Perspectives, Elsevier, Vol. 35 No. March, p. 100672.
+- 
+Cuomo, M. T.; Tortora, D.; Festa, G.; Ceruti, F. and Metallo, G. (2020). “Managing Omni-Customer 
+Brand Experience Via Augmented Reality”, Qualitative Market Research: An International Journal, 
+Vol. 23, No. 3, pp. 427–445.
+- 
+Dacko, S. G. (2017). “Enabling Smart Retail Settings Via Mobile Augmented Reality Shopping Apps”, 
+Technological Forecasting and Social Change, Elsevier Inc., Vol. 124, pp. 243–256.
+- 
+Davidavičienė, V.; Raudeliūnienė, J. and Viršilaitė, R. (2021). “Evaluation of User Experience in Aug-
+mented Reality Mobile Applications”, Journal of Business Economics and Management, Vol. 22 
+No. 2, pp. 467–481.
+- 
+de Regt, A.; Barnes, S. J. and Plangger, K. (2020a). “The Virtual Reality Value Chain”, Business Hori-
+zons, Elsevier Ltd, Vol. 63, No. 6, pp. 737–748.
+- 
+de Regt, A.; Barnes, S. J. and Plangger, K. (2020b). “The Virtual Reality Value Chain”, Business Hori-
+zons, Elsevier Ltd., Vol. 63, No. 6, pp. 737–748.
+237
+Augmented Reality (AR) Generated Value-in-Use Experiences ...
+- 
+Fereday, J. and Muir-Cochrane, E. (2006). “Demonstrating Rigor Using Thematic Analysis: A Hybrid 
+Approach of Inductive and Deductive Coding and Theme Development”, International Journal of 
+Qualitative Methods, Vol. 5, No. 1, pp. 80–92.
+- 
+Flavián, C.; Ibáñez-Sánchez, S. and Orús, C. (2019a). “The Impact of Virtual, Augmented and Mixed 
+Reality Technologies on the Customer Experience”, Journal of Business Research, Elsevier, Vol. 
+100, No. July, pp. 547–560.
+- 
+Flavián, C.; Ibáñez-Sánchez, S. and Orús, C. (2019b). “The Impact of Virtual, Augmented and Mixed Re-
+ality Technologies on the Customer Experience”, Journal of Business Research, Vol. 100, pp. 547–560.
+- 
+Font, X.; English, R.; Gkritzali, A. and Tian, W. (Stella). (2021). “Value Co-creation in Sustainable Tour-
+ism: A Service-Dominant Logic Approach”, Tourism Management, Vol. 82, No. February, p. 104200.
+- 
+Gallarza, M. G.; Arteaga, F.; Del Chiappa, G.; Gil-Saura, I. and Holbrook, M. B. (2017). “A Multidimen-
+sional Service-Value Scale Based on Holbrook’s Typology of Customer Value: Bridging the Gap between 
+the Concept and its Measurement”, Journal of Service Management, Vol. 28, No. 4, pp. 724–762.
+- 
+Gusenbauer, M. and Haddaway, N. R. (2020). “Which Academic Search Systems are Suitable for 
+Systematic Reviews or Meta-analyses? Evaluating Retrieval Qualities of Google Scholar, PubMed, 
+And 26 Other Resources”, Research Synthesis Methods, Vol. 11, No. 2, pp. 181–217.
+- 
+He, Z.; Wu, L. and Li, X. (Robert). (2018). “When Art Meets Tech: The Role of Augmented Reality in 
+Enhancing Museum Experiences and Purchase Intentions”, Tourism Management, Elsevier Ltd., 
+Vol. 68, No. October, pp. 127–139.
+- 
+Heller, J.; Chylinski, M.; de Ruyter, K.; Keeling, D. I.; Hilken, T. and Mahr, D. (2021). “Tangible Service 
+Automation: Decomposing the Technology-enabled Engagement Process (TEEP) for Augmented 
+Reality”, Journal of Service Research, Vol. 24, No. 1, pp. 84–103.
+- 
+Hilken, T.; de Ruyter, K.; Chylinski, M.; Mahr, D. and Keeling, D. I. (2017). “Augmenting the Eye of 
+the Beholder: Exploring the Strategic Potential of Augmented Reality to Enhance Online Service 
+Experiences”, Journal of the Academy of Marketing Science, Vol. 45, No. 6, pp. 884–905.
+- 
+Hilken, T.; Heller, J.; Chylinski, M.; Keeling, D. I.; Mahr, D. and de Ruyter, K. (2018). “Making Om-
+nichannel an Augmented Reality: The Current and Future State of the Art”, Journal of Research 
+in Interactive Marketing, Vol. 12, No. 4, pp. 509–523.
+- 
+Hollebeek, L. D.; Clark, M. K.; Andreassen, T. W.; Sigurdsson, V. and Smith, D. (2020), “Virtual 
+Reality Through the Customer Journey: Framework and Propositions”, Journal of Retailing and 
+Consumer Services, Elsevier Ltd, Vol. 55 No. January, p. 102056.
+- 
+Hoyer, W. D.; Kroschke, M.; Schmitt, B.; Kraume, K. and Shankar, V. (2020). “Transforming the Cus-
+tomer Experience Through New Technologies”, Journal of Interactive Marketing, Elsevier Inc., 
+Vol. 51, pp. 57–71.
+- 
+Hsu, C. H. C. (2018). “Tourism Education on and Beyond the Horizon”, Tourism Management 
+Perspectives, Elsevier, Vol. 25, No. January, pp. 181–183.
+- 
+Huang, T. L. (2018). “Creating A Commercially Compelling Smart Service Encounter”, Service Business, 
+Springer Berlin Heidelberg, Vol. 12, No. 2, pp. 357–377.
+- 
+Huang, T. L. (2021). “Restorative Experiences and Online Tourists’ Willingness to Pay a Price Premi-
+um in an Augmented Reality Environment”, Journal of Retailing and Consumer Services, Elsevier 
+Ltd., Vol.  58, No. January, p. 102256.
+- 
+Huang, T. L.; Mathews, S. and Chou, C.Y. (2019). “Enhancing Online Rapport Experience Via Aug-
+mented Reality”, Journal of Services Marketing, Vol. 33, No. 7, pp. 851–865.
+- 
+Huang, T. L. and Liao, S. L. (2017). “Creating E-shopping Multisensory Flow Experience Through 
+Augmented-reality Interactive Technology”, Internet Research, Vol. 27, No. 2, pp. 449–475.
+238
+Arab Journal of Administration, Vol. 44, No. 3, September 2024
+- 
+Huang, T. L. and Liu, F. H. (2014). “Formation of Augmented-Reality Interactive Technology’s Persua-
+sive Effects from the Perspective of Experiential Value”, Internet Research, Vol. 24, No. 1, pp. 82–109.
+- 
+Hudson, S.; Matson-Barkat, S.; Pallamin, N. and Jegou, G. (2019). “With or Without You? Interaction 
+and Immersion in a Virtual Reality Experience”, Journal of Business Research, Vol. 100, No. July, 
+pp. 459–468.
+- 
+Javornik, A. (2016). “Augmented Reality: Research Agenda for Studying the Impact of its Media 
+Characteristics on Consumer Behaviour”, Journal of Retailing and Consumer Services, Elsevier, 
+Vol. 30, pp. 252–261.
+- 
+Jung, T. H. and Tom Dieck, M. C. (2017). “Augmented Reality, Virtual Reality and 3D Printing for 
+the Co-creation of Value for the Visitor Experience at Cultural Heritage Places”, Journal of Place 
+Management and Development, Vol. 10, No. 2, pp. 140–151.
+- 
+Kabadayi, S.; Ali, F.; Choi, H.; Joosten, H. and Lu, C. (2019). “Smart Service Experience in Hospital-
+ity and Tourism Services: A Conceptualization and Future Research Agenda”, Journal of Service 
+Management, Vol. 30, No. 3, pp. 326–348.
+- 
+Kim, J. and Forsythe, S. (2008). “Adoption of Virtual Try-on Technology for Online Apparel Shop-
+ping”, Journal of Interactive Marketing, Elsevier, Vol. 22, No. 2, pp. 45–59.
+- 
+Kounavis, C. D., Kasimati; A. E. and Zamani, E. D. (2012). “Enhancing the Tourism Experience 
+Through Mobile Augmented Reality: Challenges and Prospects”, International Journal of 
+Engineering Business Management, Vol. 4, No. 1, pp. 1–6.
+- 
+Kowalczuk, P.. Siepmann (née Scheiben), C. and Adler, J. (2021), “Cognitive, Affective and Behav-
+ioral Consumer Responses to Augmented Reality in E-commerce: A Comparative Study”, Journal 
+of Business Research, Vol. 124, No. January, pp. 357–373.
+- 
+Kymäläinen, T. (2013). “Dreamnesting - Co-created Future Vision of an Intelligent Interior Design 
+Experience”, Futures, Vol. 50, No. June, pp. 74–85.
+- 
+Li, C. Y. and Fang, Y. H. (2020). “I Searched, I Collected, I Experienced: Exploring How Mobile 
+Augmented Reality Makes the Players Go”, Journal of Retailing and Consumer Services, Else-
+vier Ltd., Vol. 54, No. 151, p. 102018.
+- 
+Lindhult, E.; Chirumalla, K.; Oghazi, P. and Parida, V. (2018). “Value Logics For Service Innovation: 
+Practice-driven Implications for Service-dominant Logic”, Service Business, Springer Berlin Hei-
+delberg, Vol. 12, No. 3, pp. 457–481.
+- 
+Litvak, E. and Kuflik, T. (2020). “Enhancing Cultural Heritage Outdoor Experience With Augment-
+ed-Reality Smart Glasses”, Personal and Ubiquitous Computing, Personal and Ubiquitous 
+Computing, Vol. 24, No. 6, pp. 873-886.
+- 
+Marasco, A.; Buonincontri, P.; van Niekerk, M.; Orlowski, M. and Okumus, F. (2018). “Exploring The 
+Role of Next-Generation Virtual Technologies in Destination Marketing”, Journal of Destination 
+Marketing & Management, Elsevier Ltd., Vol. 9, No. September, pp. 138-148.
+- 
+Matarazzo, M.; Penco, L.; Profumo, G. and Quaglia, R. (2021). “Digital Transformation and Custom-
+er Value Creation in Made in Italy SMEs: A Dynamic Capabilities Perspective”, Journal of Business 
+Research, Elsevier Inc., Vol. 123, No. February, pp. 642-656.
+- 
+Milman, A.; Tasci, A. and Zhang, T. (2020). “Perceived Robotic Server Qualities and Functions Ex-
+plaining Customer Loyalty in the Theme Park Context”, International Journal of Contemporary 
+Hospitality Management, Vol. 32, No. 12, pp. 3895–3923.
+- 
+Nussipova, G.; Nordin, F. and Sörhammar, D. (2019). “Value Formation With Immersive Technol-
+ogies: An Activity Perspective”, Journal of Business & Industrial Marketing, Vol. 35, No. 3, pp. 
+483-494.
+239
+Augmented Reality (AR) Generated Value-in-Use Experiences ...
+- 
+Olsson, T.; Lagerstam, E.; Kärkkäinen, T. and Väänänen-Vainio-Mattila, K. (2013), “Expected User 
+Experience 0f Mobile Augmented Reality Services: A User Study in the Context of Shopping Cen-
+tres”, Personal and Ubiquitous Computing, Vol. 17, No. 2, pp. 287–304.
+- 
+Pantano, E.; Priporas, C.V. and Dennis, C. (2018). “A New Approach To Retailing For Successful 
+Competition in the New Smart Scenario”, International Journal of Retail & Distribution Man-
+agement, Vol. 46, No. 3, pp. 264–282.
+- 
+Park, S. and Stangl, B. (2020a). “Augmented Reality Experiences and Sensation Seeking”, Tourism 
+Management, Elsevier Ltd, Vol. 77, No. November 2019, p. 104023.
+- 
+Park, S. and Stangl, B. (2020b). “Augmented Reality Experiences and Sensation Seeking”, Tourism 
+Management, Elsevier Ltd, Vol. 77, No. February, p. 104023.
+- 
+Pascoal, R.; Almeida, A. De and Sofia, R. C. (2020). “Mobile Pervasive Augmented Reality Systems 
+MPARS: The Role of User Preferences in the Perceived Quality of Experience in Outdoor Applica-
+tions”, ACM Transactions on Internet Technology, Vol. 20, No. 1, pp. 1–17.
+- 
+Perannagari, K. T. and Chakrabarti, S. (2019). “Factors Influencing Acceptance of Augmented Real-
+ity In Retail: Insights from Thematic Analysis”, International Journal of Retail and Distribution 
+Management, Vol. 48, No. 1, pp. 18–34.
+- 
+Poncin, I. and Ben Mimoun, M. S. (2014). “The Impact of E-Atmospherics on Physical Stores”, Jour-
+nal of Retailing and Consumer Services, Elsevier, Vol. 21, No. 5, pp. 851–859.
+- 
+Poushneh, A. (2018a). “Augmented Reality in Retail : A Trade-off between User’s Control of Access 
+to Personal Information and Augmentation Quality”, Journal of Retailing and Consumer Ser-
+vices, Elsevier Ltd, Vol. 41, pp. 169–176.
+- 
+Poushneh, A. and Vasquez-parraga, A.Z. (2017). “Customer Dissatisfaction and Satisfaction With 
+Augmented Reality in Shopping And Entertainment”, Journal of Consumer Satisfaction, Dissat-
+isfaction and Complaining Behavior, Vol. 30, pp. 97–118.
+- 
+Poushneh, A. and Vasquez-Parraga, A. Z. (2017). “Discernible Impact of Augmented Reality on Re-
+tail Customer’s Experience, Satisfaction and Willingness to Buy”, Journal of Retailing and Con-
+sumer Services, Elsevier, Vol. 34, No. January, pp. 229–234.
+- 
+Rauschnabel, P. A. (2018). “Virtually Enhancing the Real World With Holograms: An Exploration of 
+Expected Gratifications of Using Augmented Reality Smart Glasses”, Psychology and Marketing, 
+Vol. 35, No. 8, pp. 557–572.
+- 
+Rese, A.; Baier, D.; Geyer-Schulz, A. and Schreiber, S. (2017). “How Augmented Reality Apps are Ac-
+cepted by Consumers: A Comparative Analysis Using Scales and Opinions”, Technological Fore-
+casting and Social Change, Elsevier Inc., Vol. 124, pp. 306–319.
+- 
+Rese, A.; Baier, D.; Geyer-schulz, A. and Schreiber, S. (2017). “Technological Forecasting & Social 
+Change How Augmented Reality Apps Are Accepted By Consumers : A Comparative Analysis Using 
+Scales And Opinions”, Technological Forecasting & Social Change, Elsevier Inc., Vol. 124, pp. 306–
+319.
+- 
+Roxo, M. T. and Brito, P.Q. (2018). “Augmented Reality Trends to the Field of Business and Economics : 
+A Review of 20 Years of Research”, Asia Journal of Business Research, Vol. 8, No. 2, pp. 94–117.
+- 
+Scholz, J. and Duffy, K. (2018). “We are at Home: How Augmented Reality Reshapes Mobile Mar-
+keting and Consumer-Brand Relationships”, Journal of Retailing and Consumer Services, Vol. 
+44, No. September, pp. 11–23.
+- 
+Scholz, J. and Smith, A.N. (2016). “Augmented Reality: Designing Immersive Experiences That Max-
+imize Consumer Engagement”, Business Horizons, “Kelley School of Business, Indiana Universi-
+ty”, Vol. 59, No. 2, pp. 149–161.
+240
+Arab Journal of Administration, Vol. 44, No. 3, September 2024
+- 
+Schwipper, S.; Peche, S. and Schmitz, G. (2020). “Mobile Location-based Services’ Value-in-Use in 
+Inner Cities: Do a Customer’s Shopping Patterns, Prior User Experience and Sales Promotions Mat-
+ter?”, Schmalenbach Business Review, Vol. 72, No. 4, pp. 511–564.
+- 
+Shankar, V.; Kalyanam, K.; Setia, P.; Golmohammadi, A.; Tirunillai, S.; Douglass, T.; Hennessey, J. et al. 
+(2021). “How Technology Is Changing Retail”, Journal of Retailing, Vol. 97, No. 1, pp. 13-27.
+- 
+Stewart Loane, S.; Webster, C. M. and D’Alessandro, S. (2015). “Identifying Consumer Value Co-cre-
+ated Through Social Support Within Online Health Communities”, Journal of Macromarketing, 
+Vol. 35, No. 3, pp. 353–367.
+- 
+Sung, E. (Christine). (2021). “The Effects of Augmented Reality Mobile App Advertising: Viral Mar-
+keting Via Shared Social Experience”, Journal of Business Research, Elsevier, Vol. 122, No. Janu-
+ary, pp. 75–87.
+- 
+Tandon, A.; Tripathi, V. and Gupta, A. (2014). “The Transformation of Value and Evolution of Cus-
+tomer Experience: An Exploration of The Typologies, Facets and Significance”, International Jour-
+nal of Indian Culture and Business Management, Vol. 8, No. 4, p. 425.
+- 
+Tsai, K. C. C. (2013). “Affordances of Augmented Reality in Science Learning : Suggestions for Fu-
+ture Research”, Journal of Science Education and Technology, Vol. 22, pp. 449–462.
+- 
+Tussyadiah, I. P.; Jung, T. H. and Tom Dieck, M. C. (2018). “Embodiment of Wearable Augment-
+ed Reality Technology in Tourism Experiences”, Journal of Travel Research, Vol. 57, No. 5, pp. 
+597–611.
+- 
+Watson, A.; Alexander, B. and Salavati, L. (2020). “The Impact of Experiential Augmented Reality 
+Applications on Fashion Purchase Intention”, International Journal of Retail and Distribution 
+Management, Vol. 48, No. 5, pp. 433–451.
+- 
+Wedel, M.; Bigné, E. and Zhang, J. (2020). “Virtual and Augmented Reality: Advancing Research in 
+Consumer Marketing”, International Journal of Research in Marketing, Elsevier B. V., Vol. 37, 
+No. 3, pp. 443-465.
+- 
+Yim, M.; Y. C.; Chu, S. C. and Sauer, P. L. (2017). “Is Augmented Reality Technology an Effective Tool 
+for E-commerce? An Interactivity and Vividness Perspective”, Journal of Interactive Marketing, 
+Direct Marketing Educational Foundation, Inc. dba Marketing EDGE, Vol. 39, pp. 89-103.
+- 
+Yussof, F. M.; Salleh, S. M. and Ahmad, A. L. (2019). “Augmented Reality: A Systematic Literature 
+Review and Prospects for Future Research in Marketing and Advertising Communication”, Lecture 
+Notes in Networks and Systems, Vol. 67, pp. 459–473.
+.
+241

@@ -1,0 +1,1240 @@
+TSINGHUA SCIENCE AND TECHNOLOGY
+ISSNll1007-0214
+12/22
+pp143–157
+DOI: 10.26599/TST.2023.9010008
+Volume 29, Number 1, February 2024
+Heating-Cooling Monitoring and Power Consumption Forecasting
+Using LSTM for Energy-Efﬁcient Smart Management of Buildings:
+A Computational Intelligence Solution for Smart Homes
+Omid Akbarzadeh, Sahand Hamzehei, Hani Attar, Ayman Amer, Nazanin Fasihihour,
+Mohammad R. Khosravi, and Ahmed A. Solyman
+Abstract: Energy management in smart homes is one of the most critical problems for the Quality of Life (QoL)
+and preserving energy resources. One of the relevant issues in this subject is environmental contamination, which
+threatens the world’s future. Green computing-enabled Artiﬁcial Intelligence (AI) algorithms can provide impactful
+solutions to this topic. This research proposes using one of the Recurrent Neural Network (RNN) algorithms known
+as Long Short-Term Memory (LSTM) to comprehend how it is feasible to perform the cloud/fog/edge-enabled
+prediction of the building’s energy. Four parameters of power electricity, power heating, power cooling, and total
+power in an ofﬁce/home in cold-climate cities are considered as our features in the study. Based on the collected
+data, we evaluate the LSTM approach for forecasting parameters for the next year to predict energy consumption
+and online monitoring of the model’s performance under various conditions. Towards implementing the AI predictive
+algorithm, several existing tools are studied. The results have been generated through simulations, and we ﬁnd them
+promising for future applications.
+Key words: design-builder; Besos; smart cities; smart building; neural network; Long Short-Term Memory (LSTM)
+1
+Introduction
+related problems. For example, Ref. [2] stated that the
+usage of remote-controlled robots would be expanded to
+include building and system maintenance in hazardous
+situations.
+Nowadays, researchers have considered different
+techniques to increase the number of Electric Vehicles
+(EVs) in the city and make them optimize to reduce the
+negative impact of using vehicles in cities[3, 4]. In this
+The increase in the number of industries due to the
+expansion of the industry has made environmental
+issues more pressing today. According to Ref. [1], if
+air pollution is not decreased by 2030, an oxygen kit
+will be necessary to breathe comfortably since the air
+would be toxic. Artiﬁcial Intelligence (AI) is predicted
+to be used more in the future to tackle environmental-
+ Omid Akbarzadeh, Sahand Hamzehei, and Nazanin Fasihihour are with the Department of Electronics and Telecommunications, 
+Politecnico di Torino, Turin 10129, Italy. E-mail: omid.akbarzadeh@studenti.polito.it; sahand.hamzehei@studenti.polito.it; 
+S258228@studenti. polito.it.
+ Hani Attar and Ayman Amer are with the Department of Energy Engineering, Zarqa University, Zarqa 13110, Jordan. E-mail: 
+Hattar@zu.edu.jo; Aamer@zu.edu.jo.
+ Mohammad R. Khosravi is with Shandong Provincial University Laboratory for Protected Horticulture, Weifang University of Science 
+and Technology, Weifang 262799, China. E-mail: m.khosravi@wfust.edu.cn.
+ Ahmed A. Solyman is with the Department of Electrical and Electronics Engineering, Faculty of Engineering and Architecture, 
+Nis¸antas¸ı University, Istanbul 25370, The Republic of T¨urkiye. E-mail: ahmed.solyman@nisantasi.edu.tr.
+To whom correspondence should be addressed.
+Manuscript received: 2022-11-27; revised: 2023-02-02; accepted: 2023-02-13
+
+C The author(s) 2024. The articles published in this open access journal are distributed under the terms of the
+Creative Commons Attribution 4.0 International License (http://creativecommons.org/licenses/by/4.0/).
+144
+Tsinghua Science and Technology, February 2024, 29(1): 143–157
+case, one could theoretically achieve better results by
+optimizing the techniques considered by Akbarzadeh et
+al.[5]
+control, improving energy efﬁciency, safety, usability,
+and accessibility[12, 13]. Machine learning is another
+branch of research that may be used for smart building.
+The objective is to forecast what will occur in the next
+year. In this situation, it is feasible to determine the
+amount of energy required for each building’s cooling,
+heating, electricity, and total power. By making smarter
+decisions regarding heating and lighting use based on
+the various needs of a building’s occupants, machine
+learning has the potential to improve energy management
+and reduce a building’s carbon footprint[14–16].
+This study seeks to simulate an ofﬁce in a city with
+a cold climate in order to comprehend four distinct
+characteristics, namely power heating, power electricity,
+power cooling, and total power, and to assess a time
+series method in the case of the forecast for the following
+year. Figure 1 depicts an overview of the stages, from
+designing an ofﬁce to collecting data and making
+predictions based on that information.
+2
+Data Collection
+Understanding the various stages of the project
+is the ﬁrst step in evaluating and predicting the
+under investigation parameters. This research includes
+the following steps shown in Fig. 1. Utilizing the
+DesignBuilder program, create an ofﬁce. After that,
+generate two ofﬁce conﬁgurations with Controlled
+Natural Ventilation (CNV) enabled or disabled and their
+corresponding *. idf ﬁles using DesignBuilder. Then,
+run simulations using Besos for each conﬁguration’s
+energy requirements, altering three parameters: Window-
+to-Wall Ratio (WWR) from 10% to 90%; two shading
+modes (on/off); and three insulation thicknesses (0.001,
+0.05, 0.2). All cases will be input into Besos to determine
+The different buildings are also considered during
+these years, such as making hospitals smarter by
+considering the Internet of Things (IoT) and machine
+learning techniques, such as the system developed by
+Refs. [6–8]. In addition, cloud computing can be used
+to manage the data when data collection saves a huge
+amount of data, like the research done by Khan et
+al.[9] Moreover, to solve environmental problems, many
+solutions can contribute to reducing air pollution in
+major cities, for example, using an EV, which provides
+many advantages. As stated by Ref. [10], EV is a
+technology that eliminates the local Nitrogen Oxide
+(NOx) and delicate Particulate Matter (PM) emissions.
+However, expanding the public transport system and
+increasing the number of EVs on the market play
+a crucial role in reducing air pollution. One of the
+most important factors is the optimization of buildings,
+which is crucial because Ref. [11] stated that smart
+buildings can be a solution that not only reduces costs
+and carbon footprint, but also positively affects the
+environment. To make a building more intelligent, IoT-
+based technologies might be useful for online monitoring
+and controlling building energy consumption. By adding
+sensors and a gateway, it is possible to monitor the
+cooling and heating of the interior temperature and adjust
+the cooling and heating power in an energy-efﬁcient
+manner. For instance, if a household forgets to turn
+off an additional light before leaving home, he/she
+may either utilize the application, or the light can be
+turned off automatically. IoT helps intelligent buildings
+with security, automated administration, and online
+Fig. 1
+Summary of three main steps of method.
+Omid Akbarzadeh et al.:
+Heating-Cooling Monitoring and Power Consumption Forecasting Using LSTM for : : :
+145
+window consideration is necessary. WWR quantiﬁes the
+proportion of window area to the external wall area of a
+structure[24]. It is calculated as follows:
+the ideal values that minimize energy use. Moreover,
+utilizing EnergyPlus to conduct a dynamic energy
+simulation to get hourly energy consumption ﬁgures, and
+in the last step, use Long Short–Term Memory (LSTM)
+to forecast the energy consumption estimates for the
+following year.
+WWR.%/ D
+P Glazing area .m2/
+P Gross exterior wall area .m2/
+(1)
+2.1
+DesignBuilder
+The total area of the walls separating the building’s
+interior and exterior is the building’s gross exterior wall
+area. The glass portion of a building’s facade or internal
+surfaces is referred to as glazing[25]. By adding 10% in
+each stage, this paper varies the WWR between 10%
+and 90%; one parameter helps run the Besos. Another
+parameter is Shading, deﬁned as blocking the sun’s rays
+in the building.
+The exterior shading of the facade
+is a crucial method to improve a building’s energy
+efﬁciency in a subtropical area[26]. Understanding that
+the installation of shading can affect the amount of
+artiﬁcial lighting in the building is critical to realizing
+why Shading plays a crucial role in smart buildings. The
+energy required for artiﬁcial lighting is shown in the
+following:
+WŒkWh=year D WL C WP
+(2)
+where WP is the amount of energy required for
+emergency lighting and lighting control systems, and
+WL is the amount required to ensure that the intended
+illumination requirements are met. WL and WP are
+calculated in the following:
+1000
+(3)
+WL D PN FCFO.tDFD C tN /
+DesignBuilder
+is
+an
+EnergyPlus-based
+software
+application for measuring and controlling energy,
+carbon, lighting, and comfort[17–19]. The designed
+ofﬁce under study is located in Winnipeg, Manitoba
+province, Canada, with a total net area of 4036.47
+square feet. This ofﬁce is divided into two zones with
+twelve windows, two ﬂoors, two roofs, and seven walls.
+The year-round cold is one factor that led to Winnipeg’s
+selection. Winnipeg is one of the coldest cities on the
+globe, according to Ref. [20]. This is important since
+people’s energy consumption habits vary greatly in
+regions with unpredictable weather. In an environment
+with moderate temperatures, energy is predicted to be
+used for power cooling in the spring and summer and
+heating in the autumn and winter. However, this is not
+the case for places such as Winnipeg. According to Ref.
+[21], the maximum April temperature in Winnipeg is
+10 ıC, indicating that power heating is more likely than
+power cooling. This phase results in various *. idf ﬁles,
+essential for initiating the next stages, namely, Besos
+and EnergyPlus.
+2.2
+Besos and EnergyPlus
+where,
+ PN is the total installed lighting power (W);
+ FC is the constant illuminates factor;
+ FO is the occupancy dependence factor;
+ tD is the daylight time usage (h);
+ FD is the daylight dependence factor;
+ tN is the non-daylight time usage (h).
+WP D PP C.tY   t0/ C Pem  tem
+Besos is a Python library with the latest version
+of 2.1.3. It is deﬁned by different modules to
+model and optimize buildings to assist academics and
+engineers in constructing more sustainable and district-
+integrated structures[22]. Besos is used to conduct several
+simulations with changing parameters, as stated in
+Table 1, to determine the building’s energy usage.
+Describing
+the
+parameters
+is
+essential
+to
+understanding
+why
+they
+should
+be
+considered.
+Windows have a signiﬁcant impact on the performance
+of a structure[23]. It implies that changing the number or
+size of windows may alter a home’s energy consumption.
+In the same building, when the window width is N
+centimetres, the indoor temperature may be close
+to the outside temperature, and vice versa when the
+window width is N   M centimetres. This is why
+Table 1
+Parameters conﬁguration.
+WWR
+Shading
+Insulation thickness (m)
+0%–90%
+On and off
+0.0001–0.3500
+1000
+(4)
+where,
+ PP C is the power needed for all control systems,
+such as emergency and standby (W);
+ tY is the standard year time (h);
+ t0 is the annual operating time (h);
+ Pem represents the total charging power installed
+for the emergency lighting (W);
+ tem is the emergency lighting charge time (h).
+Controlling shading smartly may increase the amount
+of sunshine to maintain warmer internal temperatures
+and spread the light. The climate of the area where the
+building is located is one factor that should be considered.
+Reference [27] claimed that shading control can be
+146
+Tsinghua Science and Technology, February 2024, 29(1): 143–157
+classiﬁed into three groups. Optimizing the shading
+is crucial for warmer climates. In a mixed environment,
+it is possible to shade the building in the summer and let
+the sun in during the winter. Ultimately, it is preferable
+to reduce shading in a cold area. Given that Winnipeg is
+a cold climate and the building under study is an ofﬁce, it
+is assumed that by employing the shade off, the amount
+of sunlight may rise and make the interior warmer than
+the exterior. If people do not shade throughout the day,
+the temperature may drop from the absence of sunshine,
+and artiﬁcial lighting use may grow.
+Insulation thickness is the last characteristic examined
+in this study. Understanding the U -value, which
+evaluates how efﬁcient a material is as an insulator[28],
+is preferable before deciding on the insulation thickness.
+The lower the U -value, the better for the best insulating
+materials close to zero[29]. The method for calculating
+U -value is shown in the following:
+U D
+1
+RSI C RSC C RA C Ri
+(5)
+with Besos. Of course, the energy needed also depends
+on the outside temperature, which is supplied to the
+simulation as input with an *. epw ﬁle containing various
+information about the outside temperature for a chosen
+city. Other factors include,
+ the schedule (here are working hours);
+ the surfaces’ transmittance; and
+ the building’s occupancy (including the number of
+people and machines like computers that naturally emit
+heat).
+Engineers,
+architects,
+and researchers can be
+estimated parameters such as energy consumption for
+heating, cooling, etc. by considering EnergyPlus[30]. One
+of the project’s goals is to simulate a building’s complete
+data monitoring system, so the ideal total energy usage
+simulation was run using the Besos settings. After the
+simulation, it is feasible to anticipate how much energy
+will be used in the upcoming year. Figures 2–5 represent
+the data collected from Besos and EnergyPlus, with the
+y-axis demonstrating energy usage in the kWh unit and
+the x-axis representing the data based on the hourly data
+for one year.
+3
+Forecast Algorithm
+where,
+ RSI is the thermal resistance of the internal surface
+(m2 K/W);
+ RSC is the thermal resistance of the outside surface
+(m2 K/W);
+ RA is the thermal resistance of unvented air
+cavities;
+ Ri is the thermal resistance of building components i
+(m2 K/W).
+The energy consumption required to keep the internal
+temperature within comfortable ranges can be seen
+The performance gap is deﬁned as the discrepancy
+between the current level of performance and the one
+that is desired[31]. According to Ref. [32], the amount
+of energy used in buildings accounts for forty percent
+of the total energy used in the United States. Modelling
+and projecting building energy consumption is vital for
+Fig. 2
+Collected data of electricity power.
+Omid Akbarzadeh et al.:
+Heating-Cooling Monitoring and Power Consumption Forecasting Using LSTM for : : :
+147
+Fig. 3
+Collected data of heating power.
+Fig. 4
+Collected data of cooling power.
+and performance.
+addressing building energy efﬁciency issues and meeting
+the present difﬁculties of human comfort. Urbanization
+growth is one of the major reasons for the increase
+in energy consumption[33].
+To better understand, it
+is necessary to comprehend the methodologies used
+to anticipate the building’s energy consumption; as
+Ref. [34] stated, AI and machine learning have been
+proposed for forecasting buildings’ energy consumption
+3.1
+Summary of forecasting
+The ﬁrst step is understanding the difference between
+prediction and forecasting, and why forecasting is
+considered in this paper. The available dataset is time
+series, deﬁned as recording the data over time[35]. For
+example, the data are recorded hour by hour in a year. A
+forecast is a computation or assessment that combines
+148
+Tsinghua Science and Technology, February 2024, 29(1): 143–157
+Fig. 5
+Collected data of total power.
+information from past occurrences and current trends
+to predict the result of a future event. At the same time, a
+prediction states that something will occur in the future
+regardless of the availability of past knowledge[36].
+This study focuses on forecasting power consumption
+based on hourly data gathered over the period of a year;
+hence, the time series issue is the emphasis of this
+research. Before comparing alternative methodologies,
+summarized in Table 2, it is essential to recall the
+purpose of the study. Each machine learning and neural
+network is tailored to a certain study area.
+3.2
+SVM
+generate high-dimensional features. Ideally, a decision
+on a given test vector x should not depend on all vectors
+in the training set, but only on a select few. This approach
+reduces the computational complexity and localizes
+the decision-making, meaning that the classiﬁer uses
+training set vectors similar to x to determine x’s class.
+Considering this, let’s introduce the function L.y; /, as
+shown in the following:
+L.y; / D max.0; 1   y/
+(7)
+where L.y; / represents the loss function, which
+calculates the difference between the actual output y
+and the predicted output . The goal of the SVM is
+to minimize this loss function, thereby enhancing the
+model’s prediction accuracy.
+It turns out that minimizing Eq. (8) is proportioned to
+minimizing this loss function which depends on the loss
+function plus a regularization term, essentially penalizes
+weighted vectors with a very large norm,
+min
+w;w0
+1
+2jjwjj2 C c
+iD1
+max.0; 1   yii/
+(8)
+N
+X
+After that, end up with a solution with the form
+expressed in the following:
+The SVM method aims to discover a hyperplane in N-
+dimensional space, where N is the number of features to
+classify the data points separately[37]. It is, nevertheless,
+mainly employed to solve classiﬁcation problems[38].
+SVM employs the kernel technique to accomplish the
+goal of applying a linear decision boundary to high-
+dimensional data. SVM has based on the premise that
+the classiﬁer is simple. The method for calculating the
+estimated class as a function is denoted in the following:
+Oy D wTx C w0
+(6)
+Ow D
+iD1
+˛ixi; with ˛ spare
+(9)
+where Oy is the predicted class label, w represents the
+weight vector and w0 is the bias term, and x is the input
+feature vector. Through the kernel trick it is possible to
+N
+X
+Table 2
+Under study algorithms.
+Support Vector Machine (SVM)
+Gaussian Process (GP)
+Artiﬁcial Neural Network (ANN)
+where vector Ow, which is needed to set up the classiﬁer,
+is a linear combination of the training vectors xi with
+coefﬁcients ˛i (a sparse vector is a vector that has
+most coefﬁcients ˛i equal to zero) and this leads to a
+classiﬁcation stated in the following:
+Omid Akbarzadeh et al.:
+Heating-Cooling Monitoring and Power Consumption Forecasting Using LSTM for : : :
+149
+Oy.x/ D sgn . Ow0 C OwTx/ D sgn . Ow0 C
+iD1
+˛ixT
+i x/
+N
+X
+insulation. While accounting for uncertainty, Ref. [43]
+proposed a scalable probabilistic framework enabling
+large-scale expenditures in energy retroﬁtting buildings.
+Additionally, Ref. [9] provided a framework for GP
+modelling to calculate energy savings and uncertainty
+rates in measuring methods, they claim that GP models
+may capture complicated nonlinear and multi-variable
+interactions and multi-resolution energy behaviour
+patterns in contrast to linear regression. Since GP
+models are created within a Bayesian framework,
+they may account for many sources of uncertainty
+more systematically. Under the speciﬁc condition, the
+performance of the GP is acceptable, but here is another
+question: is the GP the best option if there is a limit of
+uncertainty in the data set?
+3.4
+ANN
+(10)
+Results in Ref. [39] demonstrate that the SVM
+approach
+might
+achieve
+more
+accuracy
+and
+generalization than the Back-Propagation (BP) neural
+networks model, which is excellent for constructing
+cooling load prediction models. Moreover, Ref. [40]
+compared four algorithms for predicting cooling in the
+ofﬁce building in Guangzhou, China,
+ Back Propagation Neural Network (BPNN);
+ Radial Basis Function Neural Network (RBFNN);
+ General Regression Neural Network (GRNN);
+ SVM.
+However, all of them are appropriate for building
+cooling load prediction; SVM and GRNN methods can
+reach better accuracy. Reference [41] applied a parallel
+implementation of the SVM approach to estimate energy
+consumption in several buildings utilizing massive
+time-series information for the ﬁrst time. Numerous
+research studies have forecasted the power consumption
+in buildings, as observed in mentioned articles, but other
+approaches must be included to compare them ideally
+since the considered dataset consists of data for both
+power heating and cooling, and the data simulated just
+for one year and for one building.
+3.3
+GP
+When
+the
+Gaussian
+probability
+distribution
+is
+generalized, GPs are considered, which can be a
+foundation for advanced non-parametric machine
+learning classiﬁcation and regression techniques[42]. If
+the joint probability density function of the random
+variables X.t1/; X.t2/; : : : ; X.tN / is Gaussian for any
+value of N, a random process is Gaussian, as stated in
+the following:
+.2 /N det.R/
+ex
+fX.x1; x2; : : : ; xN I t1; t2; : : : ; tN / D
+1
+p
+(11)
+where,
+Neural networks’ novel techniques can be seen in
+different ﬁelds of studies[44]. The ANN phrase is taken
+from biological neural networks, which are responsible
+for the development of the structure of the human
+brain[45]. The reason why a typically more sophisticated
+model is considered, and also a model whose parameters
+are calculated automatically, will be deﬁned in the
+following. Suppose a simple problem in machine
+learning, “digit recognition” (the situation that is given
+some handwritten digits and set up a classiﬁer to classify
+the ten possible classes); it is pretty hard to relate these
+small pictures to a statistical distribution. It is also hard
+to describe this to a computer[46].
+Figure 6 shows the neural network learns the model
+(not related to a statistical distribution, but it is a
+numerical model that computes some function, which is
+used as a classiﬁer). The neural network automatically
+computes the f .x/ parameters. Consequently,
+a
+classiﬁer is a sophisticated, which is a multidimensional
+function with several inputs (vectorized data samples)
+and outputs (class probabilities). Reference [47]
+considered
+neural
+network
+to
+anticipate
+annual
+consumption, which exempliﬁes an ANN strategy based
+on a supervised Multi-Layer Perceptron (MLP) network
+for electrical energy consumption forecasting, and
+ x is equal to  1
+2Œx   mTR 1Œx   mI
+ x D ŒX.t1/; X.t2/; : : : ; X.tN /T is the column
+vector of random variables;
+ x is the column vector Œx1; x2; : : : ; xN T;
+ m is the mean of the column vector;
+ R is the covariance matrix.
+In building energy modelling, ideal values for several
+parameters are often uncertain, such as envelope
+Fig. 6
+Neural network example.
+150
+Tsinghua Science and Technology, February 2024, 29(1): 143–157
+demonstrates that it can estimate annual consumption
+with reduced error. In addition, Ref. [48] evaluated
+several building energy consumption forecast algorithms
+for residential structures. Their ﬁndings indicated that
+deep neural networks and ANN have the highest
+performance accuracy, with ANN requiring less training
+time than deep neural networks.
+4
+Data Processing
+Data
+was
+procured
+as
+described
+in
+Section
+2
+after processing through DesignBuilder, Besos, and
+EnergyPlus. Table 3 presents a segment of the dataset,
+featuring six entries from June 15, 2022 at different
+times. “Time” relates to the hour-by-hour simulation
+parameter. tin and tout, represent the inside and outside
+temperatures, respectively. PH is the heating power
+(in kWh), PC is cooling power (in kWh), PE is the
+electricity power (in kWh), and PT is the total power
+(in kWh). In the end, the dataset consists of 8 columns
+and 8760 rows, representing a year’s worth of simulated
+data.
+4.1
+Data correlation
+One of the steps to understanding a dataset more
+effectively is to consider the correlation between
+different parameters. For example, it is necessary to
+understand the relationship between cooling power and
+inside or outside temperature. Data correlation is deﬁned
+as ﬁnding the linear relation between two variables.
+Assume the situation in which a random vector, in this
+example, has only two entries that X D Œx1; x2. It is
+easier to talk about the lack of correlation, meaning if x1
+and x2 are statistically independent, it is clear that there
+should be no relationship between those values; or in
+other terms, the value of random variable x1 as a piece
+of knowledge should not say anything about the value
+that x2 takes. For example, looking at the pixels of an
+image, they are typically similar between adjacent pixels
+and neighbouring pixels. So it is possible to say that
+there is some statistical correlation between the values
+of those two pixels modelled by two random variables x1
+and x2, and a tool should be considered. The correlation
+coefﬁcient measures the amount of correlation between
+two random variables. The correlation coefﬁcient is in
+the interval Œ 1; C1. If the correlation coefﬁcient equals
+zero, there is no correlation between random variables. If
+it is equivalent to C1, it means they have a considerable
+correlation. If it equals  1, there is a correlation between
+x1 and  x2. Figure 7 represents the correlation between
+Table 3
+Dataset example with six entries.
+Time
+tin (ıC)
+tout (ıC)
+PH (kWh)
+PC (kWh)
+PE (kWh)
+PT (kWh)
+10:00:00
+22.8
+14.19
+0.51
+0.0
+10.73
+0.51
+11:00:00
+22.8
+14.55
+0.51
+0.0
+10.71
+0.51
+12:00:00
+23.01
+14.89
+0.38
+0.0
+10.7
+0.38
+13:00:00
+23.05
+14.81
+0.38
+0.0
+10.7
+0.38
+14:00:00
+22.97
+14.57
+0.51
+0.0
+10.7
+0.51
+Fig. 7
+Correlation between data available in the dataset.
+Omid Akbarzadeh et al.:
+Heating-Cooling Monitoring and Power Consumption Forecasting Using LSTM for : : :
+151
+the hyperbolic tangent is an alternative activation
+function that has a link to the sigmoid function, as shown
+in the following:
+2/
+2
+(13)
+ D 1 C tanh. z
+data available in the dataset.
+To forecast each parameter of the power cooling,
+power heating, total power, and power electricity, it
+needs to understand the most relevant features based
+on Fig. 7. This process, named feature selection, can
+be helpful in reduction of the computational time and
+improving model performance by reducing the number
+of input variables.
+4.2
+LSTM
+The key difference lies in the output range; unlike
+the Sigmoid function that varies between 0 and 1, the
+hyperbolic tangent function’s output ranges from  1 to
+C1. The Tanh function has a derivative of up to 1.0,
+which makes parameter changes far more relevant; this
+makes the Tanh function virtually always superior to the
+Sigmoid function as an activation function for hidden
+layers.
+4.4
+Number of epochs
+The technique used to predict the parameters is LSTM.
+It is the RNN architecture used in deep learning. LSTM
+is an RNN architecture that shows temporal sequences
+and long-range dependencies more precisely than
+conventional RNNs. After understanding the appropriate
+algorithm to forecast the dataset and determine the
+correlation between data, it is time to understand the
+LSTM conﬁguration. This method forecasts power
+cooling, heating, electricity, and total power in an ofﬁce
+building in Winnipeg, Canada.
+4.3
+Activation functions
+Two activation functions are considered in this paper,
+Sigmoid and Tanh. Sigmoid formula is in the following:
+S.x/ D
+1
+1 C e x
+(12)
+where S.x/ is a sigmoid function.
+The input to the function is simply a linear
+combination of the input plus the bias. When the input
+is largely negative or positive, the function goes to zero
+or one; however, the transition between zero and one is
+smooth.
+The chosen activation function is both continuous and
+differentiable. This characteristic means that even slight
+changes to the weights within the neural network can
+result in substantial variations in the output. In contrast,
+Another parameter that needs setting is the number
+of epochs, which represents complete passes through
+the
+training
+dataset[35].
+Figure
+8
+illustrates
+the
+required number of epochs for the total power. After
+approximately ten epochs, the behavior stabilizes, as
+evidenced by the intersection between the training loss
+and validation loss curves. However, we set the epoch
+value to 50 for the total power as the decrease in loss is
+still ongoing. While increasing the number of epochs
+can lead to longer computation time, the effect on the
+model’s performance may be minimal, rendering the
+trade-off acceptable. Figure 9 indicates the electricity
+power epochs behaviour, where the situation is more or
+less similar to the total power. The difference is that
+after ten epochs, there are no changes in the case of
+training and validation loss. The number of epochs for
+power electricity is equal to 25. As Fig. 10 represents,
+the number of epochs for the heating power has a
+different story, where after ten epochs, there is a slight
+decrement in the performance. For heating power, 50 is
+considered the number of epochs. Cooling power epochs
+Fig. 8
+Training loss vs. validation loss for total power.
+152
+Tsinghua Science and Technology, February 2024, 29(1): 143–157
+Fig. 9
+Training loss vs. validation loss for electricity power.
+Fig. 10
+Training loss vs. validation loss for heating power.
+are represented by Fig. 11, where the performance is
+unacceptable since the lack of available data resulted in
+that. As the data is related to the cold climate, most days,
+there is no cooling power in the ofﬁce.
+4.5
+Model evaluation
+model’s predictions. A smaller MSE value indicates a
+better estimation. In this equation, n is the number of
+data points, AEi represents the actual or observed values,
+and PEi denotes the predicted or estimated values from
+the model. The difference between these two values,
+AEi   PEi, indicates the error of each prediction. The
+squaring operation penalizes larger discrepancies more
+severely than smaller ones, highlighting the model’s
+ability to avoid large errors.
+This paper considered R2 and MSE as metrics to
+evaluate model performance. The MSE, presented in
+Eq. (14), is commonly used to assess the quality of the
+Fig. 11
+Training loss vs. validation loss for cooling power.
+Omid Akbarzadeh et al.:
+Heating-Cooling Monitoring and Power Consumption Forecasting Using LSTM for : : :
+153
+n
+MSE D 1
+iD1
+.AEi   PEi/2
+(14)
+n
+X
+where AEi is the actual value at the i-th instance and
+PEi is the predicted value at the i-th instance by the
+model. On the other hand, R2 is also considered, which
+is deﬁned in Eq. (15).
+On the other hand, R2 is also considered, which is
+deﬁned in the following:
+and speciﬁc days of such months are unavailable. MSE
+is estimated to be 3.76 using LSTM, whereas R2 is
+0.72. As shown in Fig. 14, cooling power has the
+lowest performance of all factors studied in this study,
+conﬁrming once again that increasing the number of data
+also enhanced the model’s performance. The total power
+result is illustrated in Fig. 15, in which the performance
+is more similar to the heating power, with the MSE
+equals to 2.76 and R2 equals to 0.78.
+6
+Conclusion
+nD1
+Œ Oy.n/   y.n/2
+NP
+R2 D 1   2
+e
+2y
+D 1  
+nD1
+Œy.n/   y2
+(15)
+NP
+R2 should be as close as possible to 1.
+5
+Results and discussion
+Technology use might result in a mix of beneﬁts and
+drawbacks. Controlling the energy that people use daily
+is one thing that must be done to stop the destruction
+of the environment. In this particular scenario, some
+research areas, such as machine learning and IoT, play
+an essential role.
+Smart building is one topic that
+contributes to solving the problems related to using
+energy in buildings. The model evaluation of the LSTM
+represents that the RNN algorithm has an acceptable
+result since its accuracy is in a good range for different
+cases. In this paper, RNN is also considered a method to
+forecast data related to energy consumption.
+The paper’s primary issues pertain to two distinct
+topics.
+Initially, we chose a city with mostly low
+temperatures throughout the year, which may result
+in data unavailability for cooling energy consumption.
+Therefore, we analyzed the LSTM algorithm when
+imperfect data was supplied. In addition, the workplace’s
+heating, cooling, and energy usage are evaluated so that
+the most accurate projections may be made for the next
+years. In this instance, the performance of the LSTM
+was thoroughly evaluated in various conditions. For
+future expansions, it is strongly suggested to test LSTM
+in a city with hot temperatures to establish if LSTM’s
+performance is acceptable.
+References
+This paper’s collected data are excessively signiﬁcant
+since they include all energy consumption-related
+characteristics, including cooling power, heating power,
+electricity power, and total power.
+In addition, the
+city under study is one of the coldest places in the
+world, which may affect people’s energy consumption
+for factors such as cooling power. In this situation,
+the expectation is whether the provided data and the
+performance of the LSTM are adequate. Comparing
+original and forecasted data demonstrates, as shown
+in Fig. 12, that the performance of electricity power
+is acceptable. Table 4 presents the model assessment
+based on the MSE and R2, which are 4.46 and
+0.82 for electricity power, respectively. The result can
+be attributed to the consistent availability of hourly
+electricity power data throughout the year. However,
+the model’s performance may be inﬂuenced by the
+absence of heating power usage data during warmer
+months in the workplace. This lack of data during high-
+temperature periods could potentially affect the model’s
+predictive accuracy. However, heating power’s MSE and
+R2 are 2.76 and 0.78, respectively. This demonstrates the
+LSTM’s adequate performance. Figure 13 contrasts the
+original and prediction of the model for heating power.
+Cooling power is the most difﬁcult aspect of this paper
+since, in a cold region, cooling power reduces daytime
+consumption. Consequently, data for the fall and winter
+Table 4
+Model evaluation.
+Energy characteristic
+MSE
+R2
+[1]
+K. R. Systems, What will happen if the level of air pollution
+continues to increase? https://www.kent.co.in/blog/what-
+will-happen-if-thelevel-of-air-pollution-continues-to-increase,
+2020.
+[2]
+O. Akbarzadeh, Evaluating latency in a 5G infrastructure
+for ultralow latency applications, http://webthesis.biblio.
+polito.it/id/eprint/22652, 2021.
+[3]
+Enel X, Do electric cars cause pollution? How do they
+reduce it?
+— Enel X, https://corporate.enelx.com/
+en/question-and-answers/how-much-does-an-electric-car-
+pollute, 2022.
+[4]
+Business Watch, What are the beneﬁts of smart buildings?
+https://www.businesswatchgroup.co.uk/what-are-the-
+Electricity power
+4.46
+0.82
+Heating power
+2.91
+0.77
+Cooling power
+3.76
+0.72
+Total power
+2.76
+0.78
+154
+Tsinghua Science and Technology, February 2024, 29(1): 143–157
+evaluating critical challenges and practices for software
+vendor organizations to secure big data on cloud computing:
+An AHP-based systematic approach, IEEE Access, vol. 9,
+pp. 107309–107332, 2021.
+[10]
+BESOS, BESOS: Building and energy systems optimization
+and surrogate-modelling, https://pypi.org/ project/besos/,
+2022.
+[11]
+L. Troup, R. Phillips, M. J. Eckelman, and D. Fannon,
+Effect of window-to-wall ratio on measured energy
+consumption in US ofﬁce buildings, Energy Build., vol.
+203, p. 109434, 2019.
+[12]
+Calculator Academy, Window to wall ratio calculator-
+calculator academy, calculator. academy, https://calculator.
+academy/window-to-wall-ratiocalculator/, 2022.
+[13]
+CIOB, Glazing-designing buildings, https://www.
+beneﬁts-of-smart-buildings/, 2021.
+[5]
+O. Akbarzadeh, M. Baradaran, and M. R. Khosravi, IoT-
+based smart management of healthcare services in hospital
+buildings during COVID-19 and future pandemics, Wireless
+Commun. Mobile Comput., vol. 2021, p. 5533161, 2021.
+[6]
+Is
+machine
+learning
+the
+next
+big
+thing
+in
+smart
+buildings?—Intelligent
+building
+Europe,
+www.intelligentbuildingeurope.com, 2022.
+[7]
+Altensis, DesignBuilder Software, https://www.altensis.
+com/en/services/designbuildersoftware, 2015.
+[8]
+AccuWeather, 5 of the coldest cities in the world, (in
+Chinese), https://www.accuweather.com/en/weather-news/
+5-of-thecoldest-cities-in-the-world-2/434260, 2022.
+[9]
+A. W. Khan, M. U. Khan, J. A. Khan, A. Ahmad, K.
+Khan, M. Zamir, W. Kim, and M. F. Ijaz, Analyzing and
+Fig. 12
+Original vs. prediction for power electricity.
+Fig. 13
+Original vs. prediction for heating power.
+Omid Akbarzadeh et al.:
+Heating-Cooling Monitoring and Power Consumption Forecasting Using LSTM for : : :
+155
+Fig. 14
+Original vs. prediction for cooling power.
+Fig. 15
+Original vs. prediction for total power.
+designingbuildings.co.uk/wiki/Glazing, 2022.
+[14]
+Y. Q. Xiao, B. H. Qi, and W. Dong, Research on the
+layout of external shading components and the design
+of microstructure in combined-fac¸ade of subtropical
+architecture, in Proc. 2011 Int. Conf. on Remote Sensing,
+Environment and Transportation Engineering, Nanjing,
+China, 2011, pp. 1519–1524.
+[15]
+YourHome,
+Shading,
+https://www.yourhome.gov.au/
+passive-design/shading, 2022.
+[16]
+Energlaze, U-values explained, https://www.energlaze.ie/u-
+values-explained/, 2022.
+[17]
+TheGreenAge, Getting to grips with U-values, https://www.
+tegreenage.co.uk/getting-to-grips-with-u-values/, 2022.
+[18]
+EnergyPlus, https://energyplus.net/, 2022.
+[19]
+C. Symonds, How to detect a performance gap (+5 of
+the most common causes)? https://factorialhr.com/blog/
+performance-gap/, 2022.
+[20]
+C. Robinson, B. Dilkina, J. Hubbs, W. W. Zhang, S.
+Guhathakurta, M. A. Brown, and R. M. Pendyala, Machine
+learning approaches for estimating commercial building
+energy consumption, Appl. Energy, vol. 208, pp. 889–904,
+2017.
+[21]
+M. Bourdeau, X. Q. Zhai, E. Nefzaoui, X. F. Guo,
+and P. Chatellier, Modeling and forecasting building
+energy consumption: A review of data-driven techniques,
+Sustainable Cities Soc., vol. 48, p. 101533, 2019.
+[22]
+S. Seyedzadeh, F. P. Rahimian, I. Glesk, and M. Roper,
+Machine learning for estimation of building energy
+156
+Tsinghua Science and Technology, February 2024, 29(1): 143–157
+consumption and performance: A review, Visualization
+Eng., vol. 6, no. 1, p. 5, 2018.
+[23]
+Investopedia,
+Understanding
+time
+series,
+https://
+www.investopedia.com/terms/t/timeseries.asp, 2022.
+[24]
+Key Differences, Difference between forecasting and
+prediction, https://keydifferences.com/difference-between-
+forecasting-and-prediction.html, 2022.
+[25]
+R. Gandhi, Support vector machine—Introduction to
+machine learning algorithms, https://towardsdatascience.
+com/supportvector-machine-introduction-to-machine-
+learning algorithms-934a444fca47, 2022.
+[26]
+Analytics
+Vidhya,
+SVM—Support
+vector
+machine
+algorithm
+in
+machine
+learning,
+https://www.
+analyticsvidhya.com/blog/2017/09/understaingsupport-
+vector-machine-example-code/, 2022.
+[27]
+Q. Li, Q. L. Meng, J. J. Cai, H. Yoshino, and A. Mochida,
+Applying support vector machine to predict hourly cooling
+load in the building, Appl. Energy, vol. 86, no. 10, pp. 2249–
+2256, 2009.
+[28]
+Q. Li, Q. L. Meng, J. J. Cai, H. Yoshino, and A.
+Mochida, Predicting hourly cooling load in the building:
+A comparison of support vector machine and different
+artiﬁcial neural networks, Energy Convers. Manage., vol.
+50, no. 1, pp. 90–96, 2009.
+[29]
+H. X. Zhao and F. Magoul`es, Parallel support vector
+machines applied to the prediction of multiple buildings
+energy consumption, J. Algorithms Comput. Technol., vol.
+4, no. 2, pp. 231–249, 2010.
+[30]
+J.
+Brownlee,
+Gaussian
+processes
+for
+classiﬁcation
+with python, https://machinelearningmastery.com/gaussian-
+processes-for-classiﬁcation-with-python/, 2020.
+[31]
+Y. Heo, R. Choudhary, and G. A. Augenbroe, Calibration
+of building energy models for retroﬁt analysis under
+uncertainty, Energy Build., vol. 47, pp. 550–560, 2012.
+[32]
+Y. Heo and V. M. Zavala, Gaussian process modeling for
+measurement and veriﬁcation of building energy savings,
+Energy and Build., vol. 53, pp. 7–18, 2012.
+[33]
+javaTpoint, Artiﬁcial neural network tutorial, https://
+www.javatpoint.com/artiﬁcial-neural-network, 2022.
+[34]
+M. A. Azadeh and S. Sohrabkhani, Annual electricity
+consumption forecasting with neural network in high energy
+consuming industrial sectors of Iran, in Proc. 2006 IEEE
+Int. Conf. on Industrial Technology, Mumbai, India, 2006,
+pp. 2166–2171.
+[36]
+J. Brownlee,
+Difference between a batch and an
+epoch in a neural network,
+https://machinelearning
+mastery.com/difference-between-a-batch-and-an-epoch/,
+2022.
+[37]
+S.
+Hamzehei,
+Gateways
+and
+wearable
+tools
+for
+monitoring patient movements in a hospital environment,
+https://webthesis.biblio.polito.it/22711/, 2022.
+[38]
+K. Rezaee, G. Jeon, M. R. Khosravi, H. H. Attar, and
+A. Sabzevari, Deep learning-based microarray cancer
+classiﬁcation and ensemble gene selection approach, IET
+Syst. Biol., vol. 16, nos. 3&4, pp. 120–131, 2022.
+[39]
+L. Z. Kong, G. S. Li, W. Raﬁque, S. G. Shen, Q. He,
+M. R. Khosravi, R. L. Wang, and L. Y. Qi, Time-aware
+missing healthcare data prediction based on ARIMA
+model, IEEE/ACM Trans. Comput. Biol. Bioinf., doi:
+10.1109/TCBB.2022.3205064.
+[40]
+F. Wang, L. N. Wang, G. S. Li, Y. L. Wang, C. Lv, and L. Y.
+Qi, Edge-cloud-enabled matrix factorization for diversiﬁed
+APIs recommendation in mashup creation, World Wide Web,
+vol. 25, no. 5, pp. 1809–1829, 2022.
+[41]
+L. Z. Kong, L. N. Wang, W. W. Gong, C. Yan, Y. C. Duan,
+and L. Y. Qi, LSH-aware multitype health data prediction
+with privacy preservation in edge environment, World Wide
+Web, vol. 25, no. 5, pp. 1793–1808, 2022.
+[42]
+F. Wang, H. B. Zhu, G. Srivastava, S. C. Li, M. R. Khosravi,
+and L. Y. Qi, Robust collaborative ﬁltering recommendation
+with user-item-trust records, IEEE Trans. Comput. Soc.
+Syst., vol. 9, no. 4, pp. 986–996, 2022.
+[43]
+L. Y. Qi, W. M. Lin, X. Y. Zhang, W. C. Dou, X. L. Xu,
+and J. J. Chen, A correlation graph based approach for
+personalized and compatible web APIs recommendation in
+mobile APP development, IEEE Trans. Knowl. Data Eng.,
+vol. 35, no. 6, pp. 5444–5457, 2023.
+[44]
+C. M. L. Etoundi, J. De Dieu Nkapkop, N. Tsafack, J. M.
+Ngono, P. Ele, M. Wozniak, J. Shaﬁ, and M. F. Ijaz, A novel
+compound-coupled hyperchaotic map for image encryption,
+Symmetry, vol. 14, no. 3, p. 493, 2022.
+[45]
+C. Chen, C. Y. Wang, B. Liu, C. He, L. Cong, and S. Wan,
+Edge intelligence empowered vehicle detection and image
+segmentation for autonomous vehicles, IEEE Trans. Intell.
+Transp. Syst., doi: 10.1109/TITS.2022.3232153.
+[46]
+Y. R. Wu, H. F. Guo, C. Chakraborty, M. Khosravi, S.
+Berretti, and S. H. Wan, Edge computing driven low-light
+image dynamic enhancement for object detection, IEEE
+Trans. Netw. Sci. Eng., doi: 10.1109/TNSE.2022.3151502.
+[47]
+C. Chen, H. F. Li, H. Li, R. F. Fu, Y. Y. Liu, and S. H. Wan,
+Efﬁciency and fairness oriented dynamic task ofﬂoading in
+internet of vehicles, IEEE Trans. Green Commun. Netw.,
+vol. 6, no. 3, pp. 1481–1493, 2022.
+[48]
+Y. Xia, S. R. Qu, and S. H. Wan, Scene guided colorization
+using neural networks, Neural Comput. Appl., vol. 34, no.
+13, pp. 11083–11096, 2022.
+[35]
+R. Olu-Ajayi, H. Alaka, I. Sulaimon, F. Sunmola, and
+S. Ajayi, Building energy consumption prediction for
+residential buildings using deep learning and other machine
+learning techniques, J. Build. Eng., vol. 45, p. 103406,
+2022.
+Omid Akbarzadeh et al.:
+Heating-Cooling Monitoring and Power Consumption Forecasting Using LSTM for : : :
+157
+Ayman Amer received the PhD degree
+from Tennessee University, USA in 1991.
+He is currently the dean of the Department
+of Energy Engineering, Zarqa University,
+Jordan.
+His research interest topics are
+renewable energy, energy control, and
+energy storage. Moreover, smart design
+for energy-efﬁcient designs is an interesting
+topic for his research.
+Omid Akbarzadeh received the BEng
+degree
+in
+electrical
+and
+electronic
+engineering
+from
+Shiraz
+University,
+Iran. He is currently a master student in
+Communications and Computer Networks
+Engineering (CCNE) at Politecnico di
+Torino, Italy. His research interests include
+ultralow
+latency
+networks,
+machine
+learning, and cyber-physical systems.
+Sahand Hamzehei is a master student
+in
+Information
+and
+Communications
+Technology (ICT) for smart societies
+from Politecnico di Torino, Italy. His
+research interests include machine learning,
+neural networks and deep learning, digital
+image processing, Machine Learning for
+Healthcare (MLHC), and smart cities.
+Ahmed A. Solyman received the BEng and
+MEng degrees in electrical and electronics
+engineering from Technical Conllege of
+Egypt in 1999 and 2006, respectively,
+and the PhD degree in electrical and
+electronics engineering from the University
+of Strathclyde, UK in 2013. He is now
+an assistant professor at the Department of
+Electrical and Electronics Engineering, Faculty of Engineering
+and Architecture,
+Nis¸antas¸ı University,
+The Republic of
+Türkiye. His research interests include wireless communication
+networks, IoT, smart grids, artiﬁcial intelligence, and renewable
+energy systems.
+Hani Attar received the PhD degree from
+University of Strathclyde, UK in 2011.
+Since 2011, he has worked as an electrical
+engineering and energy systems researcher.
+He is now a university lecturer at Zarqa
+University, Jordan. His research interests
+include renewable energy systems, efﬁcient
+computing, cyber-physical systems, and
+wireless communications.
+Nazanin Fasihihour is a master student in
+ICT for smart societies from Politecnico di
+Torino, Italy. Her research interests include
+machine learning, neural networks, and
+deep learning.
+Mohammad
+R.
+Khosravi
+is
+an
+international research fellow at Shandong
+Provincial
+University
+Laboratory
+for
+Protected Horticulture, Weifang University
+of Science and Technology, China. He
+received the BEng and MEng degrees
+in electrical engineering from Shiraz
+University, Iran in 2013 and Persian Gulf
+University, Iran in 2015, respectively, and the PhD degree
+in communications engineering from Shiraz University of
+Technology, Iran in 2020. His main topics of interest are
+multimedia systems, and high-performance computing and
+communications.

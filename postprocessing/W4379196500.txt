@@ -1,0 +1,1032 @@
+February 2024| Volume 03 | Issue 01 | Pages 32-39 
+M. Safarishaal and M. Sarvi /Future Technology                                                               February 2024| Volume 03 | Issue 01 | Pages 
+32-39 
+ 
+Future Technology 
+Journal homepage: https://fupubco.com/futech 
+Open Access Journal 
+ 
+ 
+ 
+ISSN 2832-0379 
+https://doi.org/10.55670/fpll.futech.3.1.4 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Article 
+Optimizing weighted voltage mode control for 
+enhanced output cross-regulation in multi-output 
+DC/DC converters 
+ 
+Masoud Safarishaal1*, Mohammad Sarvi2 
+ 
+1Department of Electrical and Computer Engineering, University of Oklahoma, Norman, USA 
+ 
+2Electrical Engineering Department, Iran University of Science and Technology, Tehran, Iran 
+ 
+A R T I C L E   I N F O 
+ 
+A B S T R A C T 
+ 
+Weighted voltage mode control is a widely used method for regulating multiple 
+output DC-DC converters, but inconsistent outcomes are often observed in 
+design due to the complexity of the weighting variable optimization. This study 
+proposes an optimization-based approach to accurately estimate the optimal 
+weighting factors for improved output voltage regulation in multiple output 
+forward DC-DC converters. Three optimization algorithms, the Imperialist 
+Competitive Algorithm (ICA), Particle Swarm Optimization (PSO), and Ant 
+Colony Optimization (ACO) are compared for their speed and accuracy in 
+estimating the weighting factors. Additionally, a Fuzzy Logic Controller (FLC) is 
+used to further reduce the overall steady-state error and improve transient 
+characteristics. Simulations are performed using the MATLAB/Simulink 
+software, and the results show that the proposed strategy significantly 
+enhances output cross-regulation in multiple output forward DC-DC converters. 
+The ICA-based weighting factor estimator is found to be the most effective 
+algorithm among the three optimization algorithms tested. The main 
+contribution of this study is to provide a more efficient and accurate method for 
+estimating the weighting factors in multiple output forward DC-DC converters, 
+which can lead to improved performance and reliability in various applications. 
+Article history: 
+Received 18 April 2023  
+Received in revised form 
+20 May 2023 
+Accepted 28 May 2023 
+ 
+Keywords:  
+Multiple outputs forward DC-DC converters, 
+Imperialist competitive algorithm, 
+Particle swarm optimization, 
+Ant colony optimization, Weighting factor method 
+  
+*Corresponding author 
+Email address: 
+masoud.safari@ou.edu  
+ 
+ 
+DOI: 10.55670/fpll.futech.3.1.4 
+ 
+ 
+1. 
+Introduction 
+Multiple-output DC-DC converters are widely used in 
+determine the best weight values and ideal duty cycle 
+arrangement for enhanced regulation of all outputs [11-17]. 
+The effectiveness and capability of the proposed algorithm in 
+determining the ideal design are demonstrated in this paper. 
+The proposed approach is not limited to the forward 
+converter but can be applied to any isolated or non-isolated 
+converter or any inverter. Moreover, to improve the steady-
+state inaccuracy and transient characteristics, the duty cycle 
+is controlled by a fuzzy logic controller (FLC) [18-19]. The 
+proposed approach is described in detail in Section 2, 
+followed by a description of the evolutionary algorithm-based 
+weighting factor in Section 3. The results and discussions are 
+presented in Section 4, and the conclusions are provided in 
+Section 5. In summary, this paper presents a general, quick, 
+and accurate approach to determining the weighting factors 
+required for efficient control of the output voltages of multi-
+output DC-DC converters. The proposed approach is expected 
+to 
+enhance 
+the 
+dc 
+cross-regulation 
+and 
+dynamic 
+characteristics of the outputs, leading to improved 
+performance and efficiency in various applications. 
+various applications due to their higher efficiency than 
+several separate single-output power supplies [1]. Among 
+different topologies, multiple output forward DC-DC 
+converters are commonly used, especially in renewable 
+energy systems [2]. However, poor regulation is one of their 
+main limitations, which can be addressed by using the 
+weighted voltage mode control method [3-5]. In this method, 
+the regulation error is modified by changing the weighting 
+factors used in the control, which redistributes the error 
+among the outputs of the converter [7-8]. Although this 
+method has been employed in some research, the weighting 
+factors have typically been determined by trial and error, 
+resulting in inconsistent outcomes [9-10]. To overcome this 
+limitation, this paper proposes the use of optimization 
+algorithms to determine the optimal weighting factors for 
+efficient control of the output voltages of multi-output DC-DC 
+converters. The Imperialist Competitive Algorithm (ICA), 
+Particle Swarm Optimization (PSO), and Ant Colony 
+Optimization (ACO) algorithms are employed to concurrently 
+ 
+32 
+ 
+M. Safarishaal and M. Sarvi /Future Technology                                                               February 2024| Volume 03 | Issue 01 | Pages 32-39 
+2. 
+The proposed control method description 
+In this research, we consider a forward topology with 
+RONQ1 and RONQ2, respectively. The primary and secondary 
+leakage inductances are L11 and L22, respectively. The 
+MOSFETS leakage inductances are LQ1 and LQ2, respectively. 
+The output capacitor's Equivalent Series Resistor (ESR) is 
+designated as rci [20]. 
+L1
+Vf
+Rw1 Ll1
+RL1
+T
++5V
++
+Rf
+D1
+Ideal switch
+C1
+R1
+N2
+V2
+Vf
+Rf
+LQ1
+rc1
+-
+Db
+RONQ1
+L2
+Vf
+Rw1
+Ll1
+Rw2
+Ll2
+RL2
++15V
++
++
+D2
+Rf
+rd
+V1
+C2
+R2
+N3
+N1
+V3
+Rm
+Lm
+Vd
+rc2
+-
+-
+L3
+RONQ2
+Vf
+Rw3
+Ll3
+RL3
+-15V
++
+Rf
+D3
+LQ2
+Vf
+Rf
+Da
+C3
+V4
+R3
+N4
+Ideal switch
+rc3
+-
+ 
+Figure 2. Multiple outputs forward DC-DC converter 
+ 
+2.2 Control unit 
+The control unit consists of a Fuzzy Logic Controller and 
+Pulse-Width Modulation (PWM) generator. The PWM 
+approach is used to regulate the power switches, and fuzzy 
+logic is used to generate the pulses. 
+three outputs and a weighted error voltage mode control 
+strategy. The reference voltages of all three output voltages 
+are measured and compared, and the error is multiplied by 
+three weight factors to achieve the desired output voltage 
+levels. To optimize the system's performance during 
+operation, we utilize computational techniques such as 
+Imperialist Competitive Algorithm (ICA), Particle Swarm 
+Optimization (PSO), and Ant Colony Optimization (ACO) to 
+determine the best suitable parameters for the system. These 
+algorithms repeatedly attempt to increase the quality of a 
+potential solution, resulting in significantly improved 
+performance of the suggested tuned controller compared to 
+the use of fixed factors for effective regulation. The 
+optimization algorithms are used to determine the optimal 
+weighting factors for the weighted error voltage mode 
+control. The described techniques are iterated by the 
+optimization algorithms until they achieve the best result for 
+the objective function's minimization. In each of the cases, the 
+population under control is equal to 50. To further improve 
+the system's transient properties and reduce overall steady-
+state inaccuracy, a fuzzy logic controller is also employed. The 
+proposed approach and the system block diagram are shown 
+in Figure 1. The power unit, control unit, and weighting factor 
+estimation unit are the three main components of the 
+proposed system's topology. Following are full introductions 
+of the power unit and control unit. The section 3 presentation 
+also includes the unit for estimating the weighting factor. 
+2.2.1 Fuzzy logic controller 
+V1
+  A dc-dc forward converter has been controlled by 
+V2
+Power Unit
+V3
+PWM 
+-
+K1
++
+employing fuzzy control. Nonlinear time-variant systems are 
+well suited for fuzzy controllers, which do not require an 
+exact mathematical model of the system to be controlled. 
+They are typically created using the knowledge of the 
+converters obtained from experts [20]. Error signal and 
+differential error signal are the inputs of the FLC. The 
+switching signal's duty cycle is the output. 
+Vref = -15
+Fuzzy 
+-
+SUM 
+K2
+Controller 
+E(t)=Vref - Vo(t)                                             
+ 
+       (1) 
++
+Vref = +15
+-
+K3
+dE= E(t)- E(t-1)                     
+          
+                         (2) 
++
+Control Unit
+Vref = +5
+dD= D(t) – D(t-1) 
+ 
+ 
+          
+       (3) 
+Evolutionary 
+Algorithm
+Weighting Factor Estimation Unit
+ 
+Figure 1. The proposed control strategy 
+ 
+2.1 Power unit 
+Switching transistors (which include two switching 
+MOSFETs), a high-frequency transformer, output rectifiers, 
+and output filters make up the power stage block. Using an 
+input voltage range of 18V to 40V dc and a switching 
+frequency of 50 kHz, this study considers a converter with 
+three outputs (5V/50W, 15V/45W, and -15V/15W). By 
+linking the output filter inductors, the cross-regulated 
+outputs' transient characteristics can be improved. Fig.2 
+shows these multiple outputs forward DC-DC converters.  
+This circuit uses a single DC input (nominally 28 Volt) and 
+converts to three simultaneous output voltages. 
+where Vref is reference voltage, Vo(t) is output voltage at tth 
+instant, E(t) and E(t-1) are error signal, at tth and (t-1)th 
+instant, respectively. D(t) and D(t-1) are duty cycle at tth and 
+(t-1)th instant, respectively. dE and dD are changed in error 
+and duty cycle, respectively. 
+For this application, a controller of the Mamdani type is used. 
+The max-min inference approach is employed to determine 
+the control decision. In order to get a clear result from the 
+linguistic values produced using the rule basis, the center of 
+gravity approach to defuzzification is also utilized. The basic 
+rule of this type of controller is: IF E is A and dE is B THEN d 
+(t) is C, where A and B are fuzzy subsets, C is a fuzzy singleton. 
+According to Figure 3, the input error, change in error, and 
+output all have triangle membership functions. Table 1 serves 
+as an illustration of the 7*7 inference system that was utilized 
+to generate the fuzzy controller. 
+N stands for negative, P for positive, and Z for zero in Table 1. 
+B stands for big, M for medium, and S for small. NB, for 
+instance, stands for negative big. 
+Rw1 and Rwi are the primary and secondary winding 
+ 
+ 
+resistances, respectively, in Figure 2. rd is the source 
+resistance. The resistance of D1 in its ON state is Rf. The ON 
+state resistance of switching MOSFETS is represented by 
+33 
+ 
+M. Safarishaal and M. Sarvi /Future Technology                                                               February 2024| Volume 03 | Issue 01 | Pages 32-39 
+Table 1.  Rule base used in the fuzzy controller 
+E\dE 
+NB 
+NM 
+NS 
+ZE 
+PS 
+PM 
+PB 
+output. The algorithm fitness function is assumed to 
+correspond to the output errors. The following is how it is 
+expressed as the sum of the absolute terms of the relative 
+errors: 
+NB 
+NB 
+NB 
+NB 
+NB 
+NM 
+NS 
+ZE 
+𝑭𝒊𝒕𝒏𝒆𝒔𝒔𝑭𝒖𝒏𝒄𝒕𝒊𝒐𝒏 = |𝒆+𝟏𝟓| + |𝒆+𝟓| + |𝒆−𝟏𝟓|  
+       (4) 
+NM 
+NB 
+NB 
+NB 
+NM 
+NS 
+ZE 
+PS 
+NS 
+NB 
+NB 
+NM 
+NS 
+ZE 
+PS 
+PM 
+Where  e+5 is the +5-v output error, e+15 is the +15-v output 
+error, and  e-15 is the -15 v output error. An evolutionary 
+algorithm is a subset of evolutionary computation, a 
+population-based metaheuristic optimization method used in 
+artificial intelligence. 
+ZE 
+NB 
+NM 
+NS 
+ZE 
+PS 
+PM 
+PB 
+3.1 Imperialist competitive algorithm (ICA) 
+The ICA algorithm used in this study is inspired by 
+PS 
+NM 
+NS 
+ZE 
+PS 
+PM 
+PB 
+PB 
+PM 
+NS 
+ZE 
+PS 
+PM 
+PB 
+PB 
+PB 
+PB 
+ZE 
+PS 
+PM 
+PB 
+PB 
+PB 
+PB 
+ 
+human socio-political evolution and is based on the idea of 
+colonial competition. In the algorithm, a group of imperialist 
+countries, along with their colonies, competes to find the 
+general optimal solution for the optimization problem. In this 
+study, the number of initial imperialist countries is set to 
+Np=20, and the number of established colonies is set to 
+Nc=50. The stopping criterion is defined as reaching the 
+maximum number of iterations (Max Iteration=100) and 
+having only one imperialist left in the search space. The ICA 
+flowchart is shown in Figure 4. 
+Start
+Imperialistic Competition
+Is there an empire 
+with no colonies
+Initialize empires
+No
+Assimilate colonies
+Yes
+Compute the total 
+cost of all empires
+Eliminate this empire
+ Revolve some 
+colonies
+Unite Similar Empires
+Exchange the position of 
+that imperialist and colony
+No
+Yes
+Stop condition 
+satisfied
+Is there a colony in an empire which 
+has lower cost than of the imperialist
+Yes
+END
+ 
+No
+ 
+Figure 3. Membership functions of (a) input E; (b) input CE; 
+(c) output dD 
+Figure 4. Flowchart of ICA 
+2.2.2 Pulse width modulation (PWM) 
+3.2 Particle swarm optimization (PSO) 
+In a DC-DC converter with fuzzy logic control, the 
+PSO can be applied to problems whose answer is a point 
+desired duty cycle is computed by the fuzzy logic controller 
+using the total steady-state error. The Pulse Width 
+Modulation (PWM) then generates the pulse signals for the 
+converter based on the desired duty cycle. The duty cycle 
+serves as the control input and is a logic signal that regulates 
+the power stage's pattern, which in turn controls the output 
+voltage. By adjusting the duty cycle, the converter can 
+maintain the desired output voltage, even in the presence of 
+disturbances or changes in the input voltage. 
+3. 
+Evolutionary 
+algorithm-based 
+weighting 
+factor 
+estimator   
+ To achieve effective regulation of each output in a 
+or surface in the next n space. It is in this space that 
+hypotheses are formed, given an initial velocity and given 
+channels of particle communication. Then, when these 
+particles travel in the answer space, the outcomes are 
+computed each time based on a "goal function." Particles 
+gradually move faster in the direction of other particles that 
+belong to the same communication group and have a higher 
+competency standard. Each agent is aware of its current best 
+value (pbest) and its XY position. Additionally, each agent is 
+aware of the group's best value (gbest) among all the pbest s. 
+By initializing the swarm from the solution space, the velocity 
+and position of all particles are randomly set to within 
+determined ranges. The velocities of every particle are 
+updated after every iteration. The following equation 
+provides for the modification of each agent's velocity [12, 13]: 
+𝑣𝑖+1 = 𝑣𝑖 + 𝑐1𝑅1(𝑝𝑖,𝑏𝑒𝑠𝑡 − 𝑥𝑖) + 𝑐2𝑅2(𝑔𝑖,𝑏𝑒𝑠𝑡 − 𝑥𝑖)                (5) 
+where xi and vi represent a particle's current position and 
+speed, respectively. The uniformly distributed random 
+multiple-output DC-DC converter with weighted voltage 
+mode control, the weighting factor (Ki) plays a critical role in 
+addition to the circuit parameters. In this paper, we propose 
+to use optimization algorithms, namely ICA, PSO, and ACO, to 
+estimate the optimal weighting factors for all three output 
+voltages. These algorithms iterate through the steps outlined 
+until they find the optimal solution to minimize the fitness 
+function and improve the regulation performance of each 
+34 
+ 
+M. Safarishaal and M. Sarvi /Future Technology                                                               February 2024| Volume 03 | Issue 01 | Pages 32-39 
+numbers [0-1] that introduce the stochastic component are 
+R1 and R2.  Weight is controlled by the variables c1 and c2. The 
+equation can be used to determine a specific velocity that 
+gradually approaches the pbest and gbest values that have 
+been determined by all of the particles in the swarm. The 
+position update equation is given by: 
+𝒑𝒊𝒏𝒆𝒘 = 𝒑𝒊 + 𝒗𝒊   
+ 
+ 
+   
+       (6) 
+voltages are in steady state. Figure 5 (a) shows three output 
+voltages when ICA is used as a weighting factors estimator. 
+Figures 5 (b) and (c) show these output voltages for ACO and 
+PSO weighting factors estimator, respectively. Accordingly, 
+Figure 5 (d) shows these voltages for constant weighting 
+factor are used for voltage mode weighting factor control. 
+These results show that the use of an evolutionary algorithm 
+can improve the percent of cross-regulation significantly. 
+After updating, pi should be checked and limited to the 
+allowed range. Afterwards, when the condition is met Update 
+𝑝𝑖,𝑏𝑒𝑠𝑡 and 𝑔𝑖,𝑏𝑒𝑠𝑡 as follows: 
+𝒑𝒊,𝒃𝒆𝒔𝒕 = 𝒑𝒊    𝒊𝒇 𝒇(𝒑𝒊) > 𝒇(𝒑𝒊,𝒃𝒆𝒔𝒕)  
+ 𝑔𝑖,𝑏𝑒𝑠𝑡 = 𝑔𝑖    𝑖𝑓 𝑓(𝑔𝑖) > 𝑓(𝑔𝑖,𝑏𝑒𝑠𝑡)                    
+        
+ 
+ 
+ 
+ 
+ 
+ 
+     (7) 
+where f(x) is the objective function to be optimized. When 
+stop conditions were met, algorithm reports the values of 
+𝑔𝑖,𝑏𝑒𝑠𝑡 and f (𝑔𝑖,𝑏𝑒𝑠𝑡) as its solution. The method continues 
+until a successful outcome is achieved or the specified 
+number of iterations has been reached.  
+3.3 Ant colony optimization (ACO) 
+One of the most current methods for approximate 
+(a) 
+optimization is ACO [14-17]. In this method (ACo), artificial 
+ants by moving on the problem diagram and by leaving marks 
+on the diagram, like real ants that leave marks in their path, 
+make the next artificial ants can provide better solutions to 
+the problem. Also in this method, the best path in a diagram 
+can be found by computational-numerical problems based on 
+probability science. An ant encountering an already 
+established route can identify it and decide to follow it with a 
+high probability, exploitation, and as a result, reinforces the 
+track with its own pheromone. In contrast, an isolated ant 
+virtually walks at random, exploring. 
+4. 
+Results and discussions 
+In this section, several conditions were taken into 
+(b) 
+consideration and simulated in order to assess the accuracy 
+and validity of the suggested method. The simulation results 
+of three optimization algorithms and conventional constant 
+weighting factor control are presented. The following 
+conditions are used to run the simulations in the 
+MATLAB/SIMULINK environment: 
+• Variation of DC-DC converter output load (at +5 V output) 
+• Variation of DC-DC converter output load (at +15 V output) 
+• Variation of DC-DC converter input voltage 
+It should be noted that the fuzzy logic controller has been 
+used for all approaches including constant weighting factors 
+(which were calculated by conventional mathematical 
+method) and all three proposed methods at three mentioned 
+conditions. Also, for the same system, a PID controller is 
+designed. When the PID coefficients are established for the 
+investigated DC-DC converter by trial and error, the total 
+error is then sent through a PID controller to reduce the 
+steady-state error as well as a fuzzy logic controller in Section 
+4.5. Under the following circumstances, simulations are 
+carried out in the MATLAB/SIMULINK environment. Also in 
+this section, the performances of the three used algorithms 
+are compared with each other. 
+(c) 
+4.1 Variation of DC-DC converter output load (At +5 V 
+output) from 100% to 50% 
+In this case, the load on +5 v output of the converter 
+changes from 100% to 50% at t=10 ms when the output 
+35 
+ 
+M. Safarishaal and M. Sarvi /Future Technology                                                               February 2024| Volume 03 | Issue 01 | Pages 32-39 
+three outcomes. Results show that the ICA can be more 
+accurate than the two other algorithms.  
+(d) 
+(a) 
+Figure 5. Output voltages while load on +5 V output changes 
+from 100% to 50% with a) ICA estimator of weighting factors, 
+b) ACO estimator of weighting factors c) PSO estimator of 
+weighting factors, d) constant weighting factors (Continue) 
+ 
+Table 2 shows the regulation of the presented methods 
+before and after load changing. In a constant weighting factor 
+method, the weighting factors are determined by trial and 
+error at the system condition before load changing (as t=6 
+ms) for optimum regulation. Thus, the regulation can be good 
+in this condition, but after changing conditions, regulation 
+may be reduced, whereas three other methods have lower 
+regulation. Also, because of its higher accuracy and speed, ICA 
+based weighting factor estimator is more effective in 
+comparison with ACO and PSO-based weighting factor 
+estimators. 
+Table 2. Output voltage regulation while load changes at +5 v 
+output from 100% TO 50% 
+Method 
+Regulation (%) at t=6 
+Regulation (%) at 
+ms 
+t=16 ms 
+(b) 
++15V  
++5V  
+-15V 
++15V 
++5V 
+-15V 
+ 
+ICA 
+0.33 
+0.50 
+0.26 
+0.46 
+0.58 
+0.40 
+ACO 
+0.40 
+0.72 
+0.46 
+0.46 
+0.76 
+0.46 
+PSO 
+0.46 
+0.78 
+0.53 
+0.46 
+0.76 
+0.46 
+Constant 
+0.53 
+0.86 
+0.60 
+2 
+1.76 
+1.93 
+Weighting 
+Factor 
+ 
+4.2 Variation Of DC-DC converter output load (At +15 V 
+output) from 100% To 120% 
+In the third case, the load on +15 v output of the 
+(c) 
+ 
+converter changes from 100% to 120% at t=10 ms when the 
+output voltages are in a steady state. Figures 6 (a), (b), (c), and 
+(d) show the three output voltages for the ICA, ACO, and PSO-
+based estimator of the weighting factor as well as the constant 
+weighting factor method, respectively. Table 3 shows the 
+output voltage regulation. This outcome demonstrates that 
+the suggested approach can enhance cross-regulation in all 
+36 
+ 
+M. Safarishaal and M. Sarvi /Future Technology                                                               February 2024| Volume 03 | Issue 01 | Pages 32-39 
+simulations. 
+The 
+time 
+response 
+parameters 
+percent 
+overshoot (%), settling time (ms), and percent steady-state 
+error (%) for PID controller and fuzzy logic controller when 
+ICA and conventional mathematical method have been used 
+for both as weight factor estimator, are presented in Table 5.  
+(d) 
+Figure 6. Output voltages while the load on +15 V output 
+changes from 100% to 120% with c) PSO estimator of 
+weighting factors, d) constant weighting factors (Continue) 
+ 
+(a) 
+Table 3.  Output voltage regulation while load changes at +15 
+v output from 100% to 200% 
+Method 
+Regulation (%) at t=6 
+Regulation (%) at 
+ms 
+t=16 ms 
++15V  
++5V  
+-15V 
++15V 
++5V 
+-15V 
+ICA 
+0.00 
+0.05 
+0.00 
+0.06 
+0.14 
+0.13 
+ACO 
+0.13 
+0.18 
+0.60 
+0.06 
+0.18 
+0.53 
+PSO 
+0.60 
+0.94 
+0.33 
+0.60 
+0.92 
+0.46 
+Constant 
+1.26 
+5.46 
+0.73 
+1.26 
+5.38 
+0.80 
+Weighting 
+Factor 
+ 
+(b) 
+4.3 DC-DC Converter Input Voltage Changing From 30 V 
+ 
+to 35 V 
+In this case, the input DC voltage of the DC-DC converter 
+changes from 30V to 35V. Figures 7 (a), (b), (c), and (d) show 
+the three output voltages for the ICA, ACO, and PSO-based 
+estimator of the weighting factor as well as the constant 
+weighting factor method, respectively. The results of this case 
+show that the evolutionary algorithms are very effective in 
+improving cross-regulation in all outputs. Results after 
+changing at t=16 ms show that the constant weighting factor 
+method is not a suitable method for all conditions.  The results 
+of regulation for comparison of all methods are presented in 
+Table 4. 
+4.4 Dynamic Response Comparison 
+The +5 V output voltage results of the mathematical-
+(c) 
+based weighting factors estimator, together with a set of 
+optimal weighting factors that is obtained from one of the 
+best-used evolutionary algorithms (ICA), are presented in 
+Figure 8 when both PID and fuzzy logic controllers are 
+compared, their performances have been assessed through 
+37 
+ 
+M. Safarishaal and M. Sarvi /Future Technology                                                               February 2024| Volume 03 | Issue 01 | Pages 32-39 
+ICA shows better results. The simulations were performed 
+using MATLAB on a Pentium 2.4GHz computer with a 
+population size of 50 in all scenarios and a maximum iteration 
+of 50 for all algorithms. The findings suggest that ICA is a 
+suitable optimization algorithm for this work and could be 
+explored further for other applications. 
+ 
+(d) 
+Figure 7. Output voltages while input voltage changes from 
+30 V to 35 V with a) ICA estimator of weighting factors, b) ACO 
+estimator of weighting factors, c) PSO estimator of weighting 
+factors, d) constant weighting factors (Continue) 
+ 
+ 
+Figure 8. The +5 V output voltage results for Fuzzy ICA, PID 
+ICA, Fuzzy mathematical, and PID mathematical methods 
+Table 4. Output voltage regulation while input voltage 
+changes from 30v to 35v 
+ 
+Method 
+Regulation (%) at t=6 
+Regulation (%) at t=16 
+Table 5. Time response parameters 
+ms 
+ms 
+                     Item 
+Overshoot 
+Settling 
+Steady 
++15V  
++5V  
+-15V 
++15V 
++5V 
+-15V 
+ 
+(%) 
+time (ms) 
+state 
+ICA 
+0.93 
+0.26 
+1.00 
+0.33 
+0.22 
+0.20 
+Method 
+error (%) 
+ACO 
+0.73 
+0.54 
+0.53 
+0.40 
+0.52 
+0.53 
+Fuzzy & ICA 
+2.38 
+1.9 
+0.88 
+PSO 
+0.26 
+0.90 
+0.20 
+0.66 
+0.80 
+0.80 
+PID & ICA 
+1.78 
+1.9 
+0.90 
+Constant 
+0.13 
+1.22 
+0.66 
+2.26 
+3.04 
+3.13 
+Fuzzy Mathematical 
+7.8 
+2.5 
+1.64 
+Weighting 
+PID & Mathematical 
+12.78 
+3.5 
+0.92 
+Factor 
+ 
+Table 6. Algorithms perform at different conditions 
+ 
+Total regulation % at 
+As shown in this Figure 8, the choice of appropriate 
+ 
+Conditions 
+Convergence 
+Iteration 
+t=16ms 
+ICA 
+ACO 
+PSO 
+ICA 
+ACO 
+PSO 
+75 
+85 
+100 
+1.44 
+1.68 
+1.68 
+weighting factors, in addition to improving voltage regulation, 
+can positively affect the dynamic behavior of the system. 
+Results show that when the optimal weighting factors are 
+used, the overshot value and settling time have reduced 
+significantly. 
+Load 
+variation 
+from 100% 
+to 50% 
+75 
+80 
+110 
+0.75 
+1.45 
+2.26 
+4.5 Comparison 
+of 
+the 
+Presented 
+Algorithms 
+Performances 
+In this section, the comparative performance analysis of 
+Voltage 
+variation 
+from 30V to 
+35V 
+70 
+85 
+110 
+0.33 
+0.77 
+1.98 
+Load 
+variation 
+from 100% 
+to 120% 
+ 
+ 
+ 
+the three optimization algorithms used in this study is 
+presented. Table 6 summarizes the performance of the 
+algorithms under different conditions, with total regulation 
+being the sum of regulation at all three output voltages. 
+Results show that ICA outperforms PSO and ACO in terms of 
+overall regulation, execution time, and convergence rate. 
+Moreover, ICA is found to be more effective in achieving 
+cross-regulation than PSO and ACO. It should be noted that 
+while all optimization techniques improve cross-regulation, 
+38 
+ 
+M. Safarishaal and M. Sarvi /Future Technology                                                               February 2024| Volume 03 | Issue 01 | Pages 32-39 
+5. 
+Conclusion 
+In summary, this paper presents a novel approach for the 
+[7] 
+Chen. Q., Lee., F., and Jovanovic, M., “Analysis and 
+Design of Weighted Voltage-Mode Control for a 
+Multiple-Output Forward Converter”, Proc. IEEE. 
+APEC’93 Conf. Blacksburg, VA, April 1993, pp. 449-
+455. 
+[8] 
+Chen, Q., Lee, F. and Jovanovic, M., “Small Signal 
+Analysis and Design of Weighted Voltage-Mode 
+Control for a Multiple-Output Forward Converter”, 
+IEEE. Trans. Power Elec, Jun 1995, 10, pp. 589-596. 
+[9] 
+Atashpaz, E., and Lucas, C., “Imperialist Competitive 
+Algorithm: An Algorithm for Optimization Inspired by 
+Imperialistic Competition”, IEEE. Cong. Evolutionary 
+Computation, Singapore, Sept 2007, pp. 4661-4667. 
+[10] M.Sarvi, M.Safari, “Fuzzy, ANFIS and ICA trained neural 
+network modelling of Ni-Cd batteries using 
+experimental data” - Journal of World Applied 
+Programming., V.8  (2013). p.93-100 
+[11] M.Safari, M.Sarvi, “Optimal load sharing strategy for a 
+estimation of weighting factors in weighted voltage mode 
+control of multiple outputs forward DC-DC converter. The 
+approach uses evolutionary algorithms, including Imperialist 
+Competitive Algorithms, Particle Swarm Optimization, and 
+Ant Colony Optimization, to find the optimal weighting factor 
+for voltage mode control. The fuzzy logic controller is also 
+utilized to improve the dynamic response of the converter. 
+The proposed method improves the cross-regulation and 
+dynamic characteristics of the outputs significantly compared 
+to the constant weighting factor method. The ICA-based 
+weighting factor estimator is shown to have higher speed and 
+accuracy compared to the other presented evolutionary 
+algorithms, making it more effective. Overall, the results 
+demonstrate that the proposed method can be used for other 
+types of multiple-output DC-DC converters and can 
+considerably enhance the control and dynamic features of the 
+detected outputs if the weighting factors are properly 
+designed. 
+wind/diesel/battery hybrid power system based on 
+imperialist competitive neural network algorithm” - 
+IET Renewable Power Generation, V.8 (2014) p. 937 – 
+946 
+Ethical issue 
+The authors are aware of and comply with best practices in 
+publication ethics, specifically with regard to authorship 
+(avoidance 
+of 
+guest 
+authorship), 
+dual 
+submission, 
+[12] Kennedy, K., Eberhart, R., “Particle Swarm 
+Optimization”, Proc. of IEEE ICNN.  Perth, Australia, 
+New Jersey, Nov 1995, pp. 1942–1948. 
+[13] Khazeiynasab, S. R., & Qi, J. (2021). Generator 
+manipulation of figures, competing interests, and compliance 
+with policies on research ethics. The author adheres to 
+publication requirements that the submitted work is original 
+and has not been published elsewhere. 
+Parameter Calibration by Adaptive Approximate 
+Bayesian Computation with Sequential Monte Carlo 
+Sampler. IEEE Transactions on Smart Grid. Schutte,  
+[14] Dorigo, M., Birattari, M., and Stutzle, T., “Ant Colony 
+Data availability statement 
+Datasets analyzed during the current study are available and 
+can be given following a reasonable request from the 
+corresponding author. 
+Optimization”, IEEE Computational Intelligence 
+Magazine, 2006, 1, (4), pp. 28-39. 
+[15] Shyu, S., Lin, B., and Yin, P., “Application of Ant Colony 
+Conflict of interest 
+The authors declare no potential conflict of interest. 
+Optimization for No-Wait flowshop Scheduling 
+Problem to Minimize the Total Completion Time”, J. of 
+Computers and Industrial Engineering, 2004, 47, pp. 
+181–193. 
+[16] Abel, B., Francisco, R., Trejo, M., Felipe, M., Ruben, O., 
+References 
+[1] 
+Xie, Y. and Gan, J., “Study on the Voltage Stability of 
+Multi-Output Converters”, IPEMC. Int. Conf., Xi'an, 
+China, Aug 2004, pp. 482-486. 
+and Hugo, T., “Design and Implementation of a FLC for 
+DC-DC Converter in a Microcontroller for PV System”, 
+Int. J.  Soft Computing and Engineering. 2013, 3 (3), pp. 
+26-30. 
+[2] 
+Khazeiynasab, S. R., & Batarseh, I. “Measurement-
+Based Parameter Identification of DC-DC Converters 
+with Adaptive Approximate Bayesian Computation”. 
+(2021). arXiv preprint arXiv:2106.15538.Matsuo 
+[17] M.Safari, M.Sarvi, “Estimation the Performance of a 
+PEM Fuel Cell System at Different Operating 
+Conditions using Neuro Fuzzy (ANFIS)-TI Journals” - 
+World Applied Programming, V.3 (2013) p.355-360.   
+[3] 
+ Wilson, T., “Cross Regulation in an Energy-Storage DC 
+to DC Converter with Two Regulated Outputs”, IEEE. 
+Conf. Rec. Power Elec. Palo Alto, Calif, June 1977, pp. 
+190-199. 
+[18] Erickson, R.W., “Fundamentals of Power Eectronics”, 
+(Kluwer Academic Publishers, 1997, 2nd edn 2004). 
+[19] Chen, Q. Lee, F.C. and Jovanovi, L., “Analysis and Design 
+[4] 
+Wilson, T., “Cross Regulation in a Two-Output DC-to-
+DC Converter with Application to Testing of Energy-
+Storage Transformer”, IEEE. Conf.  Rec. Power Elec. 
+June 1978, pp. 124-134. 
+of Weighted Voltage-Mode Control for a Multiple-
+Output Forward Converter”, IEEE Power Electronics 
+Specialists Conference (PESC) Rec., Seattle, WA, 1993, 
+pp. 449-455. 
+[20] M.Safari, M.Sarvi, “A Fuzzy Model for Ni-Cd Batteries” 
+[5] 
+Pan, S., and Jain, PK., “A Precisely-Regulated Multiple 
+Output Forward Converter with Automatic Master-
+Slave Control”, Proc. IEEE. Conf. Power Elec, Recife, 
+Brazil, June 2005, pp. 986-992. 
+International Journal of Artificial Intelligence, V.2 
+(2013).p.81-89 
+[6] 
+Liu, C., Ding, K., Young, J., and Beutler, J., “A Systematic 
+Method for the Stability Analysis of Multiple-Output 
+Converters”, IEEE. Trans. Power Elec, Oct 1989, 2, (4), 
+pp. 343-353. 
+39 
+ 

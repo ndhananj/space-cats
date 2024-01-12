@@ -1,0 +1,2800 @@
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+AI-based Technique to Enhance Transient Response 
+and Resiliency of Power Electronic Dominated Grids 
+via Grid-Following Inverters   
+Mohsen Hosseinzadehtaher, Student Member, IEEE, Alireza Zare, Student Member, IEEE, Ahmad 
+Khan, Student Member, IEEE, Muhammad F. Umar, Student Member, IEEE, Silvanus D'silva, Student 
+Member, IEEE, and Mohammad B. Shadmand, Senior Member, IEEE 
+Abstract—This paper presents a frequency restoration method to 
+enhance power electronic dominated grid (PEDG) resiliency and 
+transient response via re-defining grid following inverters (GFLIs) 
+role at the grid-edge. An artificial intelligence-based power 
+reference correction (AI-PRC) module is developed for GFLIs to 
+autonomously adjust their power setpoints during transient 
+disturbances. A detailed analytical validation is provided that 
+shows control rules in PEDG intrinsically follow the underlying 
+dynamic of the swing-based machines to extend its stability 
+boundary. Considering this fact, comprehensive transient and 
+steady state-based mathematical models are used for constructing 
+the learning database of the proposed AI-PRC. The proposed 
+training approach can deal with grid’s characteristics alterations 
+and uncertainties. Thus, this approach incorporates PEDG’s 
+effective variables that shapes its dynamic response during 
+transient disturbances. Subsequently, a neural network is trained 
+by Bayesian regularization algorithm (BRA) to realize the 
+proposed AI-PRC scheme for frequency support via GFLIs.  
+Several simulation and experimental case studies results validate 
+the functionality of the proposed AI-PRC towards enhancing the 
+PEDG’s transient response and resiliency via GFLIs. The 
+provided case studies demonstrate significant improvement in 
+frequency restoration in response to transient disturbances.  
+Keywords– power electronic dominated grid, resiliency, Bayesian 
+regularization algorithm, artificial neural network, transient 
+stability.  
+I. 
+INTRODUCTION  
+The increased contribution of renewable-based energy 
+resources for maintaining sustainable and clean energy 
+utilization in the modernized power system is affecting the grid 
+conventional operation methodologies. Power electronic 
+dominated grids (PEDGs) suffer from the lack of minimum 
+mandatory inertia requirements for maintaining the grid stability 
+[1, 2]. Specifically, frequency and voltage stability are 
+vulnerable in low inertia networks [3]. Equivalent system inertia 
+and short circuit ratio (SCR) are the parameters that have more 
+influence on the resiliency and stability boundary of the PEDG 
+[4]. Thus, system frequency, rate of change of frequency 
+(ROCOF) and voltage stability may get jeopardized due to 
+potential transient disturbances. Likewise, due to the 
+intermittent nature of renewable energy-based sources, restoring 
+the frequency excursion to the nominal is a major challenge to 
+ensure stable operation of the PEDG in real-time. 
+Typically, grid forming inverters (GFMIs) have the 
+mainstream contributions for sustaining transient stability when 
+a disturbance takes place in the system, and this is due to their 
+characteristic obligations [5]. Moreover, in the steady state 
+condition, GFMIs are responsible for sharing the total system 
+load among each other [6]. However, these GFMIs have 
+restrictions in terms of loading capacities especially when large 
+disturbances occurs either on demand side or supply side. Thus, 
+if they are coerced to contribute to a specific loading condition 
+more than their nominal rating, the inverter cannot provide a 
+proper dynamic response which could results in significant 
+stability issues in PEDG. Also, having numerous GFMIs 
+operating in parallel can be problematic due to the possibility of 
+power circulating amongst them and synchronization challenges 
+[7, 8]. However, by implementing a sort of synthetic droop 
+control which is predominantly adopted from the primary 
+frequency control loop of a synchronous generator (SG), the 
+total load can be shared among the inverters while the grid’s 
+voltage and frequency are regulated autonomously. 
+On the other hand, grid following inverters (GFLIs) can be 
+employed to strengthen the upstream grid voltage and frequency 
+by equipping their control loops with droop fundamentals [8, 9] 
+or a supervisory control system [10] instead of maximum power 
+point operation [11, 12]. To benefit from the GFLIs to enhance 
+system resiliency during disturbances, it is vital to add up 
+another outer loop of voltage and frequency control. The active 
+power is adjusted based on a thorough P-f control gain and the 
+reactive power is regulated by using another gain that relates the 
+voltage magnitude to the required reactive power. It is essential 
+to realize accurate gains which are contingent on quite a few 
+other parameters such as the grid's physical features and the 
+intensity of disturbances. Irrespective of grid forming or grid 
+following inverters, if the P-f droop coefficient is slightly 
+decreased, the ROCOF can be intensified while faster frequency 
+regulation can be achieved. Therefore, a challenging tradeoff is 
+needed  in selection process of these parameters. Moreover, the 
+cut-off frequency of the employed low-pass filter in control loop 
+of GFLIs plays a significant role in its stability. Considering the 
+same constraint for droop coefficient in GFMI and GFLI, 
+varying the cut-off frequency has an explicit influence on the 
+ROCOF and frequency as well. Thus, frequency and voltage 
+restoration can be a challenging task in a PEDG.  
+A variety of basic to advanced frequency restoration control 
+approaches are developed in the literature. The notion of virtual 
+synchronous generator (VSG) can be implemented in GFMI and 
+GFLI to relatively damp system oscillatory transients due to the 
+external disturbances with lower uncertainty regarding the 
+stability violation [13]. In [14], a nonlinear control technique is 
+introduced to expand the transient stability boundary which is 
+extremely influenced by the frequency dynamics of the system. 
+The authors proposed that in VSG-based control schemes, the 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+outcome of the offline trained network. Also, in [21-23], multi-
+agent reinforcement learning methods are explored to remove 
+the centralized control approaches by estimating the frequency 
+at primary and secondary levels. Still, the practical 
+implementation of the proposed approaches is limited by the 
+required communication infrastructure. Moreover, selecting a 
+proper AI technique, as well as training and implementing 
+methodologies for the targeted system are undeniable 
+challenges.     
+This paper proposes an artificial intelligence-based power 
+reference correction (AI-PRC) technique for GFLIs to 
+autonomously adjust their power setpoints during transient 
+disturbances. The proposed AI-PRC technique enables fast 
+frequency restoration to enhance the transient response and 
+resiliency of PEDG via re-defining GFLIs role at the grid-edge. 
+The proposed AI-PRC technique includes a data mining 
+mechanism and real-time AI-prediction module in the control 
+loop of GFLI. The data mining approach is based on a 
+comprehensive transient and steady state-based analytical model 
+to construct a thorough database. All PEDG physical features 
+such as practical alterations in configurations, demand and 
+supply side disturbances, different inertia constants, network 
+natural and damping frequency related to the power angle, and 
+the optimal power injection/absorption are considered in this 
+approach. All feasible variables are valued based on their 
+practical ranges in a realistic PEDG. In this process, different 
+parameters are considered such as inertia constant, alterations in 
+grid configuration (i.e., the X/R ratio), demand and supply 
+disturbances, system damping coefficient, natural frequency, 
+and damped natural frequency. Thereafter, the required 
+injecting/ absorbing power is calculated forthrightly. After that, 
+a two-layer feedforward neural network with optimal number of 
+sigmoid hidden neurons and linear output neuron is learned by 
+using 
+the 
+mathematical-driven 
+database. 
+A 
+Bayesian 
+regularization algorithm (BRA) is employed in the training stage 
+to compensate the dataset size limitations, mitigate the noisy 
+dataset impact, and address the other potential uncertainties. The 
+real-time AI-prediction module accurately predicts frequency 
+trajectory when a transient disturbance occurs in the system. 
+Thus, the proposed methodology scrutinizes frequency 
+eccentricities during wide range of  disturbances. The proposed 
+methodology is employed in the control loop of GFLIs to ensure 
+resilient operation of PEDG under disturbances. Thus, the main 
+contribution of this paper is to address the shortcomings of 
+frequency restoration among the state-of-the-art VSG-based or 
+droop-based GFLIs and GFMIs via re-defining GFLI role at 
+grid-edge equipped with the proposed AI-PRC.  
+The remainder of this paper is organized as follows: Section 
+II provides a description of considered system and PEDG 
+dynamic fundamentals. Section III discusses the proposed data 
+mining methodology. Section IV details technical aspects of the 
+training mechanism. In Section V, simulation and experimental 
+validation are provided.  Section VI concludes the paper. 
+II. 
+PEDG PREVAILING DYNAMICAL FUNDAMENTALS 
+A. Considered System Overview 
+Fig. 1 represents the considered PEDG that is an IEEE 14-
+bus system. Seven GFLIs and one relatively small SG are 
+contributing to support system loading. The total amount of load 
+in this study is 500 kW. SG output power in steady state is 
+limited to 150 kVA while its power rating is 800 kVA. As 
+planned, 350 kW of system demand is supplied by renewable 
+inertial value cannot be assumed as a constant and a correlation 
+should be established between the frequency excursion and 
+inertia constant.  In fact, the performance of the proposed 
+approach in [14] doesn’t properly meet the IEEE 1547 standard 
+regarding the ROCOF constraints. Consequently, it is crucial to 
+have a faster frequency detection scheme. A droop-based 
+approach in combination with ROCOF control for providing the 
+active power set point in the event of frequency excursion is 
+presented in [15] with the goal of adopting SG-based frequency 
+control with extensive mechanical and electrical models. It is 
+worthy to mention that the conventional droop and VSG based 
+controls are not able to pick up the load for distinct dynamic 
+characteristics either in grid-tied or standalone mode of 
+operation at the same time. 
+A comparison has been conducted on the dynamic response 
+of VSG and droop-based control schemes in [16, 17]. Both 
+control approaches are based on the droop fundamentals. It 
+should be noticed that a droop-based control characteristically 
+does not emulate system inertia. Nevertheless, by employing 
+delay in their control loops, the system can emulate the virtual 
+inertia. As mentioned in [18], VSG and inertia droop-based 
+controls can take the advantage of the droop features and 
+simultaneously add virtual inertia to the operating grid. 
+However, the response of the VSG is more oscillatory compared 
+to the droop-based techniques during system transients [16]. 
+Also, the droop control suffers from its inherent drawbacks 
+under large disturbances in the system. In [19] a generalized 
+droop control is presented for supporting the grid. The power 
+loop in this approach is adaptive to different conditions and 
+enables the control system to provide virtual inertia and damping 
+factor in standalone conditions. Moreover, in grid-connected 
+mode, the fluctuations in the output power are reduced. 
+Nevertheless, the drawbacks of tuning and designing optimal 
+controller gains and droop coefficient could limit control 
+functionalities especially if the network configuration is altered, 
+or a large disturbance occurs. 
+Due to the high level of nonlinearity in PEDG and 
+aforementioned shortcomings in the operational methodologies, 
+it is worthy to mention that the conventional droop and VSG 
+based controls have shortcomings to pick up the load for distinct 
+dynamic characteristics either in grid-tied or standalone mode of 
+operation at the same time. Whereas artificial intelligence (AI)-
+based techniques sound more attractive to address the challenges 
+in enhancing resiliency and improving transient response in low 
+inertia power systems [20]. AI techniques can cope up with 
+multi-objective optimization problems such as frequency and 
+voltage restorations. Moreover, AI can dynamically learn the 
+demand of power during load or generation disturbances to 
+rapidly restore the frequency of the system and prevents low 
+frequency-nadirs and high ROCOFs. This will ultimately 
+prevent the system from cascaded failures and blackouts, thus 
+increasing the system resiliency. In fact, AI techniques are 
+believed as a suitable potential to accommodate complicated 
+dynamic modification of the system. Specifically, this feature of 
+AI will help to improve the transient response in low-inertia 
+power system such as PEDG. 
+Consequently, an AI-based frequency control is presented in 
+[20] which focuses on an isolated hydro power plant. This 
+methodology is valid for isolated plants where the required data 
+are available for training. Therefore, the training process does 
+not cover all the system incidents. Besides, any modification in 
+the network configuration will have negative impacts on the 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+ 
+Fig. 1. The understudy 14-bus PEDG and control structure for ith GFLI equipped with AI module. 
+resources which is equivalent to 70% of the total system load, 
+representing a highly renewable energy penetrated grid. The 
+considered network has two voltage levels at 13.8 kV and 380 
+V. Furthermore, it can operate in islanded mode from upstream 
+network at 69 kV via a circuit breaker installed at substation 
+location of bus #10. 
+B. MPC based GFLI control 
+provide the active power reference for the MPC based GFLI 
+controller. Furthermore, the reactive power reference can be set 
+zero for unity power factor operation or as per system 
+requirement. For the three-phase GFLI, there are 8 switching 
+vectors and for each vector the cost function is calculated. The 
+switching vector that represents the minimum value of the cost 
+function is selected as the optimized vectors and the output of 
+the MPC based voltage controller. Hence, based on this input 
+from the AI, the MPC scheme tracks the active power reference 
+to adjust active power injection to support the frequency. 
+C. PEDG Dynamic Fundamentals 
+This section provides a brief overview of MPC formulation [24, 
+25] for GFLI control and switching signal generation. The GFLI 
+is interfaced with LCL filter, thus the state-space representation 
+of the continuous-time system shown in Fig. 1 is given as, 
+
+
+inv k
+inv k
+,
+,
+
+
+
+
+
+
+
+ 
+(1)
+inv k
+inv k
+br k
+pcc k
+,
+,
+,
+,
+
+
+i
+i
+di v
+A v
+B v
+D v
+dt
+i
+i
+pcc k
+pcc k
+,
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+where A, B, and D represent the system matrices as, 
+R
+L
+L
+L
+
+
+f
+f
+f
+f
+In bulky power system with different rotational inertias, 
+power balance equation defines the frequency trajectory of the 
+system. That is based on the fundamental of swing equation 
+which is valid for all SG-based power systems. As depicted in 
+Fig. 1, in a typical PEDG, the power generation can be based 
+on GFMIs, GFLIs, and small scale SGs. The fundamental swing 
+equation is given as, 
+A
+C
+C
+B
+D
+f
+f
+
+
+
+
+
+
+
+
+L
+L
+R
+L
+/
+1/
+0
+1/
+0
+1/
+0
+1/
+0
+0
+0
+1/
+0
+1/
+/
+
+
+
+
+
+
+ 
+g
+g
+g
+g
+
+(
+)
+2
+v
+m
+e
+a
+v
+d
+T
+T
+D
+H dt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The next step prediction is made by discretizing the given 
+system in (1) with a step time of Ts. Hence, the state-space 
+representation in discretized domain is given by, 
+
+
+i
+i
+inv k
+inv k
+,
+1
+,
+1
+
+
+
+
+
+
+v
+A
+v
+B
+v
+D
+v
+
+
+
+ 
+(2)
+inv k
+d
+inv k
+d
+br k
+d
+pcc k
+,
+1
+,
+1
+,
+,
+
+
+
+
+i
+i
+pcc k
+pcc k
+,
+1
+,
+1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+where matrices Ad, Bd and Dd are defined as, 
+1
+1
+3 3
+3 3
+(
+)
+(
+)
+ATs
+d
+d
+d
+d
+d
+A
+e
+B
+A
+A
+I
+B
+D
+A
+A
+I
+D
+
+
+
+
+
+
+
+
+
+ 
+where H is the inertia constant, Tm is the mechanical torque of 
+the prime-mover and Te is defined as the torque that applied in 
+reverse rotation due to the demand alterations. Da is the 
+damping factor and ωv represents the system frequency. The 
+primary effect of H is on the ROCOF while Da has influence on 
+the steady-state value of the frequency. To declare the 
+legitimacy of this idea in mathematical form, one can simplify 
+(5) by transferring torque equation in term of power balance at 
+nominal frequency during load increase and ignoring the 
+damping factor just at the disturbance instance. The ROCOF 
+and accelerating power are given by, 
+The next step prediction of active-reactive power is given by, 
+
+
+
+
+i
+i
+pcc k
+o k
+,
+,
+inv k
+inv k
+,
+1
+,
+1
+
+
+k
+1
+
+dpgov
+df
+p
+p
+H f
+dt
+H
+dt
+ 
+   
+
+
+
+
+,
+4
+2
+
+
+
+
+i
+i
+P
+v
+v
+Q
+v
+v
+
+
+
+
+ 
+(3)
+pcc k
+pcc k
+,
+,
+inv k
+inv k
+,
+1
+,
+1
+
+
+k
+1
+
+The cost function subject to the minimization to generate the 
+optimal switching signals for GFLI control is given by, 
+2
+2
+g
+P
+P
+P
+Q
+Q
+ref k
+corr k
+k
+ref
+k
+,
+,
+1
+1
+GFL
+where 𝑑𝑝௚௢௩ 𝑑𝑡
+⁄
+ represent the governor dynamic. Mostly 
+droop-based approaches are typically used in control schemes 
+of GFLIs or GFMIs for voltage and frequency restoration [26]. 
+In all droop-based controls, there is a basic relation between the 
+frequency and the output active power given by, 
+
+
+
+
+ 
+(4)
+S
+g
+argmin(
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1
+z
+GFL
+
+p
+cut
+D
+f
+p
+p
+f
+s
+
+
+cut
+
+
+
+0
+0
+2
+
+ 
+
+
+
+
+
+
+ 
+
+
+where Pref and Qref are the reference active and reactive power. 
+To restore the frequency of PEDG under the disturbance, the AI 
+module generates the corrective power Pcorr that is used to 
+where f and f0 are the frequency and its nominal 
+value. p represents the output power of inverter and p0 is the 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+
+0
+M cos( )
+d
+d
+f P
+dt
+dt
+H
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+nominal value of the active power. Dp is the droop coefficient 
+and ωcut is the low pass filter cut-off frequency. Due to the 
+inherent alliance of inertia momentum with the inertia constant 
+and incorporating the frequency governor dynamics, (5) can be 
+represented in the term of power balance as, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+0
+0
+0
+(
+)
+(
+)
+(
+(
+))
+v
+nom
+G
+e
+a
+v
+d
+p
+k
+p
+D
+J
+dt
+The effect of damping factor in inverter-based control loop can 
+be demonstrated as Pdam= Da ∆𝜔  that alters the electrical 
+demand and thus the entire frequency dynamic during any 
+potential disturbances. Thus, this impact can be considered in 
+(11) which results in,  
+
+0
+M cos( )
+d
+d
+D f d
+f P
+dt
+dt
+H
+dt
+H
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+By solving the characteristic equation, the power angle with 
+respect to initial point of electrical power angle is given by, 
+
+D
+f
+f P
+t
+H
+H P
+where Pm can be represented as reference active power of 
+inverter which in SGs is known as prime mover power, Pe is the 
+inverter output power and ωv is the output voltage angular 
+frequency. kG is known as governor gain. Da and ω0 are the 
+damping factor and nominal system angular frequency 
+respectively. Performing the Laplace transform on (8) and then, 
+equating similar terms [27, 28] in (7) and (8) will result in, 
+0
+0
+cos(
+)
+4
+cos(
+)
+M
+M
+1
+
+ 
+
+0
+1
+1
+,
+G
+
+p
+cut
+p
+J
+k
+D
+D
+
+
+
+
+
+
+1 (
+)
+4
+cos(
+)
+e
+D
+f
+H P
+
+
+
+
+
+
+
+
+
+
+2
+0
+0
+0
+M
+2
+
+
+
+
+
+sin
+cos
+1
+4
+cos(
+)
+f
+D
+f
+P
+t
+H
+H P
+
+
+
+
+
+M
+M
+0
+0
+2
+D
+f
+H P
+M
+0
+1
+
+1
+4
+cos(
+)
+tan
+D
+f
+
+
+
+
+4
+cos(
+)
+H P
+
+This shows that the droop-based control can be equated as 
+VSG-based control which follows the fundamentals of swing 
+equation. Thus, it is proved that the prevailing dynamic of 
+network of GFMIs and GFLIs, representing an islanded cluster 
+of PEDG, follows the swing equation rule either they have 
+VSG-based or droop-based control schemes.  This fact, swing 
+equation as the dominant dynamic response rule in PEDG, is 
+used for initiating the data mining in this paper as detailed in 
+the next section. 
+M
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thus,  
+2
+
+
+cos
+1 (4
+cos(
+)
+f
+D
+f
+H P
+H P
+
+
+
+
+
+0
+0
+d
+M
+M
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+n
+M
+cos
+,
+4
+cos
+D
+f
+f P
+H
+H P
+
+
+
+0
+M
+III. 
+PROPOSED DATA MINING METHODOLOGY 
+To provide a comprehensive dataset regarding feasible 
+impending variations in the grid such as PEDG’s physical 
+feature or different disruption types, transient and steady-state 
+intervals should be investigated accurately. The overall system 
+resiliency cannot be achieved without considering both the 
+steady state and transient stability. Thus, the data mining 
+approach in this paper is based on both steady state and 
+transient dynamics by analyzing and determining solutions of 
+the swing equation as the dominant dynamic response rule in 
+PEDG which is validated in the previous section.  
+A. Frequency dynamic in steady state condition  
+The steady state and transient dynamics of the PEDG is 
+analyzed to provide a thorough database to cover primary and 
+secondary frequency responses. These procedures assure that 
+all events would be monitored and captured mathematically in 
+a database that is exploited for learning a neural network. The 
+final objective is to predict the PEDG frequency trajectory and 
+provide an optimal power reference correction for GFLIs in real 
+time. This real-time power correction is corresponding to the 
+adjustment of accelerating power in conventional power 
+systems by SGs contributions all over the grid. The intrinsic 
+dynamics of PEDG during typical disturbances such as addition 
+of load, loss of generation, etc. is evaluated by exploring the 
+fundamentals of power balance equation,  
+.(
+)
+,
+m
+e
+H
+d
+d
+f
+P
+P
+dt
+dt
+
+
+
+,
+sin( )
+d
+wdt P
+P
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+e
+M
+The natural and damped frequencies and damping ratio are 
+extracted from (13) and given in (14). Therefore, PEDG as a 
+nonlinear system has natural frequency which has influence on 
+the nodal voltages, global frequency, and the amount of power 
+contribution from each DER. Furthermore, natural frequency is 
+affected reversely by H while the damping ratio has a direct 
+relation with damping factor. As expected, by increasing the 
+inertia constant, damping ratio of the PEDG is decreased. Thus, 
+the generalized power angle equation can provide a 
+comprehensive database for frequency and ROCOF dynamic if 
+the input variables are valued in a feasible and practical range.  
+B. Transient frequency dynamic during severe disturbances  
+By contemplating potential severe disturbances and degree 
+of nonlinearities in PEDG, the steady state frequency analysis 
+would not be pertinent to assess the PEDG dynamic. In other 
+words, when the disturbance is extensive, common, and 
+straightforward solutions are not reasonable for a highly 
+coupled nonlinear differential equation. The PEDG dynamic 
+facing with a severe disturbance is obtained by using Euler 
+arithmetical methodology. In this approach, some adjustments 
+which are based on prediction and correction techniques are 
+applied. Basically, (10) can be divided in two first-order 
+differential equation as, 
+,
+
+
+
+
+
+ 
+
+p
+f
+d w d
+wdt
+H
+dt
+p
+P
+P
+ 
+
+
+
+m
+e
+The predicted solutions are found for each equation and 
+denoted by subscript N. Also, a corrective action is carried out 
+on the predicted values and shown by subscript c. At the state 
+of k+1, the predicted values for power angle are given by, 
+where Pm is the per unit value of the inverters’ input powers and 
+Pe represents the output electrical power respectively. H is the 
+virtual inertia constant, and δ is the electrical power angle. Any 
+deviation in ∆𝜔 results in different frequency dynamic and 
+ROCOF based on the PEDG inertia constant. For evaluating the 
+inherent dynamic of this equation, a general perturbation such 
+as 𝛿 ൌ ∆𝛿 ൅ 𝛿଴  is applied on the power angle, which is 
+corresponded to a normal disturbance, (10) is approximated in 
+term of angle perturbation by, 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+l
+
+
+N
+k
+w
+N
+k
+1
+1
+(
+)
+
+
+
+i
+r
+r
+i
+i
+i
+i
+i
+i
+corr i
+r
+MP
+w
+X
+G
+X
+f
+f
+MP
+P
+
+
+
+,
+1
+(
+)
+,
+,
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+N
+k
+k
+k
+k
+1
+(
+)
+1
+.(
+)
+
+
+k
+d
+w
+dt
+dw
+w
+w
+t
+t
+dt
+
+Similarly, the angular frequency deviation is given by, 
+where 𝜓ሺ𝑋௜ሻ is defined as interpolating function with the weight 
+factor 𝑤௥. 𝐺௜ is a Gaussian random variable. The probability 
+density function can be shaped in a general form needed for the 
+optimization problem. In the proposed trajectory prediction 
+process, it is aimed to minimize the prediction error given by, 
+((
+)
+)
+
+
+
+m
+e
+
+
+
+1
+1
+(
+)
+N
+N
+k
+k
+
+
+N
+
+1
+ˆ
+d
+.(
+) ,
+
+
+
+
+
+
+
+
+T
+i
+i
+i
+
+
+
+1
+E
+MP
+MP
+N
+
+
+
+
+
+
+1
+(
+)
+1
+N
+k
+k
+w
+k
+k
+
+
+
+k
+d w
+f
+P
+P
+dt
+H
+d
+t
+t
+dt
+The corrected values are calculated by averaging the values of 
+two found derivatives and is given by, 
+where 𝑀𝑃ప
+෢  is the predicted value which is the output of the 
+trained ANN. A Hessian matrix is estimated by Levenberg-
+Marquardt algorithm for a given function 𝑔: ℝ௡ → ℝ as, 
+2
+2
+2
+
+
+
+(
+)
+1
+1
+(
+)
+
+
+
+
+N
+k
+k
+1
+d
+d
+t
+t
+t
+t
+dt
+dt
+g
+g
+g
+x
+x x
+x x
+2
+1
+1
+2
+1
+n
+
+
+
+
+
+
+
+
+w
+k
+k
+k
+k
+w
+c
+k
+k
+1
+
+2
+2
+2
+.(
+)
+.(
+)
+(
+)
+,
+2
+
+
+
+
+g
+g
+g
+H
+x x
+x
+x x
+2
+2
+1
+1
+2
+g
+n
+
+
+
+(
+)
+1
+1
+
+
+
+
+N
+k
+k
+1
+
+dw
+dw
+t
+t
+t
+t
+dt
+dt
+w
+w
+
+
+
+
+
+
+
+k
+k
+k
+k
+c
+k
+k
+1
+
+.(
+)
+.(
+)
+(
+)
+2
+2
+2
+2
+
+2
+1
+2
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+n
+n
+n
+n n
+g
+g
+g
+x x
+x x
+x
+
+a second-order partial derivative for all pairs of variables in 
+domain of g, shapes matrix elements. This matrix is used in AI 
+algorithms for finding the saddle points and extremum of the 
+given function. An objective cost function is defined by, 
+For the next step, corrected values are substituted in associated 
+equations and the process is repeated to find the last 
+approximated solution for the objective states as,  
+
+1
+1
+1
+1
+0,
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+c
+c
+k
+k
+k
+k
+
+
+Similarly, by finding the angle dynamic, frequency and ROCOF 
+are found considering different grid features such as inertia 
+constant, damping factor and the supply-demand disturbances. 
+(1
+)
+(
+)
+d
+
+
+
+
+ 
+
+
+
+
+
+
+
+2
+E
+w
+MP
+MP
+N
+
+
+1
+,
+1
+1
+l
+m
+N
+h
+r
+pq
+i
+i
+h
+p q
+i
+
+
+
+IV. 
+PROPOSED TRAINING MECHANISM  
+This cost function is used to maintain the generalization 
+performance of the NN and ƞ is defined as the weight factor of 
+regularization with the value of 0 ൏ ƞ ൏ 1. In this stage, two 
+different parameters are defined for the later objective function 
+and (24) is reformed by, 
+F
+E
+E
+
+
+
+
+reg
+reg
+T
+d
+d
+d
+1
+(
+) ,
+d
+d
+
+
+
+ 
+
+
+
+
+
+
+
+2
+E
+w
+E
+MP
+MP
+N
+l
+m
+N
+h
+reg
+pq
+T
+i
+i
+h
+p q
+i
+1
+,
+1
+1
+
+
+
+Based on the BRA fundamentals, the NN weight factors are 
+selected in a random manner. Thus, probability function of NN’s 
+weights is given by, 
+
+(
+, ,
+) (
+,
+)
+(
+, , ,
+)
+(
+, ,
+)
+f T w
+N
+f w
+N
+f wT
+N
+f T
+N
+
+
+ 
+ 
+
+
+
+d
+n
+n
+d
+n
+d
+n
+In this equation, network model is involved and represented by 
+Nn. Also, the initial information regarding the weight factors is 
+identified as a prior density function of 𝑓ሺ𝑤|𝜌, 𝑁௡ሻ. Considering 
+given weight factors, the probability of receiving the data Td is 
+shown by 𝑓ሺ𝑇ௗ|𝑤, 𝜇, 𝑁௡ሻ . Also, based on the probability 
+fundamentals, a normalization term as 𝑓ሺ𝑇ௗ|𝜌, 𝜇, 𝑁௡ሻis used to 
+ensure the total probability of 1 in (26). 𝑓ሺ𝑇ௗ|𝑤, 𝜇, 𝑁௡ሻ  by 
+considering the Gaussian random variable with variance 𝜎ଶ in 
+the mapping function can be found by, 
+N
+
+
+
+
+MP MP
+N
+1
+i
+i
+i
+
+
+
+
+
+
+
+
+d
+n
+N
+e
+f T w
+N
+2
+(
+, ,
+)
+(2
+)
+
+
+With the same approach, 
+2
+(
+)
+w
+
+
+A. AI Training description 
+Once a comprehensive dataset is formed, an artificial neural 
+network (ANN) is needed to be trained for predicting the 
+required corrective accelerating power to support the grid under 
+different disturbances. The trained network, predict PEDG 
+inertia based on the frequency trajectory and ROCOF and find 
+an optimal power to restore frequency excursion in a timely 
+manner. Typically, AI-based approaches suffer from lack of 
+required database size, non-optimal regularization parameters, 
+heterogenous datasets, overfitting problems and potential 
+uncertain inputs. Using Bayesian regularization in the learning 
+algorithm of ANN, enhances the training performance by 
+finding the optimal parameters during training process. In BRA, 
+defining a cost function is required to adaptively decide on 
+terminating the training process based on different problem 
+objectives and regularization parameters. A typical problematic 
+issue in feed forward neural networks (NN) is regarded to 
+overfitting challenges that have direct influence on the network 
+weights. This results in poor neural network generalization when 
+they get new input data. The best method to resolve this issue is 
+to regularize the estimation process. This is carried out by 
+inflicting a penalty factor on the network cost function. Based 
+on the problem objective in this work, the inputs are system 
+frequency and ROCOF while target dataset includes the required 
+corrective active power to stabilize the PEDG under applied 
+disturbances. Training datasets are given by, 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+1
+1
+1
+2
+2
+2
+,
+,
+,
+,
+,
+,.....,
+,
+,
+d
+corr
+corr
+N
+N
+corrN
+T
+f
+f
+P
+f
+f
+P
+f
+f
+P
+
+
+
+
+
+
+ 
+l
+m
+h
+pq
+h
+p q
+1
+,
+1
+
+
+
+
+
+2
+n
+w
+e
+f w
+N
+(
+)
+(
+,
+)
+
+
+
+l
+m
+h
+pq
+h
+p q
+1
+,
+1
+
+
+e
+dw
+
+ 
+
+Considering (27) and (28), (26) can be represented as, 
+where 𝑓, 𝑓ᇱ are frequency and ROCOF and 𝑃௖௢௥௥ is the required 
+corrective active power. A nonlinear mapping mechanism to 
+represent the input-output relation can be obtained via a proper 
+interpolating function. The mapping function is given by, 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+2
+(
+(
+) )
+
+
+
+
+
+
+
+
+
+ 
+MP MP
+w
+N
+N
+l
+m
+h
+i
+i
+pq
+i
+h
+p q
+1
+1
+,
+1
+
+
+
+e
+f w T
+N
+
+
+
+2
+
+ 
+
+(
+)
+2
+(
+, , ,
+)
+d
+n
+w
+N
+l
+m
+h
+pq
+h
+p q
+1
+,
+1
+
+
+e
+dw
+(2
+)
+
+
+ 
+
+By rearranging (26), the normalization term is given by, 
+2
+(
+(
+) )
+
+
+
+
+
+
+
+
+
+ 
+MP MP
+w
+N
+1
+1
+,
+1
+N
+l
+m
+h
+i
+i
+pq
+i
+h
+p q
+
+
+
+e
+f T
+N
+(
+, ,
+)
+
+
+
+2
+ 
+
+ 
+
+d
+n
+w
+N
+2
+(
+)
+2
+1
+,
+1
+l
+m
+h
+pq
+h
+p q
+
+
+e
+dw
+(2
+)
+
+Fig. 2. Mean squared error (mse) plot for the training process of the 
+proposed ANN. 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+(30) is estimated around the minimum point of 𝑤௠. Thus, to find 
+the optimum point, derivative of (30) with respect to 𝜌, 𝜇 should 
+be equal to zero. By applying Hessian matrix in optimization 
+process, the optimum parameters are given by, 
+2
+1
+
+(2
+(
+)
+)
+w
+w
+
+
+
+ 
+l
+m
+h
+op
+pq
+m
+h
+p q
+1
+,
+1
+
+
+
+N
+1
+
+2
+(
+)(
+)
+
+
+
+
+
+
+
+
+
+
+
+N
+MP
+MP w
+N
+op
+i
+i
+m
+i
+1
+
+ 
+Fig. 3. Error histogram of the trained ANN. 
+Getting the optimum parameters based on the training dataset 
+structure, ensures high prediction accuracy of the trained 
+network while enable the network to deal with noisy and small 
+datasets with uncertain dynamic of inputs. 
+B. AI Training process 
+The ANN training requires about 1000 epochs using BRA 
+as discussed in section IV-A. This algorithm typically requires 
+lesser memory than the other techniques however at the cost of 
+longer training times. Training automatically stops when 
+generalization stops improving, as indicated by a decrease in 
+the mean squared error (MSE) measure of the validation 
+samples. As mentioned previously, frequency and ROCOF for 
+different scenarios are used as inputs in the (12) and (15) to 
+determine the accelerating power Pcorr required. The solutions 
+of (12) and (15) for different fg and ROCOF inputs are used to 
+generate a database as given by (20) that is fed as training data 
+to the ANN. These design considerations make the trained 
+ANN quick and robust in determining the accelerating power 
+required. The MSE plotted in Fig. 2 is used as the merit to 
+validate the performance accuracy of the trained ANN. As 
+evident, after completion of the training process the MSE 
+approaches zero. 
+The database is divided randomly so that training process 
+uses 70%, testing uses 15% and validation uses 15% of the data. 
+Furthermore, the selection of number of hidden layer neurons 
+is based on a trade-off between the ANN’s response time and 
+accuracy. This value is specific to the system and is optimized 
+to two hidden layers with 11 neurons in first hidden layer and 
+two neurons in the second layer. An error histogram is plotted 
+in Fig. 3 to show the performance obtained with the developed 
+ANN. Finally, about 150,000 sample data are fed as input and 
+target datasets to train the network. 
+V. CASE STUDIES AND VALIDATION 
+PEDG. Specifically, the experimental hardware setup has two 
+DERs, that are controlled as GFMI and GFLI feeding their local 
+loads of 22  and 30  respectively. The interconnection 
+between GFMI and GFLI is established via a line impedance.  
+A. Simulation Case Studies – 14-Bus Network 
+Several cases studies are simulated and assessed: i) extensive 
+power generation loss in the grid due to potential external grid 
+disturbances, ii) generation loss in a reconfigured grid topology, 
+iii) load decrease in the reconfigured grid, iv) comparative case 
+study of the proposed AI-PRC with state-of-the-art VSG and 
+reverse droop-based control schemes for frequency restoration, 
+v) robustness to model parameter mismatch. Furthermore, all 
+case studies, thorough comparisons are presented with and 
+without the proposed approach in PEDG. 
+Case Study I: In this scenario, the 14-bus PEDG’s DERs are 
+driving the total load during steady state. GFLIs are feeding the 
+loads based on their pre-defined power set points. For evaluating 
+the efficacy of the proposed AI-PRC based frequency 
+restoration methodology, one of the GFLIs is equipped with the 
+proposed AI-PRC. In case study I, a 200 kW generation loss 
+occurs on PEDG when all DERs are unequipped with the AI-
+PRC. As expected, a considerable frequency drop is detected at 
+the time of transient disturbance. Generation loss transpired at 
+instant of t = 8 s. Fig. 4 (a) illustrates the grid’s frequency before 
+and after this disturbance in the considered system without and 
+with the AI-PRC module enabled. As shown, in the system 
+without AI, a frequency drop of 3 Hz is observed in red plot. In 
+this scenario, SG is the main contributor to governing the 
+voltage and frequency particularly in the black start and during 
+grid potential disturbances. Here, frequency is restored by the 
+SG’s governor at the nominal value after 4 s. Moreover, the 
+nadir frequency drops below 57 Hz which most probably 
+triggers the protection relays. Comparatively, when the GFLI#6 
+is equipped with the proposed AI-PRC and during the event of 
+loss of generation, as shown in Fig. 4 (a), the frequency is 
+restored in timely manner indicated by blue plot. Considering 
+the training mechanism, the power correction value is increased 
+to 200 kW which shows the accuracy of the proposed AI-PRC. 
+At the same time, SG is increasing the output power gradually 
+due to its slower dynamic response. As SG power increases, the 
+The functionality of the proposed AI-based technique for 
+enhancing the transient response and resiliency of PEDG is 
+validated on two main setups: (i) an IEEE 14-bus network 
+shown in Fig. 1 that represents a realistic PEDG in 
+MATLAB/Simulink 
+environment, 
+(ii) 
+a 
+small-scale 
+experimental hardware setup emulating the characteristics of 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+ 
+ 
+ 
+(a)  
+(b)  
+(c)  
+ 
+ 
+ 
+(d)  
+(e)  
+(f)  
+Fig. 4. Case Study I illustrating 14-bus PEDG under 200 kW generation loss: (a) frequency dynamic without and with proposed AI-PRC in GFLI#6, (b) AI-
+PRC determined Pcorr before and after 200 kW generation loss, (c) power injection by GFLI#6, (d) output current dynamic of GFLI#6 (e) instantaneous ROCOF 
+with and without proposed AI-PRC, and (f) zoomed view of frequency without and with proposed AI-PRC. 
+ 
+ 
+(a) 
+ 
+(b) 
+ 
+(c) 
+ 
+(d) 
+ 
+(e) 
+Fig. 5. Case Study II illustrating PEDG under 120 kW generation loss and
+network reconfiguration: (a) frequency dynamics, (b) power injected by 
+GFLI#6, (c) AI-PRC determined Pcorr, (d) instantaneous ROCOF, (e) GFLI#6
+output current dynamics. 
+kW of this DER, the maximum power contribution of this DER 
+is confined to 30 kW. Line 14 was being operated at MV voltage 
+level and line 4 was at LV level. As a result, it is anticipated that 
+the power flow in the line 11 increases due to the power 
+AI-PRC adjusts the power reference setpoint of the GFLI 
+accordingly to its default value in about 4 s. Comparatively with 
+AI-PRC module, the nadir frequency has improved by 2 Hz and 
+the time required for frequency restoration is decreased by about 
+1332 ms when the GFLI supports the grid during transients. Fig. 
+4 (b) shows the correction value of active power that should be 
+added to the power set point of GFLI to support the frequency 
+during the transients. Moreover, Fig. 4 (c) shows the dynamic of 
+active power injected via AI-PRC equipped GFLI#6 and this 
+accurately follows its reference. Fig. 4 (d) illustrates the output 
+current dynamics of GFLI#6 during the occurred disturbance. 
+Similar to the corrected power reference, the current increases 
+in three stages and converge to its nominal value after the 
+disturbance is damped. Fig. 4 (e) provides exhaustive 
+information regarding instantaneous ROCOF for with and 
+without AI-PRC frequency restoration scenarios. As indicated, 
+the maximum ROCOF is 13.48 Hz/s when the AI-PRC is 
+deployed in the control loop of GFLI. This value reaches 25.18 
+Hz/s when GFLI does not contribute to frequency restoration. 
+Fig. 4 (f) demonstrates that the average ROCOF improves 
+approximately twice the time the AI-PRC approach is not 
+employed in the GFLI’s control loops. As indicated, the 
+maximum average ROCOF is -8.6 Hz/s when the AI-PRC is 
+deployed in the control loop of GFLI. This value reaches -16 
+Hz/s when GFLI does not contribute to frequency restoration.  
+Case Study II: To generalize the functionality of the 
+proposed approach in grid support during severe transient 
+disturbances, the grid structure is reconfigured and the limitation 
+of the GFLI power rating is considered during their frequency 
+restoration contribution in this case study. This physical 
+variation would have explicit impact on the X/R ratio of the grid 
+and the short circuit ratio (SCR). Both can affect the dynamic 
+response of the grid during severe disturbances. The scenario 
+provided in this case study thus validates that the trained neural 
+network is well generalized and can predict the frequency 
+trajectory when the physically modified understudy grid is 
+confronted with severe transient disturbances. As shown in Fig. 
+1, two different transmission lines located in critical points of 
+two different voltage level clusters committed to be 
+disconnected. The employed modification alters the basic power 
+flow paths remarkably. Assuming the power ratings are not 
+jeopardized in this scenario after reconfiguration, a 120-kW 
+power generation loss occurs in the understudy 14-bus network. 
+Here, the GFLI at bus 13 will support the grid in transients. This 
+DER has a power rating of 80 kW. Based on the local load of 50 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+ 
+(a) 
+ 
+(a) 
+ 
+(b) 
+ 
+(b) 
+Fig. 8. Case Study V illustrating robustness of the proposed AI-PRC to model 
+parameter mismatch that uses MPC for switching sequence generation: (a)
+active power reference tracking error with mismatch (MM) in the parameters 
+from the actual value, (b) Total harmonic distortion (THD) of the GFLI output 
+current with mismatch in the parameters from the actual value. 
+ 
+ 
+(c) 
+ 
+(d) 
+Fig. 6. Case Study III illustrating unplanned demand outage with a reconfigured 
+grid and modified total inertia to demonstrate the performance of the proposed 
+AI-PRC under different parameter variation: (a) frequency dynamics, (b) 
+instantaneous ROCOF, (c) power injected by GFLI#3, (d) GFLI#3 output 
+current dynamics. 
+ 
+ 
+(a) 
+ 
+(b) 
+Fig. 7. Case Study IV illustrating comparison between proposed AI-PRC and 
+state-of-the-art frequency restoration schemes (VSG and reverse-droop based 
+schemes) with respect to (a) frequency dynamics, (b) ROCOF. 
+contribution from GFLI#6. Fig. 5 (a) illustrates the frequency 
+excursion dynamic before and after this disturbance. As shown, 
+the frequency is restored beyond 59.9 Hz around 76 ms while 
+the frequency nadir differences with nominal value is kept in the 
+band of 0.23 Hz. Fig. 5 (b) shows the power contribution of the 
+GFLI during the transient by following the power correction AI-
+PRC’s command shown in Fig. 5 (c). As shown, the maximum 
+power contribution is around 20-30 kW to go along with the 
+power rating restriction. The ROCOF during the transients is in 
+an acceptable range as depicted in Fig. 5 (d). The current 
+dynamic of this inverter is illustrated in Fig 5 (e). As shown, the 
+current increases based on the dynamic change of power 
+reference. Hence, this case study highlights the effective 
+contribution of GFLIs in frequency restoration even by 
+considering inverter power rating limitations and grid 
+reconfiguration scenario. 
+Case Study III: this case study analyzes the impact of an 
+unplanned demand outage. At instant t = 7 s, 135 kW load is 
+decreased. The grid is reconfigured, the location of the 
+supportive GFLI is changed (located at bus#2) and the total 
+inertia of the grid is modified. Although the entire inertia of the 
+grid is an unknown parameter, by modifying the SG’s inertia 
+constant, total grid inertia would be affected, and this case study 
+can be an operational assessment of the trained neural network 
+in the frequency trajectory prediction practice. As expected, the 
+AI module ought to deliver a negative power reference to adjust 
+the GFLI power reference in a way that power injection to the 
+grid decreases although the inverter should sustain its local load 
+of 35 kW. In a steady state, the power injection was around 100 
+kW when the unplanned demand outage occurred. Frequency 
+and ROCOF dynamics are captured and assessed in Fig. 6 (a) 
+and (b) correspondingly. In more detail, a comparison of 
+frequency dynamics with and without deploying the AI-PRC in 
+GFLI control loops for the similar disturbance is shown by red 
+and blue plots respectively. As shown, frequency is controlled 
+lower than 60.5 Hz in 380ms. The frequency peak is suppressed 
+considerably when deploying the proposed approach. A 
+considerable improvement in ROCOF of 5 Hz/s is observed by 
+deploying the proposed AI-PRC (see Fig. 6 (b)). Fig. 6 (c) 
+shows the power dynamic of the GFLI. As expected, the 
+injected power is decreased and reached to a new level while 
+the predefined constraints of inverter local load power is not 
+jeopardized.  The disturbance is restrained by 2.5 s during the 
+time that SG declines its output power to make up a new supply-
+demand. Fig. 6 (d) shows the inverter current dynamics during 
+the grid support. The current gets the minimum acceptable 
+value by 200 ms to dampen the disturbance and raises to the 
+nominal value after about 130 ms.  
+Case Study IV: In this case study, we consider a network of 
+a GFMI and a GFLI that are connected as shown in Fig. 9 (b). 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+ 
+(a) 
+ 
+(b) 
+ 
+(a) 
+ 
+(c) 
+ 
+(d) 
+Fig. 10. Results for Case Study V illustrating experimental validation of
+proposed AI-PRC frequency restoration scheme: (a) frequency dynamics 
+without AI-PRC (VSG based frequency restoration), (b) frequency dynamics 
+with proposed AI-PRC, (c) power injected by GFLI with AI-PRC for frequency 
+restoration, (d) PCC voltage profile. 
+(b) 
+Fig. 9. (a) Hardware setup for experimental validation of the proposed AI-
+PRC scheme, (b) connection schematic between GFMI and GFLI in the 
+hardware testbed. 
+ 
+TABLE. I: SYSTEM SPECIFICATIONS 
+Parameter 
+Value & units 
+Dc link voltage Vdc 
+300 V 
+time and frequency deviation. Furthermore, Fig. 7 (b) provides 
+the ROCOF comparison for each method. As observed, the 
+proposed method provides the least ROCOF of 3 Hz/s ( blue 
+plot) in contrast to the ROCOF of 13.5 Hz/s obtained for the 
+other two control schemes (green and red plots).  
+Sampling time Ts 
+25 µs 
+Inverter side inductance L1 
+3.06 mH 
+Grid side inductance L2 
+1.364 mH 
+ Filter capacitor Cf 
+24.69 µF 
+Peak voltage Vg 
+ Grid Frequency fg 
+GFMI and GFLI rated power 
+GFMI local load 
+GFLI local load 
+Step Load 
+150 V 
+60 Hz 
+5000 W 
+30 Ω 
+22 Ω 
+20 Ω 
+ 
+Case study V: In this case study, the impact of model 
+parameter mismatch on the practicality and capability of the 
+proposed AI-PRC which uses an MPC-based modulator to 
+generate the switching sequences is studied. The absolute 
+reference tracking error of the active power for the introduced 
+mismatch of ±20 % in the values of L1, L2, and Cf is represented 
+in Fig. 8 (a). Total harmonic distortion (THD) of the output 
+current of the GFLI with the proposed AI-PRC under the same 
+mismatch is also depicted in Fig. 8 (b). As it is shown in this 
+case study, the proposed AI-PRC is robust to model parameter 
+mismatch.   
+B. Experimental Case Studies 
+The functionality of the proposed AI-PRC scheme is also 
+validated experimentally on a small-scale hardware setup 
+depicted in Fig. 9 (a). The schematic diagram of the connection 
+between GFMI and GFLI is illustrated in Fig. 9 (b). The 
+understudy hardware emulates a realistic dynamic of a network 
+of GFMI and GFLIs islanded cluster. Thus, voltage and 
+frequency are built and controlled via a relatively low-inertia 
+VSG-based GFMI. Also, a GFLI contributes to support the 
+local load. The specifications of the hardware components are 
+This case study compares the transient response of frequency 
+for three different frequency restoration schemes: VSG, droop-
+based, and the proposed AI-PRC scheme.  Fig. 7 (a) represents 
+the frequency response obtained from the various compared 
+GFLI control schemes in response to a load step change of 
+100%. The results show that the network experiences the least 
+frequency deviation with the value of 0.15 Hz (blue plot) when 
+equipped with the proposed AI-PRC while the frequency 
+deviations observed for other methods are 0.85 Hz (green plot 
+for VSG-based control scheme) and 0.9 Hz (red plot for reverse 
+droop-based control scheme). It is worth mentioning that the 
+frequency restoration times required for each method are 3 s 
+(for VSG-based), 0.6 s (reverse droop-based), and 0.4 s (for 
+proposed AI-PRC). These results indicate the superiority of the 
+proposed AI-PRC scheme in terms of minimum restoration 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+listed in Table. I. The GFLI and GFMI controllers are 
+implemented in dSPACE Microlabox.  
+Case Study VI: In this case study, the superiority of the 
+proposed AI-PRC approach is validated.  In the first scenario, 
+the frequency restoration is performed by the governor 
+(conventional PI-based) control loop of the VSG based GFMI 
+while in the second scenario the GFLI is equipped with the AI-
+PRC module to support restoring the frequency during the load 
+disturbance.  Specifically, a step load of around 1500 W is 
+applied on the grid. Fig. 10 (a) illustrates the frequency 
+dynamics with VSG based frequency restoration scheme. As 
+shown, the system frequency is restored to the nominal value. 
+However, the restoration time is around 11.45 s in this low 
+inertia grid, and this is due to the drawbacks of PI-based control 
+approaches. High proportional and integral gains can enhance 
+the restoration time, but those cannot be employed in practice. 
+Indeed, if a severe load disturbance occurs, the frequency drop 
+will push the protection relays to be triggered instantaneously. 
+Comparatively in the second scenario when GFLI is equipped 
+with the AI-PRC module for the frequency restoration support, 
+Fig. 10 (b) demonstrates system frequency dynamics. As 
+shown, the frequency is restored to the nominal value of 60 Hz 
+within 430 ms which is about 26 times faster as compared to 
+the VSG approach, considering the severity of the disturbance. 
+Furthermore, Fig. 10 (c) illustrate the output power dynamics 
+of GFLI with the proposed AI-PRC. The system supports the 
+extra load of 1.5 kW within 500 ms. Finally, the Fig. 10 (d) 
+shows the PCC voltage profile. Thus, the effectiveness of 
+proposed scheme is validated experimentally. This case study 
+shows the importance of re-defining the GFLI’s role at grid-
+edge in handling transient disturbances.   
+VI. 
+CONCLUSION 
+This paper proposes re-defining the role of GFLIs at the grid-
+edge via an AI-PRC mechanism to enhance the transient 
+response and resiliency of PEDG. A two-layer feedforward 
+ANN is learned by the Bayesian regularization algorithm which 
+facilitates the AI-PRC module to predict system frequency 
+trajectory and provide the proper amount of correction power 
+for GFLIs when the grid is subjected to disturbances. GFLI and 
+GFMI dynamic is extensively analyzed to create an accurate 
+data mining approach for the training of the ANN. Several 
+simulation and experimental case studies are provided that 
+demonstrate significant improvement in transient response and 
+resiliency in comparison with state-of-the-art frequency 
+restoration mechanism. 
+ACKNOWLEDGMENT 
+This publication was made possible by grants NPRP12C-
+33905-SP-213 and NPRP12C-33905-SP-220 from the Qatar 
+National Research Fund (QNRF is a member of Qatar 
+Foundation). The statements made herein are solely the 
+responsibility of the authors. 
+REFERENCES 
+[1] 
+A. Khan, M. Hosseinzadehtaher, M. B. Shadmand, S. Bayhan, and H. 
+Abu-Rub, "On the Stability of the Power Electronics-Dominated Grid: A 
+New Energy Paradigm," IEEE Industrial Electronics Magazine, vol. 14, 
+no. 4, pp. 65-78, 2020, doi: 10.1109/MIE.2020.3002523. 
+[2] 
+Q. Peng, Q. Jiang, Y. Yang, T. Liu, H. Wang, and F. Blaabjerg, "On the 
+Stability of Power Electronics-Dominated Systems: Challenges and 
+Potential Solutions," IEEE Transactions on Industry Applications, vol. 
+55, no. 6, pp. 7657-7670, 2019, doi: 10.1109/TIA.2019.2936788. 
+[3] 
+U. Markovic, O. Stanojev, P. Aristidou, E. Vrettos, D. Callaway, and G. 
+Hug, "Understanding Small-Signal Stability of Low-Inertia Systems," 
+IEEE Transactions on Power Systems, vol. 36, no. 5, pp. 3997-4017, 
+2021, doi: 10.1109/TPWRS.2021.3061434. 
+[4] 
+L. Meegahapola, P. Mancarella, D. Flynn, and R. Moreno, "Power system 
+stability in the transition to a low carbon grid: A techno-economic 
+perspective on challenges and opportunities," WIREs Energy and 
+Environment, vol. 10, no. 5, p. e399, 2021. 
+[5] 
+G. Yuan, "Grid-Forming Technologies Enabling a Decarbonized Power 
+System [Technology Leaders]," IEEE Electrification Magazine, vol. 10, 
+no. 1, pp. 7-9, 2022, doi: 10.1109/MELE.2021.3139204. 
+[6] 
+Y. Lin et al., "Research Roadmap on Grid-Forming Inverters," United 
+States, 2020-11-11 2020.  
+[7] 
+ R. Rosso, X. Wang, M. Liserre, X. Lu, and S. Engelken, "Grid-forming 
+converters: an overview of control approaches and future trends," in 2020 
+IEEE Energy Conversion Congress and Exposition (ECCE), 11-15 Oct. 
+2020 2020, pp. 4292-4299, doi: 10.1109/ECCE44975.2020.9236211.  
+[8] 
+E. A. A. Coelho, P. C. Cortizo, and P. F. D. Garcia, "Small-signal stability 
+for parallel-connected inverters in stand-alone AC supply systems," IEEE 
+Transactions on Industry Applications, vol. 38, no. 2, pp. 533-542, 2002, 
+doi: 10.1109/28.993176. 
+[9] 
+B. K. Poolla, D. Groß, and F. Dörfler, "Placement and Implementation of 
+Grid-Forming and Grid-Following Virtual Inertia and Fast Frequency 
+Response," IEEE Transactions on Power Systems, vol. 34, no. 4, pp. 
+3035-3046, 2019, doi: 10.1109/TPWRS.2019.2892290. 
+[10]  S. D’silva, M. Hosseinzadehtaher, M. B. Shadmand, S. Bayhan, H. Abu-
+Rub, and T. Huang, "Coordinated Power Reserve Control of PV Sources 
+For Frequency Restoration in Power Electronics Dominated Grid," in 
+2022 3rd International Conference on Smart Grid and Renewable Energy 
+(SGRE), 2022: IEEE, pp. 1-7.  
+[11] V. Gevorgian, "Highly accurate method for real-time active power reserve 
+estimation for utility-scale photovoltaic power plants," National 
+Renewable Energy Lab.(NREL), Golden, CO (United States), 2019.  
+[12] A. Khan, S. D. silva, A. Y. Fard, M. B. Shadmand, and H. Abu-Rub, "On 
+Stability of PV Clusters With Distributed Power Reserve Capability," 
+IEEE Transactions on Industrial Electronics, vol. 68, no. 5, pp. 3928-
+3938, 2021, doi: 10.1109/TIE.2020.2987291. 
+[13] Q. C. Zhong and G. Weiss, "Synchronverters: Inverters That Mimic 
+Synchronous Generators," IEEE Transactions on Industrial Electronics, 
+vol. 58, no. 4, pp. 1259-1267, 2011, doi: 10.1109/TIE.2010.2048839. 
+[14] V. Karapanos, P. Kotsampopoulos, and N. Hatziargyriou, "Performance 
+of the linear and binary algorithm of virtual synchronous generators for 
+the emulation of rotational inertia," Electric Power Systems Research, 
+vol. 123, pp. 119-127, 2015. 
+[15] Á. Ortega and F. Milano, "Combined Frequency and RoCoF Control of 
+Converter-Interfaced Energy Storage Systems," IFAC-PapersOnLine, 
+vol. 52, no. 4, pp. 240-245, 2019. 
+[16] J. Liu, Y. Miura, and T. Ise, "Comparison of Dynamic Characteristics 
+Between Virtual Synchronous Generator and Droop Control in Inverter-
+Based Distributed Generators," IEEE Transactions on Power Electronics, 
+vol. 31, no. 5, pp. 3600-3611, 2016, doi: 10.1109/TPEL.2015.2465852. 
+[17] D. Sun, H. Liu, S. Gao, L. Wu, P. Song, and X. Wang, "Comparison of 
+Different Virtual Inertia Control Methods for Inverter-based Generators," 
+Journal of Modern Power Systems and Clean Energy, vol. 8, no. 4, pp. 
+768-777, 2020, doi: 10.35833/MPCE.2019.000330. 
+[18] U. Tamrakar, D. Shrestha, M. Maharjan, B. P. Bhattarai, T. M. Hansen, 
+and R. Tonkoski, "Virtual Inertia: Current Trends and Future Directions," 
+Applied Sciences, vol. 7, no. 7, doi: 10.3390/app7070654. 
+[19] X. Meng, J. Liu, and Z. Liu, "A Generalized Droop Control for Grid-
+Supporting Inverter Based on Comparison Between Traditional Droop 
+Control and Virtual Synchronous Generator Control," IEEE Transactions 
+on Power Electronics, vol. 34, no. 6, pp. 5416-5438, 2019. 
+[20]  S. Syan and G. R. Biswal, "Frequency control of an isolated hydro power 
+plant using artificial intelligence," in 2015 IEEE Workshop on 
+Computational Intelligence: Theories, Applications and Future 
+Directions (WCI), 14-17 Dec. 2015 2015, pp. 1-5.  
+[21] Z. Yan and Y. Xu, "A Multi-Agent Deep Reinforcement Learning Method 
+for Cooperative Load Frequency Control of a Multi-Area Power System," 
+IEEE Transactions on Power Systems, vol. 35, no. 6, pp. 4599-4608, 
+2020, doi: 10.1109/TPWRS.2020.2999890. 
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+This article has been accepted for publication in IEEE Transactions on Industrial Electronics. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/TIE.2023.3265067
+Silvanus D’silva (S’18) He received his 
+Bachelors 
+in 
+Electronics 
+and 
+Telecommunication 
+Engineering 
+from 
+University of Mumbai, India (MU). He 
+obtained his M.Sc. in Electrical Engineering 
+from Kansas State University in 2020. 
+Currently, he is pursuing his Ph.D. degree in 
+Electrical Engineering from University of 
+Illinois Chicago.  
+        
+                           
+Mohammad B. Shadmand (M’15-SM’20) 
+received the Ph.D. degree in electrical 
+engineering from Texas A&M University, 
+College Station, TX, USA, in 2015. From 2017 
+to 2020, he was an Assistant Professor with the 
+Department of Electrical and Computer 
+Engineering, 
+Kansas 
+State 
+University, 
+Manhattan, KS, USA. Since 2020, he is an 
+Assistant Professor with the University of 
+Illinois at Chicago, IL, USA. Dr. Shadmand 
+was awarded Michelle Munson Serban Simu Keystone Research 
+Scholar, Kansas State University in 2017. He was awarded the 2019 
+IEEE Myron Zucker Faculty-Student Research Grant. He has awarded 
+multiple best paper awards at different IEEE conferences. He is the 
+General Co-Chair of 50th Annual Conference of the IEEE Industrial 
+Electronics Society (IECON 2024), Chicago, IL. He serves as 
+Associate Editor of IEEE Transactions on Industrial Electronics, IEEE 
+Transactions on Industry Application, and IET Renewable Power 
+Generation.  
+ 
+ 
+[22] Y. Liang, X. Zhao, and L. Sun, "A Multi-Agent Reinforcement Learning 
+Approach for Wind Farm Frequency Control," IEEE Transactions on 
+Industrial Informatics, pp. 1-10, 2022, doi: 10.1109/TII.2022.3182328. 
+[23]  S. Rozada, D. Apostolopoulou, and E. Alonso, "Load Frequency Control: 
+A Deep Multi-Agent Reinforcement Learning Approach," in 2020 IEEE 
+Power & Energy Society General Meeting (PESGM), 2-6 Aug. 2020 
+2020, pp. 1-5, doi: 10.1109/PESGM41954.2020.9281614.  
+[24] S. Vazquez et al., "Model predictive control: A review of its applications 
+in power electronics," IEEE industrial electronics magazine, vol. 8, no. 
+1, pp. 16-31, 2014. 
+[25] M. F. Umar et al., "Single-Phase Grid-Interactive Inverter With 
+Resonance Suppression Based on Adaptive Predictive Control in Weak 
+Grid Condition," IEEE Journal of Emerging and Selected Topics in 
+Industrial Electronics, vol. 3, no. 3, pp. 809-820, 2022. 
+[26]  W. Dan, T. Fen, J. C. Vasquez, and J. M. Guerrero, "Control and analysis 
+of droop and reverse droop controllers for distributed generations," in 
+2014 IEEE 11th International Multi-Conference on Systems, Signals & 
+Devices (SSD14), 11-14 Feb. 2014 2014, pp. 1-5.  
+[27] J. Liu, Y. Miura, and T. Ise, "Comparison of dynamic characteristics 
+between virtual synchronous generator and droop control in inverter-
+based distributed generators," IEEE Transactions on Power Electronics, 
+vol. 31, no. 5, pp. 3600-3611, 2015. 
+[28]  S. D'Arco and J. A. Suul, "Virtual synchronous machines—Classification 
+of implementations and analysis of equivalence to droop controllers for 
+microgrids," in 2013 IEEE Grenoble Conference, 2013: IEEE, pp. 1-7.  
+ 
+ 
+Mohsen Hosseinzadehtaher (S’18) received 
+his M.Sc. degree in electrical engineering from 
+Amirkabir University of Technology, Tehran, 
+Iran, in 2014. He is currently pursuing the Ph.D. 
+degree in Electrical and Computer Engineering 
+Department at University of Illinois at Chicago, 
+USA.  
+ 
+ 
+Alireza Zare has received his B.Sc degree in 
+electrical engineering with a focus on power 
+engineering from Shiraz University, Shiraz, 
+Iran, in 2017 . He has received his MS degree 
+at Washington State University, Vancouver, 
+WA, USA in 2020. He has joined the electrical 
+and computer engineering department at the 
+University of Illinois Chicago as a PhD student 
+starting fall 2021.  
+ 
+ 
+Ahmad Khan (S’17) received his B.Sc. and 
+M.Sc. degrees in electrical engineering from 
+Qatar University, Doha, Qatar in 2014 and 
+2017, respectively. He is currently pursuing the 
+Ph.D. degree in Electrical and Computer 
+Engineering Department at University of 
+Illinois at Chicago, IL, Chicago, USA.   
+ 
+ 
+ 
+ 
+Muhammad F. Umar (S’18) received the 
+B.Sc. degree in Electrical engineering from 
+Lahore University of Management Sciences, 
+Pakistan, in 2014. He has done Masters in 
+Electrical Power Engineering from U.S. 
+Pakistan Center for Advanced Studies in 
+Energy, National University of Sciences and 
+Technology, Pakistan in 2018. Currently, he is 
+pursuing the Ph.D. degree at University of 
+Illinois at Chicago, USA.  
+This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/

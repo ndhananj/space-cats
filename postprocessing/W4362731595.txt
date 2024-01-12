@@ -1,0 +1,1458 @@
+Advances in Applied Mathematics and Mechanics
+Adv. Appl. Math. Mech., Vol. xx, No. x, pp. 1-26
+DOI: 10.4208/aamm.OA-2022-0159
+xxx 2023
+DPK: Deep Neural Network Approximation of the First
+Piola-Kirchhoff Stress
+Tianyi Hu1,2, Jerry Zhijian Yang2,3,1 and Cheng Yuan2,3,∗
+1 Institute of Artiﬁcial Intelligence, School of Computer Science, Wuhan University,
+Wuhan, Hubei 430072, China
+2 School of Mathematics and Statistics, Wuhan University, Wuhan, Hubei 430072,
+China
+3 Hubei Key Laboratory of Computational Science, Wuhan University, Wuhan,
+Hubei 430072, China
+Received 14 June 2022; Accepted (in revised version) 9 November 2022
+Abstract. This paper presents a speciﬁc network architecture for approximation of the
+ﬁrst Piola-Kirchhoff stress. The neural network enables us to construct the constitutive
+relation based on both macroscopic observations and atomistic simulation data. In
+contrast to traditional deep learning models, this architecture is intrinsic symmetric,
+guarantees the frame-indifference and material-symmetry of stress. Speciﬁcally, we
+build the approximation network inspired by the Cauchy-Born rule and virial stress
+formula. Several numerical results and theory analyses are presented to illustrate the
+learnability and effectiveness of our network.
+AMS subject classiﬁcations: 68T07, 65Z05, 41A29
+Key words: Piola-Kirchhoff stress, deep neural networks, Cauchy-Born rule.
+1
+Introduction
+Atomistic-based constitutive relation has played a critical role in multiscale modeling.
+With a proper description of macroscopic stress in the form of atomistic information, we
+can couple models based on continuum mechanics with models at microscopic scale [1],
+such as molecular dynamics (MD) and molecular statics (MS). In the last few decades,
+many research on the formulation [2–6], application [7–10] and simpliﬁcation [11, 12] of
+various kinds of atomistic stress has been done. Among these, a well known and widely
+used atomistic-based stress for equilibrium and homogeneous system is the virial stress,
+which is ﬁrstly studied by Clausius in 1870 [13]. Formally, the virial stress is a sum of
+∗Corresponding author.
+Emails:
+hutianyi@whu.edu.cn (T. Hu), zjyang.math@whu.edu.cn (J. Yang), yuancheng@whu.edu.cn
+(C. Yuan)
+http://www.global-sci.org/aamm
+1
+c⃝2023 Global Science Press
+2
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+the multiplications of atoms positions and force, which can be easily computed in the
+molecular simulations. In practical multiscale modeling, however, we need to repeat
+this interatomic calculation in each coarse-grained patch [9, 10]. As a consequence, an
+easier-to-compute deformation-stress relation with atomic-level accuracy would make
+the multiscale modeling even more efﬁcient.
+On the other hand, with recent development of deep learning (DL) in traditional arti-
+ﬁcial intelligence (AI) domains, such as face recognition in computational visual (CV) and
+text classiﬁcation in natural language processing (NLP), a lot of successes has also been
+achieved in the application of DL to scientiﬁc computation [14], e.g., using deep learn-
+ing in speeding up the MD simulations [15, 16], solving differential equations [17–21],
+sampling equilibrium states in statistic mechanics [22], predicting multiphase ﬂow [23],
+and identifying the constitutive law [24]. A signiﬁcant difference in the utilization of
+DL in scientiﬁc computation from traditional AI problems is that, various constraints
+informed by different physical laws or boundary conditions must be considered. As a
+result, a physics-informed network is often wanted for the satisfaction of physical con-
+straint. Furthermore, with a neural network enhanced by some physical knowledge, we
+can use less data in the training procedure.
+In this article, we would build a special physics-informed network architecture for
+representation of the Piola-Kirchhoff stress (PK stress) in Lagrangian coordinates. Dif-
+ferent from several existing works on the learning of constitutive relations with direct
+or indirect observed data by continuum model [25–28], we learn the PK stress directly
+from atomistic data driven by virial formulation, which supply the learning stress with
+an atomic-level accuracy. Furthermore, by constructing the network with symmetric op-
+erations in the crystallographic point symmetry group, this stress network is intrinsic
+symmetric, in the sense that the frame-indifference and material-symmetry of stress is
+exactly satisﬁed. In summary, our main contributions are as follows:
+• We propose a novel deep neural network (DPK), for the representation of PK stress.
+• The DPK stress is intrinsic symmetric and can be trained by virial stress.
+• Several numerical results and theory analysis are given to illustrate the learnability,
+transferability and effectiveness of DPK.
+The rest of this paper is organized as follows. In Section 2 we ﬁrst review the PK stress
+and virial formulation, then propose the DPK stress and its simpliﬁcation version. Sev-
+eral theorems on the symmetry, approximation and learnability will also be presented.
+After that, some numerical results will be shown in Section 3 to demonstrate the effec-
+tiveness and transferability of the simpliﬁed DPK stress. Finally in Section 4 we will give
+our main conclusions.
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+3
+2
+Symmetric neural networks for PK stress
+In continuum thermodynamics, for simple elastic material the ﬁrst PK stress is deﬁned
+as the derivative of the Helmholtz free energy density Ψ(F,T) with respect to the defor-
+mation tensor F:
+P(F,T)= ∂Ψ(F,T)
+∂F
+.
+(2.1)
+At zero temperature, the free energy density in above deﬁnition should be replaced as
+the strain energy density [29]:
+P(F)= ∂W(F)
+∂F
+.
+(2.2)
+Two important constraints should be satisﬁed by these relations [30]:
+P(QF)=QP(F),
+∀Q∈SO(3),
+(2.3a)
+P(F)=P(FH)HT,
+∀H∈G,
+(2.3b)
+where SO(3) stands for the proper orthogonal group and G refers to the material symme-
+try group. The ﬁrst constraint (2.3a) is due to the principle of material frame-indifference,
+meaning that the constitutive relations should be invariant when the frame is changed.
+The second constraint (2.3b) results from the material symmetry, which requires that the
+response of the material should be unaltered if symmetric transformation was applied to
+reference conﬁguration before the deformation. The Group consists of such symmetric
+transformations is deﬁned as the material symmetry group G.
+In the following sections, we will focus on the construction of deep symmetric net-
+work Pθ(F) to represent the ﬁrst PK stress (DPK). By symmetric we mean the network
+can exactly satisfy the two constraints (2.3a) and (2.3b).
+2.1
+Cauchy-Born rule and virial stress
+In order to design an intrinsic symmetric deep network to learn the stress, we ﬁrst review
+the deﬁnition of PK stress in atomic level and verify the constraints above. Consider a
+material consists of N atoms, of which we denote the i-th atom’s reference position, de-
+formed position and force as Xi, xi and fi respectively. For both pair-wise interatomic po-
+tential and multi-body potential system (e.g., embedded atom method, EAM), the force
+fi can be decomposed as the sum of pair force form:
+fi =∑
+j̸=i
+fij,
+(2.4)
+where the pair force fij is deﬁned as the minus derivative of total potential V with respect
+to rij =xi−xj:
+fij =−∂V(r12,···,rij,···)
+∂rij
+=−∂V(r12,···,rij,···)
+∂rij
+rij
+rij
+.
+(2.5)
+4
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+Here we write the norm of rij as rij. According to the Cauchy-Born rule, when a small de-
+formation F is applied to this system at zero temperature, the atoms will move uniformly
+to the deformed states x = FX. Denote Xij = Xi−Xj and let Ω be the system volume in
+reference conﬁguration, the atomistic PK stress of current system can be calculated from
+deﬁnition (2.2):
+P(F)= 1
+Ω
+∂V(|FX12|,···,|FXij|,···)
+∂F
+=− 1
+2Ω∑
+i ∑
+j̸=i
+fij⊗Xij.
+(2.6)
+It is worth mentioning that in (2.5), the potential V depends only on C2
+n = N(N−1)
+2
+pair
+distance rij,i<j with rji =rij. An alternative expression of the potential is:
+2
+,···, (rij+rji)
+˜V(r12,r21,···,rij,rji,···)=V
+(r12+r21)
+2
+,···
+
+.
+(2.7)
+In this way the stress (2.6) can be formulated as
+P(F)= 1
+∂rij
+Ω∑
+j̸=i
+1
+rij
+FXij⊗Xij
+i
+,
+(2.8)
+h∂ ˜V(|FX12|,···,|FXij|,···)
+where rij = |FXij|. An advantage of (2.7) is that we can explicitly express the symmetry
+of the potential function: for any permutation τ of I =[1,2,···,N], we can deﬁne ψ(i,j)=
+(τ(i),τ(j)) as an one-to-one map of I×I. With this notation, the symmetry of the potential
+can be expressed as
+˜V(···,rψ(ij),···)= ˜V(···,rij,···).
+We would use V (rather than ˜V) to stands for the alternative expression in (2.7) here-
+inafter unless otherwise stated.
+The formula (2.6) is also known as the virial stress, which is commonly used in the
+modeling of homogeneous system in equilibrium. With this expression we can model
+the macro constitutive relations by using atomistic information. In addition to the ability
+of computing stress with atomic-level accuracy, formula (2.6) (or equivalently formula
+(2.8)) is exactly in conformity with the two constraints (2.3a) and (2.3b). More explicitly,
+we have the following result:
+Theorem 2.1 (Symmetry of virial stress). For a given crystal system with periodic boundary
+condition, suppose the potential V is a symmetric function, let P(F) be the stress deﬁned by
+(2.8), then the constraint (2.3a) holds for any Q in SO(3), and (2.3b) holds for any H in the
+crystallographic symmetry group (point symmetry group Gp, [30]).
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+5
+Proof. According to formula (2.8), for any Q in SO(3),
+P(QF)= 1
+∂rij
+Ω∑
+j̸=i
+h∂V(|QFX12|,···,|QFXij|,···)
+1
+rij
+QFXij⊗Xij
+i
+=Q 1
+∂rij
+Ω∑
+j̸=i
+h∂V(|FX12|,···,|FXij|,···)
+1
+rij
+FXij⊗Xij
+i
+=QP(F).
+(2.9)
+Which validate the constraint (2.3a).
+Now consider any transformation H in the point symmetry group Gp. By deﬁni-
+tion the transformed conﬁguration is invariant with the original one, namely we have
+a one-to-one map φH such that HXi = XφH(i) holds for any i ≤ N, indicating that φH is a
+permutation of the index set I =[1,2,···,N]. Furthermore we can deﬁne the permutation
+map of I×I by ψH((i,j))=(φH(i),φH(j)), which satisﬁes that
+HXij =XψH(ij).
+(2.10)
+Applying this to right hand side of (2.3b) together with (2.8), we can obtain that
+1
+P(FH)HT = 1
+∂rij
+Ω∑
+j̸=i
+|FHXij|FHXij⊗XijHTi
+h∂V(···,|FHXij|,···)
+1
+= 1
+∂rij
+Ω∑
+j̸=i
+h∂V(···,|FXψH(ij)|,···)
+|FXψH(ij)|FXψH(ij)⊗XψH(ij)
+i
+1
+= 1
+∂rψH(ij)
+Ω∑
+j̸=i
+h∂V(···,|FXij|,···)
+rψH(ij)
+FXψH(ij)⊗XψH(ij)
+i
+=P(F).
+(2.11)
+The last two equalities are due to the facts that V is symmetric and ψH is a permutation
+map of I×I respectively. Thus we have proved the second constraint (2.3b) holds for
+(2.6).
+Notice that different from the material symmetry group G mentioned in (2.3b), we
+restrict the symmetry group in Theorem 2.1 to the point symmetry group Gp, according
+to the hypothesis on crystalline solids given by BD Coleman [30]. This restriction is also
+known as the Neumann’s Principle, which states that the symmetry of physical property
+for crystal must include the point group of the crystal [31].
+In the proof of Theorem 2.1, we can see that the symmetry of virial stress results
+from the intrinsic symmetry of potential function and crystal structure, which leads to
+the following heuristic network architecture.
+6
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+2.2
+DPK: deep neural networks for PK stress
+Inspired by the virial stress, we design the deep symmetry network as follows. For a
+given crystal material, we denote the crystallographic point symmetry group as Gp. For
+any ﬁnite 3-dimensional trainable weight vectors W = {w1,···,wN}, the symmetrized
+weights ˜W is deﬁned as the image set of Gp on W:
+˜W={Hiwj|Hi ∈Gp, wj ∈W}.
+(2.12)
+By construction ˜W={ ˜w1,···, ˜wM} is an invariant subset of Gp: for any H∈Gp, H ˜W= ˜W.
+Namely H deﬁnes a permutation φH of [1,2,···,M] by
+˜wφH(i) =H ˜wi.
+(2.13)
+With this we can deﬁne the deep symmetry network as follows:
+Deﬁnition 2.1 (DPK). Let W={w1,···,wN} be N trainable 3-dimensional weight vectors and
+˜W the symmetrized weights deﬁned above, denote g(x;θ)=hn◦an−1◦···◦a1◦h1(x) as the classical
+dense neural network (DNN) with linear functions hi(x;θi) and activation function ai(x), the
+deep symmetric network for PK stress is deﬁned as
+∂ f
+∂xi
+(|F ˜w1|,···,|F ˜wM|;θ)
+1
+Pθ,W(F)=F
+M
+∑
+i=1
+|F ˜wi| ˜wi⊗ ˜wi,
+(2.14)
+where
+f (x,θ)= 1
+M! ∑
+τ∈SM
+g(τ(x);θ)
+with SM stands for all the permutations of [1,2,···,M].
+The architecture of this network is illustrated in Fig. 1. At ﬁrst glance, formula (2.14)
+is quite similar with the virial stress (2.8) in form. Indeed, we can view the symmetrized
+trainable weights ˜W as conﬁguration coordinates of some virtual atoms, and ∂ f
+∂xi as virtual
+force between such atoms. Nevertheless, with the trainable parameters W and trainable
+network g, there are at least three advantages to learning with such architecture:
+• The DPK satisﬁes the symmetry constraints (2.3a) and (2.3b) exactly.
+• The virial stress can be well approximated by DPK stress. Meanwhile, we can learn
+the DPK stress by using data from both macroscopic observation and atomistic
+modeling.
+• By training DPK with enough data, we may expect to get a virtual system ˜W which
+is much smaller than the atoms system in virial stress, resulting in a faster compu-
+tation of stress compared with (2.6).
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+7
+Figure 1: The network architecture of DPK.
+The ﬁrst two statements is proved by following theorems, while the third statement will
+be illustrated by the subsequent numerical results.
+Theorem 2.2 (Symmetry of DPK). For a given crystal system with crystallographic symmetry
+group Gp, let Pθ,W(F) be the DPK stress deﬁned by (2.14), then the constraint (2.3a) holds for
+any Q in SO(3), and (2.3b) holds for any H in Gp.
+Proof. The proof is a reprise of the argument in Theorem 2.1. Actually, with the fact that
+1
+M! ∑τ∈SM g(τ(x);θ) is a symmetric function of x and formula (2.13), we have
+∂ f
+∂xi
+(|QF ˜w1|,···,|QF ˜wM|;θ)
+1
+Pθ,W(QF)=QF
+M
+∑
+i=1
+|QF ˜wi| ˜wi⊗ ˜wi
+∂ f
+∂xi
+(|F ˜w1|,···,|F ˜
+wM|;θ)
+1
+=QF
+M
+∑
+i=1
+|F ˜wi| ˜wi⊗ ˜wi
+=QPθ,W(F)
+(2.15)
+and
+∂ f
+∂xi
+(|FH ˜w1|,···,|FH ˜wM|;θ)H ˜wi⊗ ˜wiHT
+Pθ,W(FH)HT =F
+M
+∑
+i=1
+|FH ˜wi|
+∂ f
+∂xi
+(|F ˜wφH(1)|,···,|F ˜wφH(M)|;θ)
+˜wφH(i)⊗ ˜wφH(i)
+=F
+M
+∑
+i=1
+|F ˜wφH(i)|
+∂ f
+∂xφH(i)
+(|F ˜w1|,···,|F ˜wM|;θ)
+˜wφH(i)⊗ ˜wφH(i)
+=F
+M
+∑
+i=1
+|F ˜wφH(i)|
+=Pθ,W(F).
+(2.16)
+8
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+We complete the proof.
+In addition of symmetry, the DPK also has a good representation ability of the virial
+stress under certain conditions. To show this, we ﬁrst introduce the Sobolev space and
+some existing result on the approximation of DNN, then a theorem on the DPK approxi-
+mation will be presented.
+Deﬁnition 2.2 (Sobolev space). Let n ∈ N and 1 ≤ p ≤ ∞, the Sobolev space Wn,p on the M
+dimensional region Ω is deﬁned as
+Wn,p(Ω)={ f ∈ Lp(Ω)|∥Dα f ∥Lp(Ω) <∞, ∀α∈NM with |α|≤n}
+(2.17)
+with the norm being deﬁned as
+∥ f ∥Wn,p =
+
+∑
+0≤|α|≤n
+∥Dα f ∥p
+Lp
+1/p
+,
+1≤ p<∞,
+(2.18a)
+∥ f ∥Wn,∞ = max
+0≤|α|≤n∥Dα f ∥L∞.
+(2.18b)
+Lemma 2.1 ([32, Corollary 4.2]). Let V ∈Wn,p((0,1)M) with n >1, n ∈N and 1≤ p ≤ ∞. If
+∥V∥Wn,p((0,1)M) ≤ B for some B, then for any 0< ϵ < 1
+2 and 0≤ s ≤ 1 there exists a dense neural
+network g(x) with ReLU as the activation function and constant c(M,n,p,B,s) independent of ϵ
+such that
+∥V−g∥Ws,p((0,1)M) ≤ϵ,
+(2.19)
+while the number of neurons K is bounded as
+K≤c(M,n,p,B,s)ϵ−M/(n−s)log2
+2(ϵ−n/(n−s)).
+(2.20)
+Theorem 2.3 (Approximation of DPK). For a ﬁnite crystal system consists of N atoms with
+symmetric potential V satisfying ∥Xij∥2 <1 for any j̸=i, if there exists some n>1, B< ∞ such
+that
+∥V∥Wn,∞((0,1)N(N−1)) < B,
+then for any ϵ∈(0,1/2) there exists a DPK function P0 such that
+∥Pvirial(F)−P0(F)∥F ≤ϵ,
+(2.21)
+if ∥FXij∥2 <1. Here ∥·∥F represents the Frobenius norm and Pvirial(F) is the virial stress deﬁned
+by (2.8).
+Proof. To begin with, we denote M= N(N−1) and ˜X(i−1)∗N+j =Xij for j̸=i. Thus
+{ ˜X1,···, ˜XM}={X12,···,XN−1,N}.
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+9
+By (2.8), the virial stress can be written as
+Pvirial(F)= 1
+∂V
+∂xi
+(|F ˜X1|,···,|F ˜XM|)
+1
+ΩF
+M
+∑
+i=1
+|F ˜Xi|
+˜Xi⊗ ˜Xi.
+(2.22)
+According to Lemma 2.1, given the potential function V∈Wn,∞((0,1)M) with norm bounded
+by B, for any ϵ∈(0,1/2), there exits a ReLU activated DNN g0(x;θ) such that
+∥V−g0∥W1,∞ ≤ϵΩ/M.
+(2.23)
+Consequently, for the symmetrized function
+f0(x,θ)= 1
+M! ∑
+τ∈SM
+g0(τ(x);θ),
+we have
+∥V− f0∥W1,∞ =∥V− 1
+M! ∑
+τ∈SM
+g0(τ(x);θ)∥W1,∞
+=∥ 1
+M! ∑
+τ∈SM
+(V(τ(x);θ)−g0(τ(x);θ))∥W1,∞
+≤ 1
+M! ∑
+τ∈SM
+∥(V(τ(x);θ)−g0(τ(x);θ))∥W1,∞
+≤ϵΩ/M.
+(2.24)
+Consider the special DPK function with wi = ˜Xi and g= 1
+Ω g0:
+P0(F)= 1
+∂ f0
+∂xi
+(|F ˜X1|,···,|F ˜XM|;θ)
+1
+ΩF
+M
+∑
+i=1
+|F ˜Xi|
+˜Xi⊗ ˜Xi,
+(2.25)
+compared with the virial stress we can obtain
+∂(V− f0)
+∥Pvirial(F)−P0(F)∥F =∥ 1
+∂xi
+(|F ˜X1|,···;θ)
+1
+ΩF
+M
+∑
+i=1
+|F ˜Xi|
+˜Xi⊗ ˜Xi∥F
+1
+Ω∥ F ˜Xi
+∂xi
+|
+≤
+M
+∑
+i=1
+|F ˜Xi| ⊗ ˜Xi∥F·|∂(V− f0)
+∥ ˜Xi∥2
+Ω
+·|∂(V− f0)
+∂xi
+|
+(2.26)
+≤
+M
+∑
+i
+≤ M
+Ω ·∥V− f0∥W1,∞
+(2.27)
+≤ϵ,
+(2.28)
+where we have used (2.24), condition ∥Xij∥2<1 and the fact ∥α⊗β∥F=∥α∥2∥β∥2 in (2.28),
+(2.27) and (2.26) correspondingly.
+10
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+It should be pointed out that Theorem 2.3 illustrates that the approximation error of
+DPK can be arbitrarily small by construction. In practice, however, we will hope to get a
+network with smaller size (in the meaning of W) and simpler architecture f than (2.25),
+which can be calculated more efﬁciently.
+2.3
+A simpliﬁed network inspired by harmonic approximation
+The DPK architecture introduced above supplies us with a strong approximation tool
+which can exactly satisfy the symmetry conditions. On the other hand, an overcompli-
+cated architecture may lead to over-ﬁtting and be hard to converge. More speciﬁcally, the
+sum term
+f (x,θ)= 1
+M! ∑
+τ∈SM
+g(τ(x);θ)
+with a large M introduce an intolerable computation complexity (for every x, we need
+M! forward propagations of g to get the value of f (x)), which requires a large number of
+calculations in both training and inference procedure. In this section we will introduce a
+simpliﬁed architecture while keeping its symmetry and approximation capability.
+In solid state physics, the quasi-harmonic approximation is a classical method to sim-
+plify the calculation of free energy at ﬁnite temperature. By using Taylor expansion of the
+potential function V around some uniform deformed state, the free energy can be written
+as a sum over vibrational modes. At zero temperature, we can similarly take the Taylor
+expansion of V(x) around the perfect state X=[X1;X2;···;XN]:
+V(F◦X)=V(X)+ 1
+2(F◦X−X)TD(X)(F◦X−X),
+(2.29)
+where F◦X = [FX1;FX2;···;FXN] and D(X) is the force constant matrix. The ﬁrst order
+term vanishes since X is a stable state. Let u = F◦X−X and ξ be a point in the ﬁrst
+Brillouin zone B, by deﬁning the Fourier transforms as
+ˆu(ξ)=
+1
+√
+N
+N
+N
+∑
+m=1
+ume−iξ·Xm,
+ˆD(ξ)=
+1
+√
+N
+∑
+m=1
+Dm,1e−iξ·Xi,
+(2.30)
+the quadratic term in (2.29) can be written as [12]
+1
+2uTDu= 1
+2 ∑
+ξ∈B
+ˆu(ξ)T ˆD(ξ) ˆu(ξ).
+(2.31)
+Thus we can approximate the potential V(F◦X) as
+V(F◦X)=V(X)+ 1
+2 ∑
+ξ∈B
+ˆu(ξ)T ˆD(ξ) ˆu(ξ),
+(2.32)
+namely the potential can be decomposed as the sum over ﬁnite different virtual atoms
+with displacement ˆu(ξ) and single atom potential 1
+2 ˆu(ξ)T ˆD(ξ) ˆu(ξ).
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+11
+Inspired by this decomposition, we could assume the virtual potential function f in
+(2.14) as
+f (x1,x2,···,xM;θ)=
+M
+∑
+i=1
+g(xi;θ),
+(2.33)
+where g(x) = hn◦an−1◦···◦a1◦h1(x) is the classical DNN function. Applying (2.33) to
+(2.14), we can obtain the ﬁrst simpliﬁcation of DPK (denoted as DPK0) as:
+dg
+dx(|F ˜wi|;θ)
+1
+PDPK0
+θ,W (F)=F
+M
+∑
+i=1
+|F ˜wi| ˜wi⊗ ˜wi.
+(2.34)
+In practice, however, the loss of this form is hard to be convergent since |F ˜wi| is in
+the denominator, a small value of ˜wi may lead to the inaccuracy and inefﬁciency in both
+training and predicting. Furthermore, due to the fact that derivative of ReLU always
+equals to zeros when x < 0, a well-known gradient vanishing phenomenon may occur
+during the computation of dg
+dx, which also makes the training hard to converge (as we will
+see in the following numerical results). Consequently, we can embed this denominator
+term and the derivative operation into the DNN function ˜g by representing
+1
+x g′(x;θ)= ˜g(x; ˜θ),
+where ˜g(x; ˜θ) is a new DNN function. In this case the new simpliﬁed DPK (denoted as
+DPK2) can be written as:
+Deﬁnition 2.3 (simpliﬁed DPK). Let W, ˜W be deﬁned as in Deﬁnition 2.1 and ˜g be a DNN
+function, the simpliﬁed DPK is deﬁned as
+PDPK2
+θ,W (F)=F
+M
+∑
+i=1
+˜g(|F ˜wi|; ˜θ) ˜wi⊗ ˜wi.
+(2.35)
+Notice that this formula is indeed much simpler than (2.14), in the sense that we
+use the sum of an identical univariate function ˜g(x;θ) to represent the potential. The
+interatomic interactions are embedded in the virtual atoms wi. In the meanwhile, since
+f (x) in (2.33) is symmetric, the simpliﬁed DPK still meets the symmetry constraints (2.3a)
+(2.3b).
+Theorem 2.4 (Symmetry of simpliﬁed DPK). For a given crystal system with crystallographic
+symmetry group Gp, let Pθ,W(F) be the simpliﬁed DPK stress deﬁned by (2.35), then the con-
+straint (2.3a) holds for any Q in SO(3), and (2.3b) holds for any H in Gp.
+12
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+Proof. We have
+Pθ,W(QF)=QF
+M
+∑
+i=1
+˜g(|QF ˜wi|;θ) ˜wi⊗ ˜wi
+=QF
+M
+∑
+i=1
+˜g(|F ˜wi|;θ) ˜wi⊗ ˜wi
+=QPθ,W(F)
+(2.36)
+and
+Pθ,W(FH)HT =F
+M
+∑
+i=1
+˜g(|FH ˜wi|;θ)H ˜wi⊗ ˜wiHT
+=F
+M
+∑
+i=1
+˜g(|F ˜wφH(i)|;θ) ˜wφH(i)⊗ ˜wφH(i)
+=Pθ,W(F).
+(2.37)
+This completes the proof.
+The approximation ability and effectiveness of (2.35) will be illustrated numerically
+in the following section. Additionally, we can prove that the estimation error (general-
+ization error) of (2.35) can be arbitrarily small with sufﬁcient large number of training
+samples, i.e., the simpliﬁed DPK function space deﬁnes a learnable hypothesis class.
+Theorem 2.5 (Learnability of simpliﬁed DPK). Let A={Pθ,W} be the class of DPK functions
+deﬁned by (2.35) satisfying that ˜g(x; ˜θ) has l ≥ 2 layers, Nw weights (bounded by V), Lipschitz
+continuous activation function with Lipschitz coefﬁcient L>1/V and each unit maps into [−b,b]
+for some b>0. Given the training samples Sm={(F1,P1),···,(Fm,Pm)} according to independent
+identical distribution D on [−1,1]3×3×[−1,1]3×3 and loss function
+l( f (X),Y)= 1
+9∑
+i,j
+l0( fij(X),Yij)
+for
+f ∈A,
+(2.38)
+where l0(x,y) = |x−y|, then for any approximate sample error minimization (SME, [33]) algo-
+rithm M and ϵ≤2max{b,V,
+√
+3V},δ>0, there exits some m0(ϵ,δ,A)<∞ such that ∀m>m0,
+with probability at least 1−δ, M returns a function P∗ ∈A satisfying
+E(x,y)∼D[l(P∗(x),y)]< inf
+f ∈AE(x,y)∼D[l( f (x),y)]+ϵ.
+(2.39)
+In practice, the conditions of ˜g are indeed satisﬁed since we will use the ReLU as acti-
+vation function and bound the network weights by using an l1 regularization. The proof
+of above theorem utilizes some classical tools in learning theory, such as fat-shattering di-
+mension. In the appendix we will ﬁrst list some existing results and then give our proof
+of Theorem 2.5.
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+13
+3
+Numerical results
+In this section several numerical results will be presented to verify the effectiveness of
+our simpliﬁed DPK model (2.35). We chose two different crystalline systems, the α-Fe
+and NiAl alloy to illustrate the learning ability of DPK.
+3.1
+Learning the virial stress of α-Fe
+As our ﬁrst example, we use a 15×15×15×2 BCC crystal system with periodic boundary
+condition to calculate the PK stress. The training and testing data is generated by virial
+formula (2.6). For the molecular simulation, the interatomic interaction is chosen as the
+analytic EAM potential proposed by [34], which is C3 smooth. The input deformation
+and output stress are set as
+F=
+
+
+
+1+a11
+a12
+0
+0
+1
+0
+0
+0
+1
+,
+P=Pvirial(F),
+(3.1)
+where a11 and a12 are random variables sampled from a unifrom distribution over
+[−0.1,0.1]. In practice, we samples 20000 data by (3.1) and split it into training and testing
+data equally. The target stress ﬁeld is plotted in Fig. 2.
+For the network architecture, we choose N (size of W) as 50, and the size of point
+symmetry group for BCC crystal is 48, which include the symmetry operations gener-
+ated by rotation, inversion and mirror transformation [30]. Thus the total number of
+virtual atoms is 50×48=2400. The DNN network ˜g(x, ˜θ) consists of 8 hidden layers with
+width being 50, 80, 60, 60, 50, 40, 30, 20 and ReLU as the active function. As to the opti-
+mization procedure, we use the Adam algorithm in batch training with batch size being
+40, and select the mean absolute error (MAE) together with an l1 regularization of net-
+work weights as our optimization objective. In order to better illustrate the advantage of
+simpliﬁed DPK (2.35) (denoted by DPK2) over (2.34) (denoted by DPK0), we also plot the
+training result of DPK0 and the intermediate form DPK1 which is deﬁned as
+PDPK1
+θ,W (F)=F
+M
+∑
+i=1
+g(|F ˜wi|;θ)
+1
+|F ˜wi| ˜wi⊗ ˜wi.
+(3.2)
+According to the left part of Fig. 3, after 600 epochs the training loss of DPK2 con-
+verges almost to 10−4 eV/ ˚A3, and the testing error also descends to 10−3.75 eV/ ˚A3 before
+overﬁtting occurs. In the meanwhile, we can see from Fig. 4 that the DPK1 converges
+much slower than DPK2, since it takes more time to train the parameter ˜W at the early
+stage when the norm of ˜W is rather small, which makes the computation of loss and
+training inaccurate. More seriously, the loss of DPK0 never converged due to the phe-
+nomenon of gradient vanishing, which further implies the necessity of the simpliﬁcation
+in (2.35). Fig. 5 shows the learning result of stress ﬁeld P11(F11,F12) and P12(F11,F12) at
+14
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+(a) P11
+(b) P12
+Figure 2: PK stress for α-Fe by using virial stress. The unit of the pressure is eV/˚A3 (=160.212GPa).
+Figure 3: Training and testing error of DPK2. Left: log(error) for both training and testing error at every epoch.
+Right: log(error) at each training epoch for diﬀerent size of W.
+Figure 4: Comparison between diﬀerent version of simpliﬁed DPK. Left: log(error) for training procedure at
+every epoch. Right: log(average norm of ˜wi) at each training epoch.
+epoch = 600, from which we can ﬁnd the ﬁtting error of DPK2 is rather small (the L1 norm
+of the error function is around 10−4 eV/ ˚A3) and the error of DPK1 is slightly larger than
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+15
+(a) PDPK1
+11
+(b) error of PDPK1
+11
+(c) PDPK2
+11
+(d) error of PDPK2
+11
+(e) PDPK1
+12
+(f) error of PDPK1
+12
+(g) PDPK2
+12
+(h) error of PDPK2
+12
+Figure 5: The numerical result of PK stress for α-Fe by using diﬀerent version of simpliﬁed DPK. The unit of
+the pressure is eV/˚A3 (=160.212GPa).
+16
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+Table 1: The MAE at epoch = 600 and time cost of simpliﬁed DPK with diﬀerent N.
+N
+M
+MAE
+(eV/ ˚A3)
+(batch) Time cost of
+simpliﬁed DPK (s)
+1
+Time cost of
+simpliﬁed DPK (s)
+2
+Time cost of
+virial stress (s)2
+10
+480
+3.04×10−4
+7.9877×10−2
+3.6315×10−2
+30
+1440
+1.61×10−4
+1.4544×10−1
+3.6538×10−2
+6.6123×10−1
+50
+2400
+1.29×10−4
+5.8815×10−1
+3.9808×10−2
+1 A batch inference (batch size = 1000) on Tesla P40 with 24GB memory.
+2 A single calculation on Intel i7-6600U with 16GB memory.
+DPK2, since the loss of DPK2 converges faster and better than DPK1 as we have seen in
+Fig. 4.
+As mentioned before, an advantage of the DPK method is that, we can use a smaller
+virtual system (2400 virtual atoms, depicted by the right part of Fig. 6) to compute the
+stress by forward network propagation, instead of the virial stress of a crystal system
+with 6750 atoms (left part of Fig. 6), resulting in a faster calculation. Indeed, as illustrated
+by Table 1, for a single calculation the average time cost of DPK is 16 times faster than
+virial stress. Furthermore, with the power of parallel computation of GPU, the time cost
+of DPK for a batch inference is even smaller than the average cost of a single calculation
+of virial stress. On the other hand, as shown in the right part of Fig. 3, with a larger
+size of W we can achieve a better approximation of virial stress after same training time.
+In practice, however, a tradeoff between approximation and time cost should always be
+considered in the choice of N.
+3.2
+Transfer learning to NiAl alloys
+In this part, we will test the ability of transfer learning [35] of simpliﬁed DPK by approxi-
+mating the virial stress for NiAl, which is a B2 type alloy. All the numerical setup are kept
+as previous, expect the F11 and F12 of input deformation F are sampled uniformly from
+Figure 6: Conﬁguration of atoms in stress calculation. Left: planform of perfect BCC crystal. Right: planform
+of virtual atoms.
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+17
+(a) P11
+(b) P12
+Figure 7: PK stress for NiAl alloy system by using virial stress. The unit of the pressure is eV/˚A3 (=160.212GPa).
+Figure 8: Training error in the learning of virial stress for NiAl alloy system.
+[0.98,1.06] and [−0.04,0.04] respectively. We adopt the EAM potential studied in [36, 37]
+in the molecular simulation. The stress ﬁeld of training data is shown by Fig. 7.
+In order to do the transfer learning as in natural language processing [38], we take
+the ﬁtting of stress for α-Fe as a pre-training task, while the learning of NiAl stress is
+treated as a downstream ﬁne-tuning task. More precisely, we ﬁrst conduct the experiment
+in previous section, and select W and the parameters of the ﬁrst 3 layers in the DNN
+function as initial parameters for the new learning task of NiAl. The motivation of this
+setting is that due to the similarity in crystal structure (The α-Fe can also be regarded as a
+complex B2 lattice with same basis atoms), we can expect that parameters in DPK trained
+for α-Fe provides a better initial guess than random initialization.
+As shown in Fig. 8, with pre-training the loss converges much faster, compared with
+the learning process with random initialization. In fact, we can observe that the training
+loss with pre-training decreases to 10−2.6 eV/ ˚A3 after only 100 epochs, while this can not
+be achieved until about 400 epochs if we initialize the network randomly. The learning
+18
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+(a) PDPK2
+11
+with pretraining
+(b) PDPK2
+11
+without pretraining
+(c) error of PDPK2
+11
+with pretraining
+(d) error of PDPK2
+11
+without pretraining
+Figure 9: The numerical result of P11 for NiAl alloy system by using simpliﬁed DPK. The unit of the pressure
+is eV/˚A3 (=160.212GPa).
+stress ﬁeld of P11 and P12 after 500 epochs are plotted in Fig. 9 and Fig. 10 correspondingly.
+As it presents, the ﬁtting error with a pre-training is observably smaller in both cases.
+4
+Conclusions
+We have proposed a novel neural network architecture (DPK) to learn the ﬁrst Piola-
+Kirchhoff stress. By introducing symmetric trainable weights, our network is intrinsic
+consistent with the physical constraints required by the frame-indifference and material-
+symmetry. A further simpliﬁcation of DPK is also presented to avoid an over complicated
+computation in both training and inference. On the other hand, with some theory anal-
+ysis and numerical examples, we have shown that this simpliﬁed DPK provides a learn-
+able, transferable and efﬁcient approximation tool for the representation of deformation-
+stress relation with an atomic-level accuracy. Although the present work focuses on the
+learning of PK stress for elastic simple materials, this structure can also be used to rep-
+resent the conservative elastic part of the stress tensor for non-hyperelastic material. Be-
+sides, the methodology in the constructing of DPK (Generating the symmetric structure
+in the network based on the formulation of atomistic stress) can also be applied to more
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+19
+(a) PDPK2
+12
+with pretraining
+(b) PDPK2
+12
+without pretraining
+(c) error of PDPK2
+12
+with pretraining
+(d) error of PDPK2
+12
+without pretraining
+Figure 10: The numerical result of P12 for NiAl alloy system by using simpliﬁed DPK. The unit of the pressure
+is eV/˚A3 (=160.212GPa).
+general case, once the atomistic stress expression is available.
+Appendix
+The proof of Theorem 2.5 consists of two parts: ﬁrstly, we review the concept of fat-
+shattering dimension and prove that simpliﬁed DPK owns ﬁnite fat-shattering dimen-
+sion. Secondly, with a classical result claiming that function class with ﬁnite fat-shattering
+dimension is learnable, we can eventually prove the estimation error of our simpliﬁed
+DPK can be sufﬁcient small, given a large size of learning samples.
+Deﬁnition A.1 (Fat-shattering dimension [33]). Let F be a function set mapping from X to R,
+for a given sample set S={s1,···,sm}⊂X and positive real number ϵ, if there exits real numbers
+r1,···,rm such that ∀b∈{0,1}m, ∃ fb ∈ F satisfying
+fb(si)≥ri+ϵ
+if bi =1,
+fb(si)≤ri−ϵ
+if bi =0,
+i=1,···,m,
+(A.1)
+we say that S is ϵ-shattered by F. Furthermore, we deﬁne the fat-dimension f atF(ϵ) as the maxi-
+mum cardinality of sampling sets S shattered by F.
+20
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+Lemma A.1 ([33, Theorem 14.9]). For each dense neural network has l ≥ 2 layers and Nw
+weights of which the ∥·∥1 norm are bounded by some V > 0, suppose the activation function is
+Lipschitz continuous with the Lipschitz coefﬁcient L > 1/V, and there exists some b such that
+each unit maps into [−b,b], then for any ϵ≤2b,
+ϵ(LV−1)
+
+.
+(A.2)
+f atF(ϵ)≤16Nw
+
+l·ln(LV)+2ln(32Nw)+ln
+
+b
+Lemma A.2 ([39, [Theorem 3]). Let ϵ > 0, k ≥ 2, u : [−1,1]k → [−1,1] be uniformly con-
+tinuous and A1,A2,···,Ak be function classe including f : Ω → [−1,1], then there exist 0 <
+α(u,k,ϵ),β(u,k,ϵ)<∞ such that
+f atu(A1,···,Ak)(ϵ)≤α
+k
+∑
+i=1
+f atAi(β),
+(A.3)
+where
+u(A1,···,Ak)≜{u( f1(x),···, fk(x))| fi ∈Ai, i=1,···,k}.
+With Lemmas A.1 and A.2, we can prove that each component function Pij
+θ,W(F) has
+a ﬁnite fat-shattering dimension:
+Theorem A.1. Let
+Pij =
+n 1
+MeT
+i Pθ,W(F)ej :[−1,1]3×3 → R
+o
+3V}, ∃c(ϵ,M,L,V,b)<∞ such that
+be the function space generated by the (i,j) component function of DPK deﬁned by (2.35), if ˜g has
+l ≥2 layers and Nw weights of which the ∥·∥1 norm are bounded by some V <1, ∥ ˜wi∥1 <V for
+i=1,···,M, suppose the activation function is Lipschitz continuous with the Lipschitz coefﬁcient
+L > 1/V, and there exists some b < 1 such that each unit of ˜g maps into [−b,b], then for any
+ϵ≤2max{b,V,
+√
+f atPij(ϵ)≤c(ϵ,M,L,V,b).
+(A.4)
+Proof. For each i, j,
+Pij = 1
+M
+M
+∑
+k=1
+˜g(|F ˜wk|)·(eT
+i F ˜wk⊗ ˜wkej).
+Under above conditions, we have Pij ∈[−1,1]. By deﬁning
+x,
+h1(F)=F ˜wk,
+a1(x)= x2,
+h2(x)=
+3
+∑
+i=1
+xi,
+a2(x)=√
+we may write ˜g(|F ˜wk|) as
+g1(F)= ˜g◦a2◦h2◦a1◦h1(F),
+(A.5)
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+21
+which can be regarded as an element in the new network spcae with two more layers.
+Notice that ∥ ˜wk∥1 < V indicate that the ∥·∥1 norm of additional layers are bounded by
+V1 =max{V,3},
+∥a1◦h1(F)∥∞ ≤∥F∥∞∥ ˜wk∥2
+1 <V2 <V,
+3V,
+3∥a1◦h1(F)∥∞ <
+√
+|a2◦h2◦a1◦h1(F)|=∥F ˜wk∥2 ≤
+q
+shows the range of additional units are bounded by b1 =max{b,V,
+√
+3V}. Thus g1 meets
+the condition in Lemma A.1, and we have for any ϵ≤2b1,
+ϵ(LV1−1)
+f atg1(ϵ)≤16Nw(g1)(l(g1)ln(LV1)+2ln
+
+32(Nw(g1))+ln
+
+b1
+
+,
+(A.6)
+where Nw(g1) and l(g1) stands for the number of weights and number of layers for g1.
+Similarly, let h3(x)= xi ˜wj
+k, a3(x)= x, we can represent eT
+i F ˜wk⊗ ˜wkej as
+g2(F)= a3◦h3◦a3◦h1(F),
+which also satisﬁes the condition in Lemma A.1 while the computation unit and l1 norm
+of weights are bound by b2 =V, V2 =V, respectively. Thus for any ϵ≤2b2,
+ϵ(LV2−1)
+f atg2(ϵ)≤16Nw(g2)
+
+l(g2)ln(LV2)+2ln(32(Nw(g2))+ln
+
+b2
+
+.
+(A.7)
+Now considering the uniformly continuous function u(x,y)= xy with
+A1 ={g1|g1(F)= ˜g◦a2◦h2◦a1◦h1(F)}
+and
+A2 ={g2|g2(F)= a3◦h3◦a3◦h1(F)},
+according to Lemma A.2, for any ϵ≤2b2<2b1, there exit 0<α1(u,2,ϵ),β1(u,2,ϵ)<∞ such
+that
+f atu(A1,A2)(ϵ)≤α1
+2
+∑
+i=1
+f atAi(β1)≤α1
+β1(LVi−1)
+
+.
+(A.8)
+2
+∑
+i=1
+16Nw(gi)
+
+ln 322bi(LVi)l(gi)Nw(gi)2
+Further more, notice that for different k=1,···,M, ˜g(|F ˜wk|) and (eT
+i F ˜wk⊗ ˜wkej) share
+the same network architecture, by using Lemma A.2 again with
+M
+¯u(x1,···,xM)= 1
+M
+∑
+i=1
+xi,
+22
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+we can obtain that there exits 0<α2( ¯u,M,ϵ),β2( ¯u,M,ϵ)<∞ such that
+f atPij(ϵ)≤α2
+M
+∑
+k=1
+f atu(A1,A2)(β2( ¯u,M,ϵ))
+≤α2
+2
+∑
+i=1
+f atAi(β1(u,2,β2( ¯u,M,ϵ)))
+M
+∑
+k=1
+α1
+≤Mα1α2
+2
+∑
+i=1
+f atAi(β1(u,2,β2( ¯u,M,ϵ)))
+≤16Mα1α2
+β1(LVi−1)
+
+.
+(A.9)
+2
+∑
+i=1
+Nw(gi)
+
+ln 322bi(LVi)l(gi)Nw(gi)2
+We complete the proof.
+Lemma A.3 (see the proof of Theorem 19.1 in [33]). Let A be a class of functions map-
+ping from X to [0,1] with ﬁnite fat-shattering dimension. Given the training samples Sm =
+{(x1,y1),···,(xm,ym)} according to distribution D and loss function l( f (x),y) for f ∈ A, for
+any ϵ,δ>0, there exists
+m0(ϵ,δ)= 256
+ϵ2
+ϵ
+δ
+256
+
+18f atA
+ ϵ
+
+ln2128
+
++ln
+16
+
+,
+(A.10)
+such that ∀m>m0:
+2
+2.
+(A.11)
+m
+o
+≤ δ
+P
+n
+Sm
+∃ f ∈A,
+E(x,y)∼D[l( f (x),y)]− 1
+m
+∑
+i=1
+l( f (xi),yi)
+≥ ϵ
+2 , then for any ϵ,δ>0 there exists
+Corollary A.1. Let A be a class of functions mapping from X to [−1,1] with ﬁnite fat-shattering
+dimension. Given the training samples Sm ={(x1,y1),···,(xm,ym)} according to distribution D
+and loss function l( f (x),y)=| f (x)−y|, let u(x)= x+1
+m0(ϵ,δ)= 256
+ϵ2
+ϵ
+δ
+256
+
+18f atu(A)
+ ϵ
+
+ln2128
+
++ln
+16
+
+,
+(A.12)
+such that ∀m>m0:
+2
+2.
+(A.13)
+m
+o
+≤ δ
+P
+n
+Sm
+∃ f ∈A,
+E(x,y)∼D[l( f (x),y)]− 1
+m
+∑
+i=1
+l( f (xi),yi)
+≥ ϵ
+Proof. The proof is a combination of Lemmas A.2 and A.3. Let B ={ f +1
+2 | f ∈A}, accord-
+ing Lemma A.2, B forms class of functions mapping to [0,1] with ﬁnite fat-shattering
+dimension
+f atB(ϵ)= f atu(A)(ϵ)<∞.
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+23
+The rest follows from Lemma A.3 if we consider the new regression problems with func-
+tion class B, samples
+2
+2
+˜Sm =
+n
+x1, y1+1
+
+,···,
+
+xm, ym+1
+o
+and loss function ˜l( f (x),y)=2| f (x)−y|. This completes the proof.
+Now we can give the proof of the learnability of simpliﬁed DPK as follows:
+Proof of Theorem 2.5. For ﬁxed 1≤i,j≤3, considering the scaled real-valued function space
+Aij = { 1
+MPij|P ∈ A} (A is deﬁned in Theorem 2.5) which maps from [−1,1]3×3 to [−1,1].
+According to Theorem A.1, for any ϵ≤2max{b,V,
+√
+3V}, f atAij(ϵ) is ﬁnite, then by Corol-
+lary (A.1), ∀ϵ≤2max{b,V,
+√
+3V},δ>0, ∃m0 deﬁned by (A.12) such that ∀m>m0,
+18. (A.14)
+M
+m
+M
+6M
+i
+− 1
+o
+≤ δ
+m
+∑
+k=1
+l0
+
+f (Xk),
+Yk
+ij
+≥ ϵ
+P
+n
+Sm :∃ f ∈Aij,
+E(X,Y)∼D
+h
+l0
+
+f (X), Yij
+As a consequence,
+6
+m
+o
+m
+∑
+k=1
+l( f (Xk),Yk)
+≥ ϵ
+P
+n
+Sm :∃ f ∈A,
+E[l( f (X),Y)]− 1
+6
+m
+9∑
+i,j
+≤P
+n
+Sm :∃ f ∈A, 1
+o
+E[l0( fij(X),Yij)]− 1
+m
+∑
+k=1
+l0( fij(Xk),Yk
+ij)
+≥ ϵ
+6
+m
+ij
+≤P
+[
+o
+n
+Sm :∃ f ∈A,
+E[l0( fij(X),Yij)]− 1
+m
+∑
+k=1
+l0( fij(Xk),Yk
+ij)
+≥ ϵ
+M
+m
+M
+6M
+i
+− 1
+o
+m
+∑
+k=1
+l0
+
+f (Xk),
+Yk
+ij
+≤∑
+i,j
+P
+n
+Sm :∃ f ∈Aij,
+E
+h
+l0
+
+f (X), Yij
+≥ ϵ
+2.
+(A.15)
+≤9δ
+18 ≤ δ
+On the other hand, for the given ϵ, by deﬁnition the approximate-SME algorithm M
+returns P∗ such that
+3.
+(A.16)
+1
+m
+m
+∑
+i=1
+l( f (Xk),Yk)+ ϵ
+m
+∑
+k=1
+l(P∗(Xk),Yk)< inf
+f ∈A
+1
+m
+Meanwhile, use the deﬁnition of inﬁmum, we can ﬁnd ¯P∈A satisfying
+3.
+(A.17)
+E[l( ¯P(X),Y)]≤ inf
+f ∈AE[l( f (X),Y)]+ ϵ
+24
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+Combining the result of (A.15)-(A.17), we can deduce that with probability at least 1−δ,
+6
+(by (A.15))
+m
+E[l(P∗(X),Y)]≤ 1
+m
+∑
+i=1
+l(P∗(Xk),Yk)+ ϵ
+2
+(by (A.16))
+m
+∑
+i=1
+l( f (Xk),Yk)+ ϵ
+≤ inf
+f ∈A
+1
+m
+2
+(deﬁnition of inﬁmum)
+m
+≤ 1
+m
+∑
+i=1
+l( ¯P(Xk),Yk)+ ϵ
+3
+(by (A.15))
+≤E[l( ¯P(X),Y)]+ 2ϵ
+≤ inf
+f ∈AE[l( f (X),Y)]+ϵ.
+(by (A.17))
+Thus we have proved that for m>m0, the conclusion in Theorem 2.5 holds.
+Acknowledgements
+This work is supported by the National Key Research and Development Program of
+China (No. 2020YFA0714200), by the National Nature Science Foundation of China
+(Nos. 12125103 and 12071362), by the Natural Science Foundation of Hubei Province
+(Nos. 2021AAA010 and 2019CFA007), and by the Fundamental Research Funds for the
+Central Universities. The numerical calculations have been done at the Super Computing
+Center of Wuhan University.
+References
+[1] NIKHIL CHANDRA ADMAL AND ELLAD B. TADMOR, A uniﬁed interpretation of stress in molec-
+ular systems, Journal of Elasticity, 100(1) (2010), pp. 63–143.
+[2] D. H. TSAI, The virial theorem and stress calculation in molecular dynamics, The Journal of
+Chemical Physics, 70(3) (1979), pp. 1375–1382.
+[3] JONATHAN A. ZIMMERMAN, EDMUND B. WEBBIII, J. J HOYT, REESE E. JONES, P.
+A. KLEIN, AND DOUGLAS J. BAMMANN, Calculation of stress in atomistic simulation, Model.
+Simul. Mater. Sci. Eng., 12(4) (2004), p. S319.
+[4] J. H. IRVING AND JOHN G. KIRKWOOD, The statistical mechanical theory of transport processes.
+iv. the equations of hydrodynamics, The Journal of Chemical Physics, 18(6) (1950), pp. 817–829.
+[5] ROBERT J. HARDY, Formulas for determining local properties in molecular-dynamics simulations:
+Shock waves, The Journal of Chemical Physics, 76(1) (1982), pp. 622–628.
+[6] JERRY ZHIJIAN YANG, XIAOJIE WU, AND XIANTAO LI, A generalized Irving–Kirkwood for-
+mula for the calculation of stress in molecular dynamics models, The Journal of Chemical Physics,
+137(13) (2012), p. 134104.
+[7] TENGYUAN HAO AND ZUBAER M. HOSSAIN, Atomistic mechanisms of crack nucleation and
+propagation in amorphous silica, Phys. Rev. B, 100(1) (2019), p. 014204.
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+25
+[8] A. I. BITSANIS, J. J. MAGDA, M. TIRRELL, AND H. T. DAVIS, Molecular dynamics of ﬂow in
+micropores, The Journal of Chemical Physics, 87(3) (1987), pp. 1733–1750.
+[9] XIANTAO LI, JERRY Z. YANG, AND WEINAN E, A multiscale coupling method for the modeling
+of dynamics of solids with application to brittle cracks, J. Comput. Phys., 229(10) (2010), pp. 3970–
+3987.
+[10] ELLAD B. TADMOR, MICHAEL ORTIZ, AND ROB PHILLIPS, Quasicontinuum analysis of defects
+in solids, Philosophical Magazine A, 73(6) (1996), pp. 1529–1563.
+[11] JERRY Z. YANG, CHAO MAO, XIANTAO LI, AND CHUN LIU, On the Cauchy–Born approxima-
+tion at ﬁnite temperature, Comput. Mater. Sci., 99 (2015), pp. 21–28.
+[12] SHUYANG DAI, FENGRU WANG, JERRY ZHIJIAN YANG,
+AND CHENG YUAN, On the
+Cauchy-Born approximation at ﬁnite temperature for alloys, Discrete and Continuous Dynam-
+ical Systems-B, (2021).
+[13] RUDOLF CLAUSIUS, Xvi. on a mechanical theorem applicable to heat, The London, Edinburgh,
+and Dublin Philosophical Magazine and Journal of Science, 40(265) (1870), pp. 122–127.
+[14] WEINAN E, Machine learning and computational mathematics, Commun. Comput. Phys., 28(5)
+(2020), pp. 1639–1670.
+[15] WEILE JIA, HAN WANG, MOHAN CHEN, DENGHUI LU, LIN LIN, ROBERTO CAR, WEINAN
+E, AND LINFENG ZHANG, Pushing the limit of molecular dynamics with ab initio accuracy to 100
+million atoms with machine learning, in SC20: International Conference for High Performance
+Computing, Networking, Storage and Analysis, pages 1–14, IEEE, 2020.
+[16] HAN WANG, LINFENG ZHANG, JIEQUN HAN, AND WEINAN E, Deepmd-kit: A deep learning
+package for many-body potential energy representation and molecular dynamics, Comput. Phys.
+Commun., 228 (2018), pp. 178–184.
+[17] MAZIAR RAISSI, PARIS PERDIKARIS, AND GEORGE E. KARNIADAKIS, Physics-informed neu-
+ral networks: A deep learning framework for solving forward and inverse problems involving non-
+linear partial differential equations, J. Comput. phys., 378 (2019), pp. 686–707.
+[18] JIEQUN HAN AND ARNULF JENTZEN, ET AL., Deep learning-based numerical methods for high-
+dimensional parabolic partial differential equations and backward stochastic differential equations,
+Commun. Math. Stat., 5(4) (2017), pp. 349–380.
+[19] JIEQUN HAN, ARNULF JENTZEN, AND WEINAN E, Solving high-dimensional partial differen-
+tial equations using deep learning, Proceedings of the National Academy of Sciences, 115(34)
+(2018), pp. 8505–8510.
+[20] HONGLIANG LIU, JINGWEN SONG, HUINI LIU, JIE XU, AND LIJUAN LI, Legendre neural
+network for solving linear variable coefﬁcients delay differential-algebraic equations with weak dis-
+continuities, Adv. Appl. Math. Mech., 13(1) (2021), pp. 101–118.
+[21] FENGRU WANG, JERRY ZHIJIAN YANG, AND CHENG YUAN, Practical absorbing boundary
+conditions for wave propagation on arbitrary domain, Adv. Appl. Math. Mech., 12(6) (2020), pp.
+1384–1415.
+[22] FRANK NO´E, SIMON OLSSON, JONAS K ¨OHLER, AND HAO WU, Boltzmann generators: Sam-
+pling equilibrium states of many-body systems with deep learning, Science, 365(6457) (2019),
+eaaw1147.
+[23] WEI FENG AND HAIBO HUANG, Fast prediction of immiscible two-phase displacements in hetero-
+geneous porous media with convolutional neural network, Adv. Appl. Math. Mech., 13(1) (2021),
+pp. 140–162.
+[24] T. LIN, Z. WANG, R. X. LU, W. WANG, AND Y. SUI, Characterising mechanical properties of
+ﬂowing microcapsules using a deep convolutional neural network, Adv. Appl. Math. Mech., 14(1)
+(2022), pp. 79–100.
+26
+T. Hu, J. Yang and C. Yuan / Adv. Appl. Math. Mech., xx (2023), pp. 1-26
+[25] KAILAI XU, DANIEL Z. HUANG, AND ERIC DARVE, Learning constitutive relations using sym-
+metric positive deﬁnite neural networks, J. Comput. Phys., 428 (2021), p. 110072.
+[26] REESE E. JONES, JEREMY A. TEMPLETON, CLAY M. SANDERS, AND JAKOB T. OSTIEN,
+Machine learning models of plastic ﬂow based on representation theory,
+arXiv preprint
+arXiv:1809.00267, (2018).
+[27] DANIEL Z. HUANG, KAILAI XU, CHARBEL FARHAT, AND ERIC DARVE, Learning constitutive
+relations from indirect observations using deep neural networks, J. Comput. Phys., 416 (2020), p.
+109491.
+[28] XIN LIU, SU TIAN, FEI TAO, AND WENBIN YU, A review of artiﬁcial neural networks in the
+constitutive modeling of composite materials, Compos. Part B Eng., 224 (2021), p. 109152.
+[29] ELLAD B. TADMOR AND RONALD E. MILLER, Modeling Materials: Continuum, Atomistic
+and Multiscale Techniques, Cambridge University Press, 2011.
+[30] BERNARD D. COLEMAN AND WALTER NOLL, Material symmetry and thermostatic inequalities
+in ﬁnite elastic deformations, Arch. Ration. Mech. Anal., 15(2) (1964), pp. 87–111.
+[31] R. E. NEWNHAM, Properties of Materials: Anisotropy, Symmetry, Structure, 2009.
+[32] INGO G ¨UHRING, GITTA KUTYNIOK, AND PHILIPP PETERSEN, Error bounds for approximations
+with deep relu neural networks in w s, p norms, Anal. Appl., 18(05) (2020), pp. 803–859.
+[33] MARTIN ANTHONY, PETER L. BARTLETT, AND PETER L. BARTLETT, ET AL., Neural Net-
+work Learning: Theoretical Foundations, volume 9, Cambridge University Press Cam-
+bridge, 1999.
+[34] H. CHAMATI, N. I. PAPANICOLAOU, Y. MISHIN, AND D. A. PAPACONSTANTOPOULOS,
+Embedded-atom potential for fe and its application to self-diffusion on Fe(100), Surface Science,
+600(9) (2006), pp. 1793–1803.
+[35] FUZHEN ZHUANG, ZHIYUAN QI, KEYU DUAN, DONGBO XI, YONGCHUN ZHU, HENGSHU
+ZHU, HUI XIONG, AND QING HE, A comprehensive survey on transfer learning, Proceedings
+of the IEEE, 109(1) (2021), pp. 43–76.
+[36] MURRAY S. DAW AND MICHAEL I. BASKES, Embedded-atom method: Derivation and application
+to impurities, surfaces, and other defects in metals, Phys. Rev. B, 29(12) (1984), p. 6443.
+[37] S. M. FOILES, M. I. BASKES, AND MURRAY S. DAW, Embedded-atom-method functions for the
+fcc metals Cu, Ag, Au, Ni, Pd, Pt, and their alloys, Physical review B, 33(12) (1986), p. 7983.
+[38] JACOB DEVLIN, MING-WEI CHANG, KENTON LEE, AND KRISTINA TOUTANOVA, Bert:
+Pre-training of deep bidirectional transformers for language understanding, arXiv preprint
+arXiv:1810.04805, (2018).
+[39] OHAD ASOR, HUBERT HAOYANG DUAN, AND ARYEH KONTOROVICH, On the additive prop-
+erties of the fat-shattering dimension, IEEE Transactions on Neural Networks and Learning
+Systems, 25(12) (2014), pp. 2309–2312.

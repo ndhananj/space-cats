@@ -1,0 +1,876 @@
+Arab Journal of Administration, Vol. 44, No. 2, June 2024
+The Impact of Digital Health on Excellence in  
+Health Care Organizations: A Field Study by Application on Baheya 
+Foundation for Early Detection & Treatment of Breast Cancer
+Heba Atef Ahmed Mohamed
+Lecturer of Business Administration 
+Faculty of Commercial Studies  
+and Business Administration 
+The Egyptian National University, Egypt 
+Hatefahmed@eelu.edu.eg
+Abstract
+The research discusses the effect of applying the digital health system on the distinction of organizations 
+and the high quality of health services provided through the case study “Baheya Hospital for Breast Cancer”, 
+where the hospital management system and the system of providing health services to patients has been 
+studied and compared to the quality of health care provided by the patients’ point of view; clarifying as well, 
+the reasons that have led to the distinction of this hospital during the last record time from the time of its es-
+tablishment until now.
+The digital health system has been implemented, and accordingly, the quality of health services pro-
+vided has been raised, which contributes to the distinction of the health institution, Where the data were 
+collected, analyzed, and the results of the study have been extracted; indicating that the hospital’s distinction 
+is indeed for being the first in the ranks of health care providers in Egypt that follow the application of the 
+modern digital health system in hospital management, patient data, and artificial intelligence technology in its 
+equipment and hospital treatment devices. The research ends by a recommendation concerning the impor-
+tance of selecting this hospital as a model to be emulated in most health care institutions in Egypt; so that, we 
+can achieve one of the goals of sustainable development, namely, raising the efficiency of the quality of health 
+services provided to everyone with no differentiation, reducing as well, the number of deaths resulting from 
+neglect or from cancer and serious other diseases.
+Keywords: Digital health - Health Systems Technology - Electronic Health Records - Electronic Patient 
+Portals. 
+Introduction
+Digital health is a new term referring to a sub-field of medicine by emphasizing the important role of 
+new technology and artificial intelligence devices to facilitate scalable patient care (Timothy et al., 2020), 
+an emerging field of study at the intersection of healthcare and digital technologies, which has attracted 
+lots of attention in the past decade in many countries around the world. In 2019, the American Medical 
+Association reported that companies have invested billions of dollars on new digital health entrepreneur-
+ship (O’Reilly, 2020). Digital technology has become an integral part of healthcare, all set to revolution-
+ize the practice of medicine. Digital technology has greatly improved operational efficiency regarding the 
+* This article was submitted in September 2021, and accepted for publishing in December 2021. 
+© Arab Administrative Development Organization- League of Arab States, 2024, pp 227-240،         DOI: 10.21608/aja.2021.95987.1156
+227
+The Impact of Digital Health on Excellence in Health Care Organizations  ...
+standards of medical care. This transformation greatly has enhanced the holistic experience of both health-
+care professionals and patients. According to the World Health Organization, digital health or the use of dig-
+ital technologies in health - has become a prominent area of practice for employing routine and innovative 
+forms of information and communication technology, to meet health needs Digital technology has also had 
+a tremendous impact on healthcare in some areas, including improving access to medical information and 
+data, as one of the biggest benefits of the digital revolution is the ability to store and access data. It also helps 
+healthcare professionals retrieve patient data from anywhere. It also allows healthcare professionals to quickly 
+share medical information with each other, resulting in more efficient patient care. Another great benefit of 
+digital technology is that it allows clinicians to collect big data in the least amount of time. This data collection 
+allows for accurate analysis and allows healthcare professionals to stay up to date with the latest technology 
+and trends. Also, access to big data allows clinicians to more effectively identify risk factors and recommend 
+appropriate intervention steps.
+Hence, this paper tend to shed light on the theoretical framework of digital health and the excellence cri-
+teria in the care organization using qualitative analysis. Furthermore, the researcher will use quantitative anal-
+ysis to identify the relationship between the previous concepts. The paper structure will be as follows, firstly, 
+the digital health concept and its significance is illustrated. Secondly, the excellence criteria and dimensions in 
+healthcare organization are identified. Finally, field study on Baheya hospital had been conducted.
+The Case Study
+Of course, is that the hospital under study is currently unique of its kind in the community regarding 
+the treatment of breast tumor diseases for women, and by the nature of its distinguished administrative 
+structure and distinguished departments.
+Literature Review
+Our hopes and expectations for the future are to see digital health solutions developed as a response 
+to healthcare inequality, climate change, as well as the spread of infectious diseases and other chronic dis-
+eases, seeking to achieve the best medically and administratively performance (Senbekov et al., 2020).
+This paper reviews and discusses recent attitudes and achievements in the field of digital health by re-
+viewing publications focused on the application of artificial intelligence, “big data” telemedicine, and block-
+chain technologies, as well as smart devices (internet of things) for solving the real problems in healthcare 
+and medical education (Figure 1). The opportunities and main challenges in these areas are examined and 
+intensively discussed. So far, we have identified more than 252 publications related to the digital health 
+area. Nonetheless, the actual number of papers discussed in the article is limited to 152, due to the exclu-
+sions criteria; and also, it is explained that the application of medical digital technologies can provide better 
+access and flexibility to healthcare for the public. It includes the availability of open information on health, 
+treatment, complications, and recent advances in biomedical research. Nowadays, even in low-income 
+countries, diagnostic and medical services are becoming more accessible and available. However, many 
+issues related to digital health technologies remain unmet, including reliability, safety, testing, and ethical 
+aspects.
+(Bhavnani et al., 2017) discussed that Healthcare transformation is the product of a shared vision be-
+tween a broad range of stakeholders to establish the future of care delivery and to develop new patient-cen-
+tered, evidence-driven models in which value is rewarded over volume. Important within this transfor-
+mation, are newly developed and rapidly evolving technology-based innovations .These include: digital 
+health with wearable, smartphone, and sensor-based technologies; big data that comprises the aggregation 
+228
+Arab Journal of Administration, Vol. 44, No. 2, June 2024
+of large quantities of structured and unstructured health information and sophisticated analyses with arti-
+ficial intelligence, machine learning, and natural language processing techniques; and precision-health ap-
+proaches to identify individual-level risk and determinants of wellness and pathogenicity. Although there 
+is promise in the development of such innovations to shift traditional healthcare delivery to virtual and 
+real-time styles and to empower the healthcare enterprise to utilize new technologies and data analytics, 
+there remains a lack of true evaluation of whether these innovations actually improve outcomes and the 
+quality of care.
+Terminologies of Study:
+The Digital Health Concept and Significance:
+The arena of fitness care varies and could be outstanding and increasing this distinction day by day 
+thanks to virtual fitness generation, which includes many capabilities that assist in offering digital gener-
+ation in the subject of health. As virtual fitness helps in providing managers of the fitness group with all 
+operational techniques and statistics on all jobs in any respect administrative degrees in the health group, 
+as management in this smart way will cause a fundamental exchange in the degree of the health group and 
+consequently the first-rate of offering care and health carrier, These functions also include providing better 
+and more direct information to everyone about health and disease, providing direct support to health work-
+ers and supervisors in diagnosing and treating patients. They will also provide verifiable and searchable 
+records about births, deaths and health meetings (Marc & Lena, 2019).
+Definition of Digital Health.
+Different authors agree that digital health includes the use of various healthcare technologies in 
+managing the healthcare offerings, definition of digital health need to consist of the stakeholders involved 
+in healthcare provision and transport tactics. In addition to the definitions of digital health provided by 
+(Kotskov, 2015) and also it is the convergence of digital technologies with health, healthcare, living, and 
+society to enhance the efficiency of healthcare delivery (O’ Donoghue et al., 2019), Digital health solutions, 
+particularly, the informational communication technologies, can be used to solve common integrated care 
+problems. These technologies can make care transport approaches more efficient and help the brand of 
+new methods of wondering and action needed to broaden modern fashions, inclusive of included care. 
+Technologies also can enable a fee shift that could have an impact on the behaviors of caregivers operating 
+in incorporated care fashions, making them a potentially effective implementation device (Guldemond, 
+2021). Digital health not only uses electronic data, it also uses the latest devices that use artificial intel-
+ligence and machine learning as primary ways in the domain of digital health to integrate with informa-
+tion, communication technology and other technologies to solve the problems of consumers and patients 
+(Rowlands, 2020). Service lifestyle in healthcare companies is becoming greater privy to the role of culture 
+in improving the nice of carrier supplied to their clients. Buttimer (2008) asserted that health screening 
+scan program enhance if there’s non-stop emphasis on provider excellence and the development of a car-
+rier culture.
+Study Problem
+Throughout the previous mentioned notes, the theoretical literature and the results of previous stud-
+ies, the study problem can be identified and formulated in the following question: 
+“What is the impact of digital health and its strategies in developing resources and achieve 
+excellence in the field of healthcare?”
+229
+The Impact of Digital Health on Excellence in Health Care Organizations  ...
+Study Objectives
+1- Clarify the importance of electronic medical records in saving time and facilitating the access of infor-
+mation to doctors in hospitals.
+2- Determining digital strategies to raise the level of performance in hospitals.
+3- Clarify the role of digital health in achieving excellence in health care.
+4- Emphasizing the importance of paying attention to digital health and developing it in hospitals, as 
+one of the main pillars for achieving excellence.
+Research Hypotheses
+1- There is no statistically significant relationship between digital health and the reliability criterion.
+2- There is no statistically significant relationship between digital health and the response criteria.
+3- There is no statistically significant relationship between digital health and the safety standard.
+4- There is no statistically significant relationship between digital health on the tangibility standard.
+5- There is no statistically significant relationship between digital health on the standard of empathy.
+The Importance of Digital Health
+Digital health is centrally crucial to accomplishing ordinary fitness coverage with more efficient and 
+powerful modes of presenting nice and equitable access to health for all. But, innovating towards a secure 
+destiny enabled with the aid of digital fitness requires concretely linking investments for virtual fitness to 
+achieving public health goals (World Health Organization, 2019). The adoption of digital technologies in 
+health is crucial for well-functioning health systems and in empowering individuals as part of the transition 
+to integrated, individual-centered care. Digital health also plays an important role in achieving the public 
+health priorities established by the European Union (World Health Organization, 2019). Digital health is a 
+key factor in reforming public health and health systems, improving access, impact and efficiency of health 
+services, providing patient-centered services where individuals participate as active partners in their care, 
+taking advantage of the full potential of digital health in a good way helps services to be safe, reliable, and 
+available to all.
+We can say that the transition to digital health has many benefits such as the availability of electronic 
+records. There exist many problems with nowadays paper-primarily based affected person facts which in-
+cludes the search for something in a patient file, and the warfare to read someone’s illegible handwriting 
+from the affected person’s document. There has been lots of time lost for the existence of only one copy 
+within the entire medical institution explains the patient’s chart, or the navigation thru masses of pages 
+seeking out the solution to an easy query about the affected person is likewise one of the troubles of pa-
+per-based totally patient statistics (Ahmed & Samir, 2004). All data is preserved in a computer environment 
+without the need to keep medical and administrative information in a paper environment, archive it and 
+easily access all information upon request; as all the forms used in the hospital (analysis request, general ex-
+amination, doctor’s orders and patients, etc.) are organized and monitored on the system to prepare reports. 
+It helps reduce medical errors by providing accurate and timely information as well as the date of entry and 
+exit of each patient separately. It also works to prevent the waste and unnecessary use of hospital tools or 
+the unlawful leakage of information by monitoring and following up all types of materials used in entering/
+leaving the hospital. They help achieve the third goal of the sustainable development goals, ensuring that 
+everyone enjoys healthy lifestyles, and develop solutions to reduce premature deaths from cancer and oth-
+er serious diseases to one third by 2030 (Hayek, 2020).
+230
+Arab Journal of Administration, Vol. 44, No. 2, June 2024
+The Excellence Criteria and its Impact on Digital Health Care Organizations
+Generally, we can define excellence in health care as an approach involved in everyday work prac-
+tices, as we plan together to understand the needs of sufferers and deliver care inside the excellent useful 
+way. In most cases, the matter is reflected in the way are we dealing with patients, visitors, and others. The 
+fundamental concepts of provider excellence in healthcare include displaying enthusiasm for the carrier we 
+offer and showing the attitude that we love our task and our sufferers for whom we provide care. Therefore, 
+in this section, the researcher will identify the main criteria of healthcare excellence and how can digital 
+healthcare affect the program of excellence of healthcare services.
+The Healthcare Excellence Criteria:
+Many literatures discussed the different criteria which lead to healthcare excellence such the criteria 
+that describe how patients and customers must be treated to be satisfied. 
+These criteria can be categorized as follows: 
+- 
+Accountability: Sets clear expectations for every member of the organization and holds them ac-
+countable for achieving or not achieving/those expectations. We owe it to every single patient who 
+comes in to have the right people working in the organization. If certain members of the staff are 
+not measuring up, we have to hold them accountable. In addition, the leader of the hospital has to 
+take ownership of the problems.
+- 
+Safety: It must be the foundation of everything the organization does. We should take our Hippo-
+cratic oath very seriously and make sure that while patients are in our care, we do everything to 
+keep them safe. 
+- 
+Visibility: When an organization is undergoing a cultural change, people need to see their leader to 
+believe in him or her. They need to be in front of staff and patients/customers. 
+- 
+Accessibility: This is linked to visibility. Many hospital leaders spend too much time in their offic-
+es, while spending insufficient times outside these offices or going around. In our organization, we 
+have a communication board on every patient’s wall and my cellular number is on there, anyone 
+can call me. That level of accessibility is important. 
+- 
+Collaboration: Hospitals are like a three-legged stool, with the community and patients as the one 
+leg, the medical staff as the second leg and the employees as the third. If there is no effective collab-
+oration between all three, the stool will fall over. All three parties must work together toward that 
+objective of achieving excellence and shaping the culture of the hospital accordingly. 
+- 
+Reliability means that healthcare services are 
+delivered accurately. 
+Tangibles
+- 
+Responsiveness or willingness to help patients. 
+- 
+Assurance: it relates to courtesy and emotional 
+support or building feeling of trust and safeness 
+among patients. 
+Empathy
+ Responsive
+ness
+Service Qualic-
+ty Dimensions
+- 
+Empathy: could be explained as individualized 
+care, namely, it means that doctors, nurses, and 
+the staff have personalized knowledge of patients. 
+- 
+Tangible: refers to functions of healthcare services.
+Reliability
+Assurance
+Parasuraman, Zeithamel & Berry (1985) defined 
+five dimensions for service quality, represented by the 
+Figure (1)  (Parasuraman et al, 1985).
+Figure (1) Service Quality Dimensions
+231
+The Impact of Digital Health on Excellence in Health Care Organizations  ...
+Impact of Digital Healthcare Service to Excellence of Healthcare Service
+The first benefit of digital data collection is that we can expect that the quality of the data will be im-
+ 
+ 
+ 
+proved. Since data are being entered as part of the delivery of care rather than a separate data collection pro-
+cess, we are likely to see reductions in data entry mistakes. Errors in data will be more apparent to the health 
+worker. There will be fewer opportunities to simply make up data, as overworked health workers try to save 
+time (Bram et al., 2015). Digital health will set the pace for the development and deployment of new medical 
+applications and will change markets around the world. This technology will facilitate increased access to 
+healthcare services (Rinsche, 2017). The current model of healthcare is that the patient must go to a health 
+facility to get any kind of care or even advice, while the next goal will be to fully rely on digital health, which 
+is to provide the care system to the patient himself instead of his actual presence to receive caring. Advances 
+in the use of telemedicine and universal access to information and communications means that people no 
+longer need to visit a clinic but can ask questions and receive advice and treatment recommendations over 
+the phone or other devices (Bashshur et al., 2016). Consequently, the most important mechanism in the digi-
+tal health system includes the most important and largest goal of this system which is the electronic personal 
+health records. Its most important target is (saving) of a wide variety, saving wasted time in records and paper 
+files, presenting a place that carries most of these papers and paper information, and offering extra people 
+whose undertaking is to keep these big paper documents and update them with a tool that includes all these 
+huge statistics without harm and without occupying area. Thus, the carrier reaches the most important wide 
+variety of patients in need. Moreover, the benefits of making use of the digital health gadget to healthcare 
+excellence are embodied in 
+saving wasted time which 
+consequently leads to the 
+exploitation of this time 
+within the crowning glory 
+of a greater range of every 
+day statements; the ease of 
+follow-up with patients via 
+easy get the right of entry 
+to their facts, and therefore 
+elevating the exceptional 
+of the fitness care carrier 
+provided to sufferers.
+Figure 2 (Clarification Model of the Research)
+Research Methodology
+The current research relies on the descriptive and analytical approach to indicate the excellence of the 
+service provided through the adoption of the digital health system and the extent of its importance in the un-
+derstudy healthcare institution; in addition to analyzing the primary data by testing the research hypotheses.
+Study Variables
+From the previous studies, the questionnaire questions prepared for the study, which are compatible 
+with the nature of the research study, were completed. where digital health was the independent variable 
+in this study and excellence in the dependent variable.
+232
+Arab Journal of Administration, Vol. 44, No. 2, June 2024
+Study Limitations
+According to the nature of the social conditions surrounding the community due to Corona virus, 
+there was a difficulty in reaching the statistical sample to a higher level due to the difficulty of communicat-
+ing with patients and the medical and administrative staff to complete the study questions. There has been 
+another reason, that because the hospital has patients with immune diseases, there was a fear of infection, 
+which made it difficult to enter the hospital most of the time to communicate with the medical, administra-
+tive and patient staff to complete the study questions.
+Measurement Instrument
+The research has used a questionnaire form prepared by the researcher to examine “impact of digital 
+health on excellence in health care organizations. (A field study by application on Baheya Foundation for 
+Early Detection & Treatment of Breast Cancer)”.
+Research Sample
+- 
+Research Population: The population of the research includes all staff of Baheya Foundation for 
+Early Detection & Treatment of Breast Cancer which reaches up to (518) employees, in addition to 
+a sample of patients who attend the hospital.
+- 
+Sample Size: Due to the large size of the society, the size of the employee sample to be drawn from 
+a large statistical population, can be determined using Steven Thompson equation as following:
+Population (N) = 518 
+ 
+ 
+ 
+ 
+Staff Sample Size = 220.82 
+ 
+ 
+ 
+ 
+ 
+0.05 1.96 
+3.8416  
+ 
+ 
+ 
+0.0025 0.5 
+ 
+ 
+ 
+ 
+ 
+N 
+Population 
+ 
+ 
+ 
+ 
+ 
+z 
+is the confidence interval, expressed as decimal for P-value     0.95 (1.96) 
+d 
+Error Percentage (0.05) p the ratio of availability & property. 
+The online sample size reached 220 respondents.
+The Statistical Approaches
+Data were unloaded using the computer through the Statistical Package for Social Sciences Program 
+IBM- SPSS V. 25, working as follows:
+1- Testing reliability through Cronbach’s alpha coefficient to test the reliability of the questionnaire.
+2- Testing the validity through the Pearson correlation coefficient between dimensions and total ques-
+tionnaire.
+3- Descriptive statistics of the data through tabulating data in the form of (numbers, percentage, mean, 
+standard deviation and the weight percentile) for variables questionnaire.
+4- Pearson correlation coefficient to prove the validity study hypotheses.
+5- Simple regression to study the impact of independent variables on the dependent variable to prove 
+the validity of the study hypotheses.
+233
+The Impact of Digital Health on Excellence in Health Care Organizations  ...
+Table No. (1)
+Research Results
+The Reliability & the Validity of Questionnaire Dimensions
+Reliability & Validity: 
+Patient’s questionnaire
+Employee’s question-
+naire
+Variables
+Cronbach’s 
+validity
+r
+Cronbach’s 
+Alpha
+Alpha
+validity
+r
+First: The reliability
+0.703
+0.838 0.169*
+0.555
+0.745 0.172*
+Second: response criteria
+0.826
+0.909 0.323**
+0.729
+0.854 0.508**
+Third: the safety standard
+0.639
+0.799 0.479**
+0.660
+0.812 0.312**
+To check the reliability of the 
+questionnaire, the research-
+er has used Cronbach’s alpha 
+equation (Cronbach Alpha). 
+The following table shows the 
+reliability coefficients gener-
+ated using this equation.
+Fourth: the tangibility standard
+0.647
+0.804 0.673**
+0.644
+0.802 0.317**
+Fifth: the standard of empathy
+0.695
+0.834 0.675**
+0.642
+0.801 0.486**
+From the table (1), the 
+Sixth: the digital health dimensions
+0.698
+0.835 0.931**
+* Statistically significant at (0.05) 
+          ** statistically significant at (0.01)
+reliability coefficients of the 
+Patient’s questionnaire & 
+employee’s 
+questionnaire 
+Table No. (2)
+were good values where the reliability coefficient values were > (0.5).
+Number and Percent of 
+The researcher calculated the validity by the correlation coefficient for 
+the Staff’ s Job
+Variables
+No Percent
+Employee
+94
+42.7
+Management 32
+14.6
+Doctors
+94
+42.7
+each dimension of the questionnaires to calculate the validity of the question-
+naire dimension. The correlation coefficient values were statistically significant 
+at (0.05) between questionnaire dimension and total questionnaire. Also, the 
+intrinsic validity values were good as shown in table (1) which confirms the va-
+lidity of the questionnaires.
+Total
+220 100.0
+From the table (2) the greatest numbers were (Employee) & (Doctors) with 
+Table No. (3) 
+no. (94) percent (42.7%), while the number of (Management) were (32) with 
+percent (14.6%).
+From the table (3) the mean age for (Employees) was (38.4) with standard 
+Means and Standard 
+Deviations of Age 
+(Patients & Employees)
+deviation (8.6), while the mean age for (Patients) was (50.9) with standard de-
+viation (7.4).
+Sample
+Mean
+SD
+Employees
+38.4
+8.6
+Patients
+50.9
+7.4
+Table (4) shows the following:
+- 
+The dimension average of (The reliability criterion) was (4.07) indicat-
+ing response to the (agree) degree, with weight percentile (81.4%).
+- 
+The dimension average of (Response criteria) was (3.49) indicating re-
+sponse to the (agree) degree, with weight percentile (69.8%).
+- 
+The dimension average of (The safety standard) was (3.96) indicating a response to the (agree) 
+degree, with weight percentile (79.2%).
+Table No. (4) 
+Means, Standard Deviations and Weight Percentile of 
+- 
+The dimension average of (The tangi-
+bility standard) was (3.94) indicating 
+a response to the (agree) degree with 
+weight percentile (78.8%).
+Questionnaire’s Dimension (Patients)
+Dimension
+Mean SD Variation 
+coefficient
+Weight 
+Percentile
+Degree
+Agree
+The reliability criterion 4.07 0.4
+0.10
+81.4
+Agree
+- 
+The dimension average of (The stan-
+dard of empathy) was (3.96) indicat-
+ing a response to the (agree) degree, 
+with weight percentile (79.2%).
+Response criteria
+3.49 0.7
+0.20
+69.8
+Agree
+The safety standard
+3.96 0.3
+0.07
+79.2
+Agree
+The tangibility standard 3.94 0.6
+0.14
+78.8
+Agree
+The standard of empathy 3.96 0.6
+0.15
+79.2
+Agree
+- 
+The dimension average of (The dig-
+ital health) was (3.41) indicating a 
+response to the (agree) degree, with 
+weight percentile (68.2%).
+The digital health
+3.41 0.4
+0.13
+68.2
+Agree
+234
+Arab Journal of Administration, Vol. 44, No. 2, June 2024
+Table No. (5) 
+Means, Standard Deviations and Weight Percentile of 
+Questionnaire’s Dimension (Employee)
+Dimension
+Mean SD
+Variation 
+coefficient
+Weight 
+Percentile
+Degree
+Agree
+Table (5) shows the following:
+- 
+The dimension average of (The reli-
+ability criterion) was (4.14) indicat-
+ing a response to the (agree) degree, 
+with weight percentile (82.8%).
+The reliability criterion
+4.14 0.23
+0.06
+82.8
+Agree
+Response criteria
+3.86 0.35
+0.09
+77.2
+Agree
+The safety standard
+4.09 0.35
+0.09
+81.8
+Agree
+The tangibility standard 3.68 0.39
+0.11
+73.6
+Agree
+- 
+The dimension average of (Re-
+sponse criteria) was (3.86) indicat-
+ing a response to the (agree) degree, 
+with weight percentile (77.2%).
+The standard of empathy 4.1 0.29
+0.07
+82.0
+Agree
+Table No. (6)
+- 
+The dimension average of (The safe-
+ty standard) was (4.09) indicating a response to the 
+degree (agree) with weight percentile (81.8%).
+The Correlation Matrix between Digital Health 
+and Excellence in Health Care Organizations
+Variables
+The Digital Health
+- 
+The dimension average of (The tangibility standard) 
+was (3.68) indicating a response to the (agree) de-
+gree, with weight percentile (73.6%).
+r
+P-value
+The reliability criterion
+0.406(**)
+0.001
+Response criteria
+0.267(**)
+0.001
+- 
+The dimension average of (The standard of empathy) 
+was (4.1) indicating a response to the (agree) degree, 
+with weight percentile (82.0%).
+The safety standard
+0.442(**)
+0.001
+The tangibility standard
+0.552(**)
+0.001
+From the table (6) there are a significant correlation be-
+The standard of empathy
+0.533(**)
+0.001
+Total excellence in health care 0.359(**)
+0.001
+tween the digital health and excellence in healthcare organi-
+zations, where Pearson correlation values were significant at 
+P-value (0.01).
+Research Hypotheses:
+H1: There is no statistically significant relationship between digital health and the reliability criterion.
+To study the effect of digital health 
+Table No. (7)
+The Simple Linear Regression Test to Study the Effect of Digital 
+Health on the Reliability Criterion
+Variables
+R
+R2
+B
+F
+t
+p-values
+on the reliability criterion, a test by Sim-
+ple Linear Regression was conducted 
+and the results were as follows:
+Effect of digital health on 
+the reliability criterion 0.406 0.165 0.356 19.353 4.399 0.001
+- 
+The value of the correlation 
+coefficient (R) concerning the 
+relationship between the man-
+agement, electronic records, saving time and the reliability criterion was (0.406).
+- 
+Regarding the results of the coefficient of determination (R2) of the Simple Linear Regression in the 
+previous table, we find that there is an effect of the digital health on the reliability criterion, by (16.5%).
+- 
+The significance test of the regression model according to the value of (F), which is amounted to 
+(19.353) is significant at (0.01) level, confirming the significance of the regression model.
+- 
+It is indicated through the test of significance of the regression coefficient (B) model that there is an 
+effect of the digital health and the reliability criterion, relying on the value of (T), which is amounted 
+to (4.399), proving to be significant at (0.01) level.
+For the previous results, the H1 was rejected that “There is no statistically significant relationship be-
+tween digital health and the reliability criterion”; while the hypothesis “There is a statistically significant 
+relationship between digital health and the reliability criterion” was accepted.
+235
+The Impact of Digital Health on Excellence in Health Care Organizations  ...
+H2: There is no statistically significant relationship between digital health on the response criteria.
+This hypothesis examines the effect 
+Table No. (8) 
+The Simple Linear Regression Test Studies the eEffect of 
+Digital Health on the Response Criteria
+of digital health on the response criteria 
+that is tested by the Simple Linear Regres-
+sion Test.
+Variables
+R
+R2
+B
+F
+t
+p-values
+Effect of digital health 
+on the response criteria 0.267 0.071 0.425 7.507 2.74 0.007
+The results were as follows:
+- 
+The value of the correlation coeffi-
+cient (R) to clarify the relationship between the management, electronic records, saving time and 
+the response criteria was (0.267).
+- 
+Given the results in the previous table of the coefficient of determination (R2) of the Simple Linear 
+Regression, we find that there is an effect of the digital health on the response criteria by (7.1%).
+- 
+The significance test of regression model based on the value of (F), amounted to (7.507) is signifi-
+cant at (0.01) level, which confirms the significance of the regression model.
+- 
+It is shown through the significant regression coefficient test (B) model, that there is an effect of 
+the digital health and the response criteria, relying on the (T)value and amounted to (2.740) which 
+proves to be significant at level (0.01). 
+From the previous results, H2 is rejected as “There is no statistically significant relationship between 
+digital health and the reliability criterion”; while the hypothesis indicating that “There is a statistically signif-
+icant relationship between digital health and the response criteria” is accepted.
+H3: There is no statistically significant relationship between digital health and the safety standard.
+Studying the effect of digital health 
+Table No. (9)
+the Simple Linear Regression Test to Study the Effect of 
+on the safety standard was tested by the 
+Simple Linear Regression and the results 
+were as follows:
+Digital Health on the Safety Standard
+Variables
+R
+R2
+B
+F
+t
+p-values
+Effect of digital health 
+on the safety standard 0.442 0.195 0.275 23.784 4.877 0.000
+- 
+The value of the correlation coeffi-
+cient (R) refers to the correlation 
+between the digital health and the 
+safety standard by (0.442).
+- 
+Regarding the results of the coefficient of determination (R2) of the simple linear regression in the 
+previous table, we find that there is an effect of the digital health on the safety standard by (19.5%).
+- 
+The test significant model regression based on the value of (F), which amounted to (23.784) which 
+is significant at level (0.01), confirming the significant regression model.
+- 
+It is indicated through the significant regression coefficient test (B) model, which explains an effect 
+exists between the digital health and the safety standard, relying on the value of (T), which amount-
+ed to (4.877) and proved to be significant at level (0.01). 
+From the previous results, H3 is rejected “There is no statistically significant relationship between digi-
+tal health and the reliability criterion” and the hypothesis that “There is a statistically significant relationship 
+between digital health and the safety standard” is accepted.
+H4: There is no statistically significant relationship between digital health on the tangibility standard.
+Studying the effect of digital health on the tangibility standard was tested by the Simple Linear Regres-
+sion and the results were as follows:
+236
+Arab Journal of Administration, Vol. 44, No. 2, June 2024
+Table No. (10) 
+the Simple Linear Regression Analysis is Used to Study the 
+Effect of Digital Health on the Tangibility Standard
+Variables
+R
+R2
+B
+F
+t
+p-values
+- 
+The value of the correlation coef-
+ficient (R) is used to indicate the 
+relationship between the digital 
+health and the tangibility standard 
+was (0.552).
+Effect of digital health on 
+the tangibility standard 0.552 0.305 0.703 42.907 6.550 0.000
+- 
+Given the results of the coefficient 
+of determination (R2) of the sim-
+ple linear regression test in the previous table, we find that there is an effect of the digital health on 
+the tangibility standard (19.5%).
+- 
+Testing the significance of the regression model, based on the value of (F), which amounted to 
+(42.907) and significant at level (0.01), confirms the significance of the regression model.
+- 
+It is indicated through the significant model regression coefficient test (B), which shows that there is 
+an effect of the digital health and the tangibility standard, relying on the value of (T), which amount-
+ed to (6.550), being significant at level (0.01). 
+From the previous results, H4 is rejected that “There is no statistically significant relationship between 
+digital health and the reliability criterion” and the hypothesis that “There is a statistically significant relation-
+ship between digital health and the tangibility standard” is accepted.
+H5: There is no statistically significant relationship between digital health and the standard of empathy.
+To study the effect of digital health on 
+Table No. (11)
+The Simple Linear Regression Test for Examining the Effect of 
+the standard of empathy, that is tested by 
+the simple linear regression test, where the 
+results come as follows:
+Digital Health on the Standard of Empathy
+Variables
+R
+R2
+B
+F
+t
+p-values
+Effect of digital health on 
+the standard of empathy 0.533 0.284 0.694 38.888 6.236 0.000
+- 
+The value of the correlation co-
+efficient (R) proves the relation 
+between the digital health and the 
+standard of empathy, represent-
+ing (0.533).
+- 
+According to the results of the coefficient of determination (R2) of the simple linear regression in 
+the previous table, we find that there is an effect of the digital health on the standard of empathy 
+by (19.5%).
+- 
+The test significance of the regression model based on the (F) value, amounted to (38.888) is signif-
+icant at level (0.01), which confirms the significance of the regression model.
+- 
+It is indicated through the significant regression model that (B) coefficient value which explains the 
+presence of the effect of the digital health and the standard of empathy and rely on the value of (T), 
+being amounted to (6.236) as significant at level (0.01). 
+From the previous results, H5 is rejected that “There is no statistically significant relationship between 
+digital health and the reliability criterion”; while the hypothesis “There is a statistically significant relation-
+ship between digital health and the standard of empathy” is accepted.
+The General Results
+1- There is a statistically significant relationship between digital health and the reliability criterion.
+2- There is a statistically significant relationship between digital health and the response criteria.
+3- There is a statistically significant relationship between digital health and the safety standard.
+4- There is a statistically significant relationship between digital health on the tangibility standard.
+5- There is a statistically significant relationship between digital health on the standard of empathy.
+237
+The Impact of Digital Health on Excellence in Health Care Organizations  ...
+The Conclusion
+First of all, it can be concluded that service quality as perceived by customers is as a result of how well 
+service matches expectations. Secondly, that service quality is determined by two dimensions, namely; ex-
+pectations and experience and each of these dimensions has underlying factors. Thirdly, five factors deter-
+mine the outcome of service quality which are used by the customers to complete judgement during service 
+delivery, namely; tangibles, reliability, responsiveness, assurance and empathy. According to Ho, (2009), 
+the customer-focused management paradigm quality is viewed as one component of the value created for 
+the customer. It is managed into the process of making the product or service and is seen as synergistic with 
+cost and delivery. Service quality is viewed as something that encompasses the entire organization. Since 
+all functions are responsible for product quality and all share the cost of poor quality, quality is viewed as a 
+concept that affects the entire organization (Ho & S. K. M, 2009).
+238
+Arab Journal of Administration, Vol. 44, No. 2, June 2024
+References
+- 
+Timothy, D.; Aungst Pharm, D.; Chris Franzese Pharm, D; Yoona Kim Pharm, D. (2020). Digital 
+Health Implications For Clinical Pharmacists’ Services: A Primer on the Current Landscape and Fu-
+ture Concerns, DOI: 10.1002/jac5.1382, Journal of the American College of Clinical Pharmacy.
+- 
+O’Reilly, K. B. (2020). Digital Health Funding Hits $8.1 Billion: How to Spend it Wisely, [Inter-
+net]. 2019 [cited 12 Sep 2020]. Available from: https://www.ama-assn.org/practice-management/
+digital/digital-healthfunding-hits-81-billion-how-spend-it-wisely.
+- 
+Marc, Mitchell & Lena Kan. Digital Technology and The Future of Health Systems, ISSN: 2328-
+8604 (Print) 2328-8620 (Online) Journal Homepage: https://www.tandfonline.com/loi/khsr20 .
+- 
+Kotskova, P. (2015). “Grand Challenges In Digital Health”, Frontiers in Public Health, 3:1-5.
+- 
+O’ Donoghue, John; Majeed, Azeem; Carroll, Christopher; Gallagher, Joseph; Wark, Petra A.; 
+O’Connor, Siobhan; Akinlua, James Tosin; Fadahunsi, Kayode Philip. (2019). “Protocol for 
+a Systematic Review and Qualitative Synthesis of Information Quality Frameworks in 
+E-health” (inen). BMJ Open 9 (3): e024722. doi:10.1136/bmjopen-2018-024722. ISSN 2044-
+6055. PMID 30842114. PMC 6429947. 
+- 
+Carolyn Steele Gray, Dominique Gagnon, Nick Guldemond and Timothy Kenealy, “Digital 
+Health Enabling Integrated Care, March 8th 2021.https://doi.org/10.1108/ 978-1-83867-527-
+120211012.
+- 
+Rowlands, D. (2020). What is Digital Health? and Why Does it Matter? [White Paper]. Health 
+Informatics Society of Australia. Available from: https://www.hisa.org.au/ wpcontent/up-
+loads/2019/12/What_is_Digital_Health.pdf.
+- 
+World Health Organization. (2019). Future of Digital Health Systems: Report on the Who 
+Symposium on the Future of Digital Health Systems in the European Region, Copenhagen, 
+Denmark, 6-8 February 2019. https://apps.who.int/iris/ bitstream/handle/1066 .
+- 
+World Health Organization. (2018). World Health Assembly. Digital Health. Geneva, (http:// apps.
+who.int/gb/ebwha/pdf_files/WHA71/A71_R7-en.pdf,accessed 29 August 2019). 
+- 
+Ali, Ahmed Farag & Samir, Shahen. (2004). “E-Health: Challenges and Opportunities”, Conference: 
+2ndCairo International Biomedical Engineering Conference at Cairo, (2004), https://www.re-
+searchgate.net/publication/273777140. 
+- 
+Hayek, Hayam. (2020). Data Quality and the Transition to Digital Health. Part 2, 11/3/2020 
+09:09:07 AM, http://blog.naseej.com.
+- 
+Parasuraman, A.; Ziethaml, V. & Berry, L. (1985). “Servqual: A Multiple Item Scale For Measuring 
+Consumer Perceptions of Service Quality”, Journal of Retailing, 62(1), 12-40.
+- 
+Bram JT, Warwick-Clark B, Obeysekar E, Mehta K. (2015). Utilization and Monetization of 
+Healthcare Data in Developing Countries. Big Data. 3 (2): 59-66. doi:10.1089/big.2014.0053. 
+- 
+Rinsche, Florian. (2017). The Role of Digital Health Care Startups, See discussions, stats, and 
+author profiles for this publication at: https://www.researchgate.net/ publication/ 321179640 .
+- 
+Bashshur, R. L.; Howell, J. D.; Krupinski, E. A.; Harms, K. M.; Bashshur, N. & Doarn, C. R. (2016). 
+“The Empirical Foundations of Telemedicine Interventions in Primary Care”, Telemedicine and 
+E-Health, 22(5): 342-375. doi: 10.1089/tmj.2016.0045. 
+- 
+Ho, S. K. M. (2009). From TQM to Business Excellence, Production Planning & Control, 10 
+(1), pp. 87-97.
+239
+The Impact of Digital Health on Excellence in Health Care Organizations  ...
+- 
+Thompson, S. K., and O. Frank, (2000). Model-Based Estimation with Link Tracing Sampling 
+Designs, Component of Statistics, Canada, Catalogue no. 12-001-X Business Survey Meth-
+ods Division, June 2000, 87–98.
+- 
+Sanjeev P. Bhavnani, Kapil Parakh, Ashish Atreja, Regina Druz, Garth N. Graham, Salim S. 
+Hayek, Harlan M. Krumholz, Thomas M. Maddox, Maulik D. Majmudar, John S. Rumsfeld, 
+and Bimal R. Shah (2017). Roadmap for Innovation—ACC Health Policy Statement on 
+Healthcare Transformation in the Era of Digital Health, Big Data, and Precision Health: A 
+Report of the American College of Cardiology Task Force on Health Policy Statements and 
+Systems of Care, , JACC Journals › JACC › Archives › Vol. 70 No. 21.
+- 
+Maksut Senbekov, Timur Saliev, Zhanar Bukeyeva, Aigul Almabayeva, Marina Zhanaliye-
+va, Nazym Aitenova, Yerzhan Toishibekov, and Ildar Fakhradiyev, (2020). The Recent Progress 
+and Applications of Digital Technologies in Healthcare: A Review, Volume 2020 |Article 
+ID 8830200| https://doi.org/ 10.1155 2020/ 8830200..
+240

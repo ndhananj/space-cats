@@ -1,0 +1,2445 @@
+TSINGHUA SCIENCE AND TECHNOLOGY
+ISSNll1007-0214
+02/22
+pp13–33
+DOI: 10.26599/TST.2023.9010037
+Volume 29, Number 1, February 2024
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+Qing Zhao, Hanrui Xu, Jianqiang Li, Faheem Akhtar Rajput, and Liyan Qiao
+Abstract: Alzheimer’s disease (AD) is an irreversible and neurodegenerative disease that slowly impairs memory
+and neurocognitive function, but the etiology of AD is still unclear. With the explosive growth of electronic health
+data, the application of artiﬁcial intelligence (AI) in the healthcare setting provides excellent potential for exploring
+etiology and personalized treatment approaches, and improving the disease’s diagnostic and prognostic outcome.
+This paper ﬁrst brieﬂy introduces AI technologies and applications in medicine, and then presents a comprehensive
+review of AI in AD. In simple, it includes etiology discovery based on genetic data, computer-aided diagnosis (CAD),
+computer-aided prognosis (CAP) of AD using multi-modality data (genetic, neuroimaging and linguistic data), and
+pharmacological or non-pharmacological approaches for treating AD. Later, some popular publicly available AD
+datasets are introduced, which are important for advancing AI technologies in AD analysis. Finally, core research
+challenges and future research directions are discussed.
+Key words: Alzheimer’s disease; artiﬁcial intelligence; etiology discovery; computer-aided diagnosis; computer-aided
+prognosis; treatment
+1
+Introduction
+Dementia is a clinical syndrome; it is manifested as
+a progressive deterioration of cognitive function, such
+as memory, the ability to pay attention and language
+skills, and a variety of neuropsychiatric symptoms and
+related behavioral disorders, resulting in impaired daily
+life and activities[1–3]. Alzheimer’s disease (AD) is one
+of the primary causes of dementia in the world. It is
+estimated that a 95% incidence rate of AD occurs in
+ Qing Zhao and Jianqiang Li are with the Faculty of Information
+Technology, Beijing University of Technology, Beijing 100124,
+China. E-mail: fzhaoqing, lijianqiangg@bjut.edu.cn.
+ Hanrui Xu is with the School of Medicine, Tsinghua University,
+Beijing 100084, China. E-mail: 3420994613@qq.com.
+ Faheem Akhtar Rajput is with the Department of Computer
+Science, Sukkur IBA University, Sukkur 65200, Pakistan. E-
+mail: fahim.akhtar@iba-suk.edu.pk.
+ Liyan Qiao is with the Department of Neurology, Tsinghua
+University Yuquan Hospital, Beijing 100040, China.
+E-
+mailqiaoliyan2000@aliyun.com.
+To whom correspondence should be addressed.
+Manuscript received:
+2022-10-27;
+revised 2023-03-22;
+accepted: 2023-04-27
+individuals over 65 years old and will increase with age.
+For subjects aged between 65–69 years old and older
+than 85 years old, the incidence of AD is 0.6% and
+8.4%[4], respectively.
+The progression of AD is different for each
+individual. AD patients live approximately 4–8 years
+after diagnosis[5]. According to World Alzheimer Report,
+over 50 million peoples were living with this disease
+worldwide in 2019. The ﬁgure will increase to 152
+million by 2050, which means that one person develops
+Alzheimer’s every three seconds. Based on the risk of
+onset, AD is broadly classiﬁed into three stages:
+(1) The preclinical stage describes a person with
+signs of pathology on brain images, such as cerebral
+amyloidosis. Still, it has no cognitive symptoms (in the
+impairment level of very mild cognitive decline).
+(2) Individuals with mild cognitive impairment (MCI)
+have brain changes and subtle symptoms in this stage.
+(3) Dementia, severe cognitive impairment, and
+noticeable brain changes appear in this stage.
+The AD burden will escalate with an increased risk,
+and the treatment options will switch to limited. Usually,
+progress from MCI to dementia is needed over the years,
+
+C The author(s) 2024. The articles published in this open access journal are distributed under the terms of the
+Creative Commons Attribution 4.0 International License (http://creativecommons.org/licenses/by/4.0/).
+14
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+and not all patients with MCI will convert to dementia,
+even though there is currently no cure for this disease[6].
+But the probability is higher for MCI patients to develop
+dementia than those without MCI. Therefore, improving
+the diagnosis rates is essential so individuals with high
+risk can be detected earlier to prevent or reduce future
+progression.
+As a standard tool that used for brain pathology
+assessment and structural lesions exclusion (e.g., tumor
+and infarction), the neuroimaging can be mainly divided
+into two categories[7]. The ﬁrst category is structural
+imaging, such as Computed Tomography (CT) and
+Magnetic Resonance Imaging (MRI)[7, 8]. CT utilizes
+X-rays to reveal the two dimensional structure of brain,
+and MRI generates pictures of tissues inside the brain
+through radio waves and strong magnetic ﬁeld. When the
+neurologic examination has no abnormal ﬁndings, CT
+is adequate for progressive cognitive decline detection.
+However, if a patient has motor dysfunction, the MRI
+might be adopted to recognize ischemic changes which
+cannot be identiﬁed by CT. The second category is
+functional imaging, such as functional MRI (fMRI) and
+Positron Emission Tomography (PET)[9, 10]. fMRI is
+a non-invasive technique, which uses MRI to measure
+hemodynamic changes caused by neuronal activity, and
+can show the neuronal active and functioning part of
+brain. PET is a nuclear medical imaging technique
+that utilizes radioactive substance to identity functional
+changes of brain and generates a three-dimensional
+image. Apart from neuroimaging, neuropsychological
+assessment can help to indicate the extent of deﬁcits
+with higher precision for differential diagnosis. Recent
+researches show that language and memory impairment
+are crucial signs of AD, such as difﬁcultly recalling
+names and ﬁnding suitable words to represent in
+spontaneous speech. The language of AD individuals
+is characterized by generating grammar errors and
+increased frequency of sound disruption and self-
+correction. Gene and cerebrospinal ﬂuid (CSF) detection
+provides the reference for AD diagnosis; for example,
+mutations of the amyloid precursor protein (APP) gene
+and PS1 and PS2 genes account for 50% of familial early-
+onset AD. Therefore neuroimaging, neuropsychological
+examination, and genes play an essential role in AD
+detection.
+The
+essential
+goals
+of
+AD
+research
+include
+discovering the factors that cause the disease, so that
+the disease’s detection and prediction process can
+be established efﬁciently by exploring personalized
+treatment approaches[11, 12]. As shown in the Fig. 1.
+The workﬂow of traditional AD diagnosis includes
+three stages, i.e., doctor visits, body examination, and
+diagnosis. During the doctor visits stage, the basic
+information of each patient asked by doctors including
+symptoms, disease history, and family history etc. Then,
+the various items are checked according to the primary
+diagnosis of doctor, such as laboratory test, and imaging
+test, etc. Finally, the clinical diagnoses are produced
+according to produced test results. Traditional process
+rely on the clinician’s knowledge and experience for test
+result analysis, and then for subsequent diagnosis. First,
+the various tests might produce high volume results,
+requiring a large amount of workload for clinicians to
+analyze, and the error-prone results might be generated
+since the physician’s knowledge and experience are
+subjective and occasionally unreliable. Secondly, due
+Fig. 1
+AI empowered diagnosis workﬂow.
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+15
+to the fact that the complicate interactions among many
+factors in neurobiological and immunological processes
+are involved, it is difﬁcult to utilize a simpliﬁed model
+to understand the aetiology and then provide clues for
+researching solutions of reversible treatment as well as
+prevention of AD[13, 14].
+Artiﬁcial intelligence (AI) is an emerging technology
+for various medical purposes, such as medical decision-
+making[15]. Comparing to traditional workﬂow of
+diagnosis that heavily relies on human labors, AI enable
+the automation of the diagnostic process. As shown in
+the Fig. 1. First, the basic information and test results
+are collected as the input data for AI models. Then,
+the discriminative features are identiﬁed by AI models
+from the input data to generate diagnostic results.
+Finally, doctors will produce the ﬁnal diagnosis with
+potential reference to interaction with the suggestive
+decision that derived from the AI models, which
+have the potentials for enhancing the quality of the
+clinical decision-making. Based on the diagnostic
+results, we can design personalized treatment options
+for improving the cognitive ability of AD patients.
+Moreover, since AI techniques can learn the complexity
+or abstraction patterns from large-sample data resources,
+deeper investigation of molecular mechanisms using
+AI approaches can be led to large-scale and high-
+throughput analysis of transcriptome, genome, and
+gene-gene interactions. Based on the signiﬁcance of
+AI in AD research, this paper aims to conduct an
+extensive and comprehensive review to explore and
+discuss the role of AI techniques in etiology discovery,
+diagnosis, prognosis, and treatment of AD that will
+inspire future evidence-based medicine research and
+practical applications. In the rest of the paper, we ﬁrst
+introduce the AI techniques and their applications in
+the medical domain in Section 2. Then the machine
+learning approaches in etiology discovery, diagnosis,
+prognosis, and treatment are summarized in Section 3. In
+Section 4, we introduce some popular publicly available
+AD datasets. In Section 5, we discuss the challenges
+and try to provide an insight into solutions in the future
+research direction. Finally, the conclusion is given in
+Section 6.
+2
+Applications of Artiﬁcial Intelligence in
+Medicine
+learning methods mainly include supervised, semi-
+supervised, and unsupervised approaches[18, 19]. The
+supervised approaches rely on fully labeled data to
+construct a classiﬁer, and the classical algorithms include
+Support Vector Machine (SVM)[20], Bayesian Network
+(BN)[21], and Artiﬁcial Neural Network (ANN)[22].
+Considering the data labeling is a time-consuming
+and labor-intensive task, the semi-supervised approach
+is proposed, which utilizes iterative and bootstrap
+learning to build a classiﬁer from a small set of
+annotated data. Although Semi-Supervised Learning
+(SSL) provides great potentials to reduce the workload
+of data annotation, the fact that the classiﬁer is
+sensitive to the biased samples in the initial labeled data
+limits the application of SSL[23]. Unsupervised learning
+algorithms do not need labeled data, and they utilize
+statistical information from unlabeled data to learn
+inherent patterns for classiﬁer construction. The typical
+unsupervised learning is data clustering which includes
+hierarchical clustering, distance clustering, and K-means,
+etc., which enable the large-scale data analysis, but the
+result has no standard form and is hard to interpret[24, 25].
+Later, some researches integrated the advantages of
+supervised and unsupervised learning, and proposed
+reinforcement learning-based approaches[26–28]. These
+traditional machine learning methods need careful
+engineering and expert knowledge to build a feature
+extractor, which transforms raw data into a suitable
+internal feature vector used by the classiﬁer to discover
+patterns from the input data. They are limited in their
+ability of raw data processing[29] since the feature
+engineering is a complicated task, which in many cases
+cannot ﬁnd the appropriate feature set for the high
+quality classiﬁer building. Recently, deep learning, a
+speciﬁc subset of machine learning, has becoming a hot
+topic, which allows a machine to automatically detect
+the multi-level feature representations for classiﬁcation.
+A deep learning network composed of multiple non-
+linear modules that transform the raw input into higher
+and more abstract feature representations. The complex
+function can be learned by composition of enough
+transformations. In the medical domain, the broad
+adoption of healthcare information systems has caused
+an explosive growth of diverse biological data, such as
+medical images and text. Using AI tools to facilitate
+medical analysis and solutions is a promising and
+essential area.
+Research on AI in the medical domain began after
+the naming of AI in 1956[30]. With the development
+Machine learning is a branch of AI that focuses
+on designing a mathematical algorithm to improve
+learning through experience[15–17]. Existing machine
+16
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+Fig. 2
+Statistics of publications for AI-aid biomarker
+discovery, CAD, and CAP of AD.
+study AI-aid biomarker discovery, and 5% adopt AI
+approaches for AD treatment.
+Among these, 4%
+of articles construct one model for diagnoses and
+prediction tasks. We found that the AD CAD system
+has received more research attentions than other AD
+applications. Two points could explain the reason.
+First, most of the existing public AD datasets involve
+diagnostic status, which can be used as the ground truth
+to train a diagnostic model. Second, difference from
+etiology discovery and treatment, the basis of diagnostic
+AD at a different stage has consensus.
+3.1
+AI-aid
+etiology
+discovery
+of
+Alzheimer’s
+disease
+of information technology and the explosive growth
+of diverse clinical data in recent years, study on
+applications of AI in the medical domain has received
+increased attention from researchers. According to Refs.
+[31, 32], the automatic diagnosis and prediction of the
+disease are the main utilizes of AI. In recent years, AI
+has been widely used to diagnose various diseases. For
+instance, Yu et al.[33] developed a diagnostic model using
+an auxiliary preserve denoising autoencoders model to
+ﬁlter key features from image and blood test data. The
+selected features are inputted into the classiﬁer for breast
+cancer classiﬁcation, and it achieved 88% accuracy, 91%
+speciﬁcity and a 0.86 F1 score. Xu et al.[34] proposed a
+novel network that consists of a global-level attention
+network and a local-level attention network to classify
+cataracts using retinal fundus images. It obtains an
+accuracy of 90.65% on two class detection tasks. Zheng
+et al.[35] employed a 3D CNN model and chest CT
+images to classify COVID-19 and non-COVID-19; this
+model achieves an AUC of 0.959, a sensitivity of 90.7%,
+and a speciﬁcity of 91.1%.
+For other medical applications, Fritz et al.[36] built a
+multipath CNN model for prediction of postoperative
+mortality by adopting preoperative lab values, patient
+characteristics, etc. By comparing multiple machine
+learning methods, including deep neural networks,
+logistic regression (LR), random forest (RF), and
+SVM, the results show that multipath CNN utilized
+LSTM better than other approaches. The above research
+has shown that using machine learning methods to
+analyze different medical data beneﬁts healthcare. It
+demonstrates that adopting AI approaches in medical
+facilities can help improve the quality of medical
+applications in developing countries to help clinicians
+with insufﬁcient experience.
+3
+Applications of AI in AD Analysis
+One of the signiﬁcant goals of AD research is etiology
+studies, which discover risk factors that cause AD.
+The etiology discovery results can provide clues for
+studying AD’s diagnosis, prognosis, and treatment. A
+previous study reported that the cause of AD is related
+to several factors, such as increasing age, environmental
+factors, genetic factors, etc[37, 38]. Aging is a signiﬁcant
+risk factor for AD cases, and most AD patients have
+a late onset after 65 years old. AD can be classiﬁed
+into two types based on age. First, early-onset AD
+(EOAD), which accounts for 1%–6% of all AD cases,
+the age ranges from 30 to 60 or 65. The second type
+is late-onset AD (LOAD), which commonly appears
+with age above 65 years old. Both these two types may
+occur in a person with a family with a positive history
+of AD[39]. AD onset occurs in women and men, but
+about two-thirds of AD patients are women. Several
+types of research reported that neurodegeneration and
+clinical symptoms appear more rapidly in women than
+men once diagnosed[40]. Some of the work found that
+AI technology, especially machine learning, has shown
+effectiveness for large-scale, high-dimensional, and
+complex data analysis. According to the clinical studies
+on AD[12], we provide an overview of recent research
+on AI-aid etiology discovery, diagnosis, prognosis, and
+treatment of AD. Around a hundred publications were
+retrieved from the google scholar website to ﬁnd the
+relevant studies of AI-aid biomarker discovery, CAD,
+and CAP systems on AD published in English from
+January 2018 to date.
+As shown in Fig.
+2, out of
+the researches considered in this review approximate
+65% study CAD systems, 11% study prognosis, 19%
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+17
+the hippocampus, entorhinal cortex, prefrontal cortex,
+and middle temporal gyrus. The new detected gene
+factors containing PDYN, ANKIB1, CORO1C, CRLF3,
+SLC25A46, RAE1 and non-encoding RNA genes
+BC037880, and AK057435. Zakeri et al.[54] discovered
+gene factors of AD by building co-expression networks
+using gene expression data from three stages of AD
+(normal, MCI and AD). This research discovered eight
+genes and ﬁve miRNAs as AD biomarkers.
+Wang
+et al.[60] incorporate statistical and machine learning
+methods to identify diagnostic biomarkers of AD by
+combining gene expression data from six brain regions.
+A total of 44 genes, such as CEL, TNNI3, APOH,
+FABP2 et al., are discovered as essential biomarkers of
+AD, and the blood biomarkers are also signiﬁcant for
+AD diagnosis. Gene-gene interactions have essential
+roles in the pathogenesis of AD. Chen et al.[61] used a
+machine learning framework named joint density-based
+non-parametric differential interaction network analysis
+and classiﬁcation to analyze gene expression data, which
+not only focuses on the genetic variations associated
+with AD but also on relationships between gene products.
+For example, the research found that CALML3 affects
+the onset of AD because CALML3 is contained in the
+transport of Ca2C, and Ca2C can affect AD. From the
+above research, it can be demonstrated that machine
+learning algorithm has essential advantages in analyzing
+molecular mechanisms and complex networks of genetic
+interactions. Huang et al.[62] discovered the full genome
+spectrum of AD utilizing a machine learning model
+based on AD-associated gene data set (AlzGene) and
+gene-gene interaction dataset (GIANT). Table 1 shows
+the gene factors discovered by AI model.
+3.2
+CAD systems of Alzheimer’s disease
+environmental is an additional AD risk factor that
+possibly includes air pollution, inorganic and organic
+hazards, brain trauma, industrial chemicals (ﬂame
+retardants), low education levels, lifestyle (exercise,
+smoking, alcohol consumption), and exposure to heavy
+metal (manganese, aluminum)[41–44]; where metals,
+pesticides, and nanoparticles have been shown to
+increase the risk of developing AD by alternating on
+tau phosphorylation and (or) aggregation[45]. Among
+these risk factors, it is estimated that approximately
+60%–70% of the risk is contributed by genetic factors
+for AD cases[46–48]. Most EOAD is inherited in an
+autosomal dominant pattern, and research showed that
+the development of AD is strongly associated with
+mutations of dominant genes, such as apolipoprotein
+E gene (APOE), Presenilin-1 (PSEN-1), Presenilin-2
+(PSEN-2), and Amyloid precursor protein (APP)[49, 50].
+In other AD-related genes, several single nucleotide
+polymorphisms (SNPs) in estrogen receptor (ER) and
+ER have been shown to increase the risk of AD in
+women because they may inﬂuence exogenous estrogen
+in older women and affect cognitive aging. STX5 may
+increase the risk of AD by investigating AD and other
+types of dementias[51]. VCP has a positive relationship
+with AD risk[52]. Researching the proteomics in
+the AD brain found that the ALDOC is related to
+AD[53]. HLA-B is regarded as a signal of patients with
+hypersensitivity syndrome and has high speciﬁcity as
+well as sensitivity assessment values; one research
+found that the frequency of HLA-B signiﬁcantly differs
+between normal and AD[54, 55].
+IL10RB is one of
+the cell signaling molecules for an aging disease in
+young people. It is demonstrated as one of the best
+discriminators to distinguish between normal and AD
+individuals[56]. DDX19A has been proved to be an AD-
+related gene by transcriptome-wide association study
+(TWAS) and imaging-wide association study (IWAS)[57].
+The miR-335-5p is one of the miRAN which is regarded
+as an upregulated biomarker of AD[58].
+In recent
+decades, deep investigation of a molecular mechanism
+using AI approaches has become more popular to
+ﬁnd etiology and risk factors for complex disease
+understanding, such as cancer and AD. Most AI-based
+etiology discovery methods detect disease risk factors
+by evaluating the effectiveness of different factors
+in the automatic diagnosis model. Sharma et al.[59]
+In recent years, machine learning methods have been
+widely used in studies of differential diagnosis of AD
+based on neuroimaging, linguistic and genetic data. The
+learning process of the AI-aid differential diagnosis
+system mainly consists of three steps, as shown in
+Fig. 3: (1) Input data; a CAD system for AD usually
+uses speech, image, text or multi-modality. (2) Kim et
+al.[63] deﬁned feature extraction as commonly adopted
+to mean the construction of linear combinations of
+continuous features with good discriminatory ability
+between categories. For example, the gray level co-
+occurrence matrix features are generally utilized for
+image classiﬁcation. (3) Classiﬁcation includes two
+stages of training and test. The collected data is used to
+utilized an ensemble of RF. They regularized regression
+to build a diagnostic model to discover new genetic
+factors of AD from different brain regions, including
+18
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+Table 1
+Etiologies for AD revealed by AI-aid methods.
+Literature
+Model
+Gene factor discovery
+Zakeri
+et al.[54]
+Gene
+co-expression
+network
+MBOAT1, LCOR, ARMC7,
+CREBRF, HNRNPUL1,
+PLAFL2, MRI1, LAMTOR1,
+miR-4722-5p, miR-4768-3p,
+miR-1872, miR-940, miR30b-3p
+Sharma
+et al.[59]
+Co-expression
+network
+BACE1, LRP1, CASP7, MME,
+GAPDH, GSK3B, PSEN1,
+PSEN2, MAPT, CASP3, APP,
+SNCA, TNF, LPL, APBB1,
+APOE
+Fig. 4
+Proportion of different modal data in CAD systems
+of AD.
+Wang
+et al.[60]
+RF, regularized
+regression
+CORO1C, PDYN, SLC25A46,
+CRLF3, RAE1 ANKIBI
+Chen
+et al.[61]
+Non-parametric
+kernel approach
+brain image is signiﬁcant for Alzheimer’s diagnosis at
+all impairment levels. The different modalities of images
+focus on different examinations[64–67]. fMRI and PET
+are functional molecular imaging modalities, and they
+are used to evaluate functional changes in brain function.
+On the other hand, MRI and Diffusion Tensor Imaging
+(DTI) are adopted to assess brain morphometry and the
+sensitivity of neuron degeneration. Tripoliti et al.[68]
+UQCRB-NDUFV2,
+NDUFV3-ATP5PB,
+NDUFB8-PSENEN,
+NDUFC2-NDUFA5,
+NDUFV2-NDUFA10,
+NDUFS8-IL1B,
+CAPN2-NDUFAB1,
+ATP5MC2-NDUFB5,
+PSEN1-NDUFAB1,
+PPP3CC-NDUFB5
+Huang
+et al.[62]
+SVM
+Whole-genome spectrum
+Fig. 3
+Learning process of AI-aid differential diagnosis
+system.
+train a machine learning model, and then the model is
+used to classify new cases. The widely used classiﬁers
+contain SVM, RF, and softmax.
+We investigated 100 publications on CAD systems
+for AD, and 66% of articles adopted neuroimaging data,
+10% adopted linguistic data, 5% adopted gene data, and
+19% adopted multi-modality data for diagnostic model
+construction, as shown in Fig. 4.
+3.2.1
+Neuroimaging-based CAD systems
+proposed a conventional machine learning-based model,
+which consists of six steps for automatic diagnosis and
+monitoring of the progression of Alzheimer’s disease
+using fMRI imaging. The experiments were conducted
+on the fMRI data from Dartmouth College. The results
+show that the proposed model achieved 94% accuracy
+for two class problems (classiﬁcation between healthy
+elderly subjects and demented elderly subjects), 97%
+accuracy for three class problems (classiﬁcation among
+healthy elderly subjects, demented elderly subjects
+with very mild AD, and demented elderly subjects
+with mild AD), and 98.78% for four class problems
+(classiﬁcation among healthy young subjects, healthy
+elderly subjects, demented elderly subjects with very
+mild AD, and demented elderly subjects with mild AD).
+To address a single classiﬁer is hard to obtain a high
+classiﬁcation performance on the 11C-PIB PET imaging
+(the accuracy usually ranges from 60%–88%) because
+the size of functional brain image PET is relatively
+small and the amount of noise contained in it. The
+work[69] combines three different classiﬁers (K-Nearest
+Neighbors, Random Forests, and Neural Nets) by
+weighted and unweighted schemes to discriminate AD,
+MCI, and Control Normals (CN) on the PET dataset.
+The unweighted method achieved results with an
+accuracy of 84.3%, 75.2%, and 88.6% for AD, MCI
+and CN, respectively. The weighted method gets 89%,
+75%, and 84% in terms of accuracy for AD, MCI
+and CN, respectively. In recent years, deep learning
+According to the recommendations from the National
+Institute of Aging (NIA), the Alzheimer’s Association
+(AA) and the International Working Group (IWG), the
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+19
+in the Table 2. The surface area, volume, and cortical
+thickness[73] are extracted through Freesurfer to detect
+the region of interest (ROI), such as cortical thickness,
+volume, and surface area, of MRI. The work[78]
+generates 93 ROIs by computing the total intracranial
+volume for each subject. The energy, entropy and gray
+level co-occurrence matrix features (GLCM) are most
+commonly adopted for image analysis. The work[68]
+approaches demonstrated promising prediction results in
+AD[70]. A CAD system differentiates two non-invasive
+structural MRIs with different periods. The work
+produces a jacobian volume to recognize the regions
+of interest between MCI subjects and AD subjects
+by voxel-based morphometric analysis. Then the
+CNN-SVM classiﬁer is used to extract features of their
+regions for AD prognosis prediction[71]. Experimental
+results show an accuracy of 87.2%, sensitivity of
+92.4%, and speciﬁcity of 80.4%. Similarly, Lei et al.[72]
+extracts entropy, energy, and 13 Haralick texture features
+by texture analysis, where the ﬁrst two features are
+computed from multiwavelet transformation, and the
+Haralick texture features are computed utilizing 64
+GLCM in 8 directions. Some studies combine patient
+information, such as gender, age, and medical history, to
+enhance the performance of CAD systems[67, 71, 77]. The
+temporal dependencies among features play an essential
+role in AD prediction. A 3D Jacobian determinant
+volume of longitudinal changes of each subject is
+calculated to recognize the differences between the
+baseline and the 12-month follow-up[71]. Considering all
+features for AD classiﬁcation might cause noise because
+most features are redundant. Selecting compelling
+features is vital to generate an optimum classiﬁcation
+performance. Lei et al.[78] utilized a joint learning
+model for feature selection where the high dimension of
+MRI features are reduced by the regularization method
+Table 2
+Related studies with different imaging features for
+AI-aid diagnosis of AD.
+Literature
+Feature name
+Tripoliti et al.[68]
+Demographics, head motion, behavioral,
+volumetric measures, activation patterns,
+and hemodynamics
+Wu et al.[69]
+Volume, voxel intensities, and texture
+Er and Goularas[71]
+Longitudinal time sequence features,
+gender, age, and total intracranial volume
+Lei et al.[72]
+Global and local ROI features
+Hong et al.[73]
+Longitudinal sequence features, thickness
+standard deviation, cortical thickness
+average, volume of WM parcellation,
+surface area, and the volume of cortical
+Parcellation and ROI features
+Jo et al.[76]
+ﬁve heatmaps, the top ten regions
+An et al.[77]
+medical history, hachinski ischemic score,
+cerebrovascular disease, uniﬁed
+Parkinson’s disease rating scale,
+neuropsychiatric inventory questionnaire,
+geriatric depression scale, and functional
+activities questionnaire
+Lei et al.[78]
+Intensity homogeneity, brain
+segmentation, and ROI features
+proposed a multi-scale CNN model which introduces
+channel attention to learn the dependency relation
+between two channels and assign corresponding weight
+value for each channel to extract multi-scale features
+for AD diagnosis. The results show an accuracy of
+97.91% for AD/NC, 94.44% for AD/MCI, and 90.74%
+for MCI/NC. Hong et al.[73] employ multimodality
+images, longitudinal MRI, PET and DTI, to develop an
+LSTM-based network for AD progression prediction. In
+another work, the proposed model achieves an AUC
+of 93.5% for AD vs. NC, 79.8% for AD vs. MCI, and
+77.7% for AD vs. NC vs. MCI. The tau deposition
+in the human brain is an essential biomarker for AD
+diagnosis[74, 75]. Jo et al.[76] utilized tau deposition
+in tau PET images and developed a 3D CNN-based
+network to separate AD from CN; the experiments
+conducted on Alzheimer’s Disease Neuroimaging
+Initiative (ADNI) dataset, the result shows an accuracy
+of 90.4% based on 5-fold cross-validation. To obtain
+complementary information from different measures,
+a deep ensemble learning model (DELearning) is
+proposed to predict AD using multi-modality data
+(including neuropathology, clinical evaluations, and
+brain MRI imaging) from National Alzheimer’s
+Coordinating Center (NACC) database. This work
+focuses on the two outcomes prediction: AD and NC,
+Through comparing DELearning and six ensemble
+learning models (LogitBoost, AdaBoostM1, Vote,
+RF, Bagging, Staking), the DELearning outperforms
+baselines in terms of precision, recall, F1 score, and
+accuracy[77]. Lei et al.[78] incorporated MRI data
+and various clinical scores at multiple time points to
+build longitudinal scores prediction framework. The
+Alzheimer’s disease Neuroimaging Initiative (ADNI)
+experiments show that the proposed method outperforms
+baselines and effectively reveals the relationship
+between MRI data and clinical scores.
+Neuroimaging data have been utilized to recognize
+structural and functional biomarkers of AD, as shown
+20
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+LASSO, and the non-Gaussian noise and impulsive noise
+are removed through correntropy. The experimental
+results show that it is the most inﬂuential parameter
+among selected features. Lei et al.[72] introduced a
+channel attention mechanism to learn global and local
+ROI features and assign a higher weight coefﬁcient for
+essential features. Finally, the features are fed into a
+classiﬁer for classiﬁcation or prediction. The widely
+used classiﬁer includes SVM, RF, KNN, etc.
+3.2.2
+Linguistics based CAD systems
+Several studies attempted to utilize linguistic data to
+distinguish AD patients with different impairment levels
+from non-AD subjects—the modalities of linguistic data
+including audio, text or both. Alkenani Ahmed et al.[79]
+took advantage of several based learning methods. They
+developed multiple heterogeneous stacked fusion models
+using written and spoken languages to enhance the
+robustness and generalizability of the AD diagnostic
+model. The feature space uses two linguistic patterns,
+character n-gram and lexico syntactic sare. These
+stacked fusion models obtain an AUC of 98.1% and
+an F1 score of around 95% on the spoken-based
+dataset. The AUC of 99.47% and the F1 score of
+97% on the written-based datasets. By taking fully
+connected positive features (diagnosis, procedures and
+lab values) in electronic health records as the input
+graph, the Graph Attention Network (GAT) serves as
+the attention-based feature aggregator for generating
+the representative node embeddings to be used for
+predicting AD[16]. The deep-deep neural networks
+language models (D2NNLM) are explored[80], utilizing
+higher order n-grams to learn the linguistic changes to
+recognize MCI and AD-type dementia from NC. The
+results show D2NNLM statistically signiﬁcant AUC
+on the clinical Pitt Corpus. Fraser et al.[81] adopted
+topic models trained on word embeddings to extract
+information units in monolingual and multilingual
+spaces and combined supervised and unsupervised
+learning methods to recognize MCI from healthy older
+adults in English and Swedish. Results show that the
+multilingual method improves classiﬁcation accuracy
+over the one-language approach. Besides utilizing text
+data, some works combine audio ﬁles and related
+automatic speech recognition (ASR) transcriptions to
+improve language comprehension. Fraser et al.[82]
+extracted 370 features from text and audio data to derive
+a wide range of linguistic phenomena and adopt a
+multilinear logistic regression model to classify AD and
+NC. The results achieve the best accuracy, 81.92% when
+using the top-35 features-motivated by the success of
+deep neural networks language models on medical neural
+language tasks. Luz et al.[83] classiﬁed AD and non-AD
+through extracting a set of acoustic features and using a
+classiﬁer of linear discriminant analysis (LDA), decision
+trees (DT), nearest neighbor (1NN), RF, and SVM on
+spontaneous speech data from ADReSS challenge, the
+best result is obtained from RF model with an accuracy
+of 62.5%. To better understand semantic information,
+Edwards et al.[84] extracted features in the text at both
+the phoneme and word level, and combine them with
+the acoustic features to train a new multi-modal and
+multi-scale model for AD identiﬁcation. The best result
+is obtained by the combination of word and phoneme
+representations. Sadeghian et al.[85] extracted features
+using a deep learning model to reduce the complexity
+of feature engineering of conventional machine learning
+methods. Speciﬁcally, it combines linguistic features
+from an automatically determined transcription of the
+speech (including punctuation) and acoustic features of
+speech to train a multi-layer perceptron (MLP) classiﬁer
+to discriminate between AD and NC. In the experiments,
+the accuracy is 94%. The lack of large data set poses
+a challenge for the deep learning model. Thus, they
+proposed the transfer learning base approach for AD
+prediction from targeted speech[86]. The models are pre-
+trained on a large dataset to learn word representations
+and ﬁne-tuned on the target dataset for the classiﬁcation
+task, which means the features in this work are learned
+in an unsupervised way, and the best result is obtained by
+the combination of pre-trained deep transformer-based
+models and LR classiﬁer. This paper mainly investigates
+studies for linguistic-based AD prediction in the English
+domain. Besides English, there are a lot of researches
+adopting data in a variety of language domains, such
+as Swedish[81, 87], French[88, 89], and Spanish[90, 91], but
+a little in Chinese, the reason could be lack of public
+text and speech dataset. Developing the AD diagnosis
+systems for early screening in Chinese is essential.
+For the linguistic data-based AD diagnostic model,
+the features are mainly divided into acoustic and
+text-based features[92], as shown in the Table 3. The
+prosodic temporal features of the Acoustic feature are
+most commonly used in the research, followed by the
+pause pattern, which is an ASP-related feature. The
+text-based feature consists of word embeddings and
+lexical and syntactical features (i.e., n-gram, TTR,
+TTC, syntactic complexity). The n-gram is the sequence
+of characters or words with length n, which can be
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+21
+Table 3
+Related studies with different linguistic features for
+AI-aid diagnosis of AD.
+Literature
+Category
+Feature name
+Zhu and
+Razavian[16]
+Text-based
+Word embedding
+Alkenani
+Ahmed
+et al.[79]
+Text-based
+Character n-gram, Type-Token
+Ratio (TTR), Type-token count
+(TTC), content density (CD), idea
+density, word, character, stop word,
+and sentence count
+Orimaye
+et al.[80]
+Text-based
+Lexical features
+Fraser
+et al.[81]
+Text-based Part-of-speech, word, and character
+n-gram
+Fraser
+et al.[82]
+Text-based,
+acoustic
+features
+Part-of-speech, syntactic complexity,
+grammatical constituents,
+psycholinguistics, TTR, information
+content, repetitiveness, MFCCs
+Luz et al.[83]
+Acoustic
+features
+ComParE, emobase, eGeMAPS,
+MRCG, minimal
+Edwards
+et al.[84]
+Text-based,
+acoustic
+features
+Word and sentence embedding,
+phonetic representation,
+GeMPAS, eGEMAPS, emobase,
+emobase2010, emolarge,
+ComParE2016, MRCG
+Sadeghian
+et al.[85]
+Text-based,
+acoustic
+features
+Race, speech rate, content density,
+the Linguistic Inquiry Word Counts
+(LIWC), total number of pause,
+idea density, fraction of pause less
+than 0.5 s or 1 s
+Alireza
+et al.[86]
+Text-based
+Word embedding
+are widely used acoustic features, speciﬁcally pause
+patterns. The spectral features are the frequency domain
+representation of the speech signal derived by Fourier
+transform, such as mel-frequency cepstral coefﬁcients
+(MFCC). Some works[83, 84] adopted the standardized
+acoustic feature set, such as emobase, ComParE, MRCG,
+and eGeMAPS. The detail of these feature sets is
+introduced in the following. The emobase[93] feature
+set includes voice quality features, MFCC, line spectral
+pairs (LSP), intensity features, fundamental frequency
+F0, and F0 envelopes.
+ComParE[94] feature set contains MFCC, energy,
+voicing related low-level descriptors (LLDs), and
+spectrum. The LLDs consist of psychoacoustic spectral
+sharpness, voice quality, logarithmic harmonic-to-noise
+ratio, spectral harmonicity, and Viterbi smoothing for F0.
+The total number of features is 6373.
+eGeMAPS[95] feature set includes the alpha ratio,
+F0 semitone, F1, F2, F3, MFCC, shimmer loudness,
+slope V0 features, jitter, spectral ﬂux, and Hammarberg
+index. Note that the research in Ref. [50] reported the
+gender difference could be reduced by using semitones
+to express F0.
+MRCG[96] utilizes time-frequency representation
+to encode the audio signal’s multi-resolution power
+distribution. The multi-resolution contains one high-
+resolution level and three low-resolution levels. The
+local information is encoded through a high-resolution
+level, and the remaining three low resolutions extract
+the spectro-temporal information. The total number of
+6912 features is generated using the statistical function
+on the 768 MRCG features. Besides the above acoustic
+feature set, the minimal feature set used in Ref. [83],
+consists of the basic statistics of pause, a vocalization
+count, the duration of vocalizations and the speech rate.
+This standardized feature set is effective in increasing
+the reliability of the speech-based diagnosis model.
+Still, the results in the studies[97–99] corroborated that
+a combination of text and acoustic features can further
+improve the performance of AD classiﬁcation.
+consecutive or overlapping. The Type-Token Ratio
+(TTR) and Type-token count (TTC) is adopted to
+measure lexical complexity. TTR is the total number
+of unique words (i.e., tokens) to the total number of
+words in a given instance, and TTC is the total number of
+unique words[79]. In addition, the idea density and word,
+character, stop word and sentences account are extracted
+as features for AD recognition in Ref.
+[79], where
+idea density is used to calculate the number of ideas
+described in a given sentence. The idea means full use of
+complex propositions and new information. The work[82]
+3.2.3
+Gene based CAD systems
+The development of high-throughput omics has helped
+us understand disease mechanisms at a detailed
+molecular level. Thus far, a lot of work uses omics data
+and AI algorithms to develop various diagnosis models
+to identify the risk factors of complex diseases[7]. Wei et
+al.[100] proposed a model-averaged NB model to predict
+LOAD individuals with 312 to 318 SNPs from 1411
+computes syntactic complexity by the clauses, the mean
+length of sentences and T-units.
+In addition, some
+works[80, 81, 84, 86] use deep learning models, i.e., CBOW,
+Glove, Sen2vec, and pre-trained language model, i.e.,
+BERT, to automatically learn features (i.e., word and
+sentence embeddings) from text and showed that they
+are beneﬁcial for the AD prediction task. The prosodic
+temporal features, ASR-related, and spectral features
+22
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+patients, which achieved a 0.72 AUC value. Xu et al.[101]
+developed an SVM model for analyzing gene-encoded
+protein sequence data that reached an accuracy of 85.7%
+by testing 279 AD-associated protein sequence data and
+1463 non-AD-associated protein sequence data in the
+UniProt database.
+Javier et al.[102] conducted comparisons of classical
+machine learning approaches, including Bootstrap Stage-
+Wise Model Selection (BSWiMS), Least Absolute
+Shrinkage and Selection Operator (LASSO), RF,
+Recursive Partitioning and Regression Trees (RPART),
+KNN, mRMR, and ensemble of above approaches to
+predict late-onset AD by using genetic variation data
+from ADNI cohort. The result shows that the ensemble
+of all machine learning methods achieved the best
+performance with an ROC AUC of 71.9%. Park et al.[103]
+developed a deep-learning approach for AD prediction
+using multiple heterogeneous omics datasets. The result
+obtained an accuracy of 82.3% by integrating gene
+expression and DNA methylation data. Some studies
+adopted blood-based expression data to predict AD,
+early AD or uncover key genes associated with AD
+because it is hard to obtain an omics dataset from brain
+issues of AD subjects. Lee et al.[30] adopted ﬁve feature
+selection approaches and ﬁve classiﬁers, including LR,
+L1-GLM, RF, SVM and DNN, to discriminate against
+AD individuals; the results obtain 65.7%, 87.4%, and
+80.4% AUC values for ADNI, ANM1 and ANM2
+datasets in internal validation.
+The above studies show that using machine learning
+approaches to predict and diagnose AD by analysis of
+genetic data. But if incorporated with other modal data,
+such as text, audio, and image, the accuracy of the
+predicted model can be signiﬁcantly improved.
+3.2.4
+Multimodal data based CAD systems
+machine learning model, along with fusion model
+on NACC and OASIS datasets, the results show that
+the MRI-only model yielded AUC of 84.4% (NACC)
+and 84.6% (OASIS) for COGNC (NC/MCI and DE)
+task, AUC of 86.9% (NACC) and 85.8% (OASIS) for
+COGDE (DE/NC and MCI) task, AUC value of 73.4%
+(NACC) and 69.4% (OASIS) for ADD (AD/nADD)
+task. Non-imaging model obtained an AUC of 93.6%
+(NACC) and 95.9% (OASIS) for the COGNC task, AUC
+of 96.2% (NACC) and 97.1% (OASIS) for COGDE
+task, AUC of 74.9% (NACC) and 68.9% (OASIS) for
+ADD task. The fusion model yielded an AUC of 94.5%
+(NACC) and 95.9% (OASIS) for the COGNC task, AUC
+of 97.1% (NACC) and 97.1% (OASIS) for COGDE
+task, AUC of 77.3% and 77.3% for ADD task. From the
+comparing results, we can ﬁnd that fusion of modalities
+performs better than both MRI-only and non-imaging
+models.
+Golovanevsky et al.[37] combined neural networks
+and attention to present a multimodal AD diagnosis
+framework (MADDi) to classify NC, AD, and MCI
+using imaging, genetic, and clinical data. By evaluating
+the contributions of each modality on overlap patient
+set, the results show that the model achieved an
+accuracy of 82.29%, 77.78%, 71.66%, 92.5%, 78.33%,
+85.83%, and 96.88% for the adoption of clinical data,
+genetic data, imaging data, clinical and genetic data,
+genetic and imaging data, imaging and clinical data, all
+above modalities, respectively. It demonstrated that a
+combination of three modalities could further improve
+the AD diagnosis model. Lin et al.[108] utilized a linear
+discriminant analysis (LDA) scoring approach to fusing
+multi-modality data, including MRI, PET, CSF, and
+genetic features, to classify AD, MCI, and NC. To
+evaluate the contribution of each modality, the model
+obtained an accuracy of 61.5% for only MRI, 56.3%
+for only PET, 55% for only CSF, 62.5% for without
+MRI, 65.5% for without PET, 63.9% for without CSF,
+66.3% for without gene, and 66.7% for the fusion of
+different modalities on the three-way diagnosis. The
+results show that the MRI has the most signiﬁcant effect
+on the model performance, followed by CSF and PET.
+The performance increased by 0.5% when considering
+genetic features because the genetic feature is the minor
+data.
+Chen et al.[109] developed a deep learning-based
+model to classify NC, MCI, and AD by fusing multi-
+modality data, such as MRI, MRI text reports, mental
+and psychological test results, and few-shot learning.
+Recently,
+most
+works
+integrate
+molecular
+and
+phenotypic data, such as MRI and neuropsychological
+tests, for AD prediction. Compared to individual modal
+data, the medical data from different modalities can
+provide more complementary medical information to
+each other about the disease condition of patients[104–106].
+Therefore, the effective adoption of multi-modality
+data is crucial for reliable clinical disease diagnosis.
+Qiu et al.[107]
+employed multi-modality data of
+MRI, clinical information, as well as functional and
+neuropsychological assessments to develop a deep
+learning-based model for AD, NC, MCI, and nADD
+(non-AD dementias) classiﬁcation. By comparing
+the MRI-only CNN model, non-imaging traditional
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+23
+SVM and 10-fold cross-validation. To better preserve
+the integrity of intra-modality, Zhang et al.[114] utilized
+multiple kernel learning (MKL) to encapsulate features
+of each modality by themselves for the prediction of
+sMCI and pMCI in 18 months. This model achieved an
+accuracy of 76.4% on the ADNI dataset. Cheng et al.[115]
+In the comparative experiments conducted on a dataset
+from a third-class hospital in Shanghai, the model
+obtained an accuracy of 59.2% for only structured
+reports, 52.8% for only text reports, 47.6 for only MRI,
+66.8% for the fusion of multi-modalities, as well as
+79.6% for the combination of multi-modalities and few-
+shot learning. It has been proved that multi-modality
+data fusion can improve classiﬁcation accuracy. The
+details can be seen in Table 4. For multi-modal feature
+selection, Spooner et al.[110] developed a model to
+recognize AD-relevant biomarkers by feature selector
+automatically. In the experiments conducted on the
+Sydney Memory and Aging Study and ADNI datasets,
+the identiﬁed AD biomarker included that the APOE
+gene, abnormal gait, tau, phosphorylated tau and
+amyloid-(A42). In addition, inﬂammation, depression
+and low-level education are thought to play an essential
+role in the pathophysiology of AD. Using the SVM
+model, Kate et al.[111] discovered AD multi-modal
+biomarkers from 810 subjects, including normal, MCI,
+and AD. The results show that APOE genotype, age,
+neuropsychological memory score, hippocampus and
+amygdala are signiﬁcant biomarkers to distinguish
+between normal and MCI. Comparing amyloid-positive
+CN individuals and amyloid-positive MCI individuals,
+the latter had lower bilateral hippocampal and amygdala
+volumes,
+along with lower whole brain average
+cortical thickness. The study[112] highlighted the
+longitudinal multi-modal structure MRI as a prognostic
+and diagnostic biomarker that has potential value
+for presymptomatic to early symptomatic familial
+frontotemporal dementia.
+3.3
+CAP system of Alzheimer’s disease
+predicted MCI conversion to leverage MCI subjects’
+information with NC and AD as auxiliary domains,
+and developed a domain transfer learning model on
+the ADNI dataset, containing 51 AD subjects, 99 MCI
+subjects, and 52 NC subjects. This model obtained an
+accuracy of 79.4%, outperforming the methods without
+utilizing information from the auxiliary domain.
+In machine learning-based AD diagnosis, adequate
+label data for prediction tasks is hard to obtain since
+manual labeling is time-consuming and labor-intensive.
+Yuan et al.[116] proposed a semi-supervised model to
+classify sMCI and pMCI in 3 years. It ﬁrst extracted
+quantitative trail (QT) from 228 labeled structural MRI
+and SNP features from genotype data to construct two
+initial classiﬁers. Then, the 136 unlabeled structural
+MRI samples are automatically annotated through a
+co-learning strategy; ﬁnally, the RF is used to train a
+combined classiﬁer to classify MCI patients from the
+ADNI-2 dataset. Results show an accuracy of 85.5%.
+In a recent study, deep learning gained popularity in
+predicting disease progression. Lin et al.[117] designed
+a deep learning method based on CNN to predict MCI
+to AD conversions using MRI data within three years.
+This study gets an accuracy of 79.9%. Tabarestani et
+al.[118] utilized Cerebrospinal ﬂuid (CSF), MRI, PET
+cognitive test scores demographic with genetic, and
+two variations of the RNN model, i.e., long short-term
+memory (LSTM) and gated recurrent units for prediction
+of the patient status of following three-time points by the
+previous three historical time points. The results show
+that the predictive performance of LSTM and GRU are
+signiﬁcantly improved by incorporating the L1 feature,
+and the accuracy of LSTM based model is higher than
+GRU based model. Some works built a model for both
+classiﬁcation and prognosis tasks. Beheshti et al.[119]
+A prognosis that concerns quantiﬁcation of disease
+progressions is equally signiﬁcant to diagnosis, such
+as prediction of the disease progression in a time frame
+or assessment of the time to dementia onset. Existing
+AD prognostic studies mainly focus on predicting MCI
+to AD. We summarize some representative studies
+in Table 5. In earlier times, Ritter et al.[113] used
+SVM, classiﬁcation tree, and RF to extract features
+from neuropsychological testing, MRI, FDG-PET,
+CSF, medical history, demographic information, and
+neurological and physical examinations into a combined
+feature set for the prediction of sMCI (stable MCI) and
+pMCI (progressive MCI) within three years. The best
+performance is with maximal accuracy of 73% by using
+developed a new model that utilizes a genetic approach
+and feature ranking to analyze sMRI data to classify
+NC with AD and predict the conversion of pMCI with
+sMCI three years before clinical diagnosis. The results
+researchedan accuracy of 93.01% for classiﬁcation and
+75% for pMCI as well as sMCI prediction. Zheng et
+24
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+Table 4
+Summary of CAD system for AD detection using neuroimaging, linguistic, and gene data.
+Literature
+Modality
+Dataset
+Task
+Result
+Tripoliti
+et al.[68]
+fMRI
+Private
+Classiﬁcation: NC
+(young and elderly),
+AD (mild and very
+mild)
+94% for NC (elderly)/AD, 97% for NC
+(elderly)/AD (mild and very mild),
+98.78% for NC (young and elderly)/AD
+(mild and very mild) ((ACC)
+Wu et al.[69]
+PET
+ADNI
+Classiﬁcation: NC,
+MCI, AD,
+84.3% for AD, 75.2% for MCI, 88.6%
+for CN (ACC)
+Er and
+Goularas[71]
+MRI
+ADNI
+Classiﬁcation:
+MCI, AD
+87.2% (ACC)
+Lei et al.[72]
+MRI
+ADNI
+Classiﬁcation: AD,
+MCI, NC
+97.91% for AD/NC, 94% for AD/MCI,
+90.74% for MCI/NC (ACC)
+Hong et al.[73]
+MRI, PET, DTI
+ADNI
+Classiﬁcation: NC,
+MCI, AD,
+77.7% (AUC)
+Jo et al.[76]
+Tau-PET
+ADNI
+Classiﬁcation: AD,
+NC, MCI
+90.4% (ACC)
+An et al.[77]
+MRI
+NACC
+Classiﬁcation: AD,
+NC
+76.4% (ACC)
+Lei et al.[78]
+MRI
+ADNI
+AD score
+prediction
+4.781 for M06, 5.099 for M12, 4.521
+for M18, 5.736 for M24, 4.981 for M36
+(MAE)
+Alkenani
+Ahmed et al.[79]
+Spoken, text
+DementiaBank,
+AD Blog corpus
+Classiﬁcation: AD,
+NC
+98.1% for DementiaBank, 99.47% for
+AD blog corpus (ACC)
+Orimaye
+et al.[80]
+Text
+Pitt Corpus
+Classiﬁcation:
+MCI, Ad
+80% for MCI dataset, 83% for AD
+dataset (AUC)
+Zhu and
+Razavian[16]
+Text
+Private
+Classiﬁcation: AD,
+NC
+80.2% (AUROC)
+Fraser et al.[81]
+Text
+Gothenburg (private),
+Karolinska, DementiaBank
+Classiﬁcation:
+MCI, NC
+63% in English, 51% in Swedish
+(ACC)
+Fraser et al.[82]
+Audio, text
+DementiaBank
+Classiﬁcation: AD,
+NC
+81.92% (ACC)
+Luz et al.[83]
+Audio, text
+ADreSS Challenge
+Classiﬁcation: AD,
+NC
+62.5% (ACC)
+Edwards
+et al.[84]
+Audio, text
+ADreSS Challenge
+Classiﬁcation: AD,
+NC
+79.17% (ACC)
+Sadeghian
+et al.[85]
+Audio, text
+Private
+Classiﬁcation, AD,
+NC
+94% (ACC)
+Alireza
+et al.[86]
+Text
+DementiaBank
+Classiﬁcation: AD,
+NC
+88.08% (ACC)
+Wei et al.[100]
+Gene
+NACC
+Classiﬁcation:
+LOAD, NC
+72% ( AUC)
+Xu et al.[101]
+Gene
+ADNI
+Classiﬁcation: AD,
+NC
+85.7% (ACC)
+Javier et al.[102]
+Gene
+ADNI
+Classiﬁcation:
+LOAD, NC
+71.9% (AUC)
+Golovanevsky
+et al.[37]
+MRI, clinical
+data, gene
+ADNI
+Classiﬁcation: AD,
+NC, MCI
+96.88% (ACC)
+Qiu et al.[107]
+Classiﬁcation: AD,
+NC, MCI, nADD
+94.5% for COGGN, 97.1% for COGDE,
+73.3% for ADD on NACC (AUC)
+LBDSU, NACC, ADNI,
+OASIS, AIBL, FHS,
+PPMI, NIFD
+MRI, clinical
+information, functional
+and neuropsychological
+assessments
+Lin et al.[108]
+MRI, PET, CSF, gene
+ADNI
+Classiﬁcation: AD,
+NC, MCI
+66.7% (ACC)
+Chen et al.[109]
+MRI, text report,
+structured report
+Private
+Classiﬁcation: AD,
+MCI, NC
+79.6% (ACC)
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+25
+Table 5
+Summary of CAP system for AD detection using neuroimaging, linguistic, and gene data.
+Literature
+Modality
+Dataset
+Task
+Conversion period
+(months)
+Result
+Ritter et al.[113]
+MRI, FDG-PET, CSF
+ADNI
+Prediction: sMCI, pMCI
+0–36
+73% (ACC)
+Zhang et al.[114]
+FDG-PET, MRI, CSF
+ADNI
+Prediction: sMCI, pMCI
+0–18
+76.4% (ACC)
+Cheng et al.[115]
+MRI, PET, CSF
+ADNI
+Prediction: sMCI, pMCI
+0–36
+79.4% (ACC)
+Yuan et al.[116]
+MRI, SNP
+ADNI
+Prediction: sMCI, pMCI
+0–36
+85.5% (ACC)
+Lin et al.[117]
+MRI
+ADNI
+Prediction: sMCI, pMCI
+0–36
+79.9% (ACC)
+Tabarestani et al.[118]
+CSF, MRI, PET
+ADNI
+Prediction: AD, MCI,
+NC
+88% for 0–12 months, 87%
+for 0–24 months, 88% for
+0–36 months (ACC)
+0–12,
+0–24,
+0–36
+Beheshti et al.[119]
+MRI
+ADNI
+Classiﬁcation: NC, AD
+Prediction: sMCI, pMCI
+0–36
+93.01% for NC/AD
+75% for sMCI/pMCI (ACC)
+Zheng et al.[120]
+fMRI, MRI,
+PET, CSF
+ADNI, ABIDE
+Prediction: sMCI, pMCI
+Classiﬁcation: AD, ASD,
+sMCI, NC
+0–36
+92.31% for AD/sMCI/NV,
+92.3% for sMCI/pMCI,
+89.77% for NC/ASD (ACC)
+Yubraj et al.[121]
+sMRI, CSF,
+FDG-PET, gene
+ADNI
+Classiﬁcation: AD, NC,
+sMCI, pMCI
+Prediction: sMCI, pMCI
+0–24
+98.33% for AD/NC, 93.59%
+for sMCI/pMCI, 96.83% for
+AD/sMCI, 94.64% for
+AD/pMCI, 96.43% for
+NC/pMCI, 95.24% for
+NC/sMCI (ACC)
+al.[120] proposed an end-to-end graph network to
+classify and predict AD using multi-modality data
+(fMRI, MRI, PET, demographic information, cognitive
+tests, cerebrospinal ﬂuid biomarkers, and risk factor).
+The model obtained an accuracy of 92.31% for
+AD/sMCI/NC, 92.3% for sMCI/pMCI on the ADNI
+dataset, and 89.77% for NC/ASD (Autism Spectrum
+Disorder) on ABIDE dataset. Yubraj et al.[121] developed
+a machine learning-based model to classify and predict
+AD by combining four biomarkers, such as FDG-PET,
+sMRI, CFS, and AOPE. The results reached an accuracy
+of 98.33% for AD/NC, 93.59% for sMCI/pMCI, 96.83%
+for AD/sMCI, 94.64% for AD/pMCI, 96.43% for
+NC/pMCI, and 95.24% for NC/sMCI.
+3.4
+AI-aid treatment of Alzheimer’s disease
+Treatment in AD subjects aims to alleviate and possibly
+improve cognition loss along with maintain autonomous
+function. The treatment of AD mainly includes
+pharmacological and non-pharmacological approaches.
+Currently, AD drugs can only alleviate symptoms rather
+than reverse the progress of the disease[122, 123]. It
+is essential to keep searching for therapeutic drugs,
+moreover, machine learning provides a promising way
+for drug discovery. Fang et al.[124] applied recursive
+partitioning and a naive Bayesian algorithm to build a
+classiﬁer for predicting chemical-protein interactions
+of AD using the multitarget-quantitative structure-
+activity relationships (mt-QSAR) approach. They utilize
+validated models to systematically predict the potential
+targets from 25 key AD targets for six approved anti-AD
+drugs and 19 known active compounds associated with
+AD. Repurposing drugs for AD has recently received
+much attentions[125]. Rodriguez et al.[126] developed a
+Drug Repurposing In AD (DRIAD) framework using
+machine learning algorithms, including LR, SVM, RF,
+and two-layer fully connected NN, to quantify potential
+relationships between the pathology of AD severity and
+molecular mechanisms. DRIAD tested 80 compounds,
+where 33 were FDA-approved and might be directly used
+for repurposing; the remaining 33 preclinical compounds
+and 14 investigational compounds, which DRIAD highly
+scored, can provide a reference for FDA-approved
+compounds selection. Adverse drug reactions (ADRs)
+are one of the signiﬁcant reasons for the failure of drugs.
+Thus, an effective predictive model of ADRs is essential.
+Jamal et al.[127] used a relief-based feature selection
+method to recognize relevant properties and employed a
+machine learning model to predict neurological ADRs
+before preclinical testing. They predicted ADRs for
+existing anti-AD drugs and uncharacterized drugs on
+the side effect resource (SIDER) dataset. The model
+obtains an accuracy of 93.2% for chemical, 92.41% for
+phenotypic, 94.18% for integration of three properties,
+and 82.11% for biological properties.
+Besides pharmacological approaches, more scientists
+26
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+have integrated personalized and adaptive elements to
+design a cognitive training game. Some studies design
+adaptive games by dynamically changing the parameters
+of
+games
+and
+generating
+new
+content[17, 128–130].
+Relevant studies showed that adaptive electronic science
+games could match the different levels of players with
+the different difﬁculties of games so that games can
+improve cognitive ability[12, 131–133], which provides an
+important reference for AD treatment. As mentioned
+above, there are still no drugs that can cure or
+effectively reverse AD. Thus, AI-based AD treatment
+research mainly focuses on mining the relations between
+chemicals and proteins.
+4
+Public AD Dataset
+study designed to promote research into key factors of
+health and disease, mainly in middle-aged and older
+adults[142]. The participants have generously provided
+a wealth of information on the environment, lifestyle,
+socio-demographic, health and well-being, as well as
+a range of cognitive and physical tests since 2006. To
+date, the UKB has approved projects studying dementia
+and cognitive impairment, such as high risk factors
+for dementia, whole-neuroimaging and genome-wide
+association studies, along with diagnostic models[143].
+Pitt corpus consists of picture descriptions derived by
+Cookie Theft Picture collected by the University of
+Pittsburgh[144] and distributed by DementiaBank[145, 146].
+The Cookie Theft Picture is produced through AD
+patients and healthy participants and related to their
+neuropsychological data. It is worth noting that the
+existing public AD-related linguistic datasets are
+still limited in the Chinese domain. The Alzheime’s
+Disease Sequencing Project (ADSP)[147] is part of
+the NIA Alzheimer’s Disease Genetics Portfolio and
+contains more than 350 investigators worldwide. ADSP
+contains multiple genes and accompanying phenotypic
+information, such as age, gender, and cognitive
+measures.
+5
+Perspective for the Future
+With the development of data sharing sources and
+adoption of AI technologies for etiology discovery,
+diagnosis, prognosis as well as treatment of disease,
+the novel technologies and medical service system will
+be introduced to address the public healthcare demand
+for high quality human-centered operation of emergency
+care, as shown in Fig. 5.
+(1) Boosting early detection and prevention of
+dementia
+As mentioned above, most existing diagnostic models
+Fig. 5
+Tendency of medical services system in the future.
+Data collection is fundamental to building a machine
+learning model for AD applications. The open
+established datasets are selected in most studies to add
+research value. The Alzheimer’s Disease Neuroimaging
+Initiative (ADNI) database[134, 135] is one of the most
+popular datasets for AD prediction, and was established
+in 2003. The study of ADNI takes about 17 years
+and consists of 4 phases: ADNI-1 (5 years), ADNI-
+GO (2 years), ADNI-2 (5 years), and ADNI-3 (5
+years). It contains multiple data types, including
+brain imaging data, such as MRI, PET, clinical data,
+biospecimen, and genetic data. The category of AD
+stages in ADNI includes AD, MCI, NC, etc. In
+addition, ADNI will continue to track and update
+the database of the pre-diagnosed population. The
+National Alzheime’s Coordinating Center (NACC)
+database[136, 137] maintained a cumulative database
+and was founded in 1999. It includes more than
+45 000 participants and different types of clinical
+data, such as neuropathology, clinical evaluations,
+and brain MRI imaging. In the linguistic domain,
+DementiaBank is a primary public dataset to evaluate
+the spoken language of the AD patient. It collected
+45–90 years old English-speaking participants from
+1983 to 1988. The OASIS (Open Access Series of
+Imaging Studies) database[138, 139] consists of four
+versions of data sets. OASIS-1 and OASIS-2 are
+cross-sectional and longitudinal MRI data. OASIS-3
+is a longitudinal multimodal neuroimaging, clinical
+biomarker, and cognitive dataset collected from 1378
+normally aging with AD members. OASIS-4 included
+clinical, biomarker, MRI, and cognitive data from
+patients presenting with memory complaints. The UK
+Biobank (UKB)[140, 141] is a large-scale prospective
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+27
+(4) Constructing a reliable and high quality CAD
+or CAP system
+Although a lot of powerful ML based models have
+been presented to solve real-world medical problems
+and have obtained the remarkable performance when
+many samples existed, their clinical application is limited
+without the trust of human experts[149]. Understanding
+the reasons of a decision made by ML model is a
+prerequisite of next medical decision. For the future
+ML applications, the human-in-the-loop is a solution to
+enhance ML performance and receive reliable results in
+medical applications by collaboration of humans and
+ML approaches. First, in the building time, medical
+experts can provide prior knowledge in the different
+stages of model building, i.e. data producing, pre-
+processing, feature selection and training stages, to
+help for producing high quality training samples and
+improving the performance of the ML prediction.
+Second, in the running time, providing an interface of
+Human-AI interaction enable medical experts as the
+users of ML models to validate and reﬁne models and
+obtain the acceptable outputs. It provides great potentials
+to improve not only the performance of ML models but
+also the interpretability of the clinical decision.
+6
+Conclusion
+This article reviews recent research on AI (machine
+learning)
+based
+solutions
+on
+etiology
+discovery,
+automatic diagnosis, prognosis and treatment for AD
+using different modalities. The multi-modality data
+includes neuroimaging, linguistic, genetic and multi-
+modality data to help new researchers to build a
+comprehensive understanding of AI technology applied
+in AD research. Emerging AI technologies offer
+possibilities in the medical domain but also bring
+challenges. AI-based models can assist radiologists,
+neurosurgeons and other medical staff with better clinical
+decision-making and analyze the relationship between
+complex factors for etiology discovery and aid treatment
+of AD. Although certain limitations exist, we believe
+that with the continuous improvement of data sharing
+resources and computational creativity, a comprehensive
+and integral analysis system can be established soon to
+help AD research.
+Acknowledgment
+This work was partially supported by the National
+Key R&D Program of China (No. 2020YFB2104402)
+recognize AD patients, mainly focusing on MCI and
+the dementia stage. To reduce the substantial burden
+on patients, carers, and society and increase the
+quality of healthcare, it is essential to shift focus to
+recognizing individuals in the preclinical stage. By early
+intervention, lifestyle changes can be delayed, reducing
+healthcare costs and preventing further progression.
+With the treatment option for AD being limited, the key
+transformation of AD is focused on prevention rather
+than treatment. The United States Congressional Budget
+Ofﬁce has noticed that preventive care is a key innovation
+for healthcare[148]. However, previous research showed
+that AD prevention is hard to implement, because
+of lacking healthcare resources. The new solutions
+facilitate practical preventive care by engaging patients
+in preventing disease, utilizing interactive, patient-
+oriented techniques based on health information systems.
+(2) High-quality data sharing resource
+The quality of the health data resources is fundamental
+for obtaining correct results. Large-scale and diversiﬁed
+data resources can reﬂect the real distribution of data and
+improve the ability of researchers to spot important and
+weak factors. However, as mentioned above, most of the
+real-world AD datasets are private, so it cannot conduct
+a comparative study of these researches with future
+work. Moreover, the widely used public dataset, such
+as ADNI, comes from developed countries and does not
+contain signiﬁcant populations in developing countries.
+For linguistic-based AD research, current CAD systems
+are mainly based on English, rarely in Chinese. The
+promising solution is to develop and improve the data-
+sharing resource by promoting cooperation between
+national and international medical institutions.
+(3) “Customer-centered” medical service system
+A critical characteristic of the transformation driven
+by AI technology in healthcare is replacing the
+“patient-centered” medical service system with a
+“customer-centered” medical service system. It aims
+to improve patient satisfaction by boosting the quality
+of healthcare services and encouraging individuals
+to assume responsibility for their health. On the
+other hand, with the development of information
+technology, it is believed that intelligent and partially
+autonomous local implementations can support end-user
+self-determination; at the same time, telemonitoring and
+telecare are supported by the development of wearable
+devices as well as smartphone applications. These
+devices will also collect the data resources.
+28
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+and
+Beijing
+Postdoctoral
+Research
+Foundation
+(No.
+2022ZZ075).
+[14]
+K. A. Frazer, S. S. Murray, N. J. Schork, and E. J. Topol,
+Human genetic variation and its contribution to complex
+traits, Nat. Rev. Genet., vol. 10, no. 4, pp. 241–251, 2009.
+References
+[1]
+R. J. Castellani, R. K. Rolston, and M. A. Smith, Alzheimer
+disease, Dis. Mon., vol. 56, no. 9, pp. 484–546, 2010.
+[15]
+J. Ren, J. Li, H. Liu, and T. Qin, Task ofﬂoading strategy
+with emergency handling and blockchain security in SDN-
+empowered and fog-assisted healthcare IoT, Tsinghua
+Science and Technology, vol. 27, no. 4, pp. 760–776, 2021.
+[16]
+W. Zhu and N. Razavian, Graph neural network on
+electronic health records for predicting Alzheimer’s disease,
+arXiv preprint arXiv: 1912.03761, 2019.
+[2]
+E. Braak, K. Grifﬁng, K. Arai, J. Bohl, H. Bratzke, and
+H. Braak, Neuropathology of Alzheimer’s disease: What
+is new since Alzheimer?
+Eur. Arch. Psychiatry Clin.
+Neurosci., vol. 249, no. 3, pp. S14–S22, 1999.
+[17]
+J. Tie, X. Lei, and Y. Pan, Metabolite-disease association
+prediction algorithm combining DeepWalk and random
+forest, Tsinghua Science and Technology, vol. 27, no. 1, pp.
+58–67, 2021.
+[18]
+P. Hamet and J. Tremblay, Artiﬁcial intelligence in
+medicine, Metabolism, vol. 69, pp. S36–S40, 2017.
+[3]
+G. Livingston, J. Huntley, A. Sommerlad, D. Ames, C.
+Ballard, S. Banerjee, C. Brayne, A. Burns, J. Cohen-
+Mansﬁeld, C. Cooper, et al., Dementia prevention,
+intervention,
+and care:
+2020 report of the lancet
+commission, Lancet, vol. 396, no. 10248, pp. 413–446,
+2020.
+[19]
+M. De Marsico, A. Petrosino, and S. Ricciardi, Iris
+recognition through machine learning techniques: A survey,
+Pattern Recognit. Lett., vol. 82, pp. 106–115, 2016.
+[4]
+L. E. Hebert, P. A. Scherr, L. A. Beckett, M. S. Albert,
+D. M. Pilgrim, M. J. Chown, H. H. Funkenstein, and D.
+A. Evans, Age-speciﬁc incidence of Alzheimer’s disease
+in a community population, JAMA, vol. 273, no. 17, pp.
+1354–1359, 1995.
+[20]
+M. A. Hearst, S. T. Dumais, E. Osuna, J. Platt, and B.
+Scholkopf, Support vector machines, IEEE Intell. Syst.
+Their Appl., vol. 13, no. 4, pp. 18–28, 1998.
+[5]
+T. Wang, R. G. Qiu, and M. Yu, Predictive modeling of the
+progression of Alzheimer’s disease with recurrent neural
+networks, Sci. Rep., vol. 8, no. 1, p. 9161, 2018.
+[21]
+N. Friedman, D. Geiger, and M. Goldszmidt, Bayesian
+network classiﬁers, Mach. Learn., vol. 29, pp. 131–163,
+1997.
+[22]
+A. K. Jain, J. Mao, and K. M. Mohiuddin, Artiﬁcial neural
+networks: a tutorial, Computer, vol. 29, no. 3, pp. 31–44,
+1996.
+[6]
+C. Davatzikos, S. M. Resnick, X. Wu, P. Parmpi, and C. M.
+Clark, Individual patient diagnosis of AD and FTD via high-
+dimensional pattern classiﬁcation of MRI, NeuroImage, vol.
+41, no. 4, pp. 1220–1227, 2008.
+[7]
+P. Scheltens, Early diagnosis of dementia: Neuroimaging,
+J . Neurol., vol. 246, no. 1, pp. 16–20, 1999.
+[23]
+J. E. Van Engelen and H. H. Hoos, A survey on semi-
+supervised learning techniques, Mach. Learn., vol. 109,
+no. 2, pp. 373–440, 2020.
+[24]
+R. Xu and D. Wunsch, Survey of clustering algorithms,
+IEEE Trans. Neural Netw., vol. 16, no. 3, pp. 645–678,
+2005.
+[8]
+L. K. McEvoy, C. Fennema-Notestine, J. C. Roddey, D.
+J. Hagler Jr, D. Holland, D. S. Karow, C. J. Pung, J. B.
+Brewer, A. M. Dale, and A. D. N. Initiative, Alzheimer
+disease: Quantitative structural neuroimaging for detection
+and prediction of clinical and structural changes in mild
+cognitive impairment, Radiology, vol. 251, no. 1, pp. 195–
+205, 2009.
+[25]
+T. Kanungo, D. M. Mount, N. S. Netanyahu, C. D. Piatko,
+R. Silverman, and A. Y. Wu, An efﬁcient k-means clustering
+algorithm: Analysis and implementation, IEEE Trans.
+Pattern Anal. Mach. Intell., vol. 24, no. 7, pp. 881–892,
+2002.
+[26]
+B. Mahesh, Machine learning algorithms-a review, Int. J.
+Sci. Res., vol. 9, pp. 381–386, 2020.
+[9]
+B. Shi, Y. Chen, P. Zhang, C. D. Smith, and J. Liu,
+Nonlinear feature transformation and deep fusion for
+Alzheimer’s Disease staging analysis, Pattern Recognit.,
+vol. 63, pp. 487–498, 2017.
+[27]
+Y. Mintz and R. Brodie,
+Introduction to artiﬁcial
+intelligence in medicine, Minim. Invasive Ther. Allied
+Technol., vol. 28, no. 2, pp. 73–81, 2019.
+[10]
+A. Nordberg, J. O. Rinne, A. Kadir, and B. L˚angstr¨om, The
+use of PET in Alzheimer disease, Nat. Rev. Neurol., vol. 6,
+no. 2, pp. 78–87, 2010.
+[28]
+I. Kononenko, I. Bratko, M. Kukar, Application of machine
+learning to medical diagnosis, Mach. Learn. Data Min.,
+vol. 389, p. 408, 1997.
+[11]
+J. R. Petrella, R. E. Coleman, and P. M. Doraiswamy,
+Neuroimaging and early diagnosis of alzheimer disease:
+A look to the future, Radiology, vol. 226, no. 2, pp. 315–
+336, 2003.
+[29]
+Y. LeCun, Y. Bengio, and G. Hinton, Deep learning, Nature,
+vol. 521, no. 7553, pp. 436–444, 2015.
+[30]
+T. Lee and H. Lee, Prediction of Alzheimer’s disease using
+blood gene expression data, Sci. Rep., vol. 10, no. 1, pp.
+1–13, 2020.
+[12]
+J. L. Plass, B. D. Homer, S. Pawar, C. Brenner, and A. P.
+MacNamara, The effect of adaptive difﬁculty adjustment on
+the effectiveness of a game to develop executive function
+skills for learners of different ages, Cogn. Dev., vol. 49, pp.
+56–67, 2019.
+[31]
+N. Noorbakhsh-Sabet, R. Zand, Y. Zhang, and V. Abedi,
+Artiﬁcial intelligence transforms the future of health care,
+Am. J. Med., vol. 132, no. 7, pp. 795–801, 2019.
+[32]
+N. Schwalbe and B. Wahl, Artiﬁcial intelligence and the
+future of global health, Lancet, vol. 395, no. 10236, pp.
+1579–1586, 2020.
+[13]
+A. Ng, W. W. Tam, M. W. Zhang, C. S. Ho, S. F. Husain, R.
+S. McIntyre, and R. C. Ho, IL-1ˇ, IL-6, TNF-˛ and CRP
+in elderly patients with depression or Alzheimer’s disease:
+Systematic review and meta-analysis, Sci. Rep., vol. 8, no.1,
+p. 12050, 2018.
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+29
+[33]
+G. Yu, Z. Chen, J. Wu, and Y. Tan, A diagnostic prediction
+framework on auxiliary medical system for breast cancer
+in developing countries, Knowl. Based Syst., vol. 232, p.
+107459, 2021.
+[49]
+D. Goldgaber, M. I. Lerman, O. W. McBride, U. Safﬁotti,
+and D. C. Gajdusek, Characterization and chromosomal
+localization of a cDNA encoding brain amyloid of
+Alzheimer’s disease, Science, vol. 235, no. 4791, pp. 877–
+880, 1987.
+[50]
+Z. Xu, C. Wu, and W. Pan, Imaging-wide association
+study: Integrating imaging endophenotypes in GWAS,
+NeuroImage, vol. 159, pp. 159–169, 2017.
+[34]
+X. Xu, J. Li, Y. Guan, L. Zhao, Q. Zhao, L. Zhang, and
+L. Li, GLA-Net: A global-local attention network for
+automatic cataract classiﬁcation, J. Biomed. Inform., vol.
+124, p. 103939, 2021.
+[35]
+C. Zheng, X. Deng, Q. Fu, Q. F. Zhou, J. Feng, H. Ma,
+W. Liu, and X. Wang, Deep learning-based detection for
+COVID-19 from chest CT using weak label, MedRxiv,
+2020.
+[51]
+K. Lunnon, M. Sattlecker, S. J. Furney, G. Coppola, A.
+Simmons, P. Proitsi, M. K. Lupton, A. Lourdusamy, C.
+Johnston, H. Soininen, et al., A blood gene expression
+marker of early Alzheimer’s disease, J. Alzheimer’s Dis.,
+vol. 33, no. 3, pp. 737–753, 2013.
+[36]
+B. A. Fritz, Z. Cui, M. Zhang, Y. He, Y. Chen, A. Kronzer,
+A. Ben Abdallah, C. R. King, M. S. Avidan, Deep-learning
+model for predicting 30-day postoperative mortality, Br. J
+Anaesth., vol. 123, no. 5, pp. 688-695, 2019.
+[52]
+L. K. Climer, M. Dobretsov, and V. Lupashin, Defects in
+the COG complex and COG-related trafﬁcking regulators
+affect neuronal Golgi function, Front. Neurosci., vol. 9, p.
+405, 2015.
+[37]
+M. Golovanevsky, C. Eickhoff, R. Singh, Multimodal
+Attention-based Deep Learning for Alzheimer’s Disease
+Diagnosis, arXiv preprint arXiv: 2206.08826, 2022.
+[38]
+Z. Breijyeh and R. Karaman, Comprehensive review on
+Alzheimer’s disease: Causes and treatment, Molecules, vol.
+25, no. 24, p. 5789, 2020.
+[53]
+G. Wang, D. F. Zhang, H. Y. Jiang, Y. Fan, L. Ma, Z.
+Shen, R. Bi, M. Xu, L. Tan, B. Shan, et al., Mutation
+and association analyses of dementia-causal genes in Han
+Chinese patients with early-onset and familial Alzheimer’s
+disease, J. Psychiatr. Res., vol. 113, pp. 141–147, 2019.
+[39]
+R. E. Tanzi, The genetics of alzheimer disease, Cold Spring
+Harb. Perspect. Med., vol. 2, no. 10, p. a006296, 2012.
+[54]
+N. S. Soleimani Zakeri, S. Pashazadeh, and H. MotieGhader,
+Gene biomarker discovery at different stages of Alzheimer
+using gene co-expression network approach, Sci. Rep., vol.
+10, no. 1, p. 12210, 2020.
+[40]
+C. L. Lendon, Exploring the etiology of Alzheimer disease
+using molecular genetics, JAMA, vol. 277, no. 10, pp. 825–
+831, 1997.
+[55]
+A. D. Roses, The medical and economic roles of
+pipeline pharmacogenetics:
+Alzheimer’s disease as a
+model of efﬁcacy and HLA-B*5701 as a model of safety,
+Neuropsychopharmacology, vol. 34, no. 1, pp. 6–17, 2009.
+[41]
+K. Ng, A. Sia, M. Ng, C. Tan, H. Chan, C. Tan, I. Rawtaer, L.
+Feng, R. Mahendran, A. Larbi, et al., Effects of horticultural
+therapy on Asian older adults: A randomized controlled
+trial, Int. J Environ. Res. Public Health, vol. 15, no. 8, p.
+1705, 2018.
+[56]
+D. Middleton, H. Mawhinney, M. D. Curran, J. A.
+Edwardson, R. Perry, I. McKeith, C. Morris, P. G. Ince,
+and D. Neill, Frequency of HLA-A and B alleles in early
+and late-onset Alzheimer’s disease, Neurosci. Lett., vol. 262,
+no. 2, pp. 140–142, 1999.
+[42]
+M. Yegambaram, B. Manivannan, T. G. Beach, and R. U.
+Halden, Role of environmental contaminants in the etiology
+of Alzheimer’s disease: a review, Curr. Alzheimer Res., vol.
+12, no. 2, pp. 116–146, 2015.
+[43]
+C. Ho, R. Ho, and A. Quek, Chronic manganese toxicity
+associated with voltage-gated potassium channel complex
+antibodies in a relapsing neuropsychiatric disorder, Int. J.
+Environ. Res. Public Health, vol. 15, no. 4, p. 783, 2018.
+[57]
+L. Dayon, A. N. Galindo, J. Wojcik, O. Cominetti, J.
+Corth´esy, A. Oikonomidi, H. Henry, M. Kussmann, E.
+Migliavacca, I. Severin, et al., Alzheimer disease pathology
+and the cerebrospinal ﬂuid proteome, Alzheimers Res. Ther.,
+vol. 10, no. 1, p. 66, 2018.
+[44]
+J. L. Podcasy and C. N. Epperson, Considering sex
+and gender in Alzheimer disease and other dementias,
+Dialogues Clin. Neurosci., vol. 18, no. 4, pp. 437–446,
+2016.
+[58]
+C. Van Cauwenberghe, C. Van Broeckhoven, and K.
+Sleegers, The genetic landscape of Alzheimer disease:
+Clinical implications and perspectives, Genet. Med., vol.
+18, no. 5, pp. 421–430, 2016.
+[45]
+B. Kim, M. Wattenberg, J. Gilmer, C. Cai, J. Wexler,
+F. Viegas, and R. Sayres, Interpretability beyond feature
+attribution: Quantitative testing with concept activation
+vectors (TCAV), arXiv preprint arXiv: 1711.11279, 2017.
+[59]
+A. Sharma and P. Dey, A machine learning approach
+to unmask novel gene signatures and prediction of
+Alzheimer’s
+disease
+within
+different
+brain
+regions,
+Genomics, vol. 113, no. 4, pp. 1778–1789, 2021.
+[60]
+L. Wang and Z. P. Liu, Detecting diagnostic biomarkers of
+Alzheimer’s disease by integrating gene expression data in
+six brain regions, Front. Genet., vol. 10, p. 157, 2019.
+[46]
+M. Gatz, C. A. Reynolds, L. Fratiglioni, B. Johansson, J. A.
+Mortimer, S. Berg, A. Fiske, and N. L. Pedersen, Role of
+genes and environments for explaining alzheimer disease,
+Arch. Gen. Psychiatry, vol. 63, no. 2, p. 168, 2006.
+[61]
+H. Chen, Y. He, J. Ji, and Y. Shi, A machine learning method
+for identifying critical interactions between gene pairs in
+Alzheimer’s disease prediction, Front. Neurol., vol. 10, p.
+1162, 2019.
+[47]
+Y. Freudenberg-Hua, W. Li, and P. Davies, The role of
+genetics in advancing precision medicine for Alzheimer’s
+disease—a narrative review, Front. Med., vol. 5, p. 108,
+2018.
+[48]
+C. Ballard, S. Gauthier, A. Corbett, C. Brayne, D. Aarsland,
+and E. Jones, Alzheimer’s disease, Lancet, vol. 377, no.
+9770, pp. 1019–1031, 2011.
+[62]
+X. Huang, H. Liu, X. Li, L. Guan, J. Li, L. C. A. M. Tellier,
+H. Yang, J. Wang, and J. Zhang, Revealing Alzheimer’s
+disease genes spectrum in the whole-genome by machine
+learning, BMC Neurol., vol. 18, no. 1, pp. 1–8, 2018.
+30
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+[63]
+J. Kim and I. Ahn, Infectious disease outbreak prediction
+using media articles with machine learning models, Sci.
+Rep., vol. 11, no. 1, pp. 1–13, 2021.
+Schwimmer, et al., PET imaging of tau deposition in the
+aging human brain, Neuron, vol. 89, no. 5, pp. 971–982,
+2016.
+[76]
+T. Jo, K. Nho, S. L. Risacher, and A. J. Saykin, Deep
+learning detection of informative features in tau PET for
+Alzheimer’s disease classiﬁcation, BMC Bioinformatics,
+vol. 21, p. 496, 2020.
+[64]
+Y. Zheng, B. Vanderbeek, E. Daniel, D. Stambolian,
+M. Maguire, D. Brainard, and J. Gee, An automated
+drusen detection system for classifying age-related macular
+degeneration with color fundus photographs, in Proc.
+2013 IEEE 10th Int. Symp. on Biomedical Imaging, San
+Francisco, CA, USA, 2013, pp. 1448–1451.
+[77]
+N. An, H. Ding, J. Yang, R. Au, and T. F. A. Ang, Deep
+ensemble learning for Alzheimer’s disease classiﬁcation, J.
+Biomed. Inform., vol. 105, p. 103411, 2020.
+[78]
+B. Lei, M. Yang, P. Yang, F. Zhou, W. Hou, W. Zou, X. Li,
+T. Wang, X. Xiao, and S. Wang, Deep and joint learning
+of longitudinal data for Alzheimer’s disease prediction,
+Pattern Recognit., vol. 102, p. 107247, 2020.
+[65]
+R. A. Sperling, P. S. Aisen, L. A. Beckett, D. A. Bennett, S.
+Craft, A. M. Fagan, T. Iwatsubo, C. R. Jack Jr, J. Kaye, T.
+J. Montine, et al., Toward deﬁning the preclinical stages of
+Alzheimer’s disease: Recommendations from the National
+Institute on Aging-Alzheimer’s Association workgroups on
+diagnostic guidelines for Alzheimer’s disease, Alzheimers
+Dement., vol. 7, no. 3, pp. 280–292, 2011.
+[79]
+H. Alkenani Ahmed, Y. Li, Y. Xu, and Q. Zhang, Predicting
+Alzheimer’s disease from spoken and written language
+using fusion-based stacked generalization, J. Biomed.
+Inform., vol. 118, no., pp. 103803–103803, 2021.
+[66]
+M. C. Carrillo, R. A. Dean, F. Nicolas, D. S. Miller, R.
+Berman, Z. Khachaturian, L. J. Bain, R. Schindler, and
+D. Knopman, Revisiting the framework of the National
+Institute on Aging-Alzheimer’s Association diagnostic
+criteria, Alzheimer’s Dement., vol. 9, no. 5, pp. 594–601,
+2013.
+[80]
+S. O. Orimaye, J. S. M. Wong, and C. P. Wong,
+Deep language space neural network for classifying mild
+cognitive impairment and Alzheimer-type dementia, PLoS
+One, vol. 13, no. 11, p. e0205636, 2018.
+[81]
+K. C. Fraser, K. Lundholm Fors, and D. Kokkinakis,
+Multilingual word embeddings for the assessment of
+narrative speech in mild cognitive impairment, Comput.
+Speech Lang., vol. 53, pp. 121–139, 2019.
+[67]
+P. J. Visser, S. Vos, I. Rossum, and P. Scheltens, Comparison
+of International Working Group criteria and National
+Institute on Aging–Alzheimer’s Association criteria for
+Alzheimer’sdisease, Alzheimer’s Dement., vol. 8, no. 6,
+pp. 560–563, 2012.
+[82]
+K. C. Fraser, J. A. Meltzer, and F. Rudzicz, Linguistic
+features identify Alzheimer’s disease in narrative speech, J.
+Alzheimer’s Dis., vol. 49, no. 2, pp. 407–422, Nov. 2015.
+[68]
+E. E. Tripoliti, D. I. Fotiadis, M. Argyropoulou, and G.
+Manis, A six stage approach for the diagnosis of the
+Alzheimer’s disease based on fMRI data, J. Biomed. Inform.,
+vol. 43, no. 2, pp. 307–320, 2010.
+[83]
+S. Luz, F. Haider, S. de la Fuente Garcia, D. Fromm, and B.
+MacWhinney, Editorial: Alzheimer’s dementia recognition
+through spontaneous speech, Front. Comput. Sci., vol. 3, p.
+780169, 2021.
+[69]
+W. Wu, J. Venugopalan, and M. D. Wang, 11C-PIB
+PET image analysis for Alzheimer’s diagnosis using
+weighted voting ensembles, in Proc. 2017 39th Annual Int.
+Conf. IEEE Engineering in Medicine and Biology Society
+(EMBC), Jeju, Repubic of Korea, 2017, pp. 3914–3917.
+[84]
+E. Edwards, C. Dognin, B. Bollepalli, and M. Singh,
+Multiscale system for Alzheimer’s dementia recognition
+through spontaneous speech, in Proc. Interspeech 2020, pp.
+2197–2201, 2020.
+[70]
+C. Tian, J. Ma, C. Zhang, and P. Zhan, A deep neural
+network model for short-term load forecast based on
+long short-term memory network and convolutional neural
+network, Energies, vol. 11, no. 12, p. 3493, 2018.
+[85]
+R. Sadeghian, J. D. Schaffer, and S. A. Zahorian, Speech
+processing approach for diagnosing dementia in an early
+stage, in Proc. Interspeech 2017, pp. 2705–2709, 2017.
+[71]
+F. Er and D. Goularas, Predicting the prognosis of MCI
+patients using longitudinal MRI data, IEEE/ACM Trans.
+Comput. Biol. Bioinform., vol. 18, no. 3, pp. 1164–1173,
+2021.
+[86]
+R. Alireza, A. Hamid, and S. B. Mahdieh, Transformer-
+based
+deep
+neural
+network
+language
+models
+for
+Alzheimer’s disease risk assessment from targeted speech,
+BMC Med. Inform. Decis. Mak., vol. 21, no. 1, p. 92, 2021.
+[87]
+K. L. Fors, K. C. Fraser, and D. Kokkinakis, Automated
+syntactic analysis of language abilities in persons with mild
+and subjective cognitive impairment, Stud. Health Technol.
+Inform., vol. 247, pp. 705–709, 2018.
+[72]
+B. Y. Lei, M. Y. Yang, P. Yang, F. Zhou, W. Hou, W.
+B. Zou, X. Li, T. F. Wang, X. H. Xiao and S. Q. Wang,
+Diagnosis of Alzheimer’s disease via an attention-based
+multi-scale convolutional neural network, Knowl. Based
+Syst., vol. 238, p. 107942, 2022.
+[73]
+X. Hong, R. Lin, C. Yang, N. Zeng, C. Cai, J. Gou, and J.
+Yang, Predicting Alzheimer’s disease using LSTM, IEEE
+Access, vol. 7, pp. 80893–80901, 2019.
+[88]
+S. Mirzaei, M. El Yacoubi, S. Garcia-Salicetti, J. Boudy,
+C. Kahindo, V. Cristancho-Lacroix, H. Kerherv´e, and A.S.
+Rigaud, Two-stage feature selection of voice parameters for
+early Alzheimer’s disease prediction, IRBM, vol. 39, no. 6,
+pp. 430–435, 2018.
+[74]
+H. Cho, J. Y. Choi, M. S. Hwang, Y. J. Kim, H. M. Lee, H.
+S. Lee, J. H. Lee, Y. H. Ryu, M. S. Lee, and C. H. Lyoo,
+In vivo cortical spreading pattern of tau and amyloid in the
+Alzheimer disease spectrum, Ann. Neurol., vol. 80, no. 2,
+pp. 247–258, 2016.
+[89]
+J. Tr¨oger,
+N. Linz,
+A. K¨onig,
+P. Robert,
+and J.
+Alexandersson, Telephone-based dementia screening I:
+automated semantic verbal ﬂuency assessment, in Proc.
+12th EAI Int. Conf. Pervasive Computing Technologies for
+Healthcare, New York, NY, USA, 2018, pp. 59–66.
+[75]
+M. Sch¨oll, S. Lockhart, D. Schonhaut, J. O’Neil, M.
+Janabi, R. Ossenkoppele, S. Baker, J. Vogel, J. Faria, H.,
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+31
+disease based on deep neural network by integrating gene
+expression and DNA methylation dataset, Expert Syst. Appl.,
+vol. 140, p. 112873, 2020.
+[90]
+E. Gonzalez-Moreira, D. Torres-Boza, H. A. Kairuz, C.
+Ferrer, M. Garcia-Zamora, F. Espinoza-Cuadros, and L. A.
+Hernandez-G´omez, Automatic prosodic analysis to identify
+mild dementia, Biomed Res. Int., vol. 2015, pp. 1–6, 2015.
+[104] D. Zhang, Y. Wang, L. Zhou, H. Yuan, and D. Shen,
+Multimodal classiﬁcation of Alzheimer’s disease and mild
+cognitive impairment, NeuroImage, vol. 55, no. 3, pp.
+856–867, 2011.
+[91]
+J. J. G. Meil´an, F. Mart´ınez-S´anchez, J. Carro, D. E. L´opez,
+L. Millian-Morell, and J. M. Arana, Speech in Alzheimer’s
+disease: Can temporal and acoustic parameters discriminate
+dementia? Dement Geriatr Cogn. Disord, vol. 37, nos. 5&6,
+pp. 327–334, 2014.
+[105] C. J. Lynch and C. Liston, New machine-learning
+technologies for computer-aided diagnosis, Nat. Med., vol.
+24, no. 9, pp. 1304–1305, 2018.
+[92]
+S. de la Fuente Garcia, C. W. Ritchie, and S. Luz, Artiﬁcial
+intelligence, speech, and language processing approaches
+to monitoring Alzheimer’s disease: A systematic review, J.
+Alzheimers Dis., vol. 78, no. 4, pp. 1547–1574, 2020.
+[106] A. R. Mohammadi-Nejad, G. A. Hossein-Zadeh, and
+H. Soltanian-Zadeh, Structured and sparse canonical
+correlation analysis as a brain-wide multi-modal data fusion
+approach, IEEE Trans. Med. Imaging, vol. 36, no. 7, pp.
+1438–1448, 2017.
+[93]
+F. Eyben, M. W¨ollmer, and B. Schuller, Opensmile:
+The munich versatile and fast open-source audio feature
+extractor, in Proc. 18th ACM Int. Conf. Multimedia,
+Association for Computing Machinery, New York, NY,
+USA, 2010, pp. 1459–1462.
+[107] S. Qiu, M. I. Miller, P. S. Joshi, J. C. Lee, C. Xue, Y. Ni, Y.
+Wang, I. De Anda-Duran, P. H. Hwang, J. A. Cramer, et al.,
+Multimodal deep learning for Alzheimer’s disease dementia
+assessment, Nat. Commun., vol. 13, no.13, pp. 1–17, 2022.
+[94]
+F. Eyben, F. Weninger, F. Gross, and B. Schuller, Recent
+developments in openSMILE, the Munich open-source
+multimedia feature extractor, in Proc. 21st ACM Int. Conf.
+Multimedia, Barcelona, Spain, 2013, pp. 835–838.
+[108] W. Lin, Q. Gao, M. Du, W. Chen, and T. Tong, Multiclass
+diagnosis of stages of Alzheimer’s disease using linear
+discriminant analysis scoring for multimodal data, Comput.
+Biol. Med., vol. 134, p. 104478, 2021.
+[95]
+F. Eyben, K. R. Scherer, B. W. Schuller, J. Sundberg, E.
+Andre, C. Busso, L. Y. Devillers, J. Epps, P. Laukka, S.
+S. Narayanan, et al., The Geneva minimalistic acoustic
+parameter set (GeMAPS) for voice research and affective
+computing, IEEE Trans. Affective Comput., vol. 7, no. 2,
+pp. 190–202, 2016.
+[109] D. Chen, L. Zhang, and C. Ma, A multimodal diagnosis
+predictive model of Alzheimer’s disease with few-shot
+learning, in Proc. 2020 Int. Conf. Public Health and Data
+Science (ICPHDS), Guangzhou, China, 2021, pp. 273–277.
+[96]
+J. Chen, Y. Wang, and D. Wang, A feature study for
+classiﬁcation-based speech separation at low signal-
+to-noise ratios, IEEE/ACM Trans. Audio Speech Lang.
+Process., vol. 22, no. 12, pp. 1993–2002, 2014.
+[110] A. Spooner, G. Mohammadi, P. S. Sachdev, H. Brodaty, and
+A. Sowmya, Ensemble feature selection with data-driven
+thresholding for Alzheimer’s disease biomarker discovery,
+arXiv preprint arXiv: 2207.01822, 2022.
+[111] M. Kate, A. Redolﬁ, E. Peira, I. Bos, S. J. Vos, R.
+Vandenberghe, S. Gabel, J. Schaeverbeke, P. Scheltens, O.
+Blin, et al., MRI predictors of amyloid pathology: Results
+from the EMIF-AD Multimodal Biomarker Discovery study,
+Alzheimer’s Res. Ther., vol. 10, no. 1, pp. 1–12, 2018.
+[97]
+J. Li, J. Yu, Z. Ye, S. Wong, M. Mak, B. Mak, X. Liu, and
+H. Meng, A comparative study of acoustic and linguistic
+features classiﬁcation for Alzheimer’s disease detection,
+in Proc. ICASSP 2021-2021 IEEE Int. Conf. Acoustics,
+Speech and Signal Processing (ICASSP), Toronto, Canada,
+2021, pp. 6423–6427.
+[98]
+P. Mahajan and V. Baths, Acoustic and language based deep
+learning approaches for Alzheimer’s dementia detection
+from spontaneous speech, Front. Aging Neurosci., vol. 13,
+p. 623607, 2021.
+[112] L. C. Jiskoot, J. L. Panman, L. H. Meeter, E. G. P.
+Dopper, L. Donker Kaat, S. Franzen, E. L. van der
+Ende, R. van Minkelen, S. A. R. B. Rombouts, J. M.
+Papma, et al., Longitudinal multimodal MRI as prognostic
+and diagnostic biomarker in presymptomatic familial
+frontotemporal dementia, Brain, vol. 142, no. 1, pp. 193–
+208, 2019.
+[99]
+A. Balagopalan, B. Eyre, F. Rudzicz, and J. Novikova,
+To BERT or not to BERT: Comparing speech and
+language-based
+approaches
+for
+Alzheimer’s
+disease
+detection, arXiv preprint arXiv: 2008.01551, 2020.
+[100] W. Wei, S. Visweswaran, and G. F. Cooper, The application
+of naive Bayes model averaging to predict Alzheimer’s
+disease from genome-wide data, J. Am. Med. Inform.
+Assoc., vol. 18, no. 4, pp. 370–375, 2011.
+[113] K. Ritter, C. Lange, M. Weygandt, A. M¨aurer, A. Roberts,
+M. Estrella, P. Suppa, L. Spies, V. Prasad, I. Steffen, et
+al., Combination of structural MRI andFDG-PET of the
+brain improves diagnostic accuracy in newly manifested
+cognitive impairment in geriatric inpatients, J. Alzheimer’s
+Dis., vol. 54, no. 4, pp. 1319–1331, 2016.
+[101] L. Xu, G. Liang, C. Liao, G. D. Chen, and C. C.
+Chang, An efﬁcient classiﬁer for Alzheimer’s disease genes
+identiﬁcation, Molecules, vol. 23, no. 12, p. 3140, 2018.
+[114] D. Zhang, Y. Wang, L. Zhou, H. Yuan, and D. Shen,
+Multimodal classiﬁcation of Alzheimer’s disease and mild
+cognitive impairment, NeuroImage, vol. 55, no. 3, pp.
+856–867, 2011.
+[102] D. V. O. Javier, E. Vallejo Edgar, E. Karol, T. P. J. Gerardo,
+and D. N. I. T. Alzheimer’s, Benchmarking machine
+learning
+models
+for
+late-onset
+Alzheimer’s
+disease
+prediction from genomic data, BMC Bioinform., vol. 20,
+no. 1, p. 709, 2019.
+[115] B. Cheng, M. Liu, D. Zhang, B. C. Munsell, and D. Shen,
+Domain transfer learning for MCI conversion prediction,
+IEEE Trans. Biomed Eng., vol. 62, no. 7, pp. 1805–1817,
+2015.
+[103] C. Park, J. Ha, and S. Park, Prediction of Alzheimer’s
+[116] S. Yuan, H. Li, J. Wu, and X. Sun, Classiﬁcation of mild
+32
+Tsinghua Science and Technology, February 2024, 29(1): 13–33
+using bio-inspired metaheuristics, Soft Comput., vol. 22, no.
+20, pp. 6811–6824, 2018.
+cognitive impairment with multimodal data using both
+labeled and unlabeled samples, IEEE/ACM Trans. Comput.
+Biol. Bioinform., vol. 18, no. 6, pp. 2281–2290, 2021.
+[129] M. Hendrix, T. Bellamy-Wood, S. McKay, V. Bloom, and I.
+Dunwell, Implementing adaptive game difﬁculty balancing
+in serious games, IEEE Trans. Games, vol. 11, no. 4, pp.
+320–327, 2019.
+[117] W. Lin, T. Tong, Q. Gao, D. Guo, X. Du, Y. Yang, G.
+Guo, M. Xiao, M. Du, and X. Qu, Convolutional neural
+networks-based MRI image analysis for the Alzheimer’s
+disease prediction from mild cognitive impairment, Front.
+Neurosci., vol. 12, p. 777, 2018.
+[130] X. Wang, Y. Zhou, and C. Zhao, Heart-rate analysis
+of healthy and insomnia groups with detrended fractal
+dimension feature in edge,
+Tsinghua Science and
+Technology, vol. 27, no. 2, pp. 325–332, 2021.
+[131] A. Dey, A. Chatburn, and M. Billinghurst, Exploration of an
+EEG-based cognitively adaptive training system in virtual
+reality, in Proc. 2019 IEEE Conf. Virtual Reality and 3D
+User Interfaces (VR), Osaka, Japan, 2019, pp. 220–226.
+[118] S. Tabarestani, M. Aghili, M. Shojaie, C. Freytes, M.
+Cabrerizo, A. Barreto, N. Rishe, R. E. Curiel, D.
+Loewenstein, R. Duara, et al., Longitudinal prediction
+modeling of alzheimer disease using recurrent neural
+networks, in Proc. 2019 IEEE EMBS Int. Conf. Biomedical
+& Health Informatics (BHI), Chicago, IL, USA, 2019, pp.
+1–4.
+[132] B. Sun, R. Al-Bayaty, Q. Huang, and D. Wu, Game
+theoretical approach for non-overlapping community
+detection, Tsinghua Science and Technology, vol. 26, no. 5,
+pp. 706–723, 2021.
+[119] I. Beheshti, H. Demirel, and H. Matsuda, Classiﬁcation
+of Alzheimer’s disease and prediction of mild cognitive
+impairment-to-Alzheimer’s conversion from structural
+magnetic resource imaging using feature ranking and a
+genetic algorithm, Comput. Biol. Med., vol. 83, pp. 109–
+119, 2017.
+[133] T. Zhou, W. Liu, N. Li, X. Yang, Y. Han, and S. Zheng,
+Secure scheme for locating disease-causing genes based on
+multi-key homomorphic encryption, Tsinghua Science and
+Technology, vol. 27, no. 2, pp. 333–343, 2021.
+[120] S. Zheng, Z. Zhu, Z. Liu, Z. Guo, Y. Liu, Y. Yang, and Y.
+Zhao, Multi-modal graph learning for disease prediction,
+IEEE Trans. Med. Imaging, vol. 41, no. 9, pp. 2207–2216,
+2022.
+[134] S. G. Mueller, M. W. Weiner, L. J. Thal, R. C. Petersen,
+C. Jack, W. Jagust, J. Q. Trojanowski, A. W. Toga, and L.
+Beckett, The Alzheimer’s disease neuroimaging initiative,
+Neuroimaging Clin. N. Am., vol. 15, no. 4, pp. 869–877,
+2005.
+[121] G. Yubraj, L. R. Kumar, and K. Goo-Rak, Prediction and
+classiﬁcation of Alzheimer’s disease based on combined
+features from apolipoprotein-E genotype, cerebrospinal
+ﬂuid, MR, and FDG-PET imaging biomarkers, Front.
+Comput. Neurosci., vol. 13, p. 72, 2019.
+[135] ADNI database, https://adni.loni.usc.edu/, 2017.
+[136] D. L. Beekly, E. M. Ramos, G. van Belle, W. Deitrich, A.
+D. Clark, M. E. Jacka, and W. A. Kukull, The National
+Alzheimer’s Coordinating Center (NACC) Database: An
+Alzheimer disease database, Alz. Dis. Assoc. Dis., vol.18,
+no. 4, pp. 270–277, 2004.
+[122] U. Richarz, M. Gaudig, K. Rettig, and B. Schauble,
+Galantamine treatment in outpatients with mild Alzheimer’s
+disease, Acta Neurol. Scand., vol. 129, no. 6, pp. 382–392,
+2014.
+[123] L. S. Schneider, K. S. Dagerman, J. P. Higgins, and R.
+McShane, Lack of evidence for the efﬁcacy of memantine
+in mild Alzheimer disease, Arch. Neurol., vol. 68, no. 8, pp.
+991–998, 2011.
+[137] NACC database, https://naccdata.org/, 2023.
+[138] D. S. Marcus, T. H. Wang, J. Parker, J. G. Csernansky,
+J. C. Morris, and R. L. Buckner, Open access series of
+imaging studies (OASIS): Cross-sectional MRI data in
+young, middle aged, nondemented, and demented older
+adults, J. Cogn. Neurosci., vol. 19, no. 9, pp. 1498–1507,
+2007.
+[124] J. Fang, Y. Li, R. Liu, X. Pang, C. Li, R. Yang, Y. He, W.
+Lian, A. L. Liu, and G. H. Du, Discovery of multitarget-
+directed ligands against Alzheimer’s disease through
+systematic prediction of chemical–protein interactions,
+J.Chem. Inf. Model., vol. 55, no. 1, pp. 149–164, 2015.
+[139] OASIS database, https://www.oasis-brains.org/, 2023.
+[140] N. Allen, C. Sudlow, P. Downey, T. Peakman, J. Danesh,
+P. Elliott, J. Gallacher, J. Green, P. Matthews, J. Pell, et
+al., UK Biobank: Current status and what it means for
+epidemiology, Health Policy Technol., vol. 1, no. 3, pp.
+123–126, 2012.
+[125] Y. Hara, N. McKeehan, and H. M. Fillit, Translating the
+biology of aging into novel therapeutics for Alzheimer
+disease, Neurology, vol. 92, no. 2, pp. 84–93, 2019.
+[126] S. Rodriguez, C. Hug, P. Todorov, N. Moret, S. A. Boswell,
+K. Evans, G. Zhou, N. T. Johnson, B. T. Hyman, P. K.
+Sorger, et al., Machine learning identiﬁes candidates for
+drug repurposing in Alzheimer’s disease, Nat. Commun.,
+vol. 12, no.1, pp.1–13, 2021.
+[141] UK Biobank database, https://www.ukbiobank.ac.uk/, 2023.
+[142] C. Sudlow, J. Gallacher, N. Allen, V. Beral, P. Burton, J.
+Danesh, P. Downey, P. Elliott, J. Green, M. Landray, et al.,
+UK biobank: An open access resource for identifying the
+causes of a wide range of complex diseases of middle and
+old age, PLoS Med., vol. 12, no. 3, p. e1001779, 2015.
+[127] S. Jamal, S. Goyal, A. Shanker, and A. Grover, Predicting
+neurological Adverse Drug Reactions based on biological,
+chemical and phenotypic properties of drugs using machine
+learning models, Sci. Rep., vol. 7, no.1, pp.1–12, 2017.
+[143] T. Wilkinson, C. Schnier, K. Bush, K. Rannikm¨ae, D. E.
+Henshall, C. Lerpiniere, N. E. Allen, R. Flaig, T. C. Russ,
+D. Bathgate, et al., Identifying dementia outcomes in UK
+Biobank: A validation study of primary care, hospital
+admissions and mortality data, Eur. J.Epidemiol., vol. 34,
+no. 6, pp. 557–565, 2019.
+[128] G. N. Souza, D. F. Deus, V. Tadaiesky, I. M. Ara´ujo, D. C.
+Monteiro, and ´A. L. Santana, Optimizing tasks generation
+for children in the early stages of literacy teaching: a study
+Qing Zhao et al.:
+The Application of Artiﬁcial Intelligence in Alzheimer’s Research
+33
+[144] L. S. Honig and R. Mayeux, Natural history of Alzheimer’s
+disease, Aging Clin. Exp. Res., vol. 13, no. 3, pp. 171–182,
+2001.
+[147] ADSP database, https://www.nia.nih.gov/, 2023.
+[148] J. J. Yang, J. Li, J. Mulder, Y. Wang, S. Chen, H. Wu, Q.
+Wang, and H. Pan, Emerging information technologies for
+enhanced healthcare, Comput. Ind., vol. 69, pp. 3–11, 2015.
+[145] B. MacWhinney, Understanding spoken language through
+TalkBank, Behav. Res. Methods, vol. 51, no. 4, pp.
+1919–1927, 2019.
+[149] C. F. Chen, O. Li, D. Tao, A. Barnett, C. Rudin, and J. K. Su,
+This looks like that: deep learning for interpretable image
+recognition, arXiv preprint arXiv:1806.10574, 2019.
+[146] Pitt corpus database, https://dementia.talkbank.org/, 2017.
+Qing Zhao received the MS degree
+in software engineering from Beijing
+University of Technology in 2016, and PhD
+degree in computer science and technology
+from Beijing University of Technology
+in 2021. She is currently a lecturer at
+Faculty of Information Technology, Beijing
+University of Technology, China. Her
+current research interests include natural language processing,
+semantic analysis, and medical data analysis.
+Faheem Akhtar Rajput received the
+PhD degree from Beijing University of
+Technology in 2020 and MS degree in
+computer science from National University
+of Computing and Emerging Science
+NUCES FAST Karachi in 2011. He is
+currently an assistant professor at the
+Department of Computer Science, Sukkur
+IBA University, Pakistan. His current research interests include
+data mining, machine learning, deep learning, information
+retrieval, privacy protection, internet security, Internet of Things,
+and big data.
+Hanrui Xu is an MS candidate at the
+School of Medicine, Tsinghua University,
+China.
+Her
+main
+research
+interests
+include Alzheimer’s disease and cognitive
+disorders.
+Liyan Qiao received the bachelor and
+master
+degrees
+from
+Inner
+Mongolia
+Medical
+College
+in
+1993
+and
+1996,
+respectively. She received the PhD degree
+at Peking Union University in 2002. She
+worked as a resident in the afﬁliated
+hospital of Inner Mongolia Medical from
+1996–1999. She is currently the director of
+the Department of Neurology in Tsinghua University Yuquan
+Hospital, as well as a professor at the School of Medicine,
+Tsinghua University, China. Her current research interests include
+neurodegenerative disease and Neuroimmunology disease.
+Jianqiang Li received the BS degree in
+mechatronics from Beijing Institute of
+Technology in 1996, the MS and PhD
+degrees in control science and engineering
+from Tsinghua University in 2001 and
+2004,
+respectively. He is currently a
+Beijing Distinguished Professor in Beijing
+University of Technology. His current
+research interests include Petri nets, enterprise information system,
+social computing, predicative data mining, Internet of things,
+privacy protection, and big data.
